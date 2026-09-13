@@ -16,6 +16,9 @@ xcuserdata/
 .airframe/agilecockpit-launch-cache.json
 .airframe/agilecockpit-traceability-cache.json
 
+# Agile Cockpit deterministic Markdown projections (canonical state remains tracked)
+docs/generated/
+
 # Local secrets and environment overrides
 .env
 .env.*

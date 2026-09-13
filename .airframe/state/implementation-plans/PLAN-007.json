@@ -1,0 +1,54 @@
+{
+  "auditEventIDs" : [
+
+  ],
+  "commands" : [
+
+  ],
+  "decisionState" : "pending",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "docs\/Sprints\/SP-008-Planning.md",
+    "docs\/Catalog\/ (created during authorized implementation)"
+  ],
+  "id" : {
+    "rawValue" : "PLAN-007"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "JT-DD-003 supplies the approved core inventory; conditional traditional content may not be invented or universalized."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Shared catalog model and reviewable specification only; iPhone UI, Watch synchronization, external research decisions, and release approval remain outside implementation."
+  ],
+  "summary" : "Define a source-backed, versioned built-in catalog with deterministic manifest, classification, lookup, identity, and silent default behavior.",
+  "targetEpicID" : {
+    "rawValue" : "EP-004"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-008"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0018"
+    }
+  ],
+  "title" : "SP-008 versioned built-in catalog plan",
+  "verificationCriteria" : [
+    "Run JT-TEST-091 through JT-TEST-100 by appropriate automated\/manual\/UI owner and record residual source-review obligations."
+  ]
+}

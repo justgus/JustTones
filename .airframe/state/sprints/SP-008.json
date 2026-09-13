@@ -1,4 +1,5 @@
 {
+  "endDate" : "2026-09-13",
   "epicID" : {
     "rawValue" : "EP-004"
   },
@@ -12,7 +13,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-13T21:09:04Z"
+    "updatedAt" : "2026-09-13T22:24:40Z"
   },
   "notes" : [
 
@@ -27,7 +28,7 @@
       "rawValue" : "SP-008"
     },
     "kind" : "sprint",
-    "status" : "planning",
+    "status" : "closed",
     "title" : "Versioned Built-In Catalog"
   }
 }

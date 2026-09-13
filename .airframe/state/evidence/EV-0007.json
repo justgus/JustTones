@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "docs\/Catalog\/Version-1-Catalog.md"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustToneCore (32 tests in 8 suites passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTone.xcodeproj -scheme JustToneWatch -destination platform=watchOS\\ Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0 build (BUILD SUCCEEDED); git diff --check passed",
+  "environment" : "macOS; Xcode-beta developer directory; watchOS Simulator destination 8DF24897-43FE-4334-B22E-6DF9B30F1DD0",
+  "id" : {
+    "rawValue" : "EV-0007"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-008 catalog implementation: versioned manifest, stable tuning\/profile\/timbre identities, deterministic catalog lookup, silent 12-TET\/A4=440 default data, and a source-backed version-1 catalog specification. JT-TEST-091, JT-TEST-095, and JT-TEST-100 have automated model coverage; JT-TEST-092 through JT-TEST-094 require human source\/classification review; JT-TEST-096 through JT-TEST-099 remain EP-005\/user UI or lifecycle obligations.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0018"
+    }
+  ]
+}

@@ -6,13 +6,17 @@
   ],
   "component" : "Shared platform-neutral catalog models, manifest, specification, validation, lookup indexes, and deterministic fixtures.",
   "componentsAffected" : [
-    "Shared platform-neutral catalog models, manifest, specification, validation, lookup indexes, and deterministic fixtures."
+    "Shared platform-neutral catalog models, versioned manifest, validation, lookup indexes, deterministic fixtures, and separately reviewable catalog specification.",
+    "A source-backed specification under docs\/Catalog\/ for unconditional JT-DD-003 content and any conditional tradition-specific entry admitted after review."
   ],
+  "dateVerified" : "2026-09-13",
   "epicID" : {
     "rawValue" : "EP-004"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0007"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -20,10 +24,11 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-13T21:09:04Z"
+    "updatedAt" : "2026-09-13T22:22:42Z"
   },
   "notes" : [
-    "No iPhone authoring or browsing UI, Watch synchronization transport, cloud service, account, analytics, network access, or microphone behavior."
+    "No iPhone authoring, browsing, filtering, or search UI; no Watch synchronization transport; no cloud service, account, analytics, network access, microphone behavior, or automatic playback.",
+    "Do not invent undocumented variants or present a variable tradition as universal; conditional content requires its own source and limitation record."
   ],
   "priority" : "high",
   "rationale" : "No iPhone authoring or browsing UI, Watch synchronization transport, cloud service, account, analytics, network access, or microphone behavior.",
@@ -66,14 +71,15 @@
     "rawValue" : "SP-008"
   },
   "testSteps" : [
-    "Record JT-TEST-091 through JT-TEST-100 results and retain catalog specification\/source-review artifacts."
+    "Run deterministic manifest, identity, default-selection, query, classification, and update fixtures; record JT-TEST-091 through JT-TEST-100 disposition.",
+    "Keep JT-TEST-092, JT-TEST-093, JT-TEST-096 through JT-TEST-099 as explicit manual or EP-005\/user-review obligations where model tests are insufficient."
   ],
   "workItem" : {
     "id" : {
       "rawValue" : "T-0018"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Deliver the versioned built-in catalog"
   }
 }

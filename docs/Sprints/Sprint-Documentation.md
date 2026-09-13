@@ -19,17 +19,17 @@ Currently: **9 Sprints** | Next available: **SP-010**
 | SP-005 | Timbre Qualification | EP-003 | T-0016 | None | Closed |
 | SP-006 | Session and Playback Lifecycle | EP-003 | T-0017 | None | Closed |
 | SP-007 | Profile Model and Durable Local Store | EP-004 | T-0003 | None | Closed |
-| SP-008 | Versioned Built-In Catalog | EP-004 | T-0018 | None | Planning |
+| SP-008 | Versioned Built-In Catalog | EP-004 | T-0018 | None | Closed |
 | SP-009 | JustTone Interchange and Recovery Surfaces | EP-004 | T-0019 | None | Planning |
 
 ## Statistics
 
 - **Total Sprints:** 9
 - **Backlog:** 0
-- **Planning:** 2
+- **Planning:** 1
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 7
+- **Closed:** 8
 - **Next available:** SP-010
 
 *Last Updated: 2026-09-13*

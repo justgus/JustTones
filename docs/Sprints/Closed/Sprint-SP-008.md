@@ -1,17 +1,17 @@
-# SP-005: Timbre Qualification
+# SP-008: Versioned Built-In Catalog
 
 **Status:** Closed
-**Epic:** EP-003
+**Epic:** EP-004
 **Goal:** 
 **Start Date:** TBD
-**End Date:** 2026-09-12
+**End Date:** 2026-09-13
 **Capacity:** TBD
 
 ### Assigned Tasks
 
 | Task | Status |
 | ---- | ---- |
-| T-0016 |  |
+| T-0018 |  |
 
 ### Assigned Issues
 

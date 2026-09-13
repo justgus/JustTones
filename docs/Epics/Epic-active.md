@@ -20,16 +20,16 @@ Deliver reusable profiles, catalog data, durable local persistence, and bounded 
 | Sprint | Goal | Status |
 | ------ | ---- | ------ |
 | SP-007 |  | Closed |
-| SP-008 |  | Planning |
+| SP-008 |  | Closed |
 | SP-009 |  | Planning |
 
 ### Related Tasks
 
 | Task | Title | Status |
 | ---- | ----- | ------ |
-| T-0018 | Deliver the versioned built-in catalog | Backlog |
 | T-0019 | Implement bounded JustTone interchange and recovery surfaces | Backlog |
 | T-0003 | Build tuning profiles and local persistence | Implemented - Verified |
+| T-0018 | Deliver the versioned built-in catalog | Implemented - Verified |
 
 ### Related Issues
 
