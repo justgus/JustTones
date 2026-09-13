@@ -4,10 +4,10 @@ Currently: **17 total Tasks**
 
 | Status | Count |
 | ------ | ----- |
-| Backlog | 6 |
+| Backlog | 5 |
 | Active | 0 |
 | Implemented - Not Verified | 1 |
-| Implemented - Verified | 10 |
+| Implemented - Verified | 11 |
 | Closed | 0 |
 
 | Task | GitHub Issue | Title | Status |
@@ -27,5 +27,5 @@ Currently: **17 total Tasks**
 | T-0013 | TBD | Establish privacy manifests and dependency inventory | Implemented - Verified |
 | T-0014 | TBD | Qualify the integrated foundation and record release gates | Implemented - Verified |
 | T-0015 | TBD | Implement generalized tuning and qualify the integrated domain engine | Implemented - Verified |
-| T-0016 | TBD | Define approved timbres and qualify deterministic signal behavior | Implemented - Not Verified |
-| T-0017 | TBD | Integrate audio session, routes, interruptions, and playback lifecycle | Backlog |
+| T-0016 | TBD | Define approved timbres and qualify deterministic signal behavior | Implemented - Verified |
+| T-0017 | TBD | Integrate audio session, routes, interruptions, and playback lifecycle | Implemented - Not Verified |

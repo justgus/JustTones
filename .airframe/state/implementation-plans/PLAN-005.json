@@ -1,0 +1,55 @@
+{
+  "auditEventIDs" : [
+    {
+      "rawValue" : "AUD-AGILE-PLAN-6"
+    }
+  ],
+  "commands" : [
+    "Use Xcode-beta package tests and focused iPhone\/Watch hosts; inspect actual schemes and destinations before tests; document device-route procedures and actual results separately."
+  ],
+  "decisionState" : "approved",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+    "No external service or remote mutation. Any audio-session category, route behavior, and background capability change requires explicit scope confirmation and physical-device evidence."
+  ],
+  "fileChanges" : [
+    "Add platform session\/lifecycle adapters, focused tests, host integration tests, and route\/evidence documentation only during authorized implementation."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-005"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "PLAN-005 is planning only; it does not activate SP-006 or authorize implementation."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "iPhone and Watch session adapters around the qualified shared renderer; lifecycle state model and tests; no microphone, profiles, synchronization, user authoring, network, accounts, analytics, or unapproved background entitlement."
+  ],
+  "summary" : "Plan minimal iPhone and Watch audio-session ownership, deterministic playback lifecycle transitions, route\/error handling, and separated simulator versus physical-device evidence.",
+  "targetEpicID" : {
+    "rawValue" : "EP-003"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-006"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0017"
+    }
+  ],
+  "title" : "SP-006 Session and Playback Lifecycle Plan",
+  "verificationCriteria" : [
+    "Automate state transitions and failure paths where platform simulation is meaningful; leave listening, route, Silent Mode, lock\/background, energy, thermal, Bluetooth, and media-control evidence explicitly pending until physically tested."
+  ]
+}

@@ -9,11 +9,14 @@
     "iPhone and Watch audio-session integration",
     "Tests and lifecycle documentation"
   ],
+  "dateVerified" : "2026-09-13",
   "epicID" : {
     "rawValue" : "EP-003"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0005"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -21,7 +24,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-12T16:05:04Z"
+    "updatedAt" : "2026-09-13T02:48:15Z"
   },
   "notes" : [
     "Depends on T-0002 and T-0016 implementation evidence; no microphone access, profile synchronization, or user-authoring UI."
@@ -42,7 +45,7 @@
       "rawValue" : "T-0017"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Integrate audio session, routes, interruptions, and playback lifecycle"
   }
 }

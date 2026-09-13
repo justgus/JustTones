@@ -16,6 +16,7 @@
       "rawValue" : "JT-AC-015"
     }
   ],
+  "closeDate" : "2026-09-13",
   "goal" : "Deliver accurate, continuous, click-free monophonic synthesis and robust audio-session behavior.",
   "issueIDs" : [
 
@@ -26,7 +27,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-12T19:59:51Z"
+    "updatedAt" : "2026-09-13T02:49:22Z"
   },
   "notes" : [
 
@@ -58,10 +59,10 @@
       "rawValue" : "T-0002"
     },
     {
-      "rawValue" : "T-0017"
+      "rawValue" : "T-0016"
     },
     {
-      "rawValue" : "T-0016"
+      "rawValue" : "T-0017"
     }
   ],
   "workItem" : {
@@ -69,7 +70,7 @@
       "rawValue" : "EP-003"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Audio Synthesis and Playback"
   }
 }
