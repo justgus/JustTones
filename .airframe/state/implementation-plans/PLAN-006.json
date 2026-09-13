@@ -1,0 +1,59 @@
+{
+  "auditEventIDs" : [
+
+  ],
+  "commands" : [
+
+  ],
+  "decisionState" : "pending",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "docs\/Epics\/EP-004-Planning.md"
+  ],
+  "id" : {
+    "rawValue" : "PLAN-006"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Explicit user direction authorizes completion of planning and activation of EP-004."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "SP-007 establishes profile and durable-store foundations; SP-008 establishes catalog; SP-009 establishes bounded interchange."
+  ],
+  "summary" : "Deliver EP-004 through sequential profile\/persistence, catalog, and bounded interchange Sprints.",
+  "targetEpicID" : {
+    "rawValue" : "EP-004"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-009"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0003"
+    },
+    {
+      "rawValue" : "T-0018"
+    },
+    {
+      "rawValue" : "T-0019"
+    }
+  ],
+  "title" : "EP-004 profiles, catalog, persistence, and interchange Sprint plan",
+  "verificationCriteria" : [
+    "Run focused deterministic tests and record residual platform and human verification."
+  ]
+}

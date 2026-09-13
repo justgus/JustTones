@@ -1,0 +1,103 @@
+{
+  "acceptanceCriteria" : [
+    "The versioned UTF-8 declarative .justtone JSON format preserves exact valid numeric semantics, stable identities, Unicode metadata, dependencies, and catalog references without executable payloads.",
+    "Validation enforces declared resource limits before mutation; preview and conflict results remain cancelable and invalid input cannot partially import or disclose user content in logs.",
+    "Export is semantically deterministic, the registered document type is JustTone-specific, scoped access is released, and released schema rules and examples are documented."
+  ],
+  "component" : "Shared document schema, validation, import\/export, conflict-result model, document-type integration, schema documentation, and deterministic fixtures.",
+  "componentsAffected" : [
+    "Shared document schema, validation, import\/export, conflict-result model, document-type integration, schema documentation, and deterministic fixtures."
+  ],
+  "epicID" : {
+    "rawValue" : "EP-004"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-13T21:09:04Z"
+  },
+  "notes" : [
+    "No cloud service, arbitrary synthesis code, automatic playback, Watch synchronization transport, or EP-005 presentation implementation."
+  ],
+  "priority" : "high",
+  "rationale" : "No cloud service, arbitrary synthesis code, automatic playback, Watch synchronization transport, or EP-005 presentation implementation.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-DR-001"
+    },
+    {
+      "rawValue" : "JT-DR-011"
+    },
+    {
+      "rawValue" : "JT-DR-012"
+    },
+    {
+      "rawValue" : "JT-DR-013"
+    },
+    {
+      "rawValue" : "JT-DR-014"
+    },
+    {
+      "rawValue" : "JT-DR-015"
+    },
+    {
+      "rawValue" : "JT-DR-016"
+    },
+    {
+      "rawValue" : "JT-FR-008"
+    },
+    {
+      "rawValue" : "JT-FR-009"
+    },
+    {
+      "rawValue" : "JT-FR-010"
+    },
+    {
+      "rawValue" : "JT-FR-086"
+    },
+    {
+      "rawValue" : "JT-FR-087"
+    },
+    {
+      "rawValue" : "JT-FR-090"
+    },
+    {
+      "rawValue" : "JT-NFR-054"
+    },
+    {
+      "rawValue" : "JT-SR-001"
+    },
+    {
+      "rawValue" : "JT-SR-014"
+    },
+    {
+      "rawValue" : "JT-SR-015"
+    },
+    {
+      "rawValue" : "JT-SR-024"
+    },
+    {
+      "rawValue" : "JT-SR-025"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-009"
+  },
+  "testSteps" : [
+    "Record JT-TEST-013 through JT-TEST-017, JT-TEST-165 through JT-TEST-181, and JT-TEST-190 through JT-TEST-191 results with schema artifacts."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0019"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Implement bounded JustTone interchange and recovery surfaces"
+  }
+}

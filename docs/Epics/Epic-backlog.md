@@ -2,17 +2,9 @@
 
 Epics listed here are proposed and queued for future planning.
 
-Currently: **5 backlog Epics**
+Currently: **4 backlog Epics**
 
 ---
-
-## EP-004: Profiles, Catalog, Persistence, and Interchange
-
-**Status:** Backlog
-**Owner:** 
-
-**Goal:**
-Deliver reusable profiles, catalog data, durable local persistence, and bounded portable interchange.
 
 ## EP-005: iPhone Experience
 

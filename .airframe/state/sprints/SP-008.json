@@ -1,0 +1,33 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-004"
+  },
+  "goal" : "",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-13T21:09:04Z"
+  },
+  "notes" : [
+
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0018"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-008"
+    },
+    "kind" : "sprint",
+    "status" : "planning",
+    "title" : "Versioned Built-In Catalog"
+  }
+}

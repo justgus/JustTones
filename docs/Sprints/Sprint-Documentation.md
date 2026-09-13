@@ -8,7 +8,7 @@ Currently: **None**
 
 ## All Sprints
 
-Currently: **6 Sprints** | Next available: **SP-007**
+Currently: **9 Sprints** | Next available: **SP-010**
 
 | Sprint | Title | Epic | Tasks | Issues | Status |
 | ------ | ----- | ---- | ----- | ------ | ------ |
@@ -18,15 +18,18 @@ Currently: **6 Sprints** | Next available: **SP-007**
 | SP-004 | Monophonic Render Engine | EP-003 | T-0002 | None | Closed |
 | SP-005 | Timbre Qualification | EP-003 | T-0016 | None | Closed |
 | SP-006 | Session and Playback Lifecycle | EP-003 | T-0017 | None | Closed |
+| SP-007 | Profile Model and Durable Local Store | EP-004 | T-0003 | None | Closed |
+| SP-008 | Versioned Built-In Catalog | EP-004 | T-0018 | None | Planning |
+| SP-009 | JustTone Interchange and Recovery Surfaces | EP-004 | T-0019 | None | Planning |
 
 ## Statistics
 
-- **Total Sprints:** 6
+- **Total Sprints:** 9
 - **Backlog:** 0
-- **Planning:** 0
+- **Planning:** 2
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 6
-- **Next available:** SP-007
+- **Closed:** 7
+- **Next available:** SP-010
 
 *Last Updated: 2026-09-13*

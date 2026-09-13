@@ -1,20 +1,24 @@
 {
   "acceptanceCriteria" : [
-    "Built-in profiles cover the user-approved version 1 instrument list.",
-    "Users can create, rename, duplicate, reorder, and delete profiles and their notes.",
-    "Profiles support arbitrary practical note counts rather than assuming six strings.",
-    "Versioned persistence survives relaunch and rejects or repairs invalid values safely."
+    "The general profile model preserves stable identity, ordered entries, optional groups, repeated entries, transposition, preferred-timbre identifiers, and duplicate display names.",
+    "The platform-neutral library safely creates, replaces, duplicates, reorders, removes, and restores profiles with arbitrary practical entry counts; it does not start playback.",
+    "Versioned local persistence provides deterministic legacy migration, atomic autosave, last-valid snapshots, corrupt-store preservation and recovery, explicit reset, and backup-eligible caller-selected placement.",
+    "The foundation is local-only and has no account, cloud database, analytics, runtime network, microphone, iPhone authoring UI, catalog content, or Watch synchronization transport."
   ],
   "component" : "Profiles",
   "componentsAffected" : [
-    "Shared",
-    "iPhone"
+    "Platform-neutral profile, ordered-entry, grouping, metadata, transposition, preferred-timbre, and stable-identity models.",
+    "Versioned iPhone-local persistence, atomic autosave, snapshots, migration, corrupt-store recovery, reset, and backup-eligible placement."
   ],
+  "dateImplemented" : "2026-09-13",
+  "dateVerified" : "2026-09-13",
   "epicID" : {
     "rawValue" : "EP-004"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0006"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -22,25 +26,90 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-04T19:40:25Z"
+    "updatedAt" : "2026-09-13T21:35:45Z"
   },
   "notes" : [
-
+    "No iPhone authoring or browsing presentation, Watch synchronization transport, cloud service, account, analytics, network access, microphone behavior, or automatic playback."
   ],
   "priority" : "high",
   "rationale" : "The product must serve a multi-instrument musician without hard-coded instrument assumptions.",
   "requirementIDs" : [
-
+    {
+      "rawValue" : "JT-DR-002"
+    },
+    {
+      "rawValue" : "JT-DR-007"
+    },
+    {
+      "rawValue" : "JT-DR-008"
+    },
+    {
+      "rawValue" : "JT-DR-009"
+    },
+    {
+      "rawValue" : "JT-FR-027"
+    },
+    {
+      "rawValue" : "JT-FR-028"
+    },
+    {
+      "rawValue" : "JT-FR-029"
+    },
+    {
+      "rawValue" : "JT-FR-030"
+    },
+    {
+      "rawValue" : "JT-FR-031"
+    },
+    {
+      "rawValue" : "JT-FR-032"
+    },
+    {
+      "rawValue" : "JT-FR-033"
+    },
+    {
+      "rawValue" : "JT-FR-034"
+    },
+    {
+      "rawValue" : "JT-FR-035"
+    },
+    {
+      "rawValue" : "JT-FR-075"
+    },
+    {
+      "rawValue" : "JT-FR-076"
+    },
+    {
+      "rawValue" : "JT-FR-088"
+    },
+    {
+      "rawValue" : "JT-FR-089"
+    },
+    {
+      "rawValue" : "JT-NFR-005"
+    },
+    {
+      "rawValue" : "JT-NFR-052"
+    },
+    {
+      "rawValue" : "JT-NFR-053"
+    },
+    {
+      "rawValue" : "JT-UR-002"
+    }
   ],
+  "sprintID" : {
+    "rawValue" : "SP-007"
+  },
   "testSteps" : [
-    "Test profile validation, ordering, CRUD operations, round-trip persistence, and migration."
+    "Record deterministic validation, lifecycle, migration, local-only, recovery, and reset results; keep UI-only and physical-device verification separate."
   ],
   "workItem" : {
     "id" : {
       "rawValue" : "T-0003"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Build tuning profiles and local persistence"
   }
 }

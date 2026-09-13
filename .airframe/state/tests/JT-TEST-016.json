@@ -40,6 +40,12 @@
   "workItemIDs" : [
     {
       "rawValue" : "EP-004"
+    },
+    {
+      "rawValue" : "SP-009"
+    },
+    {
+      "rawValue" : "T-0019"
     }
   ]
 }

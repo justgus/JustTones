@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustToneCore\/Tests\/JustToneCoreTests\/TuningProfileTests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustToneCore (29 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTone.xcodeproj -scheme JustToneWatch -destination platform=watchOS Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0 build (BUILD SUCCEEDED)",
+  "environment" : "Xcode-beta; macOS host; iOS 27\/watchOS 27 simulators inspected",
+  "id" : {
+    "rawValue" : "EV-0006"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-007 shared profile\/store implementation: package suite passed (29 tests); iPhone simulator build compiled but XCTest execution was blocked by CoreSimulator clone creation; Watch simulator build succeeded.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0003"
+    }
+  ]
+}

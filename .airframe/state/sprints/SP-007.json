@@ -1,0 +1,34 @@
+{
+  "endDate" : "2026-09-13",
+  "epicID" : {
+    "rawValue" : "EP-004"
+  },
+  "goal" : "",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-13T21:36:28Z"
+  },
+  "notes" : [
+
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0003"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-007"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "Profile Model and Durable Local Store"
+  }
+}

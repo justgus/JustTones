@@ -1,4 +1,7 @@
 {
+  "activeEpicID" : {
+    "rawValue" : "EP-004"
+  },
   "backendMappingIDs" : [
 
   ],
@@ -40,7 +43,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-13T02:49:22Z"
+    "updatedAt" : "2026-09-13T21:36:28Z"
   },
   "name" : "JustTone",
   "repository" : "justgus\/JustTone",
@@ -62,6 +65,15 @@
     },
     {
       "rawValue" : "SP-006"
+    },
+    {
+      "rawValue" : "SP-007"
+    },
+    {
+      "rawValue" : "SP-008"
+    },
+    {
+      "rawValue" : "SP-009"
     }
   ],
   "taskIDs" : [
@@ -115,6 +127,12 @@
     },
     {
       "rawValue" : "T-0017"
+    },
+    {
+      "rawValue" : "T-0018"
+    },
+    {
+      "rawValue" : "T-0019"
     }
   ]
 }
