@@ -1,8 +1,9 @@
 {
+  "endDate" : "2026-09-14",
   "epicID" : {
     "rawValue" : "EP-004"
   },
-  "goal" : "",
+  "goal" : "Deliver bounded, deterministic JustTones portable interchange and recovery-compatible import\/export on the established local-store and catalog foundations.",
   "issueIDs" : [
 
   ],
@@ -12,11 +13,13 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-13T21:09:04Z"
+    "updatedAt" : "2026-09-14T19:53:53Z"
   },
   "notes" : [
-
+    "PLAN-008 was approved and SP-009 activated by the human reviewer on 2026-09-14.",
+    "JT-TEST-167 belongs to EP-006 Watch-replica recovery and is outside SP-009 scope."
   ],
+  "startDate" : "2026-09-14",
   "taskIDs" : [
     {
       "rawValue" : "T-0019"
@@ -27,7 +30,7 @@
       "rawValue" : "SP-009"
     },
     "kind" : "sprint",
-    "status" : "planning",
+    "status" : "closed",
     "title" : "JustTones Interchange and Recovery Surfaces"
   }
 }

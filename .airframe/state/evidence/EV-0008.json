@@ -1,0 +1,33 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/JustTonesInterchange.swift",
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/JustTonesInterchangeTests.swift",
+    "docs\/Schema\/JustTones-Interchange.md",
+    "Config\/JustTones-Info.plist"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (35 tests in 9 suites passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -destination generic/platform=iOS\\ Simulator -derivedDataPath /private/tmp/JustTones-SP009-DerivedData -clonedSourcePackagesDirPath /private/tmp/JustTones-SP009-SourcePackages CODE_SIGNING_ALLOWED=NO build (BUILD SUCCEEDED); plutil -lint Config\/JustTones-Info.plist; git diff --check",
+  "environment" : "macOS; Xcode-beta developer directory; generic iOS Simulator build; signing disabled",
+  "id" : {
+    "rawValue" : "EV-0008"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-009 shared interchange implementation: bounded UTF-8 declarative JSON validation, deterministic export, preview and explicit profile-conflict application, catalog-reference validation, schema documentation, and iPhone .justtones document-type registration. Files/Share Sheet presentation, physical-device document-provider behavior, accessibility interaction, and Watch replication remain unverified or out of scope.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0019"
+    }
+  ]
+}

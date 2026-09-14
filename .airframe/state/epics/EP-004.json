@@ -16,6 +16,7 @@
       "rawValue" : "JT-AC-020"
     }
   ],
+  "closeDate" : "2026-09-14",
   "goal" : "Deliver reusable profiles, catalog data, durable local persistence, and bounded portable interchange.",
   "issueIDs" : [
 
@@ -26,7 +27,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-13T21:39:47Z"
+    "updatedAt" : "2026-09-14T19:54:45Z"
   },
   "notes" : [
 
@@ -69,7 +70,7 @@
       "rawValue" : "EP-004"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Profiles, Catalog, Persistence, and Interchange"
   }
 }

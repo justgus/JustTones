@@ -1,0 +1,24 @@
+{
+  "auditEventID" : {
+    "rawValue" : "AUD-AGILE-PLAN-17"
+  },
+  "decidedAt" : "2026-09-14T17:42:57Z",
+  "decidedByActorID" : {
+    "rawValue" : "ACTOR-HUMAN-REVIEWER"
+  },
+  "id" : {
+    "rawValue" : "PD-PLAN-008-APPROVED"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "note" : "User approved PLAN-008 and activated SP-009 with T-0019.",
+  "outcome" : "approved",
+  "planID" : {
+    "rawValue" : "PLAN-008"
+  }
+}

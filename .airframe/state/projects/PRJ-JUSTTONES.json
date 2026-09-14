@@ -1,10 +1,4 @@
 {
-  "activeEpicID" : {
-    "rawValue" : "EP-004"
-  },
-  "activeSprintID" : {
-    "rawValue" : "SP-009"
-  },
   "backendMappingIDs" : [
 
   ],
@@ -46,7 +40,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-13T22:24:40Z"
+    "updatedAt" : "2026-09-14T19:54:45Z"
   },
   "name" : "JustTones",
   "repository" : "justgus\/JustTones",

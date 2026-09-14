@@ -1,0 +1,60 @@
+{
+  "auditEventIDs" : [
+    {
+      "rawValue" : "AUD-AGILE-PLAN-17"
+    }
+  ],
+  "commands" : [
+
+  ],
+  "decisionState" : "approved",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "docs\/Sprints\/SP-009-Planning.md",
+    "docs\/Schema\/ (created during authorized implementation)",
+    "Packages\/JustTonesCore\/ (created or modified during authorized implementation)"
+  ],
+  "id" : {
+    "rawValue" : "PLAN-008"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "JT-TEST-167 is EP-006 Watch-replica evidence and is not SP-009 scope.",
+    "Approved by the human reviewer on 2026-09-14; SP-009 is active and authorizes only the stated implementation scope."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Versioned declarative .justtones schema, bounded validation, deterministic import/export, conflict-result modeling, document-type integration, and schema documentation.",
+    "No cloud, automatic playback, arbitrary executable payload, Watch synchronization transport, or EP-005 presentation implementation."
+  ],
+  "summary" : "Deliver bounded, deterministic JustTones portable interchange and recovery-compatible import/export on the SP-007 store and SP-008 catalog foundations.",
+  "targetEpicID" : {
+    "rawValue" : "EP-004"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-009"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0019"
+    }
+  ],
+  "title" : "SP-009 bounded interchange and recovery plan",
+  "verificationCriteria" : [
+    "Record JT-TEST-013 through JT-TEST-017, JT-TEST-165 through JT-TEST-166, JT-TEST-168 through JT-TEST-181, and JT-TEST-190 through JT-TEST-191 with schema artifacts and residual platform/UI review obligations.",
+    "Keep JT-TEST-167 as EP-006 Watch-replica evidence."
+  ]
+}
