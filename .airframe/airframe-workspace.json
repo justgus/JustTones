@@ -9,12 +9,12 @@
     {
       "id": { "rawValue": "PRJ-JUSTTONES" },
       "name": "JustTones",
-      "repository": "justgus/JustTone"
+      "repository": "justgus/JustTones"
     }
   ],
   "defaultProjectID": { "rawValue": "PRJ-JUSTTONES" },
   "backend": {
     "kind": "github-issues",
-    "location": "justgus/JustTone"
+    "location": "justgus/JustTones"
   }
 }
