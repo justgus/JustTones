@@ -1,6 +1,6 @@
-# JustTone Version 1 Catalog Specification
+# JustTones Version 1 Catalog Specification
 
-Catalog schema version: 1. Stable identifiers use `org.justtone.tuning.*`; localized names are never identities.
+Catalog schema version: 1. Stable identifiers use `org.justtones.tuning.*`; localized names are never identities.
 
 The shipped tuning-system inventory is 12-TET, Pythagorean, five-limit just intonation, quarter-comma meantone, Werckmeister III, Kirnberger III, Vallotti, and Young II. Each is a documented model, not a universal tuning for a culture, instrument, or repertoire. The cents tables below are normative for catalog version 1 and use chromatic pitch-class order from C (0 cents) through B.
 
@@ -15,11 +15,11 @@ The shipped tuning-system inventory is 12-TET, Pythagorean, five-limit just into
 | `vallotti` | 0, 94.135, 196.090, 298.045, 392.180, 501.955, 592.180, 698.045, 796.090, 894.135, 1000, 1090.225 |
 | `young-ii` | 0, 90, 196, 294, 392, 498, 588, 698, 792, 894, 996, 1090 |
 
-The first-launch profile is `Chromatic Reference`, using `org.justtone.tuning.twelve-tone-equal` and A4=440 supplied by the existing reference model. It is a selection only and never starts audio.
+The first-launch profile is `Chromatic Reference`, using `org.justtones.tuning.twelve-tone-equal` and A4=440 supplied by the existing reference model. It is a selection only and never starts audio.
 
 Built-in profile templates cover chromatic reference, guitar/12-string guitar, bass, bowed strings (violin and cello), mandolin, ukulele, banjo, lute, recorder, flute, transposing B♭ brass, and a configurable bagpipe reference. They are immutable catalog data; musicians duplicate them before editing. The bagpipe template is explicitly editable and does not claim a universal bagpipe tuning.
 
-All profile templates use `org.justtone.tuning.twelve-tone-equal`, the `sine` timbre, and written named pitches. A4 uses the shared default reference of 440 Hz. The B♭ brass entry has a sounding offset of -2 semitones; all other entries have a zero offset.
+All profile templates use `org.justtones.tuning.twelve-tone-equal`, the `sine` timbre, and written named pitches. A4 uses the shared default reference of 440 Hz. The B♭ brass entry has a sounding offset of -2 semitones; all other entries have a zero offset.
 
 | Stable ID suffix | Display name | Instrument / classification | Ordered written pitches |
 | --- | --- | --- | --- |
@@ -38,7 +38,7 @@ All profile templates use `org.justtone.tuning.twelve-tone-equal`, the `sine` ti
 | `bb-brass` | B♭ Brass Reference | Transposing wind and brass | C4, D4, E4, F4, G4, A4, B4, C5 |
 | `bagpipe-configurable` | Configurable Bagpipe Reference | Bagpipe; editable | A4 |
 
-The manifest also enumerates the existing version-1 synthesized timbres: `sine`, `warmHarmonic`, `guitar`, `piano`, `bowedString`, `flute`, `clarinet`, and `brass`. Their normative harmonic-amplitude definitions, 240-frame attack, and −1 dBFS peak ceiling remain in `Packages/JustToneCore/Sources/JustToneCore/Timbre.swift`; the timbre synthesis work is not expanded by this catalog task.
+The manifest also enumerates the existing version-1 synthesized timbres: `sine`, `warmHarmonic`, `guitar`, `piano`, `bowedString`, `flute`, `clarinet`, and `brass`. Their normative harmonic-amplitude definitions, 240-frame attack, and −1 dBFS peak ceiling remain in `Packages/JustTonesCore/Sources/JustTonesCore/Timbre.swift`; the timbre synthesis work is not expanded by this catalog task.
 
 ## Source records and limits
 

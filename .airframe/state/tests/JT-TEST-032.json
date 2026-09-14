@@ -11,7 +11,7 @@
 
   ],
   "expectedResults" : [
-    "Audio uses the system-selected route and JustTone does not change route or system volume."
+    "Audio uses the system-selected route and JustTones does not change route or system volume."
   ],
   "id" : {
     "rawValue" : "JT-TEST-032"

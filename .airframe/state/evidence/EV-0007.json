@@ -5,7 +5,7 @@
   "ciReferences" : [
 
   ],
-  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustToneCore (32 tests in 8 suites passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTone.xcodeproj -scheme JustToneWatch -destination platform=watchOS\\ Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0 build (BUILD SUCCEEDED); git diff --check passed",
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (32 tests in 8 suites passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS\\ Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0 build (BUILD SUCCEEDED); git diff --check passed",
   "environment" : "macOS; Xcode-beta developer directory; watchOS Simulator destination 8DF24897-43FE-4334-B22E-6DF9B30F1DD0",
   "id" : {
     "rawValue" : "EV-0007"

@@ -32,7 +32,7 @@
     }
   ],
   "id" : {
-    "rawValue" : "PRJ-JUSTTONE"
+    "rawValue" : "PRJ-JUSTTONES"
   },
   "issueIDs" : [
 
@@ -45,7 +45,7 @@
     },
     "updatedAt" : "2026-09-13T22:24:40Z"
   },
-  "name" : "JustTone",
+  "name" : "JustTones",
   "repository" : "justgus\/JustTone",
   "sprintIDs" : [
     {

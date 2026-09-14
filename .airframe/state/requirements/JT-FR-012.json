@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Harmonic content can make a reference easier to hear and tune against without a bulky sample library.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall provide multiple locally synthesized timbres, including harmonically rich instrument-inspired tones, without requiring a library of recorded instrument samples.",
+  "statement" : "JustTones shall provide multiple locally synthesized timbres, including harmonically rich instrument-inspired tones, without requiring a library of recorded instrument samples.",
   "status" : "draft",
   "supersedesIDs" : [
 

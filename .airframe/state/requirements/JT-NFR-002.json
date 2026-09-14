@@ -27,7 +27,7 @@
   "priority" : "high",
   "rationale" : "A tuning reference requires deterministic, measurably accurate calculated and rendered fundamentals.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

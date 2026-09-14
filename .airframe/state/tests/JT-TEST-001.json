@@ -26,7 +26,7 @@
   "notes" : [
     "Requires physical-device evidence; precise tolerance will be supplied by an audio requirement."
   ],
-  "objective" : "Verify that JustTone produces an audible, musically usable reference pitch for tuning by ear.",
+  "objective" : "Verify that JustTones produces an audible, musically usable reference pitch for tuning by ear.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-BR-001"

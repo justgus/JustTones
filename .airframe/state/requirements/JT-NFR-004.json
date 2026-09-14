@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "A false playing indication undermines safe and predictable control.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

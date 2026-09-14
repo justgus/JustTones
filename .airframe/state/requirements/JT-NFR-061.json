@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved App Store and release qualification requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "Immediately before submission, JustTone shall be reviewed against the then-current App Review Guidelines, App Store Connect requirements, required SDK versions, privacy rules, and applicable regional declarations. Any change affecting product behavior shall return to requirements review.",
+  "statement" : "Immediately before submission, JustTones shall be reviewed against the then-current App Review Guidelines, App Store Connect requirements, required SDK versions, privacy rules, and applicable regional declarations. Any change affecting product behavior shall return to requirements review.",
   "status" : "draft",
   "supersedesIDs" : [
 

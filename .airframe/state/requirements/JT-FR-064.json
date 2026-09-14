@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved built-in content requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall not present a variable traditional tuning as the single correct tuning for a culture, instrument, or repertoire. Variable definitions shall be labeled as examples, documented models, or editable templates.",
+  "statement" : "JustTones shall not present a variable traditional tuning as the single correct tuning for a culture, instrument, or repertoire. Variable definitions shall be labeled as examples, documented models, or editable templates.",
   "status" : "draft",
   "supersedesIDs" : [
 

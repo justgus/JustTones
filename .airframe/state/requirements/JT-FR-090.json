@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Approved data ownership and interchange requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "Although intended primarily for app interchange, `.justtone` JSON shall remain reasonably human-readable when opened as text. Field names and units shall be descriptive, and exports shall use consistent formatting.",
+  "statement" : "Although intended primarily for app interchange, `.justtones` JSON shall remain reasonably human-readable when opened as text. Field names and units shall be descriptive, and exports shall use consistent formatting.",
   "status" : "draft",
   "supersedesIDs" : [
 

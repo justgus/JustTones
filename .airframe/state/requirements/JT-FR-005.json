@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Culturally specific systems require accurate identity and context rather than a generic non-Western label.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall provide defined historical, traditional, and Asian tuning systems identified by their specific tradition, region, and applicable instrument or musical context rather than grouping them under a generic non-Western temperament.",
+  "statement" : "JustTones shall provide defined historical, traditional, and Asian tuning systems identified by their specific tradition, region, and applicable instrument or musical context rather than grouping them under a generic non-Western temperament.",
   "status" : "draft",
   "supersedesIDs" : [
 

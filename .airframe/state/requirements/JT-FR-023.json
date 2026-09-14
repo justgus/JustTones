@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Background playback must remain visible and controllable.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "While a tone is active, JustTone shall expose its note or frequency, timbre, and playback state through applicable system media surfaces and provide a system-accessible stop control.",
+  "statement" : "While a tone is active, JustTones shall expose its note or frequency, timbre, and playback state through applicable system media surfaces and provide a system-accessible stop control.",
   "status" : "draft",
   "supersedesIDs" : [
 

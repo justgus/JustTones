@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Routine playback adjustments should not require navigating away from the instrument-facing screen.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

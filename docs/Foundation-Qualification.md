@@ -6,24 +6,24 @@
 
 ## Results
 
-- Xcode resolved four targets—JustTone, JustToneTests, JustToneUITests, and JustToneWatch—and three shared schemes—JustTone, JustToneCore, and JustToneWatch.
-- `JustToneCore` resolved as a project-local Swift package. `swift test --package-path Packages/JustToneCore` passed its one Swift Testing test.
+- Xcode resolved four targets—JustTones, JustTonesTests, JustTonesUITests, and JustTonesWatch—and three shared schemes—JustTones, JustTonesCore, and JustTonesWatch.
+- `JustTonesCore` resolved as a project-local Swift package. `swift test --package-path Packages/JustTonesCore` passed its one Swift Testing test.
 - The iPhone and Watch Release simulator builds succeeded with Swift 6, deployment target 27.0, and code signing disabled for simulator qualification.
-- The Debug JustTone test action passed two tests with zero failures or warnings on iPhone 17 Pro Max, iOS 27.0. Result: `/tmp/JustTone-DerivedData/Logs/Test/Test-JustTone-2026.09.05_17-37-32--0400.xcresult`.
+- The Debug JustTones test action passed two tests with zero failures or warnings on iPhone 17 Pro Max, iOS 27.0. Result: `/tmp/JustTones-DerivedData/Logs/Test/Test-JustTones-2026.09.05_17-37-32--0400.xcresult`.
 - The Debug Watch build succeeded for paired Apple Watch Series 11 (46mm), watchOS 27.0. Xcode validated the embedded Watch product inside the iPhone app.
-- The UI test launched the iPhone shell and found the JustTone title. The Watch shell installed and launched as `com.caposoft.JustTone.watchkitapp` on the paired simulator.
+- The UI test launched the iPhone shell and found the JustTones title. The Watch shell installed and launched as `com.caposoft.JustTones.watchkitapp` on the paired simulator.
 - Source and build-setting audits found no remaining `JustTune` product identifier or microphone usage declaration. Documentation references to JustTune remain intentional provenance or prohibition text.
 - Both privacy manifests pass `plutil -lint` and declare no tracking, data collection, domains, or required-reason API use, consistent with the foundation source.
 
 ## Principal commands
 
 ```sh
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swift test --package-path Packages/JustToneCore
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTone.xcodeproj -list
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTone.xcodeproj -scheme JustTone -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/JustTone-DerivedData CODE_SIGNING_ALLOWED=NO build
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTone.xcodeproj -scheme JustToneWatch -configuration Release -destination 'generic/platform=watchOS Simulator' -derivedDataPath /tmp/JustTone-DerivedData CODE_SIGNING_ALLOWED=NO build
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTone.xcodeproj -scheme JustTone -destination 'platform=iOS Simulator,id=93D375D6-8B3E-43E3-A869-A4468BA370D4' -derivedDataPath /tmp/JustTone-DerivedData CODE_SIGNING_ALLOWED=NO test
-DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTone.xcodeproj -scheme JustToneWatch -destination 'platform=watchOS Simulator,id=12B963CB-C397-4119-BE97-C6F50120BC3E' -derivedDataPath /tmp/JustTone-DerivedData CODE_SIGNING_ALLOWED=NO build
+DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swift test --package-path Packages/JustTonesCore
+DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTones.xcodeproj -list
+DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/JustTones-DerivedData CODE_SIGNING_ALLOWED=NO build
+DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -configuration Release -destination 'generic/platform=watchOS Simulator' -derivedDataPath /tmp/JustTones-DerivedData CODE_SIGNING_ALLOWED=NO build
+DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=93D375D6-8B3E-43E3-A869-A4468BA370D4' -derivedDataPath /tmp/JustTones-DerivedData CODE_SIGNING_ALLOWED=NO test
+DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -destination 'platform=watchOS Simulator,id=12B963CB-C397-4119-BE97-C6F50120BC3E' -derivedDataPath /tmp/JustTones-DerivedData CODE_SIGNING_ALLOWED=NO build
 ```
 
 ## JT-TS-001 disposition

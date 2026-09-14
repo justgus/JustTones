@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved platform and release scope requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone version 1 shall be distributed as an iPhone application with an Apple Watch companion application. Native iPad, Mac, Apple TV, and Apple Vision Pro applications are outside version 1 scope.",
+  "statement" : "JustTones version 1 shall be distributed as an iPhone application with an Apple Watch companion application. Native iPad, Mac, Apple TV, and Apple Vision Pro applications are outside version 1 scope.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved performance and reliability requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "In Low Power Mode, JustTone shall continue a deliberately started tone wherever the operating system permits. It shall not lower synthesis accuracy, silently alter timbre, or resume after a system termination. Any unavailable behavior shall be disclosed without obstructing later playback.",
+  "statement" : "In Low Power Mode, JustTones shall continue a deliberately started tone wherever the operating system permits. It shall not lower synthesis accuracy, silently alter timbre, or resume after a system termination. Any unavailable behavior shall be disclosed without obstructing later playback.",
   "status" : "draft",
   "supersedesIDs" : [
 

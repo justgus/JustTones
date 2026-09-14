@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved platform and release scope requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall support every iPhone and Apple Watch model on which Apple permits installation of the applicable target operating system, subject to documented operating-system and hardware audio capabilities.",
+  "statement" : "JustTones shall support every iPhone and Apple Watch model on which Apple permits installation of the applicable target operating system, subject to documented operating-system and hardware audio capabilities.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved data ownership and interchange requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "User-created data shall use an appropriate persistent application location eligible for normal operating-system backup and restoration policies. Reconstructible caches and temporary imports shall not be backed up. JustTone shall not claim that a backup exists or is encrypted.",
+  "statement" : "User-created data shall use an appropriate persistent application location eligible for normal operating-system backup and restoration policies. Reconstructible caches and temporary imports shall not be backed up. JustTones shall not claim that a backup exists or is encrypted.",
   "status" : "draft",
   "supersedesIDs" : [
 

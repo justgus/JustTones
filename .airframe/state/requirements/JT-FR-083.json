@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved performance and reliability requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "If the audio engine cannot start or fails during playback, JustTone shall stop and report a non-playing state; preserve the profile, pitch, timbre, and level; provide a comprehensible error; offer a one-action Retry when possible; and never claim audio is playing when it is not.",
+  "statement" : "If the audio engine cannot start or fails during playback, JustTones shall stop and report a non-playing state; preserve the profile, pitch, timbre, and level; provide a comprehensible error; offer a one-action Retry when possible; and never claim audio is playing when it is not.",
   "status" : "draft",
   "supersedesIDs" : [
 

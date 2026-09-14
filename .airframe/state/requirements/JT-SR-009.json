@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "When a musician combines a high in-app output level with a pitch near the upper supported range, JustTone shall warn that very high frequencies may be difficult to judge by perceived loudness and should be approached at a low level. The warning shall not alter the requested pitch.",
+  "statement" : "When a musician combines a high in-app output level with a pitch near the upper supported range, JustTones shall warn that very high frequencies may be difficult to judge by perceived loudness and should be approached at a low level. The warning shall not alter the requested pitch.",
   "status" : "draft",
   "supersedesIDs" : [
 

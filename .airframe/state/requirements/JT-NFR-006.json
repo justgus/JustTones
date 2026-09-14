@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Blind and low-vision musicians must be able to operate every app function and identify pitches precisely.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Musicians need complete control over reusable personal profiles.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

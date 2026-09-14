@@ -24,16 +24,16 @@
   "priority" : "high",
   "rationale" : "Approved App Store and release qualification requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "Before creating or finalizing the App Store record, the name JustTone shall be checked for availability and reviewed for unacceptable confusion with JustTune or another existing product. Metadata shall describe JustTone as a tone generator, not a microphone-based tuner.",
+  "statement" : "Before creating or finalizing the App Store record, the name JustTones shall be checked for availability and reviewed for unacceptable confusion with JustTune or another existing product. Metadata shall describe JustTones as a tone generator, not a microphone-based tuner.",
   "status" : "draft",
   "supersedesIDs" : [
 
   ],
-  "title" : "JustTone Name and Listing Review",
+  "title" : "JustTones Name and Listing Review",
   "traceLinks" : [
 
   ],

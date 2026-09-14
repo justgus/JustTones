@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "The app should resume the musician's setup without unexpectedly resuming sound.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "After ordinary termination and relaunch, JustTone shall restore the most recently selected profile, pitch, timbre, and output level, but shall not restore audible playback.",
+  "statement" : "After ordinary termination and relaunch, JustTones shall restore the most recently selected profile, pitch, timbre, and output level, but shall not restore audible playback.",
   "status" : "draft",
   "supersedesIDs" : [
 

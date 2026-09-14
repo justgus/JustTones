@@ -31,7 +31,7 @@
   "notes" : [
     "PLAN-002 approved for planning; activation and implementation require separate user authorization.",
     "Detailed scope and cross-Epic acceptance boundaries: docs\/Epics\/EP-002-Planning.md.",
-    "Scope: Packages\/JustToneCore, necessary iPhone\/Watch test hosts, architecture and evidence documentation. No audio, persistence, synchronization, catalog content, or authoring UI implementation.",
+    "Scope: Packages\/JustTonesCore, necessary iPhone\/Watch test hosts, architecture and evidence documentation. No audio, persistence, synchronization, catalog content, or authoring UI implementation.",
     "Prerequisite: T-0007 implemented with passing evidence; SP-002 reviewed before SP-003 activation.",
     "Epic criteria: JT-AC-007, JT-AC-008 and domain calculation contribution to JT-AC-010.",
     "JT-TEST-009\/011 provide domain cases. JT-TEST-010 catalog source review and JT-TEST-012 persistent UI lifecycle remain downstream."

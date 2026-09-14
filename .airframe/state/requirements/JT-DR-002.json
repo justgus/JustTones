@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Evolving profile data must remain readable across releases.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

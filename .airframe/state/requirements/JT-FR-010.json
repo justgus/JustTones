@@ -24,7 +24,7 @@
   "priority" : "medium",
   "rationale" : "A portable format should support backup and exchange as well as ingestion.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

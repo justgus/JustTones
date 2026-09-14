@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "While playing, JustTone shall make the current uninterrupted playback duration available on the primary screen or its accessible playback status.",
+  "statement" : "While playing, JustTones shall make the current uninterrupted playback duration available on the primary screen or its accessible playback status.",
   "status" : "draft",
   "supersedesIDs" : [
 

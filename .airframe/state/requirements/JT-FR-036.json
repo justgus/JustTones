@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "The principal tuning state and controls must be immediately understandable.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

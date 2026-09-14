@@ -25,7 +25,7 @@
   "notes" : [
 
   ],
-  "objective" : "Verify `.justtone` recognition through supported system document surfaces.",
+  "objective" : "Verify `.justtones` recognition through supported system document surfaces.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-DR-011"

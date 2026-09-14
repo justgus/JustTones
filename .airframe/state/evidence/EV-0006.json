@@ -1,11 +1,11 @@
 {
   "artifactReferences" : [
-    "Packages\/JustToneCore\/Tests\/JustToneCoreTests\/TuningProfileTests.swift"
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TuningProfileTests.swift"
   ],
   "ciReferences" : [
 
   ],
-  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustToneCore (29 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTone.xcodeproj -scheme JustToneWatch -destination platform=watchOS Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0 build (BUILD SUCCEEDED)",
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (29 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0 build (BUILD SUCCEEDED)",
   "environment" : "Xcode-beta; macOS host; iOS 27\/watchOS 27 simulators inspected",
   "id" : {
     "rawValue" : "EV-0006"

@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "When a recognized headphone route is active, the first attempt to raise JustTone's output level above 60% shall display an accessible, non-auditory warning that actual exposure depends on system volume, equipment, and listening duration. It shall not call 60% safe; shall permit cancel or continue; shall reappear after warnings are reset; and shall not repeatedly obstruct adjustment after acknowledgement during the same installation.",
+  "statement" : "When a recognized headphone route is active, the first attempt to raise JustTones's output level above 60% shall display an accessible, non-auditory warning that actual exposure depends on system volume, equipment, and listening duration. It shall not call 60% safe; shall permit cancel or continue; shall reappear after warnings are reset; and shall not repeatedly obstruct adjustment after acknowledgement during the same installation.",
   "status" : "draft",
   "supersedesIDs" : [
 

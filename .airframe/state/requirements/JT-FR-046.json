@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved Watch operating-model requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "The Watch app shall synthesize and play reference tones locally without requiring the paired iPhone to be nearby, connected, running JustTone, or actively reachable.",
+  "statement" : "The Watch app shall synthesize and play reference tones locally without requiring the paired iPhone to be nearby, connected, running JustTones, or actively reachable.",
   "status" : "draft",
   "supersedesIDs" : [
 

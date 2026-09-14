@@ -27,7 +27,7 @@
   "notes" : [
 
   ],
-  "objective" : "Verify no JustTune name, identifier, asset, permission behavior, or artifact contaminates JustTone.",
+  "objective" : "Verify no JustTune name, identifier, asset, permission behavior, or artifact contaminates JustTones.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-NFR-028"
@@ -37,7 +37,7 @@
   "steps" : [
     "Inspect release configuration and exercise the applicable simulator and physical-device matrix."
   ],
-  "title" : "JustTone identity contamination audit",
+  "title" : "JustTones identity contamination audit",
   "workItemIDs" : [
     {
       "rawValue" : "EP-001"

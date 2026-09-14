@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "The interface must stay legible across supported system appearance and contrast preferences.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall support Light Mode, Dark Mode, Increased Contrast, and Differentiate Without Color while maintaining legible text, controls, focus indicators, and playback state.",
+  "statement" : "JustTones shall support Light Mode, Dark Mode, Increased Contrast, and Differentiate Without Color while maintaining legible text, controls, focus indicators, and playback state.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "A deliberately started reference tone is primary playback, not an incidental alert.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

@@ -45,5 +45,5 @@ Musicians need a fast reference pitch and reusable tunings without the complexit
 **Notes:**
 - Initial scope is defined in docs/Product-Brief.md.
 - PLAN-001 is approved for baseline and planning. EP-001 is decomposed into T-0001 and T-0009 through T-0014 under planning Sprint SP-001.
-- 1. Confirm GitHub owner and visibility when remote execution is authorized; initialize local Git if needed, create the JustTone GitHub repository, configure origin, and push a reviewed initial baseline excluding generated build output and credentials. Record URL and pushed commit.
+- 1. Confirm GitHub owner and visibility when remote execution is authorized; initialize local Git if needed, create the JustTones GitHub repository, configure origin, and push a reviewed initial baseline excluding generated build output and credentials. Record URL and pushed commit.
 - JT-TS-001 includes release qualification requirements. Foundation checks provide partial evidence only; physical audio, device matrix, performance, archive and final-toolchain qualification remain pending until their implementation/release stages.

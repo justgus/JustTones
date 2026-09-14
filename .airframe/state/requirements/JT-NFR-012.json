@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "The primary workflow must survive supported device geometry, orientation, and text-size changes.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

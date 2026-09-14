@@ -5,7 +5,7 @@
     }
   ],
   "commands" : [
-    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustToneCore; inspect destinations; run focused JustToneTests and JustToneWatchTests with Xcode-beta."
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore; inspect destinations; run focused JustTonesTests and JustTonesWatchTests with Xcode-beta."
   ],
   "decisionState" : "approved",
   "evidenceIDs" : [

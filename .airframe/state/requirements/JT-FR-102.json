@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Approved privacy, localization, help, and error requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "The iPhone app shall show the JustTone name, marketing and build versions, copyright, privacy summary, acknowledgements if any, support route, schema documentation route, and applicable source attributions.",
+  "statement" : "The iPhone app shall show the JustTones name, marketing and build versions, copyright, privacy summary, acknowledgements if any, support route, schema documentation route, and applicable source attributions.",
   "status" : "draft",
   "supersedesIDs" : [
 

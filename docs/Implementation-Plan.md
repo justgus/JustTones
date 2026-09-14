@@ -1,4 +1,4 @@
-# JustTone 1.0 Agile Implementation Plan
+# JustTones 1.0 Agile Implementation Plan
 
 **Status:** PLAN-001 approved for baseline and planning; Sprint activation and implementation await explicit user authorization  
 **Requirements baseline:** `docs/Requirements-Baseline-Review.md`
@@ -55,7 +55,7 @@ Deliver monophonic, continuous, click-free, pitch-accurate synthesis for all app
 
 ### EP-004 — Profiles, Catalog, Persistence, and Interchange
 
-Deliver profile authoring, built-in catalog data, search, versioned local persistence, backup/recovery, and bounded `.justtone` import/export with deterministic migration.
+Deliver profile authoring, built-in catalog data, search, versioned local persistence, backup/recovery, and bounded `.justtones` import/export with deterministic migration.
 
 ### EP-005 — iPhone Experience
 

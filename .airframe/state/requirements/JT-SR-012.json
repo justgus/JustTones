@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "After any audio-route change, JustTone shall remain stopped. Before explicit restart on a recognized headphone route, any applicable high-level or extreme-pitch warning shall be presented.",
+  "statement" : "After any audio-route change, JustTones shall remain stopped. Before explicit restart on a recognized headphone route, any applicable high-level or extreme-pitch warning shall be presented.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -20,13 +20,13 @@
 
   ],
   "priority" : "high",
-  "rationale" : "Producing a useful reference pitch is the central purpose of JustTone.",
+  "rationale" : "Producing a useful reference pitch is the central purpose of JustTones.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall provide musicians with an audible reference pitch for tuning an instrument by ear.",
+  "statement" : "JustTones shall provide musicians with an audible reference pitch for tuning an instrument by ear.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -27,7 +27,7 @@
   "priority" : "high",
   "rationale" : "Musicians need to represent personal, instrument-specific, and underrepresented systems without external tooling.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

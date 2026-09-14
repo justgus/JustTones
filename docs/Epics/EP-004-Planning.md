@@ -10,7 +10,7 @@ EP-004 separates the platform-neutral data foundation, curated catalog, and exte
 | --- | --- | --- |
 | SP-007 | Profile model and durable local store | Define the general profile graph, validation, local ownership, migrations, autosave, snapshots, recovery, and reset before catalog or interchange layers consume it. |
 | SP-008 | Versioned built-in catalog | Add a reviewable, versioned catalog with stable identities, provenance, classifications, search/filter indexes, and a silent first-launch default on the established store. |
-| SP-009 | `.justtone` interchange and recovery surfaces | Add bounded declarative import/export, document-type integration, preview/conflict behavior, deterministic round trips, and published schema documentation. |
+| SP-009 | `.justtones` interchange and recovery surfaces | Add bounded declarative import/export, document-type integration, preview/conflict behavior, deterministic round trips, and published schema documentation. |
 
 The Sprints are sequential: SP-008 requires the validated storage and stable user-object identity from SP-007; SP-009 requires both the stored user graph and catalog references from SP-007 and SP-008. EP-005 owns iPhone authoring, browsing, and presentation controls; EP-006 owns Watch replication and synchronization transport; EP-007 owns accessibility and safety acceptance; EP-008 owns release qualification. No cloud service, account, analytics, microphone capability, arbitrary synthesis code, or runtime network dependency is introduced.
 
@@ -38,11 +38,11 @@ T-0018 delivers catalog data and platform-neutral lookup behavior over the SP-00
 
 Success criteria: T-0018 supplies the catalog contribution to JT-AC-016, JT-AC-017, and JT-AC-020. Principal evidence is JT-TEST-091 through JT-TEST-100. Scholarly source qualification and release review remain explicit EP-008/user acceptance work.
 
-## SP-009 — `.justtone` interchange and recovery surfaces
+## SP-009 — `.justtones` interchange and recovery surfaces
 
 T-0019 delivers the explicit external-data boundary and documentation.
 
-- Specify and implement UTF-8 declarative JSON with the `.justtone` extension, an application-specific content type, version rules, exact numeric representations, stable identities, Unicode metadata, and catalog dependency references. Documents contain no executable code, archives, plugins, scripts, or opaque executable payloads.
+- Specify and implement UTF-8 declarative JSON with the `.justtones` extension, an application-specific content type, version rules, exact numeric representations, stable identities, Unicode metadata, and catalog dependency references. Documents contain no executable code, archives, plugins, scripts, or opaque executable payloads.
 - Validate before mutation with the approved bounds: 10 MB encoded size, 10,000 total objects, 2,000 profiles, 4,096 entries per profile, 16 nesting levels, and 16 KB per individual text field. Reject invalid input atomically and state the limit or validation failure without logging user content.
 - Provide a model-level preview and conflict-decision result that identifies additions, replacements, renames, and retained items before committing. EP-005 owns the iPhone presentation and interaction for those results.
 - Export individual profiles with required dependencies, individual custom systems, selected user data, and all user-created data. Use canonical ordering for semantic deterministic round trips; built-ins normally export stable references and catalog versions rather than redundant copies.
@@ -54,4 +54,4 @@ Success criteria: T-0019 supplies the interchange and recovery contribution to J
 
 This plan does not mark any EP-004 acceptance criterion verified. Each Task must record commands, artifacts, and residual risk. Use `/Applications/Xcode-beta.app/Contents/Developer`; run shared-package tests first, then inspect schemes and destinations before app or paired-Watch tests. Simulator checks do not prove physical-device backup, Files-provider, AirDrop, Mail, Messages, or Watch synchronization behavior.
 
-Before completion, search modified product-facing metadata for unintended `JustTune` identifiers. `.justtone` type identifiers, names, and documentation must preserve JustTone identity. No GitHub state is part of this plan.
+Before completion, search modified product-facing metadata for unintended `JustTune` identifiers. `.justtones` type identifiers, names, and documentation must preserve JustTones identity. No GitHub state is part of this plan.

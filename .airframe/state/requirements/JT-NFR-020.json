@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved timbre and version 1 scope requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "Each timbre shall be tested across the supported pitch range. Where its intended character cannot be maintained, JustTone shall simplify its synthesis without changing the requested fundamental rather than introduce unstable or misleading artifacts.",
+  "statement" : "Each timbre shall be tested across the supported pitch range. Where its intended character cannot be maintained, JustTones shall simplify its synthesis without changing the requested fundamental rather than introduce unstable or misleading artifacts.",
   "status" : "draft",
   "supersedesIDs" : [
 

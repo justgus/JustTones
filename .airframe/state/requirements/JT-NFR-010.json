@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Visual motion preferences should be respected without weakening audio correctness or state clarity.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall honor Reduce Motion. Decorative movement shall be removed or simplified without suppressing essential playback-state information or click-free audio transitions.",
+  "statement" : "JustTones shall honor Reduce Motion. Decorative movement shall be removed or simplified without suppressing essential playback-state information or click-free audio transitions.",
   "status" : "draft",
   "supersedesIDs" : [
 

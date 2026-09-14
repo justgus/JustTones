@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Approved App Store and release qualification requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

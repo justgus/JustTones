@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved data ownership and interchange requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "A `.justtone` document shall contain UTF-8 declarative JSON conforming to the versioned schema and shall contain no executable code, archived Swift objects, plugins, scripts, or opaque executable payloads.",
+  "statement" : "A `.justtones` document shall contain UTF-8 declarative JSON conforming to the versioned schema and shall contain no executable code, archived Swift objects, plugins, scripts, or opaque executable payloads.",
   "status" : "draft",
   "supersedesIDs" : [
 

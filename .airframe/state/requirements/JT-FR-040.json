@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "A profile change can substantially change pitch context and must not produce an unexpected reference.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

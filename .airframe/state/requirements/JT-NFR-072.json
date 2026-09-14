@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved App Store and release qualification requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "A publicly accessible privacy policy shall be linked in App Store Connect and within JustTone. It shall accurately state local-data, networking, diagnostic, document, Watch synchronization, retention, export, and deletion behavior.",
+  "statement" : "A publicly accessible privacy policy shall be linked in App Store Connect and within JustTones. It shall accurately state local-data, networking, diagnostic, document, Watch synchronization, retention, export, and deletion behavior.",
   "status" : "draft",
   "supersedesIDs" : [
 

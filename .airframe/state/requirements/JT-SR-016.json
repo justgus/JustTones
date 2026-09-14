@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved privacy, localization, help, and error requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall not request microphone access or include a microphone usage description. It generates reference tones and shall not contain JustTune's pitch-detection or listening behavior.",
+  "statement" : "JustTones shall not request microphone access or include a microphone usage description. It generates reference tones and shall not contain JustTune's pitch-detection or listening behavior.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -1,6 +1,6 @@
 {
   "acceptanceCriteria" : [
-    "Product names, bundle identifiers, schemes and companion relationships consistently identify JustTone.",
+    "Product names, bundle identifiers, schemes and companion relationships consistently identify JustTones.",
     "Debug and Release settings support the approved platforms and iPhone-only presentation.",
     "A requirement-linked inventory records entitlements, background modes, document types and App Groups as configured, deferred or not applicable with rationale."
   ],

@@ -34,7 +34,7 @@
   ],
   "status" : "ready",
   "steps" : [
-    "Launch JustTone with playback stopped.",
+    "Launch JustTones with playback stopped.",
     "Select a musical note, start playback, then stop playback."
   ],
   "title" : "Primary note playback flow acceptance",

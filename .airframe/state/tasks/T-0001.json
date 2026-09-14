@@ -1,6 +1,6 @@
 {
   "acceptanceCriteria" : [
-    "JustTone iPhone and Watch companion targets use Swift 6, iOS 27.0 and watchOS 27.0.",
+    "JustTones iPhone and Watch companion targets use Swift 6, iOS 27.0 and watchOS 27.0.",
     "Both targets compile with Xcode-beta and open a minimal shell without starting playback."
   ],
   "component" : "Project Foundation",

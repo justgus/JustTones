@@ -27,7 +27,7 @@
   "priority" : "high",
   "rationale" : "Untrusted imports must not execute code, corrupt the library, or exhaust app resources.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

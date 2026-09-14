@@ -27,11 +27,11 @@
   "priority" : "medium",
   "rationale" : "The app should preserve valid requests while honestly communicating device and route limitations.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "When a selected pitch may be poorly reproduced by the current device speaker or audio route, JustTone shall preserve the requested pitch and provide a non-blocking notice that external audio equipment may be required.",
+  "statement" : "When a selected pitch may be poorly reproduced by the current device speaker or audio route, JustTones shall preserve the requested pitch and provide a non-blocking notice that external audio equipment may be required.",
   "status" : "draft",
   "supersedesIDs" : [
 

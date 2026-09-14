@@ -4,7 +4,7 @@ Status: PLAN-002 approved by the user; SP-002/T-0007 and SP-003/T-0015 planning 
 
 ## Recommendation and alternatives
 
-Use two sequential Sprints. The existing `JustToneCore` package establishes dependency boundaries but contains no pitch engine. A first checkpoint can validate pitch identity, reference handling, and transposition before generalized tuning adds representation and contextual semantics. This split follows technical dependencies and reviewable outcomes; it is not a calendar estimate.
+Use two sequential Sprints. The existing `JustTonesCore` package establishes dependency boundaries but contains no pitch engine. A first checkpoint can validate pitch identity, reference handling, and transposition before generalized tuning adds representation and contextual semantics. This split follows technical dependencies and reviewable outcomes; it is not a calendar estimate.
 
 | Option | Benefit | Cost |
 | --- | --- | --- |
@@ -68,6 +68,6 @@ Canonical requirement records still say `draft`, whereas PLAN-001 and the approv
 
 During planning, run canonical state diagnostics, test trace validation, and Task-packet review; verify membership, dependencies, and absence of active work. No app build or product test is claimed by planning.
 
-During authorized implementation, use `/Applications/Xcode-beta.app/Contents/Developer`. Start with `DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swift test --package-path Packages/JustToneCore`; inspect project schemes and destinations before selecting iPhone and paired Watch simulator test hosts. Record exact executed commands and actual evidence in the relevant Task. Each Sprint includes its own tests; no separate testing-only Sprint is proposed.
+During authorized implementation, use `/Applications/Xcode-beta.app/Contents/Developer`. Start with `DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swift test --package-path Packages/JustTonesCore`; inspect project schemes and destinations before selecting iPhone and paired Watch simulator test hosts. Record exact executed commands and actual evidence in the relevant Task. Each Sprint includes its own tests; no separate testing-only Sprint is proposed.
 
-Implementation scope is `Packages/JustToneCore`, necessary existing iPhone/Watch test hosts, and architecture/evidence documentation. Audio playback, profile stores, synchronization, authoring UI, curated catalog research, and external state changes are outside this plan.
+Implementation scope is `Packages/JustTonesCore`, necessary existing iPhone/Watch test hosts, and architecture/evidence documentation. Audio playback, profile stores, synchronization, authoring UI, curated catalog research, and external state changes are outside this plan.

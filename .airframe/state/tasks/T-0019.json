@@ -1,8 +1,8 @@
 {
   "acceptanceCriteria" : [
-    "The versioned UTF-8 declarative .justtone JSON format preserves exact valid numeric semantics, stable identities, Unicode metadata, dependencies, and catalog references without executable payloads.",
+    "The versioned UTF-8 declarative .justtones JSON format preserves exact valid numeric semantics, stable identities, Unicode metadata, dependencies, and catalog references without executable payloads.",
     "Validation enforces declared resource limits before mutation; preview and conflict results remain cancelable and invalid input cannot partially import or disclose user content in logs.",
-    "Export is semantically deterministic, the registered document type is JustTone-specific, scoped access is released, and released schema rules and examples are documented."
+    "Export is semantically deterministic, the registered document type is JustTones-specific, scoped access is released, and released schema rules and examples are documented."
   ],
   "component" : "Shared document schema, validation, import\/export, conflict-result model, document-type integration, schema documentation, and deterministic fixtures.",
   "componentsAffected" : [
@@ -98,6 +98,6 @@
     },
     "kind" : "task",
     "status" : "backlog",
-    "title" : "Implement bounded JustTone interchange and recovery surfaces"
+    "title" : "Implement bounded JustTones interchange and recovery surfaces"
   }
 }

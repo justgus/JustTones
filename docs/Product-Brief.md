@@ -1,10 +1,10 @@
-# JustTone Product Brief
+# JustTones Product Brief
 
 ## Product
 
-JustTone is a focused pitch-reference app for iPhone with an Apple Watch companion. It produces a stable audible musical note, like an electronic pitch pipe or tuning fork, so a musician can tune an instrument by ear.
+JustTones is a focused pitch-reference app for iPhone with an Apple Watch companion. It produces a stable audible musical note, like an electronic pitch pipe or tuning fork, so a musician can tune an instrument by ear.
 
-JustTone is distinct from **JustTune**, which listens through the microphone and measures an instrument's pitch.
+JustTones is distinct from **JustTune**, which listens through the microphone and measures an instrument's pitch.
 
 ## Audience and Core Use
 
@@ -51,4 +51,4 @@ Musicians who play one or many instruments can select a note, hear its reference
 - Which built-in profiles and tunings should ship in version 1?
 - Should Watch generate audio itself, control iPhone playback, or support both? This requires an early device feasibility spike because Watch audio routing and session behavior may shape the experience.
 - Which waveform/timbre is easiest to hear for each instrument family while remaining pleasant and safe?
-- What final visual identity should distinguish JustTone from JustTune while retaining a family resemblance?
+- What final visual identity should distinguish JustTones from JustTune while retaining a family resemblance?

@@ -27,7 +27,7 @@
   "notes" : [
 
   ],
-  "objective" : "Verify that JustTone is delivered as an iPhone app with an Apple Watch companion.",
+  "objective" : "Verify that JustTones is delivered as an iPhone app with an Apple Watch companion.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-BR-002"

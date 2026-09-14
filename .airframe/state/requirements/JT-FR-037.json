@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Pitch browsing must never cause unexpected sound.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

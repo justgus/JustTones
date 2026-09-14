@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Pitch identity must support accurate calculation while preserving notation meaningful to the musician.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall represent a musical pitch by note name, accidental, octave, and calculated frequency; enharmonic spellings shall share the appropriate sounding pitch while retaining the musician's preferred display spelling.",
+  "statement" : "JustTones shall represent a musical pitch by note name, accidental, octave, and calculated frequency; enharmonic spellings shall share the appropriate sounding pitch while retaining the musician's preferred display spelling.",
   "status" : "draft",
   "supersedesIDs" : [
 

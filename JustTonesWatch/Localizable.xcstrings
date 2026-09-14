@@ -1,0 +1,16 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "JustTones" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "JustTones" } }
+      }
+    },
+    "Ready" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ready" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

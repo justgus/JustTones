@@ -22,11 +22,11 @@
   "priority" : "high",
   "rationale" : "The app should remain dependable, private, and immediately useful as a simple musical tool.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall operate without requiring an account, subscription, advertising, analytics, or network connection.",
+  "statement" : "JustTones shall operate without requiring an account, subscription, advertising, analytics, or network connection.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "The model must not assume one instrument construction.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "A richer timbre remains a tuning reference only if its fundamental is accurate.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "The app must yield when the operating system deactivates its audio session without losing the musician's setup.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall stop audible output cleanly when an accepted call, Siri, or another exclusive audio session causes its audio session to become inactive, while retaining the selected profile, pitch, timbre, and output level.",
+  "statement" : "JustTones shall stop audible output cleanly when an accepted call, Siri, or another exclusive audio session causes its audio session to become inactive, while retaining the selected profile, pitch, timbre, and output level.",
   "status" : "draft",
   "supersedesIDs" : [
 

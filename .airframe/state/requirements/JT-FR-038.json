@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "A musician should move through tuning references without repeatedly stopping and restarting sound.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

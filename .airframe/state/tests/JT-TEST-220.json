@@ -25,7 +25,7 @@
   "notes" : [
 
   ],
-  "objective" : "Verify justtone name and listing review against the approved release requirement.",
+  "objective" : "Verify justtones name and listing review against the approved release requirement.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-NFR-070"
@@ -35,7 +35,7 @@
   "steps" : [
     "Inspect the exact release candidate, App Store records, supporting services, and evidence as applicable."
   ],
-  "title" : "JustTone name and listing review",
+  "title" : "JustTones name and listing review",
   "workItemIDs" : [
     {
       "rawValue" : "EP-008"

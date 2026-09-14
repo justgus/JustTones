@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Active audio must stay visible and stoppable throughout the app.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

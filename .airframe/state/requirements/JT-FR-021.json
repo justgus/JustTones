@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Frequent transient notifications should not disrupt a tuning reference.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "While a tone is active, JustTone shall request uninterrupted performance audio and continue playback through transient system alerts and notifications wherever the operating system permits; alert presentation or suppression shall remain controlled by the operating system.",
+  "statement" : "While a tone is active, JustTones shall request uninterrupted performance audio and continue playback through transient system alerts and notifications wherever the operating system permits; alert presentation or suppression shall remain controlled by the operating system.",
   "status" : "draft",
   "supersedesIDs" : [
 

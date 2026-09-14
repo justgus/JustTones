@@ -25,7 +25,7 @@ These names describe recognizable synthesis character, not sampled-instrument re
 
 ## Planned shared model and renderer boundary
 
-Implementation will add a versioned declarative definition model in `JustToneCore`, separate from UI and audio-session ownership. A definition will carry its stable identifier, schema version, oscillator/partial mixture, attack-to-sustain envelope parameters, optional deterministic modulation or controlled-noise parameters, normalization/peak-limit information, and pitch-range simplification metadata.
+Implementation will add a versioned declarative definition model in `JustTonesCore`, separate from UI and audio-session ownership. A definition will carry its stable identifier, schema version, oscillator/partial mixture, attack-to-sustain envelope parameters, optional deterministic modulation or controlled-noise parameters, normalization/peak-limit information, and pitch-range simplification metadata.
 
 The renderer will continue to have one selected fundamental and one voice. Timbre selection will alter the waveform contribution while preserving oscillator phase and the selected fundamental; it must not layer an additional independently selected pitch. A timbre change while playing will use a finite crossfade or ramp in the existing 5–15 ms transition envelope. It must remain silent until the pre-existing explicit start action.
 

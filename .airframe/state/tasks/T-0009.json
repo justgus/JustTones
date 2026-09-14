@@ -1,7 +1,7 @@
 {
   "acceptanceCriteria" : [
     "Local Git is initialized if needed with project-appropriate exclusions for generated output and credentials.",
-    "The JustTone GitHub repository uses the confirmed owner and visibility; origin points to it and a reviewed initial baseline is pushed."
+    "The JustTones GitHub repository uses the confirmed owner and visibility; origin points to it and a reviewed initial baseline is pushed."
   ],
   "component" : "Project Foundation",
   "componentsAffected" : [

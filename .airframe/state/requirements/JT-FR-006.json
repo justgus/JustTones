@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Many traditional tunings vary legitimately among instruments, ensembles, schools, and performers.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall support user-defined pitch-degree values for traditions whose tuning varies by instrument, ensemble, school, or performer, without presenting one implementation as a universal standard.",
+  "statement" : "JustTones shall support user-defined pitch-degree values for traditions whose tuning varies by instrument, ensemble, school, or performer, without presenting one implementation as a universal standard.",
   "status" : "draft",
   "supersedesIDs" : [
 

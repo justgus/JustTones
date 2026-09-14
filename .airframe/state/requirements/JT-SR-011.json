@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "Other than required signal ramps, normalization, clipping prevention, and operating-system behavior, JustTone shall not silently reduce output under the label of hearing safety. Safety interventions shall remain truthful and user-visible.",
+  "statement" : "Other than required signal ramps, normalization, clipping prevention, and operating-system behavior, JustTones shall not silently reduce output under the label of hearing safety. Safety interventions shall remain truthful and user-visible.",
   "status" : "draft",
   "supersedesIDs" : [
 

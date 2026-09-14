@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "An explicitly started tuning reference should survive normal screen and app lifecycle changes.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "A tone explicitly started by the musician shall continue while the device is locked or JustTone is backgrounded until explicitly stopped, interrupted, or terminated by the operating system.",
+  "statement" : "A tone explicitly started by the musician shall continue while the device is locked or JustTones is backgrounded until explicitly stopped, interrupted, or terminated by the operating system.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Different instruments or variants may legitimately share a familiar name.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall permit multiple profiles and tuning systems to share the same display name while distinguishing them by stable identifiers and contextual metadata.",
+  "statement" : "JustTones shall permit multiple profiles and tuning systems to share the same display name while distinguishing them by stable identifiers and contextual metadata.",
   "status" : "draft",
   "supersedesIDs" : [
 

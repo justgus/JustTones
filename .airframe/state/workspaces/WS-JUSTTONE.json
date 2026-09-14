@@ -1,8 +1,8 @@
 {
-  "defaultProjectID": { "rawValue": "PRJ-JUSTTONE" },
-  "id": { "rawValue": "WS-JUSTTONE" },
+  "defaultProjectID": { "rawValue": "PRJ-JUSTTONES" },
+  "id": { "rawValue": "WS-JUSTTONES" },
   "metadata": { "schemaVersion": { "major": 1, "minor": 0, "patch": 0 } },
-  "name": "JustTone Airframe Workspace",
-  "projectIDs": [{ "rawValue": "PRJ-JUSTTONE" }],
+  "name": "JustTones Airframe Workspace",
+  "projectIDs": [{ "rawValue": "PRJ-JUSTTONES" }],
   "rootPath": "."
 }

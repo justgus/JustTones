@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved timbre and version 1 scope requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "If an imported or synchronized profile references an unavailable timbre, JustTone shall remain silent, identify the unavailable preference, select a safe built-in fallback, and preserve the original timbre identifier for possible future restoration.",
+  "statement" : "If an imported or synchronized profile references an unavailable timbre, JustTones shall remain silent, identify the unavailable preference, select a safe built-in fallback, and preserve the original timbre identifier for possible future restoration.",
   "status" : "draft",
   "supersedesIDs" : [
 

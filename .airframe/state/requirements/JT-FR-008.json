@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Portable declarative data lets the tuning library grow without app updates or executable plug-ins.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall import versioned, declarative documents containing tuning-system models, tuning systems, tuning profiles, or compatible combinations of these objects.",
+  "statement" : "JustTones shall import versioned, declarative documents containing tuning-system models, tuning systems, tuning profiles, or compatible combinations of these objects.",
   "status" : "draft",
   "supersedesIDs" : [
 

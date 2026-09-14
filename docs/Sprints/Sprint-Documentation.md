@@ -20,7 +20,7 @@ Currently: **9 Sprints** | Next available: **SP-010**
 | SP-006 | Session and Playback Lifecycle | EP-003 | T-0017 | None | Closed |
 | SP-007 | Profile Model and Durable Local Store | EP-004 | T-0003 | None | Closed |
 | SP-008 | Versioned Built-In Catalog | EP-004 | T-0018 | None | Closed |
-| SP-009 | JustTone Interchange and Recovery Surfaces | EP-004 | T-0019 | None | Planning |
+| SP-009 | JustTones Interchange and Recovery Surfaces | EP-004 | T-0019 | None | Planning |
 
 ## Statistics
 

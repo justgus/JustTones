@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall respect Apple's system volume, headphone notifications, exposure monitoring, and Reduce Loud Audio behavior. It shall not bypass, disable, counteract, or instruct the musician to disable those protections.",
+  "statement" : "JustTones shall respect Apple's system volume, headphone notifications, exposure monitoring, and Reduce Loud Audio behavior. It shall not bypass, disable, counteract, or instruct the musician to disable those protections.",
   "status" : "draft",
   "supersedesIDs" : [
 

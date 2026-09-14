@@ -1,6 +1,6 @@
 # Pitch Domain Semantics
 
-`JustToneCore` represents named pitch identity separately from calculated frequency. `NamedPitch` retains its note letter, accidental, and octave verbatim, so enharmonic spellings such as C♯4 and D♭4 calculate to the same sounding frequency without becoming the same value.
+`JustTonesCore` represents named pitch identity separately from calculated frequency. `NamedPitch` retains its note letter, accidental, and octave verbatim, so enharmonic spellings such as C♯4 and D♭4 calculate to the same sounding frequency without becoming the same value.
 
 The default calculation is twelve-tone equal temperament with A4 at 440.0 Hz. `ReferencePitch` stores valid A4 values as an integer number of tenths of a hertz (3,500 through 5,000), while `DirectFrequency` stores its valid range (160 through 120,000 tenths) the same way. This avoids locale-dependent parsing and prevents entry/display precision from reducing calculation precision.
 

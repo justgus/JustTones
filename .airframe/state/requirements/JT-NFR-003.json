@@ -27,7 +27,7 @@
   "priority" : "high",
   "rationale" : "Rich synthesized timbres must not clip digitally.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

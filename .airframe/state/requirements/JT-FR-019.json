@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "App gain must be controllable without surprising changes to system volume.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall provide an output-level control from silence through its maximum synthesized level without modifying the device's system volume.",
+  "statement" : "JustTones shall provide an output-level control from silence through its maximum synthesized level without modifying the device's system volume.",
   "status" : "draft",
   "supersedesIDs" : [
 

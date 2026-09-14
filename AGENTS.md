@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file governs coding-agent behavior in the JustTone repository. Follow it before general agent habits or inferred next steps.
+This file governs coding-agent behavior in the JustTones repository. Follow it before general agent habits or inferred next steps.
 
 ## Operating Principles
 
@@ -13,11 +13,11 @@ This file governs coding-agent behavior in the JustTone repository. Follow it be
 
 ## Project Context
 
-- **JustTone** is a pitch-reference tone generator for musicians. Do not confuse it with the sibling **JustTune** tuner project.
+- **JustTones** is a pitch-reference tone generator for musicians. Do not confuse it with the sibling **JustTune** tuner project.
 - The product comprises an iPhone app and an Apple Watch companion app, written in Swift and SwiftUI.
 - Deployment targets are iOS 27.x and watchOS 27.x.
 - Until the user changes this instruction, use `/Applications/Xcode-beta.app/Contents/Developer` for Apple build tools.
-- The visual starting point is the sibling repository `/Users/justgus/Xcode-Projects/JustTune`, but code and assets must not be copied blindly. Preserve JustTone's distinct product identity and bundle identifiers.
+- The visual starting point is the sibling repository `/Users/justgus/Xcode-Projects/JustTune`, but code and assets must not be copied blindly. Preserve JustTones’ distinct product identity and bundle identifiers.
 - The product definition is `docs/Product-Brief.md`; approved requirements are maintained in `docs/Requirements-Specification.md` and `.airframe/state/requirements/`.
 - Canonical Agile state lives under `.airframe/state/`; generated Markdown, when present, is a projection rather than a second source of truth.
 
@@ -79,7 +79,7 @@ Epic -> Sprint -> Task / Issue -> evidence
 ## Naming Safety
 
 - Search for accidental `JustTune` references before completing project setup or release work.
-- Product name, target names, schemes, bundle identifiers, entitlements, icons, and store metadata must consistently say `JustTone`.
+- Product name, target names, schemes, bundle identifiers, entitlements, icons, and store metadata must consistently say `JustTones`.
 - References to the sibling JustTune repository are allowed only in documentation explaining design provenance.
 
 ## Verification
@@ -89,7 +89,7 @@ Epic -> Sprint -> Task / Issue -> evidence
 
 ```sh
 DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer \
-  xcodebuild -project JustTone.xcodeproj -scheme JustTone -showdestinations
+  xcodebuild -project JustTones.xcodeproj -scheme JustTones -showdestinations
 ```
 
 - Prefer focused unit tests for frequency/note conversion, profile validation, persistence migration, and state transitions.

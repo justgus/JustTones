@@ -4,7 +4,7 @@ Sprints listed here are currently in Planning or Active status and are the curre
 
 ---
 
-## SP-009: JustTone Interchange and Recovery Surfaces
+## SP-009: JustTones Interchange and Recovery Surfaces
 
 **Status:** Planning
 **Epic:** EP-004
@@ -17,7 +17,7 @@ Sprints listed here are currently in Planning or Active status and are the curre
 
 | Task | Title | Priority | Status |
 | ---- | ----- | -------- | ------ |
-| T-0019 | Implement bounded JustTone interchange and recovery surfaces | High | Backlog |
+| T-0019 | Implement bounded JustTones interchange and recovery surfaces | High | Backlog |
 
 ### Assigned Issues
 

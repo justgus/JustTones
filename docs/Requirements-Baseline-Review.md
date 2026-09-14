@@ -1,4 +1,4 @@
-# JustTone 1.0 Requirements Baseline Review
+# JustTones 1.0 Requirements Baseline Review
 
 **Baseline reviewed:** 2026-09-04  
 **Baseline approved:** 2026-09-05 through Agile Cockpit PLAN-001  
@@ -40,7 +40,7 @@ These user-approved interpretations make the existing requirement language objec
 7. **Cold-launch conditions:** “Ordinary conditions” in JT-NFR-032 means no active schema migration or injected fault and stored content within approved limits.
 8. **Memory budget:** “Should remain below” in JT-NFR-040 is treated as a release budget: exceeding it requires evidence and explicit user approval, exactly as its second sentence states.
 9. **Hardware coverage:** JT-NFR-024 requires compatibility for every OS-supported model; JT-NFR-025 defines representative physical qualification rather than possession of every model.
-10. **External links:** JT-SR-018 permits network activity only after an explicit user action hands a URL to the system browser; JustTone itself does not fetch or preflight the URL.
+10. **External links:** JT-SR-018 permits network activity only after an explicit user action hands a URL to the system browser; JustTones itself does not fetch or preflight the URL.
 
 ## Priority and Verification Normalization
 

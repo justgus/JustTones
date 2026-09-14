@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Operational state must be perceivable without reliance on a single sensory channel.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

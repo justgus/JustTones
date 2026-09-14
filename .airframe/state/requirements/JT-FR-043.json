@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Large and same-name collections must remain practically navigable.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

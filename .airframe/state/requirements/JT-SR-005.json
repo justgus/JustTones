@@ -27,11 +27,11 @@
   "priority" : "high",
   "rationale" : "iOS cannot reliably distinguish deliberate Siri from false activation, so resumption must remain explicit and easy.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "After an exclusive interruption ends, JustTone shall not resume audible output automatically; when the system permits resumption, JustTone shall provide a prominent one-action Resume control.",
+  "statement" : "After an exclusive interruption ends, JustTones shall not resume audible output automatically; when the system permits resumption, JustTones shall provide a prominent one-action Resume control.",
   "status" : "draft",
   "supersedesIDs" : [
 

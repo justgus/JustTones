@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall not describe an in-app output percentage, digital peak, device volume position, or uncalibrated route estimate as a safe sound-pressure level.",
+  "statement" : "JustTones shall not describe an in-app output percentage, digital peak, device volume position, or uncalibrated route estimate as a safe sound-pressure level.",
   "status" : "draft",
   "supersedesIDs" : [
 

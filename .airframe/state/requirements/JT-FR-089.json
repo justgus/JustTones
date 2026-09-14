@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Approved data ownership and interchange requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall not promise that deleting and reinstalling the app preserves local data. Help text shall explain that recovery depends on an available operating-system backup or a previously exported JustTone document.",
+  "statement" : "JustTones shall not promise that deleting and reinstalling the app preserves local data. Help text shall explain that recovery depends on an available operating-system backup or a previously exported JustTones document.",
   "status" : "draft",
   "supersedesIDs" : [
 

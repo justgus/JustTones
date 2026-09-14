@@ -16,7 +16,7 @@ The following content is expressly conditional: Chinese twelve-lü, Arabic and T
 
 ## Planned representation
 
-Implementation will add catalog-only types in `JustToneCore` and a human-reviewable source document under `docs/Catalog/`:
+Implementation will add catalog-only types in `JustTonesCore` and a human-reviewable source document under `docs/Catalog/`:
 
 - A schema-versioned manifest declaring the catalog version, immutable object identifiers, object revisions, and complete deterministic inventory.
 - Typed catalog objects for tuning systems, profile templates, timbre references, pitch/reference models, and scales/modes. Classification must prevent treating every pitch-bearing object as a temperament.

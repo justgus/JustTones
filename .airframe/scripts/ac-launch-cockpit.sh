@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Launches AgileCockpit.app with the JustTone workspace and canonical state.
+# Launches AgileCockpit.app with the JustTones workspace and canonical state.
 set -euo pipefail
 
 clear_cache=false
@@ -40,7 +40,7 @@ if [[ "$clear_cache" == true ]]; then
 fi
 
 
-echo "Launching AgileCockpit with the JustTone workspace..."
+echo "Launching AgileCockpit with the JustTones workspace..."
 open -n --fresh \
   --env "AIRFRAME_CONFIG_PATH=$AC_CONFIG" \
   "$APP"

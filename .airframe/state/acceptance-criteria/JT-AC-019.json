@@ -17,5 +17,5 @@
   "ownerID" : {
     "rawValue" : "EP-004"
   },
-  "text" : "Bounded declarative .justtone import and export provide validation, preview, conflict handling, exact numeric semantics, and deterministic round trips."
+  "text" : "Bounded declarative .justtones import and export provide validation, preview, conflict handling, exact numeric semantics, and deterministic round trips."
 }

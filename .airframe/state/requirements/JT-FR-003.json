@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "The range supports common modern concert references, early-music pitch levels, and the elevated nominal A used by many contemporary bagpipes.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall allow the musician to set the A4 reference frequency from 350.0 through 500.0 Hz inclusive in increments of 0.1 Hz, defaulting to 440.0 Hz; changing the reference shall recalculate profile pitch frequencies without changing their musical identities.",
+  "statement" : "JustTones shall allow the musician to set the A4 reference frequency from 350.0 through 500.0 Hz inclusive in increments of 0.1 Hz, defaulting to 440.0 Hz; changing the reference shall recalculate profile pitch frequencies without changing their musical identities.",
   "status" : "draft",
   "supersedesIDs" : [
 

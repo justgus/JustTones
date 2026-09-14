@@ -27,11 +27,11 @@
   "priority" : "high",
   "rationale" : "The range covers piano, orchestral, early, and most traditional instrument references.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall support named musical pitches from C0 through C9 inclusive, approximately 16.35–8,372.02 Hz under the default reference system.",
+  "statement" : "JustTones shall support named musical pitches from C0 through C9 inclusive, approximately 16.35–8,372.02 Hz under the default reference system.",
   "status" : "draft",
   "supersedesIDs" : [
 

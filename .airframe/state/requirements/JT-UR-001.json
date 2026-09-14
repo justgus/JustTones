@@ -22,7 +22,7 @@
   "priority" : "high",
   "rationale" : "Tone selection and explicit playback control form the primary user interaction.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved data ownership and interchange requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "After a successful persistent change, JustTone shall maintain a recoverable last-valid snapshot using atomic replacement. A snapshot shall never replace the current store until its complete validity is established.",
+  "statement" : "After a successful persistent change, JustTones shall maintain a recoverable last-valid snapshot using atomic replacement. A snapshot shall never replace the current store until its complete validity is established.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -27,7 +27,7 @@ Deliver reusable profiles, catalog data, durable local persistence, and bounded 
 
 | Task | Title | Status |
 | ---- | ----- | ------ |
-| T-0019 | Implement bounded JustTone interchange and recovery surfaces | Backlog |
+| T-0019 | Implement bounded JustTones interchange and recovery surfaces | Backlog |
 | T-0003 | Build tuning profiles and local persistence | Implemented - Verified |
 | T-0018 | Deliver the versioned built-in catalog | Implemented - Verified |
 

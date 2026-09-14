@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Playback must always reflect deliberate musician intent.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall not start or resume playback because of app launch, foregrounding, unlocking, note selection, profile selection, route connection, or interruption recovery.",
+  "statement" : "JustTones shall not start or resume playback because of app launch, foregrounding, unlocking, note selection, profile selection, route connection, or interruption recovery.",
   "status" : "draft",
   "supersedesIDs" : [
 

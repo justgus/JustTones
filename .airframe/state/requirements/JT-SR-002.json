@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "First playback should begin conservatively.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "On first launch, JustTone shall use an in-app output level of 25%; a saved setting may be restored, but malformed or unsupported values shall revert to 25%.",
+  "statement" : "On first launch, JustTones shall use an in-app output level of 25%; a saved setting may be restored, but malformed or unsupported values shall revert to 25%.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -24,16 +24,16 @@
   "priority" : "high",
   "rationale" : "Approved data ownership and interchange requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "The portable interchange document shall use the `.justtone` extension and a registered application-specific content type recognizable through Files, Share Sheet, Mail, Messages, AirDrop, and other system document providers.",
+  "statement" : "The portable interchange document shall use the `.justtones` extension and a registered application-specific content type recognizable through Files, Share Sheet, Mail, Messages, AirDrop, and other system document providers.",
   "status" : "draft",
   "supersedesIDs" : [
 
   ],
-  "title" : "JustTone Document Type",
+  "title" : "JustTones Document Type",
   "traceLinks" : [
 
   ],

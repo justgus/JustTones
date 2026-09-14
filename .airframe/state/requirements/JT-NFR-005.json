@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Musicians should not manage saves or lose valid data during interruption.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

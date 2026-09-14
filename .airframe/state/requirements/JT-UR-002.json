@@ -22,7 +22,7 @@
   "priority" : "high",
   "rationale" : "A multi-instrument musician needs reusable pitch collections without rebuilding each tuning for every session.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

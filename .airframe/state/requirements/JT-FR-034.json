@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Factory examples should be safely reusable and recoverable.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall provide read-only built-in profile templates that a musician may duplicate and modify without changing the original, hide from normal browsing, and restore after hiding.",
+  "statement" : "JustTones shall provide read-only built-in profile templates that a musician may duplicate and modify without changing the original, hide from normal browsing, and restore after hiding.",
   "status" : "draft",
   "supersedesIDs" : [
 

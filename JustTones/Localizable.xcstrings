@@ -1,0 +1,16 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "JustTones" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "JustTones" } }
+      }
+    },
+    "Reference tones for musicians" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reference tones for musicians" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -22,13 +22,13 @@
     }
   ],
   "priority" : "high",
-  "rationale" : "A general representation avoids constraining JustTone to twelve-tone Western pitch structures.",
+  "rationale" : "A general representation avoids constraining JustTones to twelve-tone Western pitch structures.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall support tuning systems with an arbitrary number of pitch divisions whose degrees may be defined by frequency ratios or cents relative to a reference pitch.",
+  "statement" : "JustTones shall support tuning systems with an arbitrary number of pitch divisions whose degrees may be defined by frequency ratios or cents relative to a reference pitch.",
   "status" : "draft",
   "supersedesIDs" : [
 

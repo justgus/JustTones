@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "A route change must not unexpectedly move a tone to a louder or private route.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "When the active audio route changes or is removed, JustTone shall stop playback and require the musician to restart it explicitly on the new route.",
+  "statement" : "When the active audio route changes or is removed, JustTones shall stop playback and require the musician to restart it explicitly on the new route.",
   "status" : "draft",
   "supersedesIDs" : [
 

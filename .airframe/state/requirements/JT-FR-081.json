@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved platform and release scope requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "If a selected device or route cannot adequately reproduce a requested pitch or cannot provide direct speaker playback, JustTone shall preserve the requested pitch, remain truthful about the active capability, and provide a non-blocking recommendation to use suitable external audio equipment.",
+  "statement" : "If a selected device or route cannot adequately reproduce a requested pitch or cannot provide direct speaker playback, JustTones shall preserve the requested pitch, remain truthful about the active capability, and provide a non-blocking recommendation to use suitable external audio equipment.",
   "status" : "draft",
   "supersedesIDs" : [
 

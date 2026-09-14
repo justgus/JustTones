@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "A musician may need a reference while rehearsing against other audio.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall mix its reference tone with audio already playing from other applications rather than automatically pausing, silencing, or ducking that audio.",
+  "statement" : "JustTones shall mix its reference tone with audio already playing from other applications rather than automatically pausing, silencing, or ducking that audio.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -24,11 +24,11 @@
   "priority" : "medium",
   "rationale" : "Approved App Store and release qualification requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "The submission package shall include or link to a small, safe, schema-valid `.justtone` example enabling review of import, preview, conflicts, and playback without external setup.",
+  "statement" : "The submission package shall include or link to a small, safe, schema-valid `.justtones` example enabling review of import, preview, conflicts, and playback without external setup.",
   "status" : "draft",
   "supersedesIDs" : [
 

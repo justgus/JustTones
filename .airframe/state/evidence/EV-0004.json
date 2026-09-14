@@ -1,11 +1,11 @@
 {
   "artifactReferences" : [
-    "Packages\/JustToneCore\/Tests\/JustToneCoreTests\/TimbreTests.swift"
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TimbreTests.swift"
   ],
   "ciReferences" : [
 
   ],
-  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustToneCore; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTone.xcodeproj -scheme JustTone -destination platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965 -only-testing:JustToneTests -parallel-testing-enabled NO test; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTone.xcodeproj -scheme JustToneWatch -destination platform=watchOS Simulator,id=BDE6367B-66EC-49F4-BC1F-C8527382B06A test",
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965 -only-testing:JustTonesTests -parallel-testing-enabled NO test; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS Simulator,id=BDE6367B-66EC-49F4-BC1F-C8527382B06A test",
   "environment" : "Xcode-beta; deterministic package and simulator-host buffers; no physical-device listening or route qualification performed",
   "id" : {
     "rawValue" : "EV-0004"

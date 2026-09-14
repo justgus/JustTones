@@ -10,7 +10,7 @@ No microphone permission, recording, profile persistence or synchronization, aut
 
 ## Planned lifecycle model
 
-Platform adapters own AVFoundation and route observations; `JustToneCore` remains free of platform session APIs. The adapter will expose a small non-UI state model separating:
+Platform adapters own AVFoundation and route observations; `JustTonesCore` remains free of platform session APIs. The adapter will expose a small non-UI state model separating:
 
 | State | Required behavior |
 | --- | --- |

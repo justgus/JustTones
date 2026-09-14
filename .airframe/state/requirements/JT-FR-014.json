@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Short ramps avoid waveform discontinuities while remaining perceptually immediate.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall apply a 5–15 ms perceptually unobtrusive signal ramp when starting or stopping playback and a corresponding crossfade or ramp sequence when changing pitch or timbre, preventing clicks without creating a musical fade.",
+  "statement" : "JustTones shall apply a 5–15 ms perceptually unobtrusive signal ramp when starting or stopping playback and a corresponding crossfade or ramp sequence when changing pitch or timbre, preventing clicks without creating a musical fade.",
   "status" : "draft",
   "supersedesIDs" : [
 

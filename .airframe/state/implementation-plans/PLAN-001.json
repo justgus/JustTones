@@ -49,7 +49,7 @@
   "targetTaskIDs" : [
 
   ],
-  "title" : "JustTone 1.0 requirements baseline and Epic delivery plan",
+  "title" : "JustTones 1.0 requirements baseline and Epic delivery plan",
   "verificationCriteria" : [
     "All requirements map one-to-one to tests; every Epic criterion has a linked test; eight suites collectively contain all 233 requirement\/test pairs."
   ]

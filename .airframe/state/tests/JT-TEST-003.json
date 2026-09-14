@@ -26,7 +26,7 @@
   "notes" : [
 
   ],
-  "objective" : "Verify that core JustTone use is offline and contains no account, subscription, advertising, analytics, or network dependency.",
+  "objective" : "Verify that core JustTones use is offline and contains no account, subscription, advertising, analytics, or network dependency.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-BR-003"

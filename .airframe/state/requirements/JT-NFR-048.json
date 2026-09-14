@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved hearing-safety requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "Generated reference tones shall use equal intended signal levels in the left and right channels unless a route is inherently monophonic. JustTone shall not unexpectedly concentrate the tone in one ear.",
+  "statement" : "Generated reference tones shall use equal intended signal levels in the left and right channels unless a route is inherently monophonic. JustTones shall not unexpectedly concentrate the tone in one ear.",
   "status" : "draft",
   "supersedesIDs" : [
 

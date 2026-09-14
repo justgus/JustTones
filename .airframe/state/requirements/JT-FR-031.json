@@ -24,7 +24,7 @@
   "priority" : "medium",
   "rationale" : "Optional grouping represents courses, drones, and sections without making all profiles string-specific.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

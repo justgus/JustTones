@@ -24,7 +24,7 @@
   "priority" : "high",
   "rationale" : "Essential controls must remain readable and reachable for users requiring large text.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

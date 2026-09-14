@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Approved performance and reliability requirement.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "When the active route changes sample rate, channel layout, or supported audio format, JustTone shall rebuild or reconfigure its audio processing without changing the requested musical pitch. Existing route-change stop requirements still apply.",
+  "statement" : "When the active route changes sample rate, channel layout, or supported audio format, JustTones shall rebuild or reconfigure its audio processing without changing the requested musical pitch. Existing route-change stop requirements still apply.",
   "status" : "draft",
   "supersedesIDs" : [
 

@@ -27,7 +27,7 @@
   "priority" : "high",
   "rationale" : "Stored profiles must reproduce their intended pitches and disclose conflicts with current settings.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",

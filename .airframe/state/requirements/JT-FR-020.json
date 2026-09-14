@@ -24,11 +24,11 @@
   "priority" : "high",
   "rationale" : "Playback should follow user-controlled system routing.",
   "releaseScope" : [
-    "JustTone 1.0"
+    "JustTones 1.0"
   ],
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
-  "statement" : "JustTone shall render through the system-selected built-in speaker, wired output, Bluetooth output, AirPlay output, or other supported audio route without independently changing the system route or system volume.",
+  "statement" : "JustTones shall render through the system-selected built-in speaker, wired output, Bluetooth output, AirPlay output, or other supported audio route without independently changing the system route or system volume.",
   "status" : "draft",
   "supersedesIDs" : [
 
