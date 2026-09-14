@@ -1,0 +1,58 @@
+{
+  "auditEventIDs" : [
+    {
+      "rawValue" : "AUD-AGILE-PLAN-1"
+    }
+  ],
+  "commands" : [
+
+  ],
+  "decisionState" : "approved",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "JustTones\/ (during authorized implementation)",
+    "JustTonesTests\/ (during authorized implementation)",
+    "docs\/Epics\/EP-005-Planning.md",
+    "docs\/Sprints\/SP-010-Planning.md"
+  ],
+  "id" : {
+    "rawValue" : "PLAN-009"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "No activation or implementation authorization is implied."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "iPhone presentation, workflow, localization-ready copy, document-flow presentation, and focused UI evidence; no Watch transport, cloud, microphone, or release qualification."
+  ],
+  "summary" : "Plan the responsive, accessible, locale-aware iPhone musician experience over the existing shared domain and playback lifecycle.",
+  "targetEpicID" : {
+    "rawValue" : "EP-005"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-010"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0004"
+    }
+  ],
+  "title" : "EP-005 iPhone experience plan",
+  "verificationCriteria" : [
+    "Execute the applicable JT-TS-005 automated, simulator, device, and human evidence without substituting one category for another."
+  ]
+}

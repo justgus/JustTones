@@ -8,7 +8,7 @@ Currently: **None**
 
 ## All Sprints
 
-Currently: **9 Sprints** | Next available: **SP-010**
+Currently: **10 Sprints** | Next available: **SP-011**
 
 | Sprint | Title | Epic | Tasks | Issues | Status |
 | ------ | ----- | ---- | ----- | ------ | ------ |
@@ -21,15 +21,16 @@ Currently: **9 Sprints** | Next available: **SP-010**
 | SP-007 | Profile Model and Durable Local Store | EP-004 | T-0003 | None | Closed |
 | SP-008 | Versioned Built-In Catalog | EP-004 | T-0018 | None | Closed |
 | SP-009 | JustTones Interchange and Recovery Surfaces | EP-004 | T-0019 | None | Closed |
+| SP-010 | iPhone Musician Workflow | EP-005 | T-0004 | None | Closed |
 
 ## Statistics
 
-- **Total Sprints:** 9
+- **Total Sprints:** 10
 - **Backlog:** 0
 - **Planning:** 0
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 9
-- **Next available:** SP-010
+- **Closed:** 10
+- **Next available:** SP-011
 
 *Last Updated: 2026-09-14*

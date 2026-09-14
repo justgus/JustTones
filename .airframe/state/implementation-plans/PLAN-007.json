@@ -1,11 +1,13 @@
 {
   "auditEventIDs" : [
-
+    {
+      "rawValue" : "AUD-AGILE-PLAN-2"
+    }
   ],
   "commands" : [
 
   ],
-  "decisionState" : "pending",
+  "decisionState" : "approved",
   "evidenceIDs" : [
 
   ],

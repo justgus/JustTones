@@ -2,17 +2,9 @@
 
 Epics listed here are proposed and queued for future planning.
 
-Currently: **4 backlog Epics**
+Currently: **3 backlog Epics**
 
 ---
-
-## EP-005: iPhone Experience
-
-**Status:** Backlog
-**Owner:** 
-
-**Goal:**
-Deliver the complete responsive and locale-aware iPhone musician experience.
 
 ## EP-006: Watch Companion and Synchronization
 

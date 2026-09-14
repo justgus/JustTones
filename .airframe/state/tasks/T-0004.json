@@ -9,6 +9,8 @@
   "componentsAffected" : [
     "iPhone"
   ],
+  "dateImplemented" : "2026-09-14",
+  "dateVerified" : "2026-09-14",
   "epicID" : {
     "rawValue" : "EP-005"
   },
@@ -21,7 +23,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-04T19:40:25Z"
+    "updatedAt" : "2026-09-14T21:44:07Z"
   },
   "notes" : [
 
@@ -31,6 +33,9 @@
   "requirementIDs" : [
 
   ],
+  "sprintID" : {
+    "rawValue" : "SP-010"
+  },
   "testSteps" : [
     "Exercise primary flows on representative iPhone sizes.",
     "Run accessibility inspection and VoiceOver checks."
@@ -40,7 +45,7 @@
       "rawValue" : "T-0004"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Create the accessible iPhone experience"
   }
 }

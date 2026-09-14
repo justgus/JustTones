@@ -12,7 +12,7 @@ Currently: **8 Epics** | Next available: **EP-009**
 | EP-002 | Pitch, Tuning, and Temperament Engine | Closed | TBD | 2026-09-12 |
 | EP-003 | Audio Synthesis and Playback | Closed | TBD | 2026-09-13 |
 | EP-004 | Profiles, Catalog, Persistence, and Interchange | Closed | TBD | 2026-09-14 |
-| EP-005 | iPhone Experience | Backlog | TBD | TBD |
+| EP-005 | iPhone Experience | Closed | TBD | 2026-09-14 |
 | EP-006 | Watch Companion and Synchronization | Backlog | TBD | TBD |
 | EP-007 | Accessibility, Safety, and Resilience | Backlog | TBD | TBD |
 | EP-008 | Content and App Store Release Qualification | Backlog | TBD | TBD |
@@ -20,9 +20,9 @@ Currently: **8 Epics** | Next available: **EP-009**
 ## Statistics
 
 - **Total Epics:** 8
-- **Backlog:** 4
+- **Backlog:** 3
 - **Active:** 0
-- **Closed:** 4
+- **Closed:** 5
 - **Next available:** EP-009
 
 *Last Updated: 2026-09-14*

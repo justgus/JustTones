@@ -1,9 +1,9 @@
 {
   "afterRecordID" : {
-    "rawValue" : "PLAN-009"
+    "rawValue" : "PLAN-006"
   },
   "beforeRecordID" : {
-    "rawValue" : "PLAN-009"
+    "rawValue" : "PLAN-006"
   },
   "event" : {
     "action" : "OP-HUMAN-APPROVE-PLAN",
@@ -16,15 +16,15 @@
       }
     },
     "id" : {
-      "rawValue" : "AUD-AGILE-PLAN-1"
+      "rawValue" : "AUD-AGILE-PLAN-3"
     },
     "reason" : "allowed",
     "targetProjectID" : {
       "rawValue" : "PRJ-JUSTTONES"
     },
-    "timestamp" : "2026-09-14T20:21:10Z",
+    "timestamp" : "2026-09-14T20:21:36Z",
     "workItemID" : {
-      "rawValue" : "PLAN-009"
+      "rawValue" : "PLAN-006"
     }
   },
   "metadata" : {

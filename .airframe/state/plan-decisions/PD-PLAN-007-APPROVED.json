@@ -1,0 +1,23 @@
+{
+  "auditEventID" : {
+    "rawValue" : "AUD-AGILE-PLAN-2"
+  },
+  "decidedAt" : "2026-09-14T20:21:30Z",
+  "decidedByActorID" : {
+    "rawValue" : "ACTOR-HUMAN-REVIEWER"
+  },
+  "id" : {
+    "rawValue" : "PD-PLAN-007-APPROVED"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "outcome" : "approved",
+  "planID" : {
+    "rawValue" : "PLAN-007"
+  }
+}

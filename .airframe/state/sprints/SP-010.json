@@ -1,0 +1,35 @@
+{
+  "endDate" : "2026-09-14",
+  "epicID" : {
+    "rawValue" : "EP-005"
+  },
+  "goal" : "Deliver the primary, responsive, locale-aware iPhone musician workflow over the qualified shared capabilities.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-14T21:48:19Z"
+  },
+  "notes" : [
+    "Planning is complete in docs\/Sprints\/SP-010-Planning.md and PLAN-009; activation and implementation remain pending human approval."
+  ],
+  "startDate" : "2026-09-14",
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0004"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-010"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "iPhone Musician Workflow"
+  }
+}
