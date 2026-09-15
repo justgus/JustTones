@@ -19,14 +19,22 @@ struct WatchContentView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text(profile.name).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                Text(profile.name)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityAddTraits(.isHeader)
                 Text(entry.label ?? "Pitch").font(.system(.title, design: .rounded)).fontWeight(.semibold)
                     .accessibilityLabel("Selected pitch, \(entry.label ?? "pitch")")
+                    .accessibilityValue("\(frequency, format: .number.precision(.fractionLength(1))) hertz")
                 Text("\(frequency, format: .number.precision(.fractionLength(1))) Hz")
                 Text(playbackRequested ? "Playback requested" : "Stopped")
                     .font(.caption).foregroundStyle(playbackRequested ? .green : .secondary)
                 Text(replica.status.label)
                     .font(.caption2).foregroundStyle(.secondary)
+                    .accessibilityLabel("Companion data status")
+                    .accessibilityValue(replica.status.label)
 
                 Button(playbackRequested ? "Stop" : "Play", systemImage: playbackRequested ? "stop.fill" : "play.fill") {
                     playbackRequested.toggle()
@@ -35,9 +43,15 @@ struct WatchContentView: View {
                 .tint(playbackRequested ? .red : .accentColor)
                 .accessibilityHint(playbackRequested ? "Stops the requested local tone" : "Requests the selected local reference tone")
 
-                HStack {
-                    Button("Previous", systemImage: "chevron.left") { move(-1) }.disabled(entryIndex == 0)
-                    Button("Next", systemImage: "chevron.right") { move(1) }.disabled(entryIndex == profile.entries.count - 1)
+                // Retain side-by-side controls on ordinary displays, but allow accessibility
+                // text sizes and smaller watches to use a vertical layout without clipping.
+                ViewThatFits(in: .horizontal) {
+                    HStack {
+                        pitchNavigationButtons
+                    }
+                    VStack {
+                        pitchNavigationButtons
+                    }
                 }
                 .buttonStyle(.bordered)
 
@@ -72,6 +86,14 @@ struct WatchContentView: View {
     }
 
     private func move(_ delta: Int) { entryIndex = min(max(0, entryIndex + delta), profile.entries.count - 1) }
+
+    @ViewBuilder
+    private var pitchNavigationButtons: some View {
+        Button("Previous", systemImage: "chevron.left") { move(-1) }
+            .disabled(entryIndex == 0)
+        Button("Next", systemImage: "chevron.right") { move(1) }
+            .disabled(entryIndex == profile.entries.count - 1)
+    }
 }
 
 private struct WatchProfileList: View {
@@ -80,18 +102,34 @@ private struct WatchProfileList: View {
     @Binding var entryIndex: Int
     @Environment(\.dismiss) private var dismiss
     var body: some View {
-        List {
-            Section("Profiles") {
-                ForEach(Array(profiles.enumerated()), id: \.element.id) { item in
-                    Button(item.element.name) { profileIndex = item.offset; entryIndex = 0; dismiss() }
+        NavigationStack {
+            List {
+                Section("Profiles") {
+                    ForEach(Array(profiles.enumerated()), id: \.element.id) { item in
+                        Button {
+                            profileIndex = item.offset
+                            entryIndex = 0
+                            dismiss()
+                        } label: {
+                            HStack {
+                                Text(item.element.name)
+                                Spacer()
+                                if item.offset == profileIndex {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .accessibilityHidden(true)
+                                }
+                            }
+                        }
+                        .accessibilityValue(item.offset == profileIndex ? "Selected" : "")
+                    }
+                }
+                Section("Pitches") {
+                    ForEach(Array(profiles[min(profileIndex, profiles.count - 1)].entries.enumerated()), id: \.element.id) { item in
+                        Button(item.element.label ?? "Pitch") { entryIndex = item.offset; dismiss() }
+                    }
                 }
             }
-            Section("Pitches") {
-                ForEach(Array(profiles[min(profileIndex, profiles.count - 1)].entries.enumerated()), id: \.element.id) { item in
-                    Button(item.element.label ?? "Pitch") { entryIndex = item.offset; dismiss() }
-                }
-            }
+            .navigationTitle("Profiles")
         }
-        .navigationTitle("Profiles")
     }
 }

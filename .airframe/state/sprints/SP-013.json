@@ -1,4 +1,5 @@
 {
+  "endDate" : "2026-09-15",
   "epicID" : {
     "rawValue" : "EP-006"
   },
@@ -12,7 +13,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-15T14:30:57Z"
+    "updatedAt" : "2026-09-15T17:46:13Z"
   },
   "notes" : [
     "Blocked on SP-012 completion."
@@ -27,7 +28,7 @@
       "rawValue" : "SP-013"
     },
     "kind" : "sprint",
-    "status" : "planning",
+    "status" : "closed",
     "title" : "Watch Qualification and Resilience"
   }
 }

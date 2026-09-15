@@ -16,6 +16,7 @@
       "rawValue" : "JT-AC-030"
     }
   ],
+  "closeDate" : "2026-09-15",
   "goal" : "Deliver independent Watch playback with atomic automatic synchronization and disconnected operation.",
   "issueIDs" : [
     {
@@ -28,7 +29,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-15T14:30:57Z"
+    "updatedAt" : "2026-09-15T17:46:26Z"
   },
   "notes" : [
 
@@ -68,7 +69,7 @@
       "rawValue" : "EP-006"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Watch Companion and Synchronization"
   }
 }

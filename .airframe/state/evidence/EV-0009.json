@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "JustTonesWatch\/WatchContentView.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (38 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS Simulator,name=Apple Watch Series 11 (42mm),OS=27.0 -derivedDataPath \/private\/tmp\/JustTones-SP013-watch-build build (succeeded); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -destination platform=iOS Simulator,name=iPhone 17,OS=27.0 -derivedDataPath \/private\/tmp\/JustTones-SP013-iphone-build build (succeeded); git diff --check (passed)",
+  "environment" : "macOS; Xcode-beta developer directory; watchOS 27 Apple Watch Series 11 (42mm) simulator build; iOS 27 iPhone 17 simulator build; no physical-device qualification performed",
+  "id" : {
+    "rawValue" : "EV-0009"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-013 accessibility and resilience implementation: Watch presentation now preserves multiline profile names at accessibility sizes, adapts pitch navigation from horizontal to vertical when needed, exposes semantic pitch and synchronization-status values, and presents selected profile state visually and to VoiceOver. Shared-core replica validation and no-auto-resume tests passed; Watch and full iPhone companion builds passed. Physical-device accessibility, route, wrist-down, endurance, energy, installation, and listening qualification remain unverified.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0021"
+    }
+  ]
+}
