@@ -1,0 +1,35 @@
+{
+  "endDate" : "2026-09-15",
+  "epicID" : {
+    "rawValue" : "EP-006"
+  },
+  "goal" : "Deliver independent, truthful, locally synthesized Watch playback and presentation.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T02:51:03Z"
+  },
+  "notes" : [
+    "PLAN-010 approved; implementation authorized within T-0005 only."
+  ],
+  "startDate" : "2026-09-14",
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0005"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-011"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "Independent Watch Playback"
+  }
+}

@@ -2,17 +2,9 @@
 
 Epics listed here are proposed and queued for future planning.
 
-Currently: **3 backlog Epics**
+Currently: **2 backlog Epics**
 
 ---
-
-## EP-006: Watch Companion and Synchronization
-
-**Status:** Backlog
-**Owner:** 
-
-**Goal:**
-Deliver independent Watch playback with atomic automatic synchronization and disconnected operation.
 
 ## EP-007: Accessibility, Safety, and Resilience
 
@@ -30,4 +22,4 @@ Qualify accessibility, hearing safety, deterministic state, and failure containm
 **Goal:**
 Qualify built-in content and the exact release candidate for App Store submission under user control.
 
-*Last Updated: 2026-09-14*
+*Last Updated: 2026-09-15*

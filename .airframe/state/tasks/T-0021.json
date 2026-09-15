@@ -1,0 +1,56 @@
+{
+  "acceptanceCriteria" : [
+    "Watch accessibility, layout, route, wrist-down, endurance, energy, and installation evidence remain separated by simulator versus device source."
+  ],
+  "component" : "Watch qualification",
+  "componentsAffected" : [
+    "Watch"
+  ],
+  "epicID" : {
+    "rawValue" : "EP-006"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T14:30:35Z"
+  },
+  "notes" : [
+    "Physical-device evidence is required where simulation is insufficient."
+  ],
+  "priority" : "high",
+  "rationale" : "Watch behavior must be demonstrated on supported hardware.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-NFR-013"
+    },
+    {
+      "rawValue" : "JT-NFR-014"
+    },
+    {
+      "rawValue" : "JT-NFR-015"
+    },
+    {
+      "rawValue" : "JT-NFR-047"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-013"
+  },
+  "testSteps" : [
+    "Record JT-TEST-088 through JT-TEST-090 and JT-TEST-147."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0021"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Qualify Watch accessibility and resilience"
+  }
+}

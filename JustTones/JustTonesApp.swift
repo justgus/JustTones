@@ -33,9 +33,14 @@ final class IPhoneToneSessionLifecycleAdapter {
 
 @main
 struct JustTonesApp: App {
+    private let watchReplicaTransfer = WatchReplicaTransferCoordinator()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    watchReplicaTransfer.publishCurrentReplica()
+                }
         }
     }
 }

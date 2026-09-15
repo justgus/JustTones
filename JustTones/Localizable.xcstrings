@@ -1,15 +1,95 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ Hz" : {
+
+    },
+    "25%" : {
+
+    },
+    "About" : {
+
+    },
+    "Built-in profiles" : {
+
+    },
+    "Default output" : {
+
+    },
+    "Done" : {
+
+    },
     "JustTones" : {
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "JustTones" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JustTones"
+          }
+        }
       }
     },
+    "JustTones is a silent-by-default reference-tone tool for musicians." : {
+
+    },
+    "Next" : {
+
+    },
+    "Output level" : {
+
+    },
+    "Pitches" : {
+
+    },
+    "Play" : {
+
+    },
+    "Playback" : {
+
+    },
+    "Playback requested" : {
+
+    },
+    "Previous" : {
+
+    },
+    "Profiles" : {
+
+    },
+    "Reference" : {
+
+    },
     "Reference tones for musicians" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reference tones for musicians" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reference tones for musicians"
+          }
+        }
       }
+    },
+    "Requests the selected reference tone" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Sine" : {
+
+    },
+    "Stop" : {
+
+    },
+    "Stopped" : {
+
+    },
+    "Stops the requested reference tone" : {
+
+    },
+    "Timbre" : {
+
     }
   },
   "version" : "1.0"

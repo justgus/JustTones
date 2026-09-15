@@ -1,0 +1,33 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-006"
+  },
+  "goal" : "Blocked on SP-012 completion.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T14:30:57Z"
+  },
+  "notes" : [
+    "Blocked on SP-012 completion."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0021"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-013"
+    },
+    "kind" : "sprint",
+    "status" : "planning",
+    "title" : "Watch Qualification and Resilience"
+  }
+}

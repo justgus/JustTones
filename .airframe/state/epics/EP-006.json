@@ -18,7 +18,9 @@
   ],
   "goal" : "Deliver independent Watch playback with atomic automatic synchronization and disconnected operation.",
   "issueIDs" : [
-
+    {
+      "rawValue" : "I-0001"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -26,7 +28,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-05T21:06:20Z"
+    "updatedAt" : "2026-09-15T14:30:57Z"
   },
   "notes" : [
 
@@ -36,18 +38,29 @@
   ],
   "owner" : "",
   "planningDocumentPaths" : [
-
+    "docs\/Epics\/EP-006-Planning.md"
   ],
   "rationale" : "",
   "scope" : [
 
   ],
   "sprintIDs" : [
-
+    {
+      "rawValue" : "SP-011"
+    },
+    {
+      "rawValue" : "SP-012"
+    },
+    {
+      "rawValue" : "SP-013"
+    }
   ],
   "taskIDs" : [
     {
       "rawValue" : "T-0005"
+    },
+    {
+      "rawValue" : "T-0021"
     }
   ],
   "workItem" : {
@@ -55,7 +68,7 @@
       "rawValue" : "EP-006"
     },
     "kind" : "epic",
-    "status" : "backlog",
+    "status" : "active",
     "title" : "Watch Companion and Synchronization"
   }
 }

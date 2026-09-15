@@ -1,15 +1,69 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ Hz" : {
+
+    },
     "JustTones" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "JustTones" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JustTones"
+          }
+        }
       }
     },
+    "Next" : {
+
+    },
+    "Pitches" : {
+
+    },
+    "Play" : {
+
+    },
+    "Playback requested" : {
+
+    },
+    "Previous" : {
+
+    },
+    "Profiles" : {
+
+    },
     "Ready" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ready" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready"
+          }
+        }
       }
+    },
+    "Requests the selected local reference tone" : {
+
+    },
+    "Selected pitch, %@" : {
+
+    },
+    "Sine · 25% · Watch speaker" : {
+
+    },
+    "Stop" : {
+
+    },
+    "Stopped" : {
+
+    },
+    "Stops the requested local tone" : {
+
+    },
+    "Timbre Sine, output level 25 percent, route Watch speaker" : {
+
     }
   },
   "version" : "1.0"

@@ -6,7 +6,7 @@ struct ContentView: View {
     @State private var playing = false
     @State private var profiles = false
     @State private var settings = false
-    private let profile = BuiltInCatalog.defaultProfile
+    @State private var profile = BuiltInCatalog.defaultProfile
 
     private var entry: TuningProfileEntry { profile.entries[index] }
     private var frequency: Double { (try? entry.pitch.frequency()) ?? 0 }
@@ -54,7 +54,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarLeading) { Button("Profiles", systemImage: "music.note.list") { profiles = true } }
                 ToolbarItem(placement: .topBarTrailing) { Button("Settings", systemImage: "gearshape") { settings = true } }
             }
-            .sheet(isPresented: $profiles) { ProfileSheet(profile: profile, index: $index) }
+            .sheet(isPresented: $profiles) { ProfileSheet(profile: $profile, index: $index) }
             .sheet(isPresented: $settings) { SettingsSheet() }
         }
     }
@@ -62,13 +62,29 @@ struct ContentView: View {
 }
 
 private struct ProfileSheet: View {
-    let profile: TuningProfile
+    @Binding var profile: TuningProfile
     @Binding var index: Int
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack { List {
             Section(profile.instrument ?? "Reference profile") { ForEach(Array(profile.entries.enumerated()), id: \.element.id) { i, item in Button(item.label ?? "Pitch") { index = i; dismiss() } } }
-            Section("Built-in profiles") { ForEach(BuiltInCatalog.profileTemplates, id: \.id) { Text($0.profile.name) } }
+            Section("Built-in profiles") {
+                ForEach(BuiltInCatalog.profileTemplates, id: \.id) { template in
+                    Button {
+                        profile = template.profile
+                        index = 0
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Text(template.profile.name)
+                            Spacer()
+                            if template.profile.id == profile.id {
+                                Image(systemName: "checkmark.circle.fill")
+                            }
+                        }
+                    }
+                }
+            }
         }.navigationTitle("Profiles").toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } } }
     }
 }

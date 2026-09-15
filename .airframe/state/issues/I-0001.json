@@ -1,0 +1,38 @@
+{
+  "affectedComponents" : [
+    "iPhone profile selection"
+  ],
+  "dateResolved" : "2026-09-15",
+  "dateVerified" : "2026-09-15",
+  "epicID" : {
+    "rawValue" : "EP-006"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "expectedBehavior" : "Choosing a built-in profile updates the active profile and displayed pitches.",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T14:28:26Z"
+  },
+  "notes" : [
+    "Resolved implementation: JustTones\/ContentView.swift now stores the active profile in @State; built-in rows are buttons that set it, reset the pitch index to zero, show the active checkmark, and dismiss the sheet. Verification: DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -destination platform=iOS Simulator,name=iPhone 17,OS=27.0 -derivedDataPath \/private\/tmp\/JustTones-profile-selection-build build exited 0. Physical interaction verification remains with the user."
+  ],
+  "observedBehavior" : "In the iPhone Profiles sheet, choosing a built-in profile did not change the displayed profile or its pitch list.",
+  "reproductionSteps" : [
+    "Launch JustTones on iPhone, open Profiles, and tap any row in Built-in profiles."
+  ],
+  "severity" : "medium",
+  "workItem" : {
+    "id" : {
+      "rawValue" : "I-0001"
+    },
+    "kind" : "issue",
+    "status" : "implementedVerified",
+    "title" : "iPhone built-in profile rows do not select a profile"
+  }
+}

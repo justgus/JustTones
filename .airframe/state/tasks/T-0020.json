@@ -1,0 +1,115 @@
+{
+  "acceptanceCriteria" : [
+    "The iPhone automatically transfers a complete versioned replica of required profiles, tuning systems, tunings, reference configurations, visibility\/replacement state, and stable identities to the paired Watch without granting the Watch authoring authority.",
+    "The Watch stages each candidate separately; it activates only a complete, schema-compatible candidate whose manifest, stable identities, references, ordering, limits, and playable dependencies validate successfully.",
+    "Interrupted, incomplete, malformed, invalid, and unsupported-newer candidates cannot displace or partially mix with the last valid compatible Watch replica; the prior replica remains usable.",
+    "The Watch operates from valid local data while the iPhone is unreachable, and its status accurately distinguishes valid data, pending synchronization, last successful update, and actionable failure or incompatibility.",
+    "Deletion, visibility change, and replacement propagate safely. If selected Watch data disappears, local playback stops, a valid fallback is selected silently, and playback requires an explicit new action.",
+    "Synchronization is isolated from iPhone playback, editing, launch, and local persistence; it adds no cloud database, application network traffic, account, remote playback control, or Watch profile authoring."
+  ],
+  "component" : "Watch synchronization",
+  "componentsAffected" : [
+    "Watch",
+    "iPhone",
+    "Shared"
+  ],
+  "dateImplemented" : "2026-09-14",
+  "dateVerified" : "2026-09-15",
+  "epicID" : {
+    "rawValue" : "EP-006"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T14:22:48Z"
+  },
+  "notes" : [
+    "Detailed protocol, state, scope, and evidence boundaries: docs\/Sprints\/SP-012-Planning.md.",
+    "The Watch is a locally playable replica, never the sole recovery authority. A failed or incompatible candidate preserves the last valid compatible replica.",
+    "No cloud service, application network traffic, remote playback control, or Watch profile authoring. Physical-device Watch qualification belongs to SP-013.",
+    "Implementation evidence: DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore passed 38 tests, including WatchReplicaTests; xcodebuild -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -destination generic\/platform=iOS Simulator CODE_SIGNING_ALLOWED=NO build succeeded with temporary DerivedData.",
+    "Paired WatchConnectivity transfer, disconnected behavior, and physical-device route\/wrist-down qualification remain unverified."
+  ],
+  "priority" : "high",
+  "rationale" : "The Watch is a playback replica and must never activate partial data, corrupt valid local data, create unexpected audio, or delay primary iPhone operation.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-DR-003"
+    },
+    {
+      "rawValue" : "JT-DR-004"
+    },
+    {
+      "rawValue" : "JT-DR-008"
+    },
+    {
+      "rawValue" : "JT-DR-010"
+    },
+    {
+      "rawValue" : "JT-FR-056"
+    },
+    {
+      "rawValue" : "JT-FR-057"
+    },
+    {
+      "rawValue" : "JT-FR-058"
+    },
+    {
+      "rawValue" : "JT-FR-059"
+    },
+    {
+      "rawValue" : "JT-FR-060"
+    },
+    {
+      "rawValue" : "JT-FR-061"
+    },
+    {
+      "rawValue" : "JT-NFR-044"
+    },
+    {
+      "rawValue" : "JT-NFR-045"
+    },
+    {
+      "rawValue" : "JT-NFR-047"
+    },
+    {
+      "rawValue" : "JT-NFR-052"
+    },
+    {
+      "rawValue" : "JT-NFR-053"
+    },
+    {
+      "rawValue" : "JT-SR-003"
+    },
+    {
+      "rawValue" : "JT-SR-004"
+    },
+    {
+      "rawValue" : "JT-SR-005"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-012"
+  },
+  "testSteps" : [
+    "Run JT-TEST-080 and JT-TEST-081 for automatic transfer and iPhone-only administration.",
+    "Run JT-TEST-082 and JT-TEST-083 for cross-device identity, complete validation, interrupted transfer, and atomic activation.",
+    "Run JT-TEST-084 through JT-TEST-087 for disconnected operation, truthful status, deletion\/replacement fallback, and compatibility retention.",
+    "Run JT-TEST-167 to demonstrate that recovery remains iPhone-authoritative and the Watch replica is not a backup.",
+    "Add focused deterministic tests for candidate validation, atomic replacement, failure containment, and synchronization isolation; record actual beta-toolchain commands and outcomes. Keep simulator\/model evidence separate from SP-013 physical-device qualification."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0020"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement atomic Watch replica synchronization"
+  }
+}
