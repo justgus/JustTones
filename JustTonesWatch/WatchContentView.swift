@@ -125,7 +125,20 @@ private struct WatchProfileList: View {
                 }
                 Section("Pitches") {
                     ForEach(Array(profiles[min(profileIndex, profiles.count - 1)].entries.enumerated()), id: \.element.id) { item in
-                        Button(item.element.label ?? "Pitch") { entryIndex = item.offset; dismiss() }
+                        Button {
+                            entryIndex = item.offset
+                            dismiss()
+                        } label: {
+                            HStack {
+                                Text(item.element.label ?? "Pitch")
+                                Spacer()
+                                if item.offset == entryIndex {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .accessibilityHidden(true)
+                                }
+                            }
+                        }
+                        .accessibilityValue(item.offset == entryIndex ? "Selected" : "")
                     }
                 }
             }

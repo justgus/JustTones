@@ -1,0 +1,63 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-032: playback begins only through explicit user action and never resumes or migrates routes unexpectedly.",
+    "JT-TEST-029, JT-TEST-031, JT-TEST-033, and JT-TEST-041 cover default-level behavior, unexpected-playback prevention, route-change stop safety, and explicit post-interruption resumption.",
+    "Selection, profile changes, interruption, failure, and route change preserve a truthful stopped state until an explicit permitted restart."
+  ],
+  "component" : "Playback and route-safety qualification",
+  "componentsAffected" : [
+    "iPhone",
+    "Watch",
+    "Shared"
+  ],
+  "epicID" : {
+    "rawValue" : "EP-007"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T21:46:18Z"
+  },
+  "notes" : [
+    "Planning complete for the deliberate-playback portion of SP-015. File an Issue for observed approved-requirement violations; do not broaden route policy or add background playback without explicit authorization.",
+    "Simulator state tests cannot establish actual route audibility, interruption behavior, or physical output; record those separately on hardware."
+  ],
+  "priority" : "high",
+  "rationale" : "No-surprise playback and explicit restart behavior are hearing-safety critical across both platforms.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-SR-002"
+    },
+    {
+      "rawValue" : "JT-SR-003"
+    },
+    {
+      "rawValue" : "JT-SR-004"
+    },
+    {
+      "rawValue" : "JT-SR-005"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-015"
+  },
+  "testSteps" : [
+    "Run JT-TEST-029, JT-TEST-031, JT-TEST-033, and JT-TEST-041 across supported iPhone and Watch lifecycle, selection, route, and interruption states.",
+    "Record starting playback state, selected pitch, route, interruption or route-change event, visible and accessibility-semantic state, and whether a subsequent explicit action is required.",
+    "Keep deterministic state-machine output separate from physical route and listening observations."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0023"
+    },
+    "kind" : "task",
+    "status" : "active",
+    "title" : "Qualify deliberate playback and route safety"
+  }
+}

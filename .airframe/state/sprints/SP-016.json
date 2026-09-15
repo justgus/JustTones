@@ -1,0 +1,37 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-007"
+  },
+  "goal" : "Qualify deterministic failure containment and assemble evidence for human acceptance disposition.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T18:47:02Z"
+  },
+  "notes" : [
+    "Planning initiated. T-0025 owns JT-AC-034 and T-0026 owns JT-AC-035.",
+    "This Sprint follows SP-014 and SP-015; it does not verify or close acceptance criteria on the agent's behalf."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0025"
+    },
+    {
+      "rawValue" : "T-0026"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-016"
+    },
+    "kind" : "sprint",
+    "status" : "planning",
+    "title" : "Failure Containment and Evidence Disposition"
+  }
+}

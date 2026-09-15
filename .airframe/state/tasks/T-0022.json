@@ -1,0 +1,76 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-031: every applicable iPhone and Watch function is operable with approved accessibility technologies and sensory alternatives.",
+    "JT-TEST-063 through JT-TEST-069 record VoiceOver, Dynamic Type, nonvisual state communication, appearance and contrast, Reduce Motion, alternative input, and iPhone size\/orientation behavior.",
+    "Simulator and automated results remain distinct from required physical-device and human accessibility evidence."
+  ],
+  "component" : "Cross-platform accessibility qualification",
+  "componentsAffected" : [
+    "iPhone",
+    "Watch",
+    "Shared",
+    "Documentation"
+  ],
+  "dateVerified" : "2026-09-15",
+  "epicID" : {
+    "rawValue" : "EP-007"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0010"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T21:18:30Z"
+  },
+  "notes" : [
+    "Planning complete for SP-014. Create a defect Issue for any observed approved-requirement violation rather than expanding this Task with unrelated feature work.",
+    "Do not claim VoiceOver quality, touch-target usability, contrast, route behavior, or physical-device operation from a build alone."
+  ],
+  "priority" : "high",
+  "rationale" : "Accessibility is a release-critical cross-platform acceptance boundary and must precede safety-warning qualification.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-NFR-006"
+    },
+    {
+      "rawValue" : "JT-NFR-007"
+    },
+    {
+      "rawValue" : "JT-NFR-008"
+    },
+    {
+      "rawValue" : "JT-NFR-009"
+    },
+    {
+      "rawValue" : "JT-NFR-010"
+    },
+    {
+      "rawValue" : "JT-NFR-011"
+    },
+    {
+      "rawValue" : "JT-NFR-012"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-014"
+  },
+  "testSteps" : [
+    "Run JT-TEST-063 through JT-TEST-069 against both platforms where applicable, recording exact device, OS, accessibility configuration, route, steps, and observed result.",
+    "Exercise VoiceOver pitch spelling and octave speech, Dynamic Type reflow, nonvisual state communication, contrast and appearance, Reduce Motion, Voice Control or Switch Control alternatives, and supported iPhone layout conditions.",
+    "Separate deterministic automated checks, simulator inspection, and physical-device evidence; retain unresolved physical evidence for user verification."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0022"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Qualify accessible operation and inclusive interaction"
+  }
+}

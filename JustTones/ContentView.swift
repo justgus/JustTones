@@ -16,20 +16,29 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     VStack(spacing: 8) {
-                        Text(profile.name).font(.headline).foregroundStyle(.secondary)
+                        Text(profile.name)
+                            .font(.headline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                            .accessibilityAddTraits(.isHeader)
                         Text(entry.label ?? "Reference pitch")
-                            .font(.system(size: 72, weight: .semibold, design: .rounded)).monospacedDigit()
+                            .font(.system(size: 72, weight: .semibold, design: .rounded))
+                            .monospacedDigit()
+                            .minimumScaleFactor(0.6)
+                            .lineLimit(1)
+                            .accessibilityLabel("Selected pitch, \(entry.label ?? "reference pitch")")
+                            .accessibilityValue("\(frequency.formatted(.number.precision(.fractionLength(1)))) hertz")
                         Text("\(frequency.formatted(.number.precision(.fractionLength(1)))) Hz")
+                            .accessibilityHidden(true)
                     }
                     .frame(maxWidth: .infinity).padding(.vertical, 24)
                     .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
 
-                    HStack(spacing: 16) {
-                        Button("Previous", systemImage: "chevron.left") { move(-1) }.disabled(index == 0)
-                        Button(playing ? "Stop" : "Play", systemImage: playing ? "stop.fill" : "play.fill") { playing.toggle() }
-                            .buttonStyle(.borderedProminent).tint(playing ? .red : .accentColor)
-                            .accessibilityHint(playing ? "Stops the requested reference tone" : "Requests the selected reference tone")
-                        Button("Next", systemImage: "chevron.right") { move(1) }.disabled(index == profile.entries.count - 1)
+                    // Large accessibility text and narrow split-screen widths retain all actions
+                    // by falling back to a vertical arrangement instead of clipping controls.
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: 16) { toneControls }
+                        VStack(spacing: 12) { toneControls }
                     }
                     .buttonStyle(.bordered)
 
@@ -43,7 +52,17 @@ struct ContentView: View {
 
                     GroupBox("Pitches") {
                         ForEach(Array(profile.entries.enumerated()), id: \.element.id) { i, item in
-                            Button { index = i } label: { HStack { Text(item.label ?? "Pitch"); Spacer(); if i == index { Image(systemName: "checkmark.circle.fill") } } }
+                            Button { index = i } label: {
+                                HStack {
+                                    Text(item.label ?? "Pitch")
+                                    Spacer()
+                                    if i == index {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .accessibilityHidden(true)
+                                    }
+                                }
+                            }
+                                .accessibilityValue(i == index ? "Selected" : "")
                                 .buttonStyle(.plain).padding(.vertical, 7)
                         }
                     }
@@ -59,6 +78,19 @@ struct ContentView: View {
         }
     }
     private func move(_ delta: Int) { index = min(max(0, index + delta), profile.entries.count - 1) }
+
+    @ViewBuilder
+    private var toneControls: some View {
+        Button("Previous", systemImage: "chevron.left") { move(-1) }
+            .disabled(index == 0)
+        Button(playing ? "Stop" : "Play", systemImage: playing ? "stop.fill" : "play.fill") { playing.toggle() }
+            .buttonStyle(.borderedProminent)
+            .tint(playing ? .red : .accentColor)
+            .accessibilityHint(playing ? "Stops the requested reference tone" : "Requests the selected reference tone")
+            .accessibilityValue(playing ? "Playback requested" : "Stopped")
+        Button("Next", systemImage: "chevron.right") { move(1) }
+            .disabled(index == profile.entries.count - 1)
+    }
 }
 
 private struct ProfileSheet: View {
@@ -67,7 +99,24 @@ private struct ProfileSheet: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack { List {
-            Section(profile.instrument ?? "Reference profile") { ForEach(Array(profile.entries.enumerated()), id: \.element.id) { i, item in Button(item.label ?? "Pitch") { index = i; dismiss() } } }
+            Section(profile.instrument ?? "Reference profile") {
+                ForEach(Array(profile.entries.enumerated()), id: \.element.id) { i, item in
+                    Button {
+                        index = i
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Text(item.label ?? "Pitch")
+                            Spacer()
+                            if i == index {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .accessibilityHidden(true)
+                            }
+                        }
+                    }
+                    .accessibilityValue(i == index ? "Selected" : "")
+                }
+            }
             Section("Built-in profiles") {
                 ForEach(BuiltInCatalog.profileTemplates, id: \.id) { template in
                     Button {
@@ -80,9 +129,11 @@ private struct ProfileSheet: View {
                             Spacer()
                             if template.profile.id == profile.id {
                                 Image(systemName: "checkmark.circle.fill")
+                                    .accessibilityHidden(true)
                             }
                         }
                     }
+                    .accessibilityValue(template.profile.id == profile.id ? "Selected" : "")
                 }
             }
         }.navigationTitle("Profiles").toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } } }

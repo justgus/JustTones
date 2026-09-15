@@ -1,0 +1,53 @@
+{
+  "acceptanceCriteria" : [
+
+  ],
+  "component" : "",
+  "componentsAffected" : [
+
+  ],
+  "epicID" : {
+    "rawValue" : "EP-007"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T18:05:49Z"
+  },
+  "notes" : [
+
+  ],
+  "priority" : "medium",
+  "rationale" : "",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-NFR-044"
+    },
+    {
+      "rawValue" : "JT-NFR-045"
+    },
+    {
+      "rawValue" : "JT-NFR-046"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-016"
+  },
+  "testSteps" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0025"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Qualify deterministic failure containment and responsiveness"
+  }
+}

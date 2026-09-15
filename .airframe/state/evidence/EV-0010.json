@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "JustTones\/ContentView.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (38 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -destination platform=iOS Simulator,name=iPhone 17,OS=27.0 -derivedDataPath \/private\/tmp\/JustTones-SP014-iphone-build build (succeeded); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS Simulator,name=Apple Watch Series 11 (42mm),OS=27.0 -derivedDataPath \/private\/tmp\/JustTones-SP014-watch-build build (succeeded); git diff --check (passed)",
+  "environment" : "macOS; Xcode-beta developer directory; iOS 27 iPhone 17 simulator build; watchOS 27 Apple Watch Series 11 (42mm) simulator build; no physical-device accessibility qualification performed",
+  "id" : {
+    "rawValue" : "EV-0010"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-014 simulator-verifiable accessibility implementation: iPhone and Watch expose selected pitch, playback, synchronization, and list-selection semantics; adaptive control layouts avoid horizontal clipping at larger text sizes; profile headings and names reflow rather than truncate. Shared-core deterministic state tests passed. Physical VoiceOver quality, contrast, alternative input, tactile interaction, and device accessibility acceptance remain unverified.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0022"
+    }
+  ]
+}

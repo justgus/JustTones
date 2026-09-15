@@ -1,0 +1,91 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-033: initial level, headphone and extreme-pitch warnings, duration reminders, SPL boundaries, and system protections satisfy hearing-safety requirements.",
+    "JT-TEST-148 through JT-TEST-161 cover truthful safe-level claims, system protection interaction, warning behavior, duration reminder behavior, unannounced attenuation, warned route restart, unsupported decibel claims, stereo balance, safety content, warning accessibility, physical safety matrix, and copy review.",
+    "The product never calls an output percentage, volume position, peak, or uncalibrated estimate safe, and never counteracts Apple hearing protections."
+  ],
+  "component" : "Hearing-safety qualification",
+  "componentsAffected" : [
+    "iPhone",
+    "Watch",
+    "Shared",
+    "Documentation"
+  ],
+  "epicID" : {
+    "rawValue" : "EP-007"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T21:46:24Z"
+  },
+  "notes" : [
+    "Planning complete for the hearing-safety portion of SP-015. Any changed warning threshold, copy, or protection behavior requires direct requirement evidence and an Issue if the approved behavior is violated.",
+    "Physical-device route, headphone, system-protection, listening, endurance, and warning-acknowledgement observations remain human\/device evidence; no simulator result may substitute for them."
+  ],
+  "priority" : "high",
+  "rationale" : "Hearing-safety communication and system-protection respect are release-critical and require careful physical-device qualification.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-085"
+    },
+    {
+      "rawValue" : "JT-NFR-048"
+    },
+    {
+      "rawValue" : "JT-NFR-049"
+    },
+    {
+      "rawValue" : "JT-NFR-050"
+    },
+    {
+      "rawValue" : "JT-NFR-051"
+    },
+    {
+      "rawValue" : "JT-SR-006"
+    },
+    {
+      "rawValue" : "JT-SR-007"
+    },
+    {
+      "rawValue" : "JT-SR-008"
+    },
+    {
+      "rawValue" : "JT-SR-009"
+    },
+    {
+      "rawValue" : "JT-SR-010"
+    },
+    {
+      "rawValue" : "JT-SR-011"
+    },
+    {
+      "rawValue" : "JT-SR-012"
+    },
+    {
+      "rawValue" : "JT-SR-013"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-015"
+  },
+  "testSteps" : [
+    "Run JT-TEST-148 through JT-TEST-161 except JT-TEST-152, which is not assigned to EP-007. Record warnings, cancellation and acknowledgement paths, route changes, system protection behavior, and resulting stopped or explicit-restart state.",
+    "Inspect all safety information and localization for conservative language, professional-advice boundaries, accessible labels, and absence of unsupported SPL or exposure claims.",
+    "Record device model, OS, route, headphone\/system-protection state, configured level, pitch, duration, exact steps, observed outcome, and evidence source; keep device\/listening results distinct from automated and simulator results."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0024"
+    },
+    "kind" : "task",
+    "status" : "active",
+    "title" : "Qualify hearing safeguards and safety communication"
+  }
+}

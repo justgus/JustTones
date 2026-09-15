@@ -14,14 +14,14 @@ Currently: **8 Epics** | Next available: **EP-009**
 | EP-004 | Profiles, Catalog, Persistence, and Interchange | Closed | TBD | 2026-09-14 |
 | EP-005 | iPhone Experience | Closed | TBD | 2026-09-14 |
 | EP-006 | Watch Companion and Synchronization | Closed | TBD | 2026-09-15 |
-| EP-007 | Accessibility, Safety, and Resilience | Backlog | TBD | TBD |
+| EP-007 | Accessibility, Safety, and Resilience | Active | TBD | TBD |
 | EP-008 | Content and App Store Release Qualification | Backlog | TBD | TBD |
 
 ## Statistics
 
 - **Total Epics:** 8
-- **Backlog:** 2
-- **Active:** 0
+- **Backlog:** 1
+- **Active:** 1
 - **Closed:** 6
 - **Next available:** EP-009
 

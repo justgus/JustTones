@@ -1,0 +1,38 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-007"
+  },
+  "goal" : "Qualify deliberate playback, route safety, hearing safeguards, and truthful safety communication.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T21:46:13Z"
+  },
+  "notes" : [
+    "Planning complete. T-0023 owns JT-AC-032 and T-0024 owns JT-AC-033.",
+    "SP-014 accessibility findings must inform warning and control remediation before this Sprint activates.",
+    "Separate deterministic state checks, simulator inspection, and physical-device\/listening evidence. Do not make a safety or audibility claim from a simulator or uncalibrated measurement."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0023"
+    },
+    {
+      "rawValue" : "T-0024"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-015"
+    },
+    "kind" : "sprint",
+    "status" : "active",
+    "title" : "Playback Safety and Hearing Protection Qualification"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "endDate" : "2026-09-15",
+  "epicID" : {
+    "rawValue" : "EP-007"
+  },
+  "goal" : "Qualify accessible operation and inclusive interaction across iPhone and Watch without treating simulator results as physical-device accessibility acceptance.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-15T21:45:55Z"
+  },
+  "notes" : [
+    "Planning complete. T-0022 owns JT-AC-031 and JT-TEST-063 through JT-TEST-069.",
+    "Activation requires explicit user direction. Record separate automated, simulator, and physical-device evidence."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0022"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-014"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "Accessibility and Inclusive Interaction Qualification"
+  }
+}
