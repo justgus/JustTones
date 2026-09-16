@@ -1,0 +1,12 @@
+{
+  "/Users/justgus/Xcode-Projects/JustTones/JustTonesWatch/JustTonesWatchApp.swift" : {
+    "abi-baseline-json" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch.abi.json",
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary.dia",
+    "objc-header" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-Swift.h",
+    "swiftdoc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch.swiftdoc",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch.swiftmodule",
+    "swiftsourceinfo" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch.swiftsourceinfo"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary.dia",
+    "emit-module-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary-emit-module.dia",
+    "pch" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatch-primary.swiftdeps"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTonesWatch/JustTonesWatchApp.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatchApp.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatchApp.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/JustTonesWatchApp.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTonesWatch/WatchContentView.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/WatchContentView.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/WatchContentView.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/WatchContentView.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTonesWatch/WatchReplicaModel.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/WatchReplicaModel.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/WatchReplicaModel.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/WatchReplicaModel.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/GeneratedAssetSymbols.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/DerivedSources/GeneratedStringSymbols_Localizable.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/GeneratedStringSymbols_Localizable.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/GeneratedStringSymbols_Localizable.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-watchsimulator/JustTonesWatch.build/Objects-normal/x86_64/GeneratedStringSymbols_Localizable.o"
+  }
+}

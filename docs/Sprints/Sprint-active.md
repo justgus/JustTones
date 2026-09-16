@@ -4,26 +4,6 @@ Sprints listed here are currently in Planning or Active status and are the curre
 
 ---
 
-## SP-015: Playback Safety and Hearing Protection Qualification
-
-**Status:** Planning
-**Epic:** EP-007
-**Goal:** Qualify deliberate playback, route safety, hearing safeguards, and truthful safety communication.
-**Start Date:** TBD
-**End Date:** TBD
-**Capacity:** TBD
-
-### Assigned Tasks
-
-| Task | Title | Priority | Status |
-| ---- | ----- | -------- | ------ |
-| T-0023 | Qualify deliberate playback and route safety | High | Backlog |
-| T-0024 | Qualify hearing safeguards and safety communication | High | Backlog |
-
-### Assigned Issues
-
-None.
-
 ## SP-016: Failure Containment and Evidence Disposition
 
 **Status:** Planning
@@ -44,4 +24,4 @@ None.
 
 None.
 
-*Last Updated: 2026-09-15*
+*Last Updated: 2026-09-16*

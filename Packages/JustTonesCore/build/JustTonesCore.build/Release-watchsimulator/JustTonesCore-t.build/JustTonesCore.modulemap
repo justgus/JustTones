@@ -1,0 +1,4 @@
+module JustTonesCore {
+header "JustTonesCore-Swift.h"
+export *
+}

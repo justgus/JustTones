@@ -1,0 +1,34 @@
+{
+  "artifactReferences" : [
+    "JustTones\/ContentView.swift",
+    "JustTonesWatch\/WatchContentView.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator build CODE_SIGNING_ALLOWED=NO (succeeded); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS Simulator,name=Apple Watch Series 11 (42mm),OS=27.0 -derivedDataPath \/private\/tmp\/JustTones-SP015-watch-device build CODE_SIGNING_ALLOWED=NO (succeeded)",
+  "environment" : "macOS; Xcode-beta developer directory; no physical-device or listening qualification performed",
+  "id" : {
+    "rawValue" : "EV-0012"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "Final SP-015 build evidence after the conservative cancellation safeguard: cancelling a high-output warning stops the playback request on both iPhone and Watch. The implementation remains pending human\/device verification.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0023"
+    },
+    {
+      "rawValue" : "T-0024"
+    }
+  ]
+}

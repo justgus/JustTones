@@ -11,7 +11,8 @@ public enum ToneRendererError: Error, Equatable, Sendable {
 
 /// A normalized linear output level. The default is intentionally conservative for a reference tone.
 public struct ToneOutputLevel: Codable, Hashable, Sendable {
-    public static let `default` = ToneOutputLevel(uncheckedValue: 0.12)
+    /// The approved first-launch level. This is an in-app normalized value, not an SPL claim.
+    public static let `default` = ToneOutputLevel(uncheckedValue: 0.25)
     public static let silent = ToneOutputLevel(uncheckedValue: 0)
     public static let maximum = ToneOutputLevel(uncheckedValue: 1)
 

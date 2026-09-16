@@ -1,0 +1,37 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/HearingSafetyPolicy.swift",
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/HearingSafetyPolicyTests.swift",
+    "JustTones\/ContentView.swift",
+    "JustTonesWatch\/WatchContentView.swift",
+    "docs\/Architecture\/MonophonicToneRenderer.md"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (42 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator build CODE_SIGNING_ALLOWED=NO (succeeded); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS Simulator,name=Apple Watch Series 11 (42mm),OS=27.0 -derivedDataPath \/private\/tmp\/JustTones-SP015-watch-device build CODE_SIGNING_ALLOWED=NO (succeeded); git diff --check (passed)",
+  "environment" : "macOS; Xcode-beta developer directory; iOS 27 simulator compilation; watchOS 27 Apple Watch Series 11 (42mm) simulator compilation; no physical-device or listening qualification performed",
+  "id" : {
+    "rawValue" : "EV-0011"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-015 implementation: shared hearing-safety policy establishes the 25% default, conservative high-level and extreme-pitch warnings, and hourly reminder rules; iPhone and Watch expose output controls, warning acknowledgement\/cancellation, stop controls, and safety information. Existing shared playback-lifecycle tests retain the explicit-start and no-auto-resume guarantees. Physical route, interruption, hearing-protection, listening-duration, and accessibility qualification remain unverified.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0023"
+    },
+    {
+      "rawValue" : "T-0024"
+    }
+  ]
+}

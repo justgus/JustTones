@@ -26,17 +26,17 @@ Currently: **16 Sprints** | Next available: **SP-017**
 | SP-012 | Atomic Watch Replica Synchronization | EP-006 | T-0020 | None | Closed |
 | SP-013 | Watch Qualification and Resilience | EP-006 | T-0021 | None | Closed |
 | SP-014 | Accessibility and Inclusive Interaction Qualification | EP-007 | T-0022 | None | Closed |
-| SP-015 | Playback Safety and Hearing Protection Qualification | EP-007 | T-0023, T-0024 | None | Planning |
+| SP-015 | Playback Safety and Hearing Protection Qualification | EP-007 | T-0023, T-0024 | None | Closed |
 | SP-016 | Failure Containment and Evidence Disposition | EP-007 | T-0025, T-0026 | None | Planning |
 
 ## Statistics
 
 - **Total Sprints:** 16
 - **Backlog:** 0
-- **Planning:** 2
+- **Planning:** 1
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 14
+- **Closed:** 15
 - **Next available:** SP-017
 
-*Last Updated: 2026-09-15*
+*Last Updated: 2026-09-16*

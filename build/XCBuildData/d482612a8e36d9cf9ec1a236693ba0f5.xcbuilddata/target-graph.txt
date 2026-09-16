@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'JustTonesWatch' in project 'JustTones'
+➜ Explicit dependency on target 'JustTonesCore-product' in project 'JustTonesCore'
+Target 'JustTonesCore-product' in project 'JustTonesCore'
+➜ Explicit dependency on target 'JustTonesCore' in project 'JustTonesCore'
+Target 'JustTonesCore' in project 'JustTonesCore' (no dependencies)

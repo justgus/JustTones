@@ -1,5 +1,6 @@
 import SwiftUI
 import JustTonesCore
+import AVFoundation
 
 struct WatchContentView: View {
     @StateObject private var replica = WatchReplicaModel()
@@ -7,6 +8,14 @@ struct WatchContentView: View {
     @State private var entryIndex = 0
     @State private var playbackRequested = false
     @State private var profilesPresented = false
+    @AppStorage("watchOutputLevel") private var outputLevel = Double(ToneOutputLevel.default.value)
+    @AppStorage("watchAcknowledgedHeadphoneHighLevelWarning") private var acknowledgedHeadphoneWarning = false
+    @State private var pendingSafetyWarning: HearingSafetyWarning?
+    @State private var playAfterSafetyWarning = false
+    @State private var playbackStartedAt: Date?
+    @State private var remindersPresented = 0
+    @State private var showListeningReminder = false
+    @State private var safetyInfoPresented = false
 
     private var profiles: [TuningProfile] {
         let playable = replica.profiles.filter { !$0.entries.isEmpty }
@@ -37,7 +46,7 @@ struct WatchContentView: View {
                     .accessibilityValue(replica.status.label)
 
                 Button(playbackRequested ? "Stop" : "Play", systemImage: playbackRequested ? "stop.fill" : "play.fill") {
-                    playbackRequested.toggle()
+                    requestPlaybackToggle()
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(playbackRequested ? .red : .accentColor)
@@ -57,14 +66,54 @@ struct WatchContentView: View {
 
                 Button("Profiles", systemImage: "music.note.list") { profilesPresented = true }
                     .buttonStyle(.plain)
-                Text("Sine · 25% · Watch speaker")
+                Stepper("Output \(Int((outputLevel * 100).rounded()))%", value: $outputLevel, in: 0...1, step: 0.05)
+                    .accessibilityHint("In-app output percentage. This is not a sound-pressure-level measurement.")
+                Button("Hearing safety", systemImage: "ear.badge.checkmark") { safetyInfoPresented = true }
+                    .buttonStyle(.plain)
+                Text("Sine · \(Int((outputLevel * 100).rounded()))% · Watch speaker")
                     .font(.caption2).foregroundStyle(.secondary)
-                    .accessibilityLabel("Timbre Sine, output level 25 percent, route Watch speaker")
+                    .accessibilityLabel("Timbre Sine, output level \(Int((outputLevel * 100).rounded())) percent, route Watch speaker")
             }
             .padding(.horizontal)
         }
         .sheet(isPresented: $profilesPresented) {
             WatchProfileList(profiles: profiles, profileIndex: $profileIndex, entryIndex: $entryIndex)
+        }
+        .sheet(isPresented: $safetyInfoPresented) { WatchHearingSafetySheet() }
+        .onAppear { normalizeStoredLevel() }
+        .onChange(of: outputLevel) { _, newValue in
+            handleLevelChange(newValue)
+        }
+        .onChange(of: playbackRequested) { _, isPlaying in
+            playbackStartedAt = isPlaying ? .now : nil
+            remindersPresented = 0
+        }
+        .task(id: playbackRequested) {
+            guard playbackRequested else { return }
+            while !Task.isCancelled && playbackRequested {
+                try? await Task.sleep(for: .seconds(60))
+                guard playbackRequested, let playbackStartedAt else { continue }
+                let elapsed = Date.now.timeIntervalSince(playbackStartedAt)
+                if HearingSafetyPolicy.isReminderDue(
+                    uninterruptedPlayback: elapsed,
+                    remindersAlreadyPresented: remindersPresented
+                ) {
+                    remindersPresented += 1
+                    showListeningReminder = true
+                }
+            }
+        }
+        .alert("Listening reminder", isPresented: $showListeningReminder) {
+            Button("Continue") {}
+            Button("Stop") { playbackRequested = false }
+        } message: {
+            Text("You have been listening for an hour. Consider a break or reducing the output level.")
+        }
+        .alert(safetyWarningTitle, isPresented: safetyWarningPresented) {
+            Button("Cancel", role: .cancel) { cancelSafetyWarning() }
+            Button("Continue") { acknowledgeSafetyWarning() }
+        } message: {
+            Text(safetyWarningMessage)
         }
         .onChange(of: replica.profiles) { _, profiles in
             let selectedID = profile.id
@@ -87,12 +136,103 @@ struct WatchContentView: View {
 
     private func move(_ delta: Int) { entryIndex = min(max(0, entryIndex + delta), profile.entries.count - 1) }
 
+    private var safetyWarningPresented: Binding<Bool> {
+        Binding(get: { pendingSafetyWarning != nil }, set: { if !$0 { cancelSafetyWarning() } })
+    }
+
+    private var safetyWarningTitle: String {
+        switch pendingSafetyWarning {
+        case .headphoneHighLevel: "High output with headphones"
+        case .extremePitchHighLevel: "High output at a very high pitch"
+        case nil: "Hearing safety"
+        }
+    }
+
+    private var safetyWarningMessage: String {
+        switch pendingSafetyWarning {
+        case .headphoneHighLevel:
+            "Actual exposure depends on system volume, equipment, and listening duration. This percentage is not a safe-level measurement."
+        case .extremePitchHighLevel:
+            "Very high frequencies can be difficult to judge by perceived loudness. Approach this pitch at a low level."
+        case nil: ""
+        }
+    }
+
+    private func requestPlaybackToggle() {
+        guard !playbackRequested else {
+            playbackRequested = false
+            return
+        }
+        guard let level = try? ToneOutputLevel(Float(outputLevel)) else { return }
+        if let warning = HearingSafetyPolicy.warning(
+            level: level,
+            frequency: frequency,
+            hasRecognizedHeadphones: hasRecognizedHeadphones,
+            hasAcknowledgedHeadphoneHighLevelWarning: acknowledgedHeadphoneWarning
+        ) {
+            playAfterSafetyWarning = true
+            pendingSafetyWarning = warning
+            return
+        }
+        playbackRequested = true
+    }
+
+    private func handleLevelChange(_ level: Double) {
+        guard playbackRequested, let validatedLevel = try? ToneOutputLevel(Float(level)) else { return }
+        pendingSafetyWarning = HearingSafetyPolicy.warning(
+            level: validatedLevel,
+            frequency: frequency,
+            hasRecognizedHeadphones: hasRecognizedHeadphones,
+            hasAcknowledgedHeadphoneHighLevelWarning: acknowledgedHeadphoneWarning
+        )
+        playAfterSafetyWarning = pendingSafetyWarning != nil
+    }
+
+    private func acknowledgeSafetyWarning() {
+        if pendingSafetyWarning == .headphoneHighLevel { acknowledgedHeadphoneWarning = true }
+        pendingSafetyWarning = nil
+        if playAfterSafetyWarning { playbackRequested = true }
+        playAfterSafetyWarning = false
+    }
+
+    private func cancelSafetyWarning() {
+        pendingSafetyWarning = nil
+        playAfterSafetyWarning = false
+        playbackRequested = false
+    }
+
+    private func normalizeStoredLevel() {
+        outputLevel = min(max(outputLevel, 0), 1)
+    }
+
+    private var hasRecognizedHeadphones: Bool {
+        AVAudioSession.sharedInstance().currentRoute.outputs.contains {
+            [.headphones, .bluetoothA2DP, .bluetoothHFP, .bluetoothLE].contains($0.portType)
+        }
+    }
+
     @ViewBuilder
     private var pitchNavigationButtons: some View {
         Button("Previous", systemImage: "chevron.left") { move(-1) }
             .disabled(entryIndex == 0)
         Button("Next", systemImage: "chevron.right") { move(1) }
             .disabled(entryIndex == profile.entries.count - 1)
+    }
+}
+
+private struct WatchHearingSafetySheet: View {
+    var body: some View {
+        List {
+            Section("Your control") {
+                Text("JustTones starts at 25%. Lower the in-app output or stop playback at any time.")
+                Text("The displayed percentage is not a sound-pressure-level measurement; exposure also depends on system volume, route, and listening duration.")
+            }
+            Section("Helpful resources") {
+                Link("Headphone audio levels", destination: URL(string: "https://support.apple.com/guide/iphone/headphone-audio-levels-iph0596a9152/ios")!)
+                Link("WHO safe listening", destination: URL(string: "https://www.who.int/health-topics/hearing-loss/safe-listening")!)
+            }
+        }
+        .navigationTitle("Hearing safety")
     }
 }
 

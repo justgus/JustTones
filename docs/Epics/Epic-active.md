@@ -20,7 +20,7 @@ Qualify accessibility, hearing safety, deterministic state, and failure containm
 | Sprint | Goal | Status |
 | ------ | ---- | ------ |
 | SP-014 | Qualify accessible operation and inclusive interaction across iPhone and Watch without treating simulator results as physical-device accessibility acceptance. | Closed |
-| SP-015 | Qualify deliberate playback, route safety, hearing safeguards, and truthful safety communication. | Planning |
+| SP-015 | Qualify deliberate playback, route safety, hearing safeguards, and truthful safety communication. | Closed |
 | SP-016 | Qualify deterministic failure containment and assemble evidence for human acceptance disposition. | Planning |
 
 ### Related Tasks
@@ -28,8 +28,8 @@ Qualify accessibility, hearing safety, deterministic state, and failure containm
 | Task | Title | Status |
 | ---- | ----- | ------ |
 | T-0022 | Qualify accessible operation and inclusive interaction | Implemented - Verified |
-| T-0023 | Qualify deliberate playback and route safety | Backlog |
-| T-0024 | Qualify hearing safeguards and safety communication | Backlog |
+| T-0023 | Qualify deliberate playback and route safety | Implemented - Verified |
+| T-0024 | Qualify hearing safeguards and safety communication | Implemented - Verified |
 | T-0025 | Qualify deterministic failure containment and responsiveness | Backlog |
 | T-0026 | Consolidate qualification evidence and acceptance disposition | Backlog |
 | T-0008 | Qualify accessibility, safety, and resilience | Backlog |
@@ -39,4 +39,4 @@ Qualify accessibility, hearing safety, deterministic state, and failure containm
 | Issue | Title | Status |
 | ----- | ----- | ------ |
 
-*Last Updated: 2026-09-15*
+*Last Updated: 2026-09-16*
