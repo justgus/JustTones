@@ -1,0 +1,35 @@
+{
+  "endDate" : "2026-09-16",
+  "epicID" : {
+    "rawValue" : "EP-009"
+  },
+  "goal" : "Planning complete; remains backlog until user activation.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-16T21:32:34Z"
+  },
+  "notes" : [
+    "Planning complete; remains backlog until user activation.",
+    "No microphone permission, background-mode change, automatic resume, or release workflow is authorized by this Sprint."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0027"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-017"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "iPhone Audible Playback Host"
+  }
+}

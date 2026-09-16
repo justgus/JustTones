@@ -1,0 +1,55 @@
+{
+  "acceptanceCriteria" : [
+    "An explicit Watch Play action produces the selected shared-renderer tone locally through a Watch AVAudioEngine output host without a reachable iPhone.",
+    "Watch selection changes, stop, route loss, interruption, and engine failure do not cause automatic restart or remote-control iPhone playback.",
+    "The Watch UI communicates actual playback state rather than a request flag."
+  ],
+  "component" : "Watch AVFoundation playback host",
+  "componentsAffected" : [
+    "Watch",
+    "Shared audio renderer",
+    "Playback lifecycle",
+    "Watch UI"
+  ],
+  "epicID" : {
+    "rawValue" : "EP-009"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-16T15:01:35Z"
+  },
+  "notes" : [
+    "Planning complete. The current WatchContentView changes playbackRequested only; this Task owns the missing local audible Watch integration.",
+    "Do not introduce a microphone, iPhone remote-control path, cloud service, automatic resume, or unsupported background behavior."
+  ],
+  "priority" : "high",
+  "rationale" : "Independent audible Watch reference-tone playback is a defined product capability and is absent from the current UI-to-renderer path.",
+  "requirementIDs" : [
+    { "rawValue" : "JT-FR-011" },
+    { "rawValue" : "JT-FR-014" },
+    { "rawValue" : "JT-NFR-004" }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-018"
+  },
+  "testSteps" : [
+    "Add deterministic Watch-host tests for explicit start and stop, local lifecycle ownership, selection changes, and engine-start failure.",
+    "Run JT-TEST-024, JT-TEST-025, JT-TEST-032, JT-TEST-038, JT-TEST-040, JT-TEST-131, JT-TEST-134, JT-TEST-135, and JT-TEST-143 where applicable.",
+    "Record exact Watch model, OS, route, selected tone, level, action sequence, actual playback state, and outcome; do not infer audibility or route behavior from a build."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0028"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Integrate audible Watch reference-tone playback"
+  }
+}

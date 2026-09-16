@@ -24,6 +24,9 @@
   "summary" : "SP-014 simulator-verifiable accessibility implementation: iPhone and Watch expose selected pitch, playback, synchronization, and list-selection semantics; adaptive control layouts avoid horizontal clipping at larger text sizes; profile headings and names reflow rather than truncate. Shared-core deterministic state tests passed. Physical VoiceOver quality, contrast, alternative input, tactile interaction, and device accessibility acceptance remain unverified.",
   "workItemIDs" : [
     {
+      "rawValue" : "T-0008"
+    },
+    {
       "rawValue" : "T-0022"
     }
   ]

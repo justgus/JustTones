@@ -28,6 +28,9 @@
   "summary" : "SP-015 implementation: shared hearing-safety policy establishes the 25% default, conservative high-level and extreme-pitch warnings, and hourly reminder rules; iPhone and Watch expose output controls, warning acknowledgement\/cancellation, stop controls, and safety information. Existing shared playback-lifecycle tests retain the explicit-start and no-auto-resume guarantees. Physical route, interruption, hearing-protection, listening-duration, and accessibility qualification remain unverified.",
   "workItemIDs" : [
     {
+      "rawValue" : "T-0008"
+    },
+    {
       "rawValue" : "T-0023"
     },
     {

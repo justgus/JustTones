@@ -1,0 +1,36 @@
+{
+  "artifactReferences" : [
+    "docs\/Qualification\/SP-016-Evidence.md"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (45 tests passed); Xcode-beta iPhone and Watch simulator-target builds passed.",
+  "environment" : "macOS host; Xcode-beta; deterministic package tests and simulator-target compilation only; no physical-device, route, listening, or accessibility qualification performed.",
+  "id" : {
+    "rawValue" : "EV-0013"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-016 deterministic failure-containment, lifecycle, persistence, and simulator-target build evidence.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0008"
+    },
+    {
+      "rawValue" : "T-0025"
+    },
+    {
+      "rawValue" : "T-0026"
+    }
+  ]
+}

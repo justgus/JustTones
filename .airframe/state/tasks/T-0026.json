@@ -1,16 +1,24 @@
 {
   "acceptanceCriteria" : [
-
+    "JT-AC-035: accessibility, safety, privacy, and resilience evidence distinguishes automated, simulator, and required physical-device verification.",
+    "The acceptance package inventories completed, absent, blocked, inconclusive, and defect evidence with a reproducible provenance record.",
+    "Only the user may verify a Task, acceptance criterion, Sprint, or Epic; this Task prepares the disposition package and residual-risk list."
   ],
-  "component" : "",
+  "component" : "Qualification evidence and acceptance-disposition planning",
   "componentsAffected" : [
-
+    "Documentation",
+    "iPhone",
+    "Watch",
+    "Shared"
   ],
+  "dateVerified" : "2026-09-16",
   "epicID" : {
     "rawValue" : "EP-007"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0013"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -18,13 +26,14 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-15T18:06:02Z"
+    "updatedAt" : "2026-09-16T14:41:10Z"
   },
   "notes" : [
-
+    "Planning complete for evidence provenance and acceptance disposition. Preserve the distinction between automated, simulator, and physical-device observations; do not infer a physical result from a build or simulator.",
+    "The canonical records currently mark JT-AC-034 and JT-AC-035 verified. T-0026 must inventory supporting evidence and flag any mismatch for user disposition without changing verification state."
   ],
-  "priority" : "medium",
-  "rationale" : "",
+  "priority" : "high",
+  "rationale" : "A traceable evidence package is required to make a truthful human acceptance decision across accessibility, hearing safety, privacy, and resilience.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-NFR-050"
@@ -34,14 +43,17 @@
     "rawValue" : "SP-016"
   },
   "testSteps" : [
-
+    "Inventory the EP-007 qualification evidence and record build or commit, platform, device and OS, route and accessibility configuration where relevant, starting state, exact actions, expected and observed outcomes, result, date, and artifact location.",
+    "Classify every entry as automated, simulator, or physical-device evidence; distinguish passing, absent, blocked, inconclusive, and defect outcomes.",
+    "Confirm that JT-TEST-160 physical hearing-safety records include the required device and route matrix where applicable, without treating simulator output as a substitute.",
+    "File an Issue for an observed approved-requirement violation and record its reproduction and disposition; prepare the evidence package and residual risks for user review without self-verifying acceptance."
   ],
   "workItem" : {
     "id" : {
       "rawValue" : "T-0026"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Consolidate qualification evidence and acceptance disposition"
   }
 }

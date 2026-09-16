@@ -1,0 +1,55 @@
+{
+  "acceptanceCriteria" : [
+    "Automated host tests demonstrate that the iPhone and Watch renderer paths remain silent until explicit Play and stop on selection, interruption, route loss, or engine failure.",
+    "Click-free ramps, selected-frequency integrity, bounded output, and lifecycle/UI truthfulness have deterministic evidence for both platform hosts.",
+    "The evidence package distinguishes automated checks, simulator inspection, and physical-device listening, route, latency, endurance, energy, thermal, and accessibility observations."
+  ],
+  "component" : "Cross-platform audible-playback qualification",
+  "componentsAffected" : [
+    "iPhone",
+    "Watch",
+    "Shared audio renderer",
+    "Documentation"
+  ],
+  "epicID" : {
+    "rawValue" : "EP-009"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-16T15:01:35Z"
+  },
+  "notes" : [
+    "Planning complete. This Task qualifies the host integration delivered by T-0027 and T-0028; it does not replace EP-008 release qualification or authorize submission.",
+    "Observed approved-requirement violations become Issues. A simulator build, deterministic buffer test, or listening assertion from an agent is not physical-device acceptance."
+  ],
+  "priority" : "high",
+  "rationale" : "The product cannot claim actual reference-tone playback until the new platform hosts have deterministic integration coverage and separately recorded hardware evidence.",
+  "requirementIDs" : [
+    { "rawValue" : "JT-NFR-004" },
+    { "rawValue" : "JT-NFR-044" },
+    { "rawValue" : "JT-NFR-045" }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-019"
+  },
+  "testSteps" : [
+    "Run the T-0027 and T-0028 deterministic host suites plus JT-TEST-024, JT-TEST-025, JT-TEST-032, JT-TEST-038, JT-TEST-040, JT-TEST-115, JT-TEST-116, JT-TEST-131, JT-TEST-134 through JT-136, JT-TEST-140 through JT-143, and JT-TEST-144 through JT-146 where applicable.",
+    "Separate automated renderer and host results from simulator UI inspection and physical-device evidence. Record build or commit, platform, model, OS, route, starting state, selected tone, level, exact actions, expected result, observed result, and evidence source.",
+    "Retain residual device obligations for listening quality, routes, interruptions, latency, endurance, energy, thermal state, Low Power Mode, and accessibility; user review remains required for acceptance."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0029"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Qualify audible playback integration and failure containment"
+  }
+}

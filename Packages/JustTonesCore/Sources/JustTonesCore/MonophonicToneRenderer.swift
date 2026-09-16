@@ -7,6 +7,7 @@ public enum ToneRendererError: Error, Equatable, Sendable {
     case frequencyExceedsNyquist
     case noSelectedFrequency
     case invalidLevel
+    case invalidRenderFrequency
 }
 
 /// A normalized linear output level. The default is intentionally conservative for a reference tone.
@@ -30,6 +31,22 @@ public struct ToneOutputLevel: Codable, Hashable, Sendable {
     }
 }
 
+/// A validated renderer input that retains the precision of a frequency calculated by a tuning
+/// system. User-entered `DirectFrequency` remains limited to its documented tenth-Hz increment.
+public struct ToneRenderFrequency: Hashable, Sendable {
+    public let hertz: Double
+
+    public init(hertz: Double) throws {
+        guard hertz.isFinite,
+              (DirectFrequency.minimumHertz ... DirectFrequency.maximumHertz).contains(hertz) else {
+            throw ToneRendererError.invalidRenderFrequency
+        }
+        self.hertz = hertz
+    }
+
+    public init(_ frequency: DirectFrequency) { hertz = frequency.hertz }
+}
+
 /// The renderer's observable playback state. It is not UI-observed and may be read by a control path.
 public enum TonePlaybackState: Sendable, Equatable {
     case stopped
@@ -45,7 +62,7 @@ public struct MonophonicToneRenderer: Sendable {
     public let sampleRate: Double
     public let rampFrames: Int
 
-    public private(set) var selectedFrequency: DirectFrequency?
+    public private(set) var selectedFrequency: ToneRenderFrequency?
     public private(set) var selectedLevel: ToneOutputLevel
     public private(set) var selectedTimbre: BuiltInTimbre = .sine
     public private(set) var playbackState: TonePlaybackState = .stopped
@@ -81,7 +98,7 @@ public struct MonophonicToneRenderer: Sendable {
     }
 
     /// Chooses a frequency without beginning playback. A playing renderer changes frequency over its ramp.
-    public mutating func select(frequency: DirectFrequency) throws {
+    public mutating func select(frequency: ToneRenderFrequency) throws {
         try validateNyquist(frequency)
         selectedFrequency = frequency
 
@@ -90,6 +107,10 @@ public struct MonophonicToneRenderer: Sendable {
         } else {
             currentFrequency = frequency.hertz
         }
+    }
+
+    public mutating func select(frequency: DirectFrequency) throws {
+        try select(frequency: ToneRenderFrequency(frequency))
     }
 
     /// Starts the selected tone. A renderer is silent until this explicit call.
@@ -116,9 +137,13 @@ public struct MonophonicToneRenderer: Sendable {
     }
 
     /// Chooses a frequency and explicitly begins playback in one control-path operation.
-    public mutating func start(frequency: DirectFrequency, level: ToneOutputLevel? = nil) throws {
+    public mutating func start(frequency: ToneRenderFrequency, level: ToneOutputLevel? = nil) throws {
         try select(frequency: frequency)
         try start(level: level)
+    }
+
+    public mutating func start(frequency: DirectFrequency, level: ToneOutputLevel? = nil) throws {
+        try start(frequency: ToneRenderFrequency(frequency), level: level)
     }
 
     /// Changes the selected output level. A playing renderer reaches it over its finite amplitude ramp.
@@ -181,7 +206,7 @@ public struct MonophonicToneRenderer: Sendable {
         }
     }
 
-    private mutating func validateNyquist(_ frequency: DirectFrequency) throws {
+    private mutating func validateNyquist(_ frequency: ToneRenderFrequency) throws {
         guard frequency.hertz <= sampleRate / 2 else {
             throw ToneRendererError.frequencyExceedsNyquist
         }

@@ -25,6 +25,9 @@
   "summary" : "Final SP-015 build evidence after the conservative cancellation safeguard: cancelling a high-output warning stops the playback request on both iPhone and Watch. The implementation remains pending human\/device verification.",
   "workItemIDs" : [
     {
+      "rawValue" : "T-0008"
+    },
+    {
       "rawValue" : "T-0023"
     },
     {

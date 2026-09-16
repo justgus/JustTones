@@ -1,22 +1,49 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ Hz" : {
+    "" : {
 
     },
-    "25%" : {
+    "%@ hertz" : {
+
+    },
+    "%@ Hz" : {
 
     },
     "About" : {
 
     },
+    "Apple hearing health" : {
+
+    },
+    "Avoid raising volume to overcome ambient noise. Keep Apple hearing-protection features enabled. If you notice persistent ringing, muffled hearing, or other symptoms, stop listening and seek advice from a qualified professional." : {
+
+    },
     "Built-in profiles" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Check your listening level and consider taking a listening break. Risk depends on level, duration, equipment, and system volume." : {
+
+    },
+    "Continue" : {
 
     },
     "Default output" : {
 
     },
     "Done" : {
+
+    },
+    "Hearing safety" : {
+
+    },
+    "Hearing-safety information" : {
+
+    },
+    "In-app output level" : {
 
     },
     "JustTones" : {
@@ -32,7 +59,19 @@
     "JustTones is a silent-by-default reference-tone tool for musicians." : {
 
     },
+    "Learn more" : {
+
+    },
+    "Listening carefully" : {
+
+    },
+    "Listening reminder" : {
+
+    },
     "Next" : {
+
+    },
+    "OK" : {
 
     },
     "Output level" : {
@@ -47,7 +86,7 @@
     "Playback" : {
 
     },
-    "Playback requested" : {
+    "Plays the selected reference tone" : {
 
     },
     "Previous" : {
@@ -70,7 +109,13 @@
         }
       }
     },
-    "Requests the selected reference tone" : {
+    "Risk depends on listening level, duration, equipment, and system volume. The in-app output level is not an SPL or exposure measurement. Start low, and take breaks during extended playback." : {
+
+    },
+    "Selected" : {
+
+    },
+    "Selected pitch, %@" : {
 
     },
     "Settings" : {
@@ -82,13 +127,16 @@
     "Stop" : {
 
     },
-    "Stopped" : {
+    "Stops the reference tone" : {
 
     },
-    "Stops the requested reference tone" : {
+    "This in-app percentage is not a sound-pressure-level measurement." : {
 
     },
     "Timbre" : {
+
+    },
+    "World Health Organization: safe listening" : {
 
     }
   },

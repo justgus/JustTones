@@ -1,0 +1,58 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-042"
+    }
+  ],
+  "artifactReferences" : [
+
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "Watch output is local and begins only after Play; all stop or failure paths become truthful stopped or unavailable state and do not affect iPhone playback."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-237"
+  },
+  "kind" : "integration",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Verify that explicit Watch Play drives local shared-renderer output without iPhone availability and that Watch state reflects the local host.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-011"
+    },
+    {
+      "rawValue" : "JT-FR-014"
+    },
+    {
+      "rawValue" : "JT-NFR-004"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "With no reachable iPhone, select a supported tone and activate Watch Play; exercise stop, selection change, interruption, route loss, and engine-start failure."
+  ],
+  "title" : "Independent Watch audible output host integration",
+  "workItemIDs" : [
+    {
+      "rawValue" : "EP-009"
+    },
+    {
+      "rawValue" : "SP-018"
+    },
+    {
+      "rawValue" : "T-0028"
+    }
+  ]
+}

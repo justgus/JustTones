@@ -1,7 +1,34 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "%@ hertz" : {
+
+    },
     "%@ Hz" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Companion data status" : {
+
+    },
+    "Continue" : {
+
+    },
+    "Headphone audio levels" : {
+
+    },
+    "Hearing safety" : {
+
+    },
+    "Helpful resources" : {
+
+    },
+    "In-app output percentage. This is not a sound-pressure-level measurement." : {
 
     },
     "JustTones" : {
@@ -15,7 +42,16 @@
         }
       }
     },
+    "JustTones starts at 25%. Lower the in-app output or stop playback at any time." : {
+
+    },
+    "Listening reminder" : {
+
+    },
     "Next" : {
+
+    },
+    "Output %lld%%" : {
 
     },
     "Pitches" : {
@@ -47,10 +83,13 @@
     "Requests the selected local reference tone" : {
 
     },
+    "Selected" : {
+
+    },
     "Selected pitch, %@" : {
 
     },
-    "Sine · 25% · Watch speaker" : {
+    "Sine · %lld%% · Watch speaker" : {
 
     },
     "Stop" : {
@@ -62,7 +101,19 @@
     "Stops the requested local tone" : {
 
     },
-    "Timbre Sine, output level 25 percent, route Watch speaker" : {
+    "The displayed percentage is not a sound-pressure-level measurement; exposure also depends on system volume, route, and listening duration." : {
+
+    },
+    "Timbre Sine, output level %lld percent, route Watch speaker" : {
+
+    },
+    "WHO safe listening" : {
+
+    },
+    "You have been listening for an hour. Consider a break or reducing the output level." : {
+
+    },
+    "Your control" : {
 
     }
   },

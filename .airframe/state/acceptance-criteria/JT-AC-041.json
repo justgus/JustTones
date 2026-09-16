@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-041"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-16T21:32:52Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-009"
+  },
+  "text" : "An explicit iPhone Play action produces the selected shared-renderer reference tone through a real AVFoundation output host, and the iPhone UI reflects actual playback lifecycle state."
+}

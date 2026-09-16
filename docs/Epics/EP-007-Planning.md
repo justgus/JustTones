@@ -1,6 +1,6 @@
 # EP-007 — Accessibility, Safety, and Resilience Plan
 
-Status: planning complete. Activating this Epic authorizes its coordinated qualification scope; it does not activate `T-0008`, create a Sprint, verify acceptance criteria, or authorize release.
+Status: closed on 2026-09-16. Its coordinated qualification scope was delivered through the explicitly assigned execution Tasks; the user verified and closed `T-0008` as their successor-task umbrella record.
 
 ## Objective and dependency
 
@@ -10,7 +10,7 @@ The Epic is complete only when its evidence distinguishes deterministic automate
 
 ## Delivery sequence and acceptance ownership
 
-The former umbrella task, `T-0008`, remains backlog coordination context only and must not be activated as the execution vehicle for the Epic. Each acceptance criterion has one explicit delivery owner:
+The former umbrella task, `T-0008`, is retained as a closed project-level record and is not owned by this closed Epic. It was implemented and verified through the assigned successor Tasks, not through a duplicate execution path. Each acceptance criterion has one explicit delivery owner:
 
 | Sprint | Task | Acceptance criterion | Focus |
 | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ The former umbrella task, `T-0008`, remains backlog coordination context only an
 | SP-016 | T-0025 | JT-AC-034 | Failure injection, conflicting lifecycle transitions, rapid operations, and persistence responsiveness. |
 | SP-016 | T-0026 | JT-AC-035 | Evidence provenance, physical-device qualification records, issue disposition, and acceptance-package completeness. |
 
-The Sprints are sequential: inclusive interaction precedes safety qualification; safety qualification precedes final resilience and evidence disposition. No Sprint activates until the user explicitly directs it.
+The Sprints are sequential: inclusive interaction precedes safety qualification; safety qualification precedes final resilience and evidence disposition. SP-016 was activated by the user on 2026-09-16; task execution remains separately authorized.
 
 All execution Tasks must preserve these product invariants:
 

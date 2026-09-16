@@ -4,7 +4,7 @@ import AVFoundation
 
 struct ContentView: View {
     @State private var index = 0
-    @State private var playing = false
+    @State private var playbackHost = TonePlaybackHost()
     @State private var profiles = false
     @State private var settings = false
     @State private var profile = BuiltInCatalog.defaultProfile
@@ -55,7 +55,7 @@ struct ContentView: View {
                     Grid(horizontalSpacing: 18, verticalSpacing: 12) {
                         GridRow { Text("Timbre").foregroundStyle(.secondary); Text("Sine").gridColumnAlignment(.trailing) }
                         GridRow { Text("Output level").foregroundStyle(.secondary); Text(outputLevel, format: .percent.precision(.fractionLength(0))).gridColumnAlignment(.trailing) }
-                        GridRow { Text("Playback").foregroundStyle(.secondary); Text(playing ? "Playback requested" : "Stopped").gridColumnAlignment(.trailing) }
+                        GridRow { Text("Playback").foregroundStyle(.secondary); Text(playbackStatus).gridColumnAlignment(.trailing) }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading).padding()
                     .background(.quaternary, in: RoundedRectangle(cornerRadius: 16))
@@ -98,21 +98,27 @@ struct ContentView: View {
                 SettingsSheet(safetyInfoPresented: $safetyInfoPresented)
             }
             .sheet(isPresented: $safetyInfoPresented) { HearingSafetySheet() }
-            .onAppear { normalizeStoredLevel() }
+            .onAppear {
+                normalizeStoredLevel()
+                synchronizeSelection()
+            }
             .onChange(of: outputLevel) { oldValue, newValue in
                 handleLevelChange(from: oldValue, to: newValue)
+                synchronizeSelection()
             }
-            .onChange(of: playing) { _, isPlaying in
-                if !isPlaying {
+            .onChange(of: index) { _, _ in synchronizeSelection() }
+            .onChange(of: profile) { _, _ in synchronizeSelection() }
+            .onChange(of: playbackHost.state) { _, state in
+                if state != .playing {
                     playbackStartedAt = nil
                     remindersPresented = 0
                 }
             }
-            .task(id: playing) {
-                guard playing else { return }
+            .task(id: playbackHost.state) {
+                guard playbackHost.isPlaying else { return }
                 while !Task.isCancelled {
                     try? await Task.sleep(nanoseconds: 60_000_000_000)
-                    guard playing, let playbackStartedAt else { return }
+                    guard playbackHost.isPlaying, let playbackStartedAt else { return }
                     if HearingSafetyPolicy.isReminderDue(
                         uninterruptedPlayback: Date().timeIntervalSince(playbackStartedAt),
                         remindersAlreadyPresented: remindersPresented
@@ -141,11 +147,11 @@ struct ContentView: View {
     private var toneControls: some View {
         Button("Previous", systemImage: "chevron.left") { move(-1) }
             .disabled(index == 0)
-        Button(playing ? "Stop" : "Play", systemImage: playing ? "stop.fill" : "play.fill") { requestPlaybackToggle() }
+        Button(playbackHost.isPlaying || playbackHost.state == .starting ? "Stop" : "Play", systemImage: playbackHost.isPlaying || playbackHost.state == .starting ? "stop.fill" : "play.fill") { requestPlaybackToggle() }
             .buttonStyle(.borderedProminent)
-            .tint(playing ? .red : .accentColor)
-            .accessibilityHint(playing ? "Stops the requested reference tone" : "Requests the selected reference tone")
-            .accessibilityValue(playing ? "Playback requested" : "Stopped")
+            .tint(playbackHost.isPlaying || playbackHost.state == .starting ? .red : .accentColor)
+            .accessibilityHint(playbackHost.isPlaying ? "Stops the reference tone" : "Plays the selected reference tone")
+            .accessibilityValue(playbackStatus)
         Button("Next", systemImage: "chevron.right") { move(1) }
             .disabled(index == profile.entries.count - 1)
     }
@@ -175,8 +181,8 @@ struct ContentView: View {
     }
 
     private func requestPlaybackToggle() {
-        guard !playing else {
-            playing = false
+        guard !playbackHost.isPlaying, playbackHost.state != .starting else {
+            playbackHost.stop()
             return
         }
         guard let frequency = try? entry.pitch.frequency(),
@@ -195,7 +201,11 @@ struct ContentView: View {
     }
 
     private func startPlaybackRequest() {
-        playing = true
+        guard let frequency = try? entry.pitch.frequency(),
+              let level = try? ToneOutputLevel(Float(outputLevel)),
+              let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
+        playbackHost.play(TonePlaybackSelection(frequency: renderFrequency, timbre: .sine, level: level))
+        guard playbackHost.isPlaying else { return }
         playbackStartedAt = Date()
         remindersPresented = 0
     }
@@ -227,7 +237,7 @@ struct ContentView: View {
     private func cancelSafetyWarning() {
         pendingSafetyWarning = nil
         playAfterSafetyWarning = false
-        playing = false
+        playbackHost.stop()
     }
 
     private func normalizeStoredLevel() {
@@ -241,6 +251,22 @@ struct ContentView: View {
         AVAudioSession.sharedInstance().currentRoute.outputs.contains {
             [.headphones, .bluetoothA2DP, .bluetoothHFP, .bluetoothLE].contains($0.portType)
         }
+    }
+
+    private var playbackStatus: String {
+        switch playbackHost.state {
+        case .stopped: "Stopped"
+        case .starting: "Starting"
+        case .playing: "Playing"
+        case .unavailable: "Unavailable"
+        }
+    }
+
+    private func synchronizeSelection() {
+        guard let frequency = try? entry.pitch.frequency(),
+              let level = try? ToneOutputLevel(Float(outputLevel)),
+              let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
+        playbackHost.select(TonePlaybackSelection(frequency: renderFrequency, timbre: .sine, level: level))
     }
 }
 

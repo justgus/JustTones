@@ -1,0 +1,70 @@
+{
+  "acceptanceCriteria" : [
+    "An explicit iPhone Play action configures an approved playback session and produces the selected shared-renderer tone through an AVAudioEngine output host.",
+    "Stop, selection, pitch, timbre, level, interruption, route loss, and engine failure converge on truthful stopped or unavailable UI state without implicit restart.",
+    "The render callback consumes preallocated buffers and does not allocate, block, perform I\/O, or mutate UI-observed state."
+  ],
+  "component" : "iPhone AVFoundation playback host",
+  "componentsAffected" : [
+    "iPhone",
+    "Shared audio renderer",
+    "Playback lifecycle",
+    "iPhone UI"
+  ],
+  "dateVerified" : "2026-09-16",
+  "epicID" : {
+    "rawValue" : "EP-009"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0014"
+    },
+    {
+      "rawValue" : "EV-0015"
+    },
+    {
+      "rawValue" : "EV-0016"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-16T21:32:20Z"
+  },
+  "notes" : [
+    "Planning complete. The current ContentView changes a request flag only; this Task owns the missing audible iPhone integration.",
+    "Do not add microphone access, a background audio mode, automatic playback, volume calibration, or unsupported route claims."
+  ],
+  "priority" : "high",
+  "rationale" : "An audible iPhone reference tone is the primary product capability and is absent from the current UI-to-renderer path.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-011"
+    },
+    {
+      "rawValue" : "JT-FR-014"
+    },
+    {
+      "rawValue" : "JT-NFR-004"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-017"
+  },
+  "testSteps" : [
+    "Add deterministic host tests for explicit start, stop, selection changes, level and pitch changes, render-buffer format adaptation, and engine-start failure.",
+    "Run JT-TEST-024, JT-TEST-025, JT-TEST-038, JT-TEST-040, JT-TEST-131, JT-TEST-134, JT-TEST-135, and JT-TEST-143 where applicable.",
+    "Record the exact build, device, OS, route, selected tone, level, action sequence, UI state, and result; keep device listening and route evidence separate from simulator or host tests."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0027"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Integrate audible iPhone reference-tone playback"
+  }
+}

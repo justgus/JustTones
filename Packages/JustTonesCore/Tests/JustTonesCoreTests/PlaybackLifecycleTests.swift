@@ -33,4 +33,48 @@ struct PlaybackLifecycleTests {
         lifecycle.stop()
         #expect(lifecycle.state == .stopped)
     }
+
+    @Test func selectionChangeCancelsAnInFlightOrPlayingTone() throws {
+        var lifecycle = TonePlaybackLifecycle()
+        let first = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+        let replacement = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 523.3), timbre: .flute)
+
+        lifecycle.select(first)
+        let beganFirstStart = lifecycle.requestStart()
+        #expect(beganFirstStart)
+        lifecycle.select(replacement)
+        #expect(lifecycle.state == .stopped)
+        lifecycle.sessionDidActivate()
+        #expect(lifecycle.state == .stopped)
+        #expect(lifecycle.selection == replacement)
+
+        let beganReplacementStart = lifecycle.requestStart()
+        #expect(beganReplacementStart)
+        lifecycle.sessionDidActivate()
+        #expect(lifecycle.state == .playing)
+        lifecycle.select(first)
+        #expect(lifecycle.state == .stopped)
+        #expect(lifecycle.selection == first)
+    }
+
+    @Test func conflictingLifecycleEventsNeverRestorePlaybackWithoutPlay() throws {
+        var lifecycle = TonePlaybackLifecycle()
+        lifecycle.select(TonePlaybackSelection(frequency: try DirectFrequency(hertz: 660)))
+        let beganStart = lifecycle.requestStart()
+        #expect(beganStart)
+        lifecycle.interrupted()
+        lifecycle.routeBecameUnavailable()
+        lifecycle.engineFailed()
+        lifecycle.sessionDidActivate()
+        #expect(lifecycle.state == .unavailable(.engineFailed))
+
+        lifecycle.backgrounded()
+        #expect(lifecycle.state == .stopped)
+        lifecycle.crossDeviceDataUpdated()
+        #expect(lifecycle.state == .stopped)
+        lifecycle.sessionDidActivate()
+        #expect(lifecycle.state == .stopped)
+        let beganRestart = lifecycle.requestStart()
+        #expect(beganRestart)
+    }
 }

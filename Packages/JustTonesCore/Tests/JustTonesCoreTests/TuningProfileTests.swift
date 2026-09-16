@@ -85,6 +85,27 @@ struct TuningProfileTests {
         #expect(FileManager.default.fileExists(atPath: unrelatedURL.path))
     }
 
+    @Test func rapidConsecutiveSavesPreserveTheLatestCompleteAcknowledgedDocument() throws {
+        let directory = try temporaryDirectory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let store = LocalProfileStore(directoryURL: directory)
+
+        var latest: ProfileStoreDocument?
+        for index in 0..<32 {
+            let profile = try TuningProfile(name: "Rapid edit \(index)", entries: [])
+            let document = try ProfileStoreDocument(
+                library: TuningProfileLibrary(profiles: [profile]),
+                selectedProfileID: profile.id
+            )
+            try store.save(document)
+            latest = document
+        }
+
+        #expect(try store.load().document == latest)
+        let snapshot = try JSONDecoder().decode(ProfileStoreDocument.self, from: Data(contentsOf: store.snapshotURL))
+        #expect(snapshot == latest)
+    }
+
     private func temporaryDirectory() throws -> URL {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent("JustTonesProfileTests-\(UUID().uuidString)")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)

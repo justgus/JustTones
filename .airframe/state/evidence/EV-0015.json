@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/MonophonicToneRenderer.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' -derivedDataPath \/private\/tmp\/JustTones-SP017 -clonedSourcePackagesDirPath \/private\/tmp\/JustTones-SP017\/SourcePackages build-for-testing",
+  "environment" : "Xcode-beta; iPhone Simulator SDK 27.0; build-for-testing only",
+  "id" : {
+    "rawValue" : "EV-0015"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-017 calculated-frequency correction: the playback path accepts the default C4 frequency (261.6255653005986 Hz) without coercing it to a tenth-Hz DirectFrequency; iPhone test bundles compile successfully.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0027"
+    }
+  ]
+}

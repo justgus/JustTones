@@ -1,9 +1,8 @@
 {
   "acceptanceCriteria" : [
-    "Approved iPhone and Watch accessibility technologies can operate every applicable function.",
-    "No-surprise playback and hearing-safety rules hold across lifecycle, route, interruption, and failure events.",
-    "Failure injection and endurance tests demonstrate deterministic state and containment without data corruption.",
-    "Physical-device-only claims remain unverified until the user reviews the required evidence."
+    "The umbrella qualification scope is implemented by successor tasks T-0022 through T-0026, rather than by a separate execution path.",
+    "T-0022 owns accessibility, T-0023 and T-0024 own playback and hearing safeguards, T-0025 owns deterministic failure containment, and T-0026 owns evidence disposition.",
+    "The user verified the successor-task disposition on 2026-09-16 and authorized this umbrella record to be closed as implemented through those tasks."
   ],
   "component" : "Cross-Cutting Qualification",
   "componentsAffected" : [
@@ -12,11 +11,20 @@
     "Shared",
     "Documentation"
   ],
-  "epicID" : {
-    "rawValue" : "EP-007"
-  },
+  "dateVerified" : "2026-09-16",
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0010"
+    },
+    {
+      "rawValue" : "EV-0011"
+    },
+    {
+      "rawValue" : "EV-0012"
+    },
+    {
+      "rawValue" : "EV-0013"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -24,10 +32,11 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-15T18:06:23Z"
+    "updatedAt" : "2026-09-16T14:51:29Z"
   },
   "notes" : [
-
+    "Superseded as EP-007's umbrella execution task by T-0022 through T-0026; no duplicate execution was performed under T-0008.",
+    "User authorized the implementation and verification disposition on 2026-09-16. Supporting successor evidence is EV-0010 through EV-0013."
   ],
   "priority" : "high",
   "rationale" : "Accessibility, hearing safety, and failure containment are release-critical cross-cutting behavior.",
@@ -43,7 +52,7 @@
       "rawValue" : "T-0008"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "closed",
     "title" : "Qualify accessibility, safety, and resilience"
   }
 }

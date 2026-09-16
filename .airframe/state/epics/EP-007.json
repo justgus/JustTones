@@ -16,6 +16,7 @@
       "rawValue" : "JT-AC-035"
     }
   ],
+  "closeDate" : "2026-09-16",
   "goal" : "Qualify accessibility, hearing safety, deterministic state, and failure containment across the product.",
   "issueIDs" : [
 
@@ -26,7 +27,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-15T18:06:48Z"
+    "updatedAt" : "2026-09-16T14:45:57Z"
   },
   "notes" : [
 
@@ -68,9 +69,6 @@
     },
     {
       "rawValue" : "T-0026"
-    },
-    {
-      "rawValue" : "T-0008"
     }
   ],
   "workItem" : {
@@ -78,7 +76,7 @@
       "rawValue" : "EP-007"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Accessibility, Safety, and Resilience"
   }
 }

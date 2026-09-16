@@ -26,7 +26,7 @@ struct TimbreTests {
             output.withUnsafeMutableBufferPointer { renderer.render(into: $0) }
             #expect(output.allSatisfy { $0.isFinite && abs($0) <= TimbreDefinition.maximumPeak })
             #expect(output.contains { abs($0) > 0.01 })
-            #expect(renderer.selectedFrequency == a4)
+            #expect(renderer.selectedFrequency == ToneRenderFrequency(a4))
         }
     }
 
@@ -50,7 +50,7 @@ struct TimbreTests {
         var output = Array(repeating: Float.zero, count: 64)
         output.withUnsafeMutableBufferPointer { renderer.render(into: $0) }
         #expect(renderer.selectedTimbre == .brass)
-        #expect(renderer.selectedFrequency == frequency)
+        #expect(renderer.selectedFrequency == ToneRenderFrequency(frequency))
         #expect(output.allSatisfy { $0.isFinite && abs($0) <= TimbreDefinition.maximumPeak })
     }
 }

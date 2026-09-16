@@ -4,7 +4,7 @@ Epics listed here are drafted, active, or complete-pending-close and are the cur
 
 ---
 
-## EP-007: Accessibility, Safety, and Resilience
+## EP-009: Audible Playback Integration
 
 **Status:** Active
 **Owner:** 
@@ -13,26 +13,23 @@ Epics listed here are drafted, active, or complete-pending-close and are the cur
 **Close Date:** TBD
 
 **Goal:**
-Qualify accessibility, hearing safety, deterministic state, and failure containment across the product.
+Connect the qualified shared tone renderer to real iPhone and Watch audio output while preserving explicit-play, click-free, and failure-containment behavior.
 
 ### Related Sprints
 
 | Sprint | Goal | Status |
 | ------ | ---- | ------ |
-| SP-014 | Qualify accessible operation and inclusive interaction across iPhone and Watch without treating simulator results as physical-device accessibility acceptance. | Closed |
-| SP-015 | Qualify deliberate playback, route safety, hearing safeguards, and truthful safety communication. | Closed |
-| SP-016 | Qualify deterministic failure containment and assemble evidence for human acceptance disposition. | Planning |
+| SP-017 | Planning complete; remains backlog until user activation. | Closed |
+| SP-018 | Attach the shared renderer to an independent Watch AVAudioEngine output path and bind truthful playback state to the Watch UI. | Backlog |
+| SP-019 | Qualify the real platform audio hosts, their explicit-play and failure paths, and the boundary between automated, simulator, and physical-device evidence. | Backlog |
 
 ### Related Tasks
 
 | Task | Title | Status |
 | ---- | ----- | ------ |
-| T-0022 | Qualify accessible operation and inclusive interaction | Implemented - Verified |
-| T-0023 | Qualify deliberate playback and route safety | Implemented - Verified |
-| T-0024 | Qualify hearing safeguards and safety communication | Implemented - Verified |
-| T-0025 | Qualify deterministic failure containment and responsiveness | Backlog |
-| T-0026 | Consolidate qualification evidence and acceptance disposition | Backlog |
-| T-0008 | Qualify accessibility, safety, and resilience | Backlog |
+| T-0027 | Integrate audible iPhone reference-tone playback | Implemented - Verified |
+| T-0028 | Integrate audible Watch reference-tone playback | Backlog |
+| T-0029 | Qualify audible playback integration and failure containment | Backlog |
 
 ### Related Issues
 

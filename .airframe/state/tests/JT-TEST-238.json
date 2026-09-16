@@ -1,0 +1,58 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-043"
+    }
+  ],
+  "artifactReferences" : [
+
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "Every result identifies its evidence source; automated behavior meets explicit-play and truthful-stop rules; unexecuted physical observations remain open rather than inferred."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-238"
+  },
+  "kind" : "acceptance",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Qualify explicit-play, failure containment, and evidence provenance across iPhone and Watch audio hosts.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-NFR-004"
+    },
+    {
+      "rawValue" : "JT-NFR-044"
+    },
+    {
+      "rawValue" : "JT-NFR-045"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "Run deterministic host and renderer checks, inspect supported simulator behavior, and collect separately labeled physical-device observations for listening, route, interruption, latency, endurance, energy, thermal, and accessibility conditions."
+  ],
+  "title" : "Audible playback evidence and failure-containment matrix",
+  "workItemIDs" : [
+    {
+      "rawValue" : "EP-009"
+    },
+    {
+      "rawValue" : "SP-019"
+    },
+    {
+      "rawValue" : "T-0029"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-041"
+    },
+    {
+      "rawValue" : "JT-AC-042"
+    },
+    {
+      "rawValue" : "JT-AC-043"
+    }
+  ],
+  "goal" : "Connect the qualified shared tone renderer to real iPhone and Watch audio output while preserving explicit-play, click-free, and failure-containment behavior.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-16T15:48:06Z"
+  },
+  "notes" : [
+    "Planning complete. EP-009 is a prerequisite for EP-008 release qualification and remains backlog until the user authorizes activation.",
+    "The existing renderer and lifecycle model are not audible output: this Epic owns their AVFoundation host integration."
+  ],
+  "outOfScope" : [
+    "Microphone input or pitch detection",
+    "Cloud, account, analytics, or network capabilities",
+    "Release submission, TestFlight distribution, App Store metadata, or release authorization"
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-009-Planning.md"
+  ],
+  "rationale" : "The current UI represents playback requests but does not attach the platform-neutral renderer to an AVAudioEngine output path, so the product cannot produce an audible reference tone.",
+  "scope" : [
+    "iPhone AVFoundation render host and UI binding",
+    "Watch AVFoundation render host and UI binding",
+    "Deterministic integration and physical-device evidence separation"
+  ],
+  "sprintIDs" : [
+    {
+      "rawValue" : "SP-017"
+    },
+    {
+      "rawValue" : "SP-018"
+    },
+    {
+      "rawValue" : "SP-019"
+    }
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0027"
+    },
+    {
+      "rawValue" : "T-0028"
+    },
+    {
+      "rawValue" : "T-0029"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-009"
+    },
+    "kind" : "epic",
+    "status" : "active",
+    "title" : "Audible Playback Integration"
+  }
+}

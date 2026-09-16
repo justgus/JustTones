@@ -1,0 +1,58 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-041"
+    }
+  ],
+  "artifactReferences" : [
+
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "Output begins only after Play; each event produces the specified ramped or stopped state without automatic restart, and the UI reports actual host state."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-236"
+  },
+  "kind" : "integration",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Verify that explicit iPhone Play drives the shared renderer through the iPhone AVFoundation host and that displayed lifecycle state follows actual host state.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-011"
+    },
+    {
+      "rawValue" : "JT-FR-014"
+    },
+    {
+      "rawValue" : "JT-NFR-004"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "From stopped state, select a supported tone and activate Play; exercise stop, selection change, pitch, timbre, level, interruption, route loss, and engine-start failure."
+  ],
+  "title" : "iPhone audible output host integration",
+  "workItemIDs" : [
+    {
+      "rawValue" : "EP-009"
+    },
+    {
+      "rawValue" : "SP-017"
+    },
+    {
+      "rawValue" : "T-0027"
+    }
+  ]
+}

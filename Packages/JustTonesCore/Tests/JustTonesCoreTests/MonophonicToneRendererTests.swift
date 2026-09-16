@@ -76,7 +76,7 @@ struct MonophonicToneRendererTests {
             phase += 2 * Double.pi * frequency / ToneRendererFixtures.sampleRate
         }
 
-        #expect(renderer.selectedFrequency == a5)
+        #expect(renderer.selectedFrequency == ToneRenderFrequency(a5))
         #expect(renderer.selectedLevel == halfLevel)
         #expect(renderer.playbackState == .playing)
     }
@@ -88,6 +88,13 @@ struct MonophonicToneRendererTests {
         #expect(throws: ToneRendererError.frequencyExceedsNyquist) {
             try renderer.select(frequency: frequency)
         }
+    }
+
+    @Test func rendererPreservesCalculatedFrequencyPrecision() throws {
+        var renderer = try makeRenderer()
+        let calculatedC4 = try ToneRenderFrequency(hertz: 261.6255653005986)
+        try renderer.select(frequency: calculatedC4)
+        #expect(renderer.selectedFrequency == calculatedC4)
     }
 
     private func makeRenderer(rampFrames: Int = ToneRendererFixtures.rampFrames) throws -> MonophonicToneRenderer {
