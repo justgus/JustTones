@@ -4,7 +4,15 @@
   },
   "goal" : "Attach the shared renderer to an independent Watch AVAudioEngine output path and bind truthful playback state to the Watch UI.",
   "issueIDs" : [
-
+    {
+      "rawValue" : "I-0004"
+    },
+    {
+      "rawValue" : "I-0002"
+    },
+    {
+      "rawValue" : "I-0003"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -12,7 +20,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-17T21:23:43Z"
+    "updatedAt" : "2026-09-17T22:32:47Z"
   },
   "notes" : [
     "Moved to planning by the user on 2026-09-17. Planning is complete; implementation remains unauthorized until explicit Sprint activation.",
@@ -28,7 +36,7 @@
       "rawValue" : "SP-018"
     },
     "kind" : "sprint",
-    "status" : "planning",
+    "status" : "active",
     "title" : "Watch Audible Playback Host"
   }
 }

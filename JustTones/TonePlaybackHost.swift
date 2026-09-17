@@ -119,7 +119,10 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
         try session.setActive(true)
         try installSourceIfNeeded()
         mailbox?.submit(.play(selection))
-        if !engine.isRunning { try engine.start() }
+        if !engine.isRunning {
+            engine.prepare()
+            try engine.start()
+        }
     }
 
     func stopTone() { mailbox?.submit(.stop) }

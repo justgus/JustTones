@@ -1,0 +1,28 @@
+{
+  "artifactReferences" : [
+    "JustTonesWatch\/WatchContentView.swift; JustTonesWatch\/JustTonesWatchApp.swift; JustTones\/TonePlaybackHost.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "Watch target: xcodebuild -target JustTonesWatch -sdk watchos ... build (passed). iPhone target: xcodebuild -target JustTones -sdk iphoneos ... build (blocked at JustTonesWatch\/Assets.xcassets AppIconWatch applicability).",
+  "environment" : "Xcode-beta 27.0 SDKs",
+  "id" : {
+    "rawValue" : "EV-0018"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "Watch correction build passed; iPhone target build was blocked by unrelated Watch app-icon asset compilation.",
+  "workItemIDs" : [
+
+  ]
+}

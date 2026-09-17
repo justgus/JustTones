@@ -1,0 +1,40 @@
+{
+  "affectedComponents" : [
+    "Watch output-level control layout"
+  ],
+  "dateResolved" : "2026-09-17",
+  "epicID" : {
+    "rawValue" : "EP-009"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "expectedBehavior" : "The current output percentage remains legible at ordinary Watch sizes without crowding the decrement and increment controls, and secondary status is concise and truthful.",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-17T22:32:50Z"
+  },
+  "notes" : [
+    "Corrected after user review: the control now retains the centered percentage and uses icon-only minus and plus buttons. EV-0018 records the successful Watch build; physical layout verification remains with the user."
+  ],
+  "observedBehavior" : "The Output 25% label is oversized on the Watch display, leaving only about two characters visible between the minus and plus controls. The lower Sine · 25% · Watch speaker line also duplicates crowded state information.",
+  "reproductionSteps" : [
+    "Install the latest Xcode Watch build and view the output control at its default 25% level on the Watch display."
+  ],
+  "severity" : "medium",
+  "sprintID" : {
+    "rawValue" : "SP-018"
+  },
+  "workItem" : {
+    "id" : {
+      "rawValue" : "I-0003"
+    },
+    "kind" : "issue",
+    "status" : "implementedNotVerified",
+    "title" : "Watch output value is clipped between adjustment controls"
+  }
+}

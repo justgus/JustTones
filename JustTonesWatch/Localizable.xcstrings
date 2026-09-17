@@ -10,6 +10,12 @@
     "%@ Hz" : {
 
     },
+    "%lld percent" : {
+
+    },
+    "%lld%%" : {
+
+    },
     "Cancel" : {
 
     },
@@ -17,6 +23,9 @@
 
     },
     "Continue" : {
+
+    },
+    "Decrease output" : {
 
     },
     "Headphone audio levels" : {
@@ -29,6 +38,9 @@
 
     },
     "In-app output percentage. This is not a sound-pressure-level measurement." : {
+
+    },
+    "Increase output" : {
 
     },
     "JustTones" : {
@@ -51,7 +63,7 @@
     "Next" : {
 
     },
-    "Output %lld%%" : {
+    "Output level" : {
 
     },
     "Pitches" : {
@@ -60,7 +72,7 @@
     "Play" : {
 
     },
-    "Playback requested" : {
+    "Plays the selected local reference tone" : {
 
     },
     "Previous" : {
@@ -80,31 +92,25 @@
         }
       }
     },
-    "Requests the selected local reference tone" : {
-
-    },
     "Selected" : {
 
     },
     "Selected pitch, %@" : {
 
     },
-    "Sine · %lld%% · Watch speaker" : {
+    "Sine · %@" : {
 
     },
     "Stop" : {
 
     },
-    "Stopped" : {
-
-    },
-    "Stops the requested local tone" : {
+    "Stops the local reference tone" : {
 
     },
     "The displayed percentage is not a sound-pressure-level measurement; exposure also depends on system volume, route, and listening duration." : {
 
     },
-    "Timbre Sine, output level %lld percent, route Watch speaker" : {
+    "Timbre Sine, route %@" : {
 
     },
     "WHO safe listening" : {

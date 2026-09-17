@@ -1,0 +1,39 @@
+{
+  "affectedComponents" : [
+    "iPhone and Watch AVAudioEngine startup"
+  ],
+  "epicID" : {
+    "rawValue" : "EP-009"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "expectedBehavior" : "Explicit playback starts with only the required short click-free ramp and reaches a stable reference tone promptly, without rhythmic startup clicks.",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-17T22:29:52Z"
+  },
+  "notes" : [
+    "Reported during physical-device Watch testing. Applies the same startup concern observed on iPhone."
+  ],
+  "observedBehavior" : "On iPhone and Watch, after explicit Play, a rhythmic clicking sound can occur for several seconds before the output settles into the expected sine tone; the Play control can remain visually stale until startup completes.",
+  "reproductionSteps" : [
+    "Install the latest build, select a pitch, and tap Play on the built-in speaker; listen from playback request through stable sustain."
+  ],
+  "severity" : "medium",
+  "sprintID" : {
+    "rawValue" : "SP-018"
+  },
+  "workItem" : {
+    "id" : {
+      "rawValue" : "I-0004"
+    },
+    "kind" : "issue",
+    "status" : "active",
+    "title" : "Reference tone clicks rhythmically during startup before settling"
+  }
+}

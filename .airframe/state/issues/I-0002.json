@@ -1,0 +1,40 @@
+{
+  "affectedComponents" : [
+    "Watch AVFoundation playback host"
+  ],
+  "dateResolved" : "2026-09-17",
+  "epicID" : {
+    "rawValue" : "EP-009"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "expectedBehavior" : "An explicit Play action produces the selected local reference tone through the current Watch audio route and the UI reports actual playback state.",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-17T22:32:45Z"
+  },
+  "notes" : [
+    "User reports that Watch output now plays. Startup clicking is tracked separately by active I-0004; this issue remains awaiting explicit user verification\/closure."
+  ],
+  "observedBehavior" : "On a physical Apple Watch, tapping Play changes the UI to Playback requested but produces no audible tone through the Watch speaker.",
+  "reproductionSteps" : [
+    "Install the latest Xcode Watch build, select a pitch, set output to 25%, and tap Play while using the built-in Watch speaker."
+  ],
+  "severity" : "medium",
+  "sprintID" : {
+    "rawValue" : "SP-018"
+  },
+  "workItem" : {
+    "id" : {
+      "rawValue" : "I-0002"
+    },
+    "kind" : "issue",
+    "status" : "implementedNotVerified",
+    "title" : "Watch Play does not produce audible local tone"
+  }
+}

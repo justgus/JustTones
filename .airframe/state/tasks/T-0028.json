@@ -3,7 +3,7 @@
     "An explicit Watch Play action produces the selected shared-renderer tone locally through a Watch AVAudioEngine output host without a reachable iPhone.",
     "Watch selection changes, stop, route loss, interruption, and engine failure do not cause automatic restart or remote-control iPhone playback.",
     "The Watch UI communicates actual playback state rather than a request flag.",
-    "The Watch output control presents its current value legibly at ordinary Watch sizes, and route/timbre/output presentation does not duplicate or crowd primary controls."
+    "The Watch output control presents its current value legibly at ordinary Watch sizes, and route\/timbre\/output presentation does not duplicate or crowd primary controls."
   ],
   "component" : "Watch AVFoundation playback host",
   "componentsAffected" : [
@@ -24,7 +24,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-17T00:00:00Z"
+    "updatedAt" : "2026-09-17T21:27:47Z"
   },
   "notes" : [
     "Planning complete. The current WatchContentView changes playbackRequested only; this Task owns the missing local audible Watch integration and the compact output-control correction reported during physical-device testing.",
@@ -33,9 +33,15 @@
   "priority" : "high",
   "rationale" : "Independent audible Watch reference-tone playback is a defined product capability and is absent from the current UI-to-renderer path.",
   "requirementIDs" : [
-    { "rawValue" : "JT-FR-011" },
-    { "rawValue" : "JT-FR-014" },
-    { "rawValue" : "JT-NFR-004" }
+    {
+      "rawValue" : "JT-FR-011"
+    },
+    {
+      "rawValue" : "JT-FR-014"
+    },
+    {
+      "rawValue" : "JT-NFR-004"
+    }
   ],
   "sprintID" : {
     "rawValue" : "SP-018"
@@ -51,7 +57,7 @@
       "rawValue" : "T-0028"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "active",
     "title" : "Integrate audible Watch reference-tone playback"
   }
 }

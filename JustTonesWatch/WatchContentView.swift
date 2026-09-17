@@ -4,9 +4,9 @@ import AVFoundation
 
 struct WatchContentView: View {
     @StateObject private var replica = WatchReplicaModel()
+    @State private var playbackHost = WatchTonePlaybackHost()
     @State private var profileIndex = 0
     @State private var entryIndex = 0
-    @State private var playbackRequested = false
     @State private var profilesPresented = false
     @AppStorage("watchOutputLevel") private var outputLevel = Double(ToneOutputLevel.default.value)
     @AppStorage("watchAcknowledgedHeadphoneHighLevelWarning") private var acknowledgedHeadphoneWarning = false
@@ -38,19 +38,20 @@ struct WatchContentView: View {
                     .accessibilityLabel("Selected pitch, \(entry.label ?? "pitch")")
                     .accessibilityValue("\(frequency, format: .number.precision(.fractionLength(1))) hertz")
                 Text("\(frequency, format: .number.precision(.fractionLength(1))) Hz")
-                Text(playbackRequested ? "Playback requested" : "Stopped")
-                    .font(.caption).foregroundStyle(playbackRequested ? .green : .secondary)
+                Text(playbackStatus)
+                    .font(.caption).foregroundStyle(playbackHost.isPlaying ? .green : .secondary)
                 Text(replica.status.label)
                     .font(.caption2).foregroundStyle(.secondary)
                     .accessibilityLabel("Companion data status")
                     .accessibilityValue(replica.status.label)
 
-                Button(playbackRequested ? "Stop" : "Play", systemImage: playbackRequested ? "stop.fill" : "play.fill") {
+                Button(playbackHost.isPlaying || playbackHost.state == .starting ? "Stop" : "Play", systemImage: playbackHost.isPlaying || playbackHost.state == .starting ? "stop.fill" : "play.fill") {
                     requestPlaybackToggle()
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(playbackRequested ? .red : .accentColor)
-                .accessibilityHint(playbackRequested ? "Stops the requested local tone" : "Requests the selected local reference tone")
+                .tint(playbackHost.isPlaying || playbackHost.state == .starting ? .red : .accentColor)
+                .accessibilityHint(playbackHost.isPlaying ? "Stops the local reference tone" : "Plays the selected local reference tone")
+                .accessibilityValue(playbackStatus)
 
                 // Retain side-by-side controls on ordinary displays, but allow accessibility
                 // text sizes and smaller watches to use a vertical layout without clipping.
@@ -66,13 +67,31 @@ struct WatchContentView: View {
 
                 Button("Profiles", systemImage: "music.note.list") { profilesPresented = true }
                     .buttonStyle(.plain)
-                Stepper("Output \(Int((outputLevel * 100).rounded()))%", value: $outputLevel, in: 0...1, step: 0.05)
-                    .accessibilityHint("In-app output percentage. This is not a sound-pressure-level measurement.")
+                HStack {
+                    Button { adjustOutput(by: -0.05) } label: {
+                        Image(systemName: "minus")
+                    }
+                    .accessibilityLabel("Decrease output")
+                    Spacer()
+                    Text("\(Int((outputLevel * 100).rounded()))%")
+                        .monospacedDigit()
+                        .frame(minWidth: 42)
+                        .accessibilityLabel("Output level")
+                        .accessibilityValue("\(Int((outputLevel * 100).rounded())) percent")
+                    Spacer()
+                    Button { adjustOutput(by: 0.05) } label: {
+                        Image(systemName: "plus")
+                    }
+                    .accessibilityLabel("Increase output")
+                }
+                .buttonStyle(.bordered)
+                .accessibilityElement(children: .contain)
+                .accessibilityHint("In-app output percentage. This is not a sound-pressure-level measurement.")
                 Button("Hearing safety", systemImage: "ear.badge.checkmark") { safetyInfoPresented = true }
                     .buttonStyle(.plain)
-                Text("Sine · \(Int((outputLevel * 100).rounded()))% · Watch speaker")
+                Text("Sine · \(routeDescription)")
                     .font(.caption2).foregroundStyle(.secondary)
-                    .accessibilityLabel("Timbre Sine, output level \(Int((outputLevel * 100).rounded())) percent, route Watch speaker")
+                    .accessibilityLabel("Timbre Sine, route \(routeDescription)")
             }
             .padding(.horizontal)
         }
@@ -80,19 +99,23 @@ struct WatchContentView: View {
             WatchProfileList(profiles: profiles, profileIndex: $profileIndex, entryIndex: $entryIndex)
         }
         .sheet(isPresented: $safetyInfoPresented) { WatchHearingSafetySheet() }
-        .onAppear { normalizeStoredLevel() }
+        .onAppear {
+            normalizeStoredLevel()
+            synchronizeSelection()
+        }
         .onChange(of: outputLevel) { _, newValue in
             handleLevelChange(newValue)
+            synchronizeSelection()
         }
-        .onChange(of: playbackRequested) { _, isPlaying in
-            playbackStartedAt = isPlaying ? .now : nil
+        .onChange(of: playbackHost.state) { _, state in
+            playbackStartedAt = state == .playing ? .now : nil
             remindersPresented = 0
         }
-        .task(id: playbackRequested) {
-            guard playbackRequested else { return }
-            while !Task.isCancelled && playbackRequested {
+        .task(id: playbackHost.state) {
+            guard playbackHost.isPlaying else { return }
+            while !Task.isCancelled && playbackHost.isPlaying {
                 try? await Task.sleep(for: .seconds(60))
-                guard playbackRequested, let playbackStartedAt else { continue }
+                guard playbackHost.isPlaying, let playbackStartedAt else { continue }
                 let elapsed = Date.now.timeIntervalSince(playbackStartedAt)
                 if HearingSafetyPolicy.isReminderDue(
                     uninterruptedPlayback: elapsed,
@@ -105,7 +128,7 @@ struct WatchContentView: View {
         }
         .alert("Listening reminder", isPresented: $showListeningReminder) {
             Button("Continue") {}
-            Button("Stop") { playbackRequested = false }
+            Button("Stop") { playbackHost.stop() }
         } message: {
             Text("You have been listening for an hour. Consider a break or reducing the output level.")
         }
@@ -123,18 +146,23 @@ struct WatchContentView: View {
             } else {
                 profileIndex = 0
                 entryIndex = 0
-                playbackRequested = false
+                playbackHost.stop()
                 replica.selectProfile(id: selectedID)
             }
         }
         .onChange(of: profileIndex) { _, _ in
             entryIndex = 0
-            playbackRequested = false
+            synchronizeSelection()
             replica.selectProfile(id: profile.id)
         }
+        .onChange(of: entryIndex) { _, _ in synchronizeSelection() }
     }
 
     private func move(_ delta: Int) { entryIndex = min(max(0, entryIndex + delta), profile.entries.count - 1) }
+
+    private func adjustOutput(by delta: Double) {
+        outputLevel = min(max(outputLevel + delta, 0), 1)
+    }
 
     private var safetyWarningPresented: Binding<Bool> {
         Binding(get: { pendingSafetyWarning != nil }, set: { if !$0 { cancelSafetyWarning() } })
@@ -159,8 +187,8 @@ struct WatchContentView: View {
     }
 
     private func requestPlaybackToggle() {
-        guard !playbackRequested else {
-            playbackRequested = false
+        guard !playbackHost.isPlaying, playbackHost.state != .starting else {
+            playbackHost.stop()
             return
         }
         guard let level = try? ToneOutputLevel(Float(outputLevel)) else { return }
@@ -174,11 +202,23 @@ struct WatchContentView: View {
             pendingSafetyWarning = warning
             return
         }
-        playbackRequested = true
+        startPlayback()
+    }
+
+    private func startPlayback() {
+        guard let level = try? ToneOutputLevel(Float(outputLevel)),
+              let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
+        playbackHost.play(TonePlaybackSelection(frequency: renderFrequency, timbre: .sine, level: level))
+    }
+
+    private func synchronizeSelection() {
+        guard let level = try? ToneOutputLevel(Float(outputLevel)),
+              let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
+        playbackHost.select(TonePlaybackSelection(frequency: renderFrequency, timbre: .sine, level: level))
     }
 
     private func handleLevelChange(_ level: Double) {
-        guard playbackRequested, let validatedLevel = try? ToneOutputLevel(Float(level)) else { return }
+        guard playbackHost.isPlaying, let validatedLevel = try? ToneOutputLevel(Float(level)) else { return }
         pendingSafetyWarning = HearingSafetyPolicy.warning(
             level: validatedLevel,
             frequency: frequency,
@@ -191,14 +231,14 @@ struct WatchContentView: View {
     private func acknowledgeSafetyWarning() {
         if pendingSafetyWarning == .headphoneHighLevel { acknowledgedHeadphoneWarning = true }
         pendingSafetyWarning = nil
-        if playAfterSafetyWarning { playbackRequested = true }
+        if playAfterSafetyWarning { startPlayback() }
         playAfterSafetyWarning = false
     }
 
     private func cancelSafetyWarning() {
         pendingSafetyWarning = nil
         playAfterSafetyWarning = false
-        playbackRequested = false
+        playbackHost.stop()
     }
 
     private func normalizeStoredLevel() {
@@ -208,6 +248,22 @@ struct WatchContentView: View {
     private var hasRecognizedHeadphones: Bool {
         AVAudioSession.sharedInstance().currentRoute.outputs.contains {
             [.headphones, .bluetoothA2DP, .bluetoothHFP, .bluetoothLE].contains($0.portType)
+        }
+    }
+
+    private var routeDescription: String {
+        AVAudioSession.sharedInstance().currentRoute.outputs.first?.portName ?? "No output"
+    }
+
+    private var playbackStatus: String {
+        switch playbackHost.state {
+        case .stopped: "Stopped"
+        case .starting: "Starting"
+        case .playing: "Playing"
+        case .unavailable(.interrupted): "Interrupted"
+        case .unavailable(.routeUnavailable): "Route unavailable"
+        case .unavailable(.sessionActivationFailed): "Audio unavailable"
+        case .unavailable(.engineFailed): "Audio engine unavailable"
         }
     }
 

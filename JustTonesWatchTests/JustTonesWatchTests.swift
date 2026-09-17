@@ -3,6 +3,42 @@ import JustTonesCore
 @testable import JustTonesWatch
 
 struct JustTonesWatchTests {
+    @MainActor @Test func watchPlaybackHostStartsAndStopsOnlyFromExplicitActions() throws {
+        let driver = WatchRecordingToneDriver()
+        let host = WatchTonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+
+        host.play(selection)
+        #expect(host.state == .playing)
+        #expect(driver.startedSelections == [selection])
+
+        host.stop()
+        #expect(host.state == .stopped)
+        #expect(driver.stopCount == 1)
+    }
+
+    @MainActor @Test func watchPlaybackHostStopsForSelectionChangesAndReportsFailures() throws {
+        let driver = WatchRecordingToneDriver()
+        let host = WatchTonePlaybackHost(driver: driver)
+        let a4 = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+        let a5 = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 880))
+
+        host.play(a4)
+        host.select(a5)
+        #expect(host.state == .stopped)
+        #expect(driver.stopCount == 1)
+
+        driver.eventHandler?(.routeUnavailable)
+        #expect(host.state == .unavailable(.routeUnavailable))
+        #expect(driver.startedSelections == [a4])
+    }
+
+    @MainActor @Test func watchPlaybackHostReportsStartFailureTruthfully() throws {
+        let host = WatchTonePlaybackHost(driver: WatchRecordingToneDriver(shouldFailStart: true))
+        host.play(TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440)))
+        #expect(host.state == .unavailable(.sessionActivationFailed))
+    }
+
     @Test func sharedPitchFixturesRunInTheWatchHost() throws {
         for (pitch, expected) in PitchDomainFixtures.twelveToneEqualTemperament {
             let frequency = try Pitch.named(pitch).frequency()
@@ -52,3 +88,23 @@ struct JustTonesWatchTests {
         #expect(BuiltInTimbreCatalog.definitions.map(\.id) == BuiltInTimbre.allCases)
     }
 }
+
+@MainActor
+private final class WatchRecordingToneDriver: WatchTonePlaybackHostingDriver {
+    var eventHandler: (@MainActor (WatchTonePlaybackDriverEvent) -> Void)?
+    var startedSelections: [TonePlaybackSelection] = []
+    var stopCount = 0
+    private let shouldFailStart: Bool
+
+    init(shouldFailStart: Bool = false) { self.shouldFailStart = shouldFailStart }
+
+    func startTone(selection: TonePlaybackSelection) throws {
+        if shouldFailStart { throw WatchTestDriverError.startFailed }
+        startedSelections.append(selection)
+    }
+
+    func stopTone() { stopCount += 1 }
+    func stopImmediately() {}
+}
+
+private enum WatchTestDriverError: Error { case startFailed }

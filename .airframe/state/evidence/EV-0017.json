@@ -1,0 +1,28 @@
+{
+  "artifactReferences" : [
+    "JustTonesWatch\/JustTonesWatchApp.swift; JustTonesWatch\/WatchContentView.swift; JustTonesWatchTests\/JustTonesWatchTests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -target JustTonesWatch -sdk watchos SYMROOT=\/private\/tmp\/JustTones-WatchTarget-SP018\/Products OBJROOT=\/private\/tmp\/JustTones-WatchTarget-SP018\/Intermediates build; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -target JustTonesWatchTests -configuration Debug -sdk watchsimulator SYMROOT=\/private\/tmp\/JustTones-WatchTests-SP018-Debug\/Products OBJROOT=\/private\/tmp\/JustTones-WatchTests-SP018-Debug\/Intermediates build",
+  "environment" : "Xcode-beta WatchOS 27.0 device and simulator SDKs",
+  "id" : {
+    "rawValue" : "EV-0017"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-018 Watch host and compact output-control implementation compiled successfully.",
+  "workItemIDs" : [
+
+  ]
+}

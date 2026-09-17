@@ -12,7 +12,15 @@
   ],
   "goal" : "Connect the qualified shared tone renderer to real iPhone and Watch audio output while preserving explicit-play, click-free, and failure-containment behavior.",
   "issueIDs" : [
-
+    {
+      "rawValue" : "I-0004"
+    },
+    {
+      "rawValue" : "I-0002"
+    },
+    {
+      "rawValue" : "I-0003"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -20,7 +28,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-16T15:48:06Z"
+    "updatedAt" : "2026-09-17T22:32:47Z"
   },
   "notes" : [
     "Planning complete. EP-009 is a prerequisite for EP-008 release qualification and remains backlog until the user authorizes activation.",
