@@ -96,10 +96,8 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
     override init() {
         super.init()
         NotificationCenter.default.addObserver(
-            forName: AVAudioSession.interruptionNotification, object: session, queue: .main
-        ) { [weak self] notification in
-            guard let type = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
-                  type == AVAudioSession.InterruptionType.began.rawValue else { return }
+            forName: AVAudioSession.didBecomeInactiveNotification, object: session, queue: .main
+        ) { [weak self] _ in
             Task { @MainActor in self?.eventHandler?(.interrupted) }
         }
         NotificationCenter.default.addObserver(
@@ -150,7 +148,7 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
         self.mailbox = mailbox
         self.sourceNode = sourceNode
         engine.attach(sourceNode)
-        engine.connect(sourceNode, to: engine.mainMixerNode, format: sourceFormat)
+        try engine.connectNode(sourceNode, to: engine.mainMixerNode, format: sourceFormat)
     }
 
     /// Source-node callbacks run on RemoteIO, never on the main actor. Keeping the closure

@@ -1,0 +1,37 @@
+{
+  "auditEventIDs" : [],
+  "commands" : [],
+  "decisionState" : "approved",
+  "evidenceIDs" : [],
+  "externalEffects" : [],
+  "fileChanges" : [
+    "JustTonesWatch/WatchTonePlaybackHost.swift (new)",
+    "JustTonesWatch/WatchContentView.swift",
+    "JustTonesWatch/JustTonesWatchApp.swift",
+    "Watch-host tests and focused Watch UI/layout coverage",
+    "docs/Sprints/SP-018-Planning.md"
+  ],
+  "id" : { "rawValue" : "PLAN-011" },
+  "metadata" : {
+    "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }
+  },
+  "notes" : [
+    "User moved SP-018 to planning and requested completion of planning on 2026-09-17.",
+    "This plan does not activate SP-018 or authorize implementation."
+  ],
+  "proposedByActorID" : { "rawValue" : "ACTOR-LLM" },
+  "scope" : [
+    "Local Watch AVAudioEngine playback host and truthful lifecycle/UI binding.",
+    "Compact, accessible Watch output-level presentation.",
+    "Deterministic host and layout verification, with physical-device results retained for user review."
+  ],
+  "summary" : "Deliver audible local Watch playback and correct the cramped output control without remote playback, automatic restart, or unsupported background behavior.",
+  "targetEpicID" : { "rawValue" : "EP-009" },
+  "targetSprintID" : { "rawValue" : "SP-018" },
+  "targetTaskIDs" : [ { "rawValue" : "T-0028" } ],
+  "title" : "SP-018 Watch audible playback and compact output-control plan",
+  "verificationCriteria" : [
+    "Use the T-0028 deterministic Watch-host and focused layout checks.",
+    "Keep simulator/build evidence separate from physical Watch audibility, route, interruption, and listening observations."
+  ]
+}
