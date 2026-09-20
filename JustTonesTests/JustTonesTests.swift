@@ -3,12 +3,13 @@ import JustTonesCore
 @testable import JustTones
 
 struct JustTonesTests {
-    @MainActor @Test func playbackHostStartsAndStopsOnlyFromExplicitActions() throws {
+    @MainActor @Test func playbackHostStartsAndStopsOnlyFromExplicitActions() async throws {
         let driver = RecordingToneDriver()
         let host = TonePlaybackHost(driver: driver)
         let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
 
         host.play(selection)
+        await Task.yield()
         #expect(host.state == .playing)
         #expect(driver.startedSelections == [selection])
 
@@ -17,7 +18,7 @@ struct JustTonesTests {
         #expect(driver.stopCount == 1)
     }
 
-    @MainActor @Test func playbackHostStopsOnSelectionAndLevelChanges() throws {
+    @MainActor @Test func playbackHostStopsOnSelectionAndLevelChanges() async throws {
         let driver = RecordingToneDriver()
         let host = TonePlaybackHost(driver: driver)
         let a4 = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
@@ -26,28 +27,49 @@ struct JustTonesTests {
         )
 
         host.play(a4)
+        await Task.yield()
         host.select(a5)
         #expect(host.state == .stopped)
         #expect(driver.stopCount == 1)
     }
 
-    @MainActor @Test func playbackHostReportsEngineStartFailureTruthfully() throws {
+    @MainActor @Test func playbackHostReportsEngineStartFailureTruthfully() async throws {
         let driver = RecordingToneDriver(shouldFailStart: true)
         let host = TonePlaybackHost(driver: driver)
         host.play(TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440)))
+        await Task.yield()
 
         #expect(host.state == .unavailable(.sessionActivationFailed))
     }
 
-    @MainActor @Test func playbackHostNeverRestartsAfterRouteOrInterruption() throws {
+    @MainActor @Test func playbackHostNeverRestartsAfterRouteOrInterruption() async throws {
         let driver = RecordingToneDriver()
         let host = TonePlaybackHost(driver: driver)
         host.play(TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440)))
+        await Task.yield()
         driver.eventHandler?(.interrupted)
         #expect(host.state == .unavailable(.interrupted))
         driver.eventHandler?(.routeUnavailable)
         #expect(host.state == .unavailable(.routeUnavailable))
         #expect(driver.startedSelections.count == 1)
+    }
+
+    @MainActor @Test func delayedActivationCannotStartToneAfterStop() throws {
+        let driver = RecordingToneDriver(pausesAtStart: true)
+        let host = TonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+
+        host.play(selection)
+        await Task.yield()
+        #expect(host.state == .starting)
+        #expect(driver.startedSelections == [selection])
+
+        host.stop()
+        driver.completeStart()
+        await Task.yield()
+
+        #expect(host.state == .stopped)
+        #expect(driver.immediateStopCount == 1)
     }
     @Test func sharedPitchFixturesRunInTheIPhoneHost() throws {
         for (pitch, expected) in PitchDomainFixtures.twelveToneEqualTemperament {
@@ -100,13 +122,22 @@ private final class RecordingToneDriver: TonePlaybackHostingDriver {
     var stopCount = 0
     var immediateStopCount = 0
     private let shouldFailStart: Bool
+    private let pausesAtStart: Bool
+    private var startContinuation: CheckedContinuation<Void, Never>?
 
-    init(shouldFailStart: Bool = false) { self.shouldFailStart = shouldFailStart }
+    init(shouldFailStart: Bool = false, pausesAtStart: Bool = false) {
+        self.shouldFailStart = shouldFailStart
+        self.pausesAtStart = pausesAtStart
+    }
 
-    func startTone(selection: TonePlaybackSelection) throws {
+    func startTone(selection: TonePlaybackSelection) async throws {
         if shouldFailStart { throw TestDriverError.startFailed }
         startedSelections.append(selection)
+        if pausesAtStart {
+            await withCheckedContinuation { startContinuation = $0 }
+        }
     }
+    func completeStart() { startContinuation?.resume(); startContinuation = nil }
     func stopTone() { stopCount += 1 }
     func stopImmediately() { immediateStopCount += 1 }
 }

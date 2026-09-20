@@ -1,0 +1,41 @@
+{
+  "" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTones-primary.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTones-primary.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTones-primary.dia",
+    "emit-module-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTones-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTones-primary-emit-module.dia",
+    "pch" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTones-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTones-primary.swiftdeps"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTones/ContentView.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/ContentView.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/ContentView.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/ContentView.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTones/JustTonesApp.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTonesApp.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTonesApp.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/JustTonesApp.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTones/TonePlaybackHost.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/TonePlaybackHost.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/TonePlaybackHost.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/TonePlaybackHost.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTones/WatchReplicaTransferCoordinator.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/WatchReplicaTransferCoordinator.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/WatchReplicaTransferCoordinator.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/WatchReplicaTransferCoordinator.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/GeneratedAssetSymbols.o"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/DerivedSources/GeneratedStringSymbols_Localizable.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/GeneratedStringSymbols_Localizable.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/GeneratedStringSymbols_Localizable.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTones.build/Objects-normal/x86_64/GeneratedStringSymbols_Localizable.o"
+  }
+}

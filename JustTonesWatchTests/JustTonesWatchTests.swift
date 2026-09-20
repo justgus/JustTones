@@ -3,12 +3,13 @@ import JustTonesCore
 @testable import JustTonesWatch
 
 struct JustTonesWatchTests {
-    @MainActor @Test func watchPlaybackHostStartsAndStopsOnlyFromExplicitActions() throws {
+    @MainActor @Test func watchPlaybackHostStartsAndStopsOnlyFromExplicitActions() async throws {
         let driver = WatchRecordingToneDriver()
         let host = WatchTonePlaybackHost(driver: driver)
         let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
 
         host.play(selection)
+        await Task.yield()
         #expect(host.state == .playing)
         #expect(driver.startedSelections == [selection])
 
@@ -17,13 +18,14 @@ struct JustTonesWatchTests {
         #expect(driver.stopCount == 1)
     }
 
-    @MainActor @Test func watchPlaybackHostStopsForSelectionChangesAndReportsFailures() throws {
+    @MainActor @Test func watchPlaybackHostStopsForSelectionChangesAndReportsFailures() async throws {
         let driver = WatchRecordingToneDriver()
         let host = WatchTonePlaybackHost(driver: driver)
         let a4 = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
         let a5 = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 880))
 
         host.play(a4)
+        await Task.yield()
         host.select(a5)
         #expect(host.state == .stopped)
         #expect(driver.stopCount == 1)
@@ -33,10 +35,29 @@ struct JustTonesWatchTests {
         #expect(driver.startedSelections == [a4])
     }
 
-    @MainActor @Test func watchPlaybackHostReportsStartFailureTruthfully() throws {
+    @MainActor @Test func watchPlaybackHostReportsStartFailureTruthfully() async throws {
         let host = WatchTonePlaybackHost(driver: WatchRecordingToneDriver(shouldFailStart: true))
         host.play(TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440)))
+        await Task.yield()
         #expect(host.state == .unavailable(.sessionActivationFailed))
+    }
+
+    @MainActor @Test func delayedWatchActivationCannotStartToneAfterStop() throws {
+        let driver = WatchRecordingToneDriver(pausesAtStart: true)
+        let host = WatchTonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+
+        host.play(selection)
+        await Task.yield()
+        #expect(host.state == .starting)
+        #expect(driver.startedSelections == [selection])
+
+        host.stop()
+        driver.completeStart()
+        await Task.yield()
+
+        #expect(host.state == .stopped)
+        #expect(driver.immediateStopCount == 1)
     }
 
     @Test func sharedPitchFixturesRunInTheWatchHost() throws {
@@ -94,17 +115,27 @@ private final class WatchRecordingToneDriver: WatchTonePlaybackHostingDriver {
     var eventHandler: (@MainActor (WatchTonePlaybackDriverEvent) -> Void)?
     var startedSelections: [TonePlaybackSelection] = []
     var stopCount = 0
+    var immediateStopCount = 0
     private let shouldFailStart: Bool
+    private let pausesAtStart: Bool
+    private var startContinuation: CheckedContinuation<Void, Never>?
 
-    init(shouldFailStart: Bool = false) { self.shouldFailStart = shouldFailStart }
-
-    func startTone(selection: TonePlaybackSelection) throws {
-        if shouldFailStart { throw WatchTestDriverError.startFailed }
-        startedSelections.append(selection)
+    init(shouldFailStart: Bool = false, pausesAtStart: Bool = false) {
+        self.shouldFailStart = shouldFailStart
+        self.pausesAtStart = pausesAtStart
     }
 
+    func startTone(selection: TonePlaybackSelection) async throws {
+        if shouldFailStart { throw WatchTestDriverError.startFailed }
+        startedSelections.append(selection)
+        if pausesAtStart {
+            await withCheckedContinuation { startContinuation = $0 }
+        }
+    }
+
+    func completeStart() { startContinuation?.resume(); startContinuation = nil }
     func stopTone() { stopCount += 1 }
-    func stopImmediately() {}
+    func stopImmediately() { immediateStopCount += 1 }
 }
 
 private enum WatchTestDriverError: Error { case startFailed }

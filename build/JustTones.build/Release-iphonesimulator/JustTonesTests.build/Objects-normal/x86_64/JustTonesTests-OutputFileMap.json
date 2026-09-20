@@ -1,0 +1,16 @@
+{
+  "" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests-primary.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests-primary.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests-primary.dia",
+    "emit-module-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests-primary-emit-module.dia",
+    "pch" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests-primary.swiftdeps"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/JustTonesTests/JustTonesTests.swift" : {
+    "index-unit-output-path" : "/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/build/JustTones.build/Release-iphonesimulator/JustTonesTests.build/Objects-normal/x86_64/JustTonesTests.o"
+  }
+}

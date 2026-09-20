@@ -8,6 +8,9 @@ xcuserdata/
 .build/
 .swiftpm/xcode/package.xcworkspace/xcuserdata/
 
+# Xcode build output for the local shared package
+/Packages/JustTonesCore/build/
+
 # Test and profiling artifacts
 *.profraw
 *.xcresult

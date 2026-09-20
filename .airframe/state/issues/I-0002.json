@@ -3,6 +3,7 @@
     "Watch AVFoundation playback host"
   ],
   "dateResolved" : "2026-09-17",
+  "dateVerified" : "2026-09-18",
   "epicID" : {
     "rawValue" : "EP-009"
   },
@@ -16,7 +17,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-17T22:32:45Z"
+    "updatedAt" : "2026-09-18T15:12:53Z"
   },
   "notes" : [
     "User reports that Watch output now plays. Startup clicking is tracked separately by active I-0004; this issue remains awaiting explicit user verification\/closure."
@@ -34,7 +35,7 @@
       "rawValue" : "I-0002"
     },
     "kind" : "issue",
-    "status" : "implementedNotVerified",
+    "status" : "implementedVerified",
     "title" : "Watch Play does not produce audible local tone"
   }
 }

@@ -1,0 +1,129 @@
+{
+  "" : {
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCore-primary.dia",
+    "emit-module-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCore-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCore-primary-emit-module.dia",
+    "pch" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCore-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCore-primary.swiftdeps"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/BuiltInCatalog.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/BuiltInCatalog~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/HearingSafetyPolicy.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/HearingSafetyPolicy~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/JustTonesCoreVersion.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesCoreVersion~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/JustTonesInterchange.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/JustTonesInterchange~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/LocalProfileStore.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/LocalProfileStore~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/MonophonicToneRenderer.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/MonophonicToneRenderer~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/Pitch.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Pitch~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/PlaybackLifecycle.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/PlaybackLifecycle~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/Timbre.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Timbre~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/Tuning.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/Tuning~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/TuningProfile.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/TuningProfile~partial.swiftmodule"
+  },
+  "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/Sources/JustTonesCore/WatchReplica.swift" : {
+    "const-values" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica.swiftconstvalues",
+    "dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica.d",
+    "diagnostics" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica.dia",
+    "index-unit-output-path" : "/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica.o",
+    "llvm-bc" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica.bc",
+    "object" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica.o",
+    "swift-dependencies" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica.swiftdeps",
+    "swiftmodule" : "/Users/justgus/Xcode-Projects/JustTones/Packages/JustTonesCore/build/JustTonesCore.build/Debug-watchsimulator/JustTonesCore-t.build/Objects-normal/x86_64/WatchReplica~partial.swiftmodule"
+  }
+}

@@ -9,6 +9,7 @@ final class WatchTonePlaybackHost {
     private(set) var state: TonePlaybackLifecycleState = .stopped
     private let driver: any WatchTonePlaybackHostingDriver
     private var lifecycle = TonePlaybackLifecycle()
+    private var startGeneration = 0
 
     init(driver: (any WatchTonePlaybackHostingDriver)? = nil) {
         self.driver = driver ?? WatchAVAudioToneOutputDriver()
@@ -35,34 +36,48 @@ final class WatchTonePlaybackHost {
         select(selection)
         guard lifecycle.requestStart() else { return }
         publishState()
-        do {
-            try driver.startTone(selection: selection)
-            lifecycle.sessionDidActivate()
-        } catch {
-            lifecycle.sessionActivationFailed()
+        startGeneration &+= 1
+        let generation = startGeneration
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                try await driver.startTone(selection: selection)
+                guard generation == startGeneration, lifecycle.state == .starting else {
+                    driver.stopImmediately()
+                    return
+                }
+                lifecycle.sessionDidActivate()
+            } catch {
+                guard generation == startGeneration else { return }
+                lifecycle.sessionActivationFailed()
+            }
+            publishState()
         }
-        publishState()
     }
 
     func stop() {
+        startGeneration &+= 1
         driver.stopTone()
         lifecycle.stop()
         publishState()
     }
 
     func interruptionBegan() {
+        startGeneration &+= 1
         driver.stopImmediately()
         lifecycle.interrupted()
         publishState()
     }
 
     func routeBecameUnavailable() {
+        startGeneration &+= 1
         driver.stopImmediately()
         lifecycle.routeBecameUnavailable()
         publishState()
     }
 
     func engineFailed() {
+        startGeneration &+= 1
         driver.stopImmediately()
         lifecycle.engineFailed()
         publishState()
@@ -74,7 +89,7 @@ final class WatchTonePlaybackHost {
 @MainActor
 protocol WatchTonePlaybackHostingDriver: AnyObject {
     var eventHandler: (@MainActor (WatchTonePlaybackDriverEvent) -> Void)? { get set }
-    func startTone(selection: TonePlaybackSelection) throws
+    func startTone(selection: TonePlaybackSelection) async throws
     func stopTone()
     func stopImmediately()
 }
@@ -105,9 +120,8 @@ final class WatchAVAudioToneOutputDriver: NSObject, WatchTonePlaybackHostingDriv
         }
     }
 
-    func startTone(selection: TonePlaybackSelection) throws {
-        try session.setCategory(.playback, mode: .default, options: [])
-        try session.setActive(true)
+    func startTone(selection: TonePlaybackSelection) async throws {
+        try await configureAndActivateSession()
         try installSourceIfNeeded()
         mailbox?.submit(.play(selection))
         if !engine.isRunning {
@@ -120,7 +134,26 @@ final class WatchAVAudioToneOutputDriver: NSObject, WatchTonePlaybackHostingDriv
     func stopImmediately() {
         mailbox?.submit(.stop)
         engine.pause()
-        try? session.setActive(false, options: .notifyOthersOnDeactivation)
+        session.deactivate(options: [.notifyOthersOnDeactivation]) { _, _ in }
+    }
+
+    private func configureAndActivateSession() async throws {
+        try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global(qos: .userInitiated).async { [session] in
+                do {
+                    try session.setCategory(.playback, mode: .default, options: [])
+                    session.activate(options: []) { activated, error in
+                        if activated {
+                            continuation.resume()
+                        } else {
+                            continuation.resume(throwing: error ?? WatchTonePlaybackHostError.sessionActivationFailed)
+                        }
+                    }
+                } catch {
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
     }
 
     private func installSourceIfNeeded() throws {
@@ -144,7 +177,7 @@ final class WatchAVAudioToneOutputDriver: NSObject, WatchTonePlaybackHostingDriv
     }
 }
 
-private enum WatchTonePlaybackHostError: Error { case invalidOutputFormat }
+private enum WatchTonePlaybackHostError: Error { case invalidOutputFormat, sessionActivationFailed }
 private enum WatchToneRenderRequest { case play(TonePlaybackSelection), stop }
 
 /// Lock-free latest-value mailbox. Its realtime render path allocates nothing and does not mutate UI state.
