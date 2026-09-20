@@ -29,17 +29,17 @@ Currently: **19 Sprints** | Next available: **SP-020**
 | SP-015 | Playback Safety and Hearing Protection Qualification | EP-007 | T-0023, T-0024 | None | Closed |
 | SP-016 | Failure Containment and Evidence Disposition | EP-007 | T-0025, T-0026 | None | Closed |
 | SP-017 | iPhone Audible Playback Host | EP-009 | T-0027 | None | Closed |
-| SP-018 | Watch Audible Playback Host | EP-009 | T-0028 | None | Backlog |
+| SP-018 | Watch Audible Playback Host | EP-009 | T-0028 | I-0004, I-0002, I-0003 | Closed |
 | SP-019 | Audible Playback Integration Qualification | EP-009 | T-0029 | None | Backlog |
 
 ## Statistics
 
 - **Total Sprints:** 19
-- **Backlog:** 2
+- **Backlog:** 1
 - **Planning:** 0
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 17
+- **Closed:** 18
 - **Next available:** SP-020
 
-*Last Updated: 2026-09-16*
+*Last Updated: 2026-09-20*

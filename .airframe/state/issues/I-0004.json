@@ -15,10 +15,11 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-17T22:29:52Z"
+    "updatedAt" : "2026-09-20T16:00:00Z"
   },
   "notes" : [
-    "Reported during physical-device Watch testing. Applies the same startup concern observed on iPhone."
+    "Reported during physical-device Watch testing. Applies the same startup concern observed on iPhone.",
+    "User verified that reference-tone clicks no longer occur on either platform."
   ],
   "observedBehavior" : "On iPhone and Watch, after explicit Play, a rhythmic clicking sound can occur for several seconds before the output settles into the expected sine tone; the Play control can remain visually stale until startup completes.",
   "reproductionSteps" : [
@@ -33,7 +34,7 @@
       "rawValue" : "I-0004"
     },
     "kind" : "issue",
-    "status" : "active",
+    "status" : "implementedVerified",
     "title" : "Reference tone clicks rhythmically during startup before settling"
   }
 }

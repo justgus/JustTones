@@ -2,28 +2,9 @@
 
 Sprints listed here are attached to an Epic but are not yet in Planning, Active, Review, or Closed status.
 
-Currently: **2 backlog Sprints**
+Currently: **1 backlog Sprint**
 
 ---
-
-## SP-018: Watch Audible Playback Host
-
-**Status:** Backlog
-**Epic:** EP-009
-**Goal:** Attach the shared renderer to an independent Watch AVAudioEngine output path and bind truthful playback state to the Watch UI.
-**Start Date:** TBD
-**End Date:** TBD
-**Capacity:** TBD
-
-### Assigned Tasks
-
-| Task | Title | Priority | Status |
-| ---- | ----- | -------- | ------ |
-| T-0028 | Integrate audible Watch reference-tone playback | High | Backlog |
-
-### Assigned Issues
-
-None.
 
 ## SP-019: Audible Playback Integration Qualification
 
@@ -44,4 +25,4 @@ None.
 
 None.
 
-*Last Updated: 2026-09-16*
+*Last Updated: 2026-09-20*

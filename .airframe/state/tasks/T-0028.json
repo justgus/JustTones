@@ -12,6 +12,7 @@
     "Playback lifecycle",
     "Watch UI"
   ],
+  "dateVerified" : "2026-09-20",
   "epicID" : {
     "rawValue" : "EP-009"
   },
@@ -24,11 +25,12 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-17T21:27:47Z"
+    "updatedAt" : "2026-09-20T23:00:14Z"
   },
   "notes" : [
     "Planning complete. The current WatchContentView changes playbackRequested only; this Task owns the missing local audible Watch integration and the compact output-control correction reported during physical-device testing.",
-    "Do not introduce a microphone, iPhone remote-control path, cloud service, automatic resume, or unsupported background behavior."
+    "Do not introduce a microphone, iPhone remote-control path, cloud service, automatic resume, or unsupported background behavior.",
+    "User verified that the Watch app performs local reference-tone playback."
   ],
   "priority" : "high",
   "rationale" : "Independent audible Watch reference-tone playback is a defined product capability and is absent from the current UI-to-renderer path.",
@@ -57,7 +59,7 @@
       "rawValue" : "T-0028"
     },
     "kind" : "task",
-    "status" : "active",
+    "status" : "implementedVerified",
     "title" : "Integrate audible Watch reference-tone playback"
   }
 }
