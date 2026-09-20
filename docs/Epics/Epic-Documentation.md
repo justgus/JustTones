@@ -16,14 +16,14 @@ Currently: **9 Epics** | Next available: **EP-010**
 | EP-006 | Watch Companion and Synchronization | Closed | TBD | 2026-09-15 |
 | EP-007 | Accessibility, Safety, and Resilience | Closed | TBD | 2026-09-16 |
 | EP-008 | Content and App Store Release Qualification | Backlog | TBD | TBD |
-| EP-009 | Audible Playback Integration | Active | TBD | TBD |
+| EP-009 | Audible Playback Integration | Closed | TBD | 2026-09-20 |
 
 ## Statistics
 
 - **Total Epics:** 9
 - **Backlog:** 1
-- **Active:** 1
-- **Closed:** 7
+- **Active:** 0
+- **Closed:** 8
 - **Next available:** EP-010
 
 *Last Updated: 2026-09-20*

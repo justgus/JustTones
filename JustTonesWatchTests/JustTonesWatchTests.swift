@@ -42,7 +42,32 @@ struct JustTonesWatchTests {
         #expect(host.state == .unavailable(.sessionActivationFailed))
     }
 
-    @MainActor @Test func delayedWatchActivationCannotStartToneAfterStop() throws {
+    @MainActor @Test(arguments: [
+        WatchTonePlaybackDriverEvent.interrupted,
+        .routeUnavailable,
+        .engineFailed
+    ]) func watchPlaybackHostStopsImmediatelyForEveryRuntimeFailure(
+        _ event: WatchTonePlaybackDriverEvent
+    ) async throws {
+        let driver = WatchRecordingToneDriver()
+        let host = WatchTonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+
+        host.play(selection)
+        await Task.yield()
+        driver.eventHandler?(event)
+
+        let expectedState: TonePlaybackLifecycleState = switch event {
+        case .interrupted: .unavailable(.interrupted)
+        case .routeUnavailable: .unavailable(.routeUnavailable)
+        case .engineFailed: .unavailable(.engineFailed)
+        }
+        #expect(host.state == expectedState)
+        #expect(driver.immediateStopCount == 1)
+        #expect(driver.startedSelections == [selection])
+    }
+
+    @MainActor @Test func delayedWatchActivationCannotStartToneAfterStop() async throws {
         let driver = WatchRecordingToneDriver(pausesAtStart: true)
         let host = WatchTonePlaybackHost(driver: driver)
         let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))

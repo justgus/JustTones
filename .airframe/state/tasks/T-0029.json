@@ -1,7 +1,7 @@
 {
   "acceptanceCriteria" : [
     "Automated host tests demonstrate that the iPhone and Watch renderer paths remain silent until explicit Play and stop on selection, interruption, route loss, or engine failure.",
-    "Click-free ramps, selected-frequency integrity, bounded output, and lifecycle/UI truthfulness have deterministic evidence for both platform hosts.",
+    "Click-free ramps, selected-frequency integrity, bounded output, and lifecycle\/UI truthfulness have deterministic evidence for both platform hosts.",
     "The evidence package distinguishes automated checks, simulator inspection, and physical-device listening, route, latency, endurance, energy, thermal, and accessibility observations."
   ],
   "component" : "Cross-platform audible-playback qualification",
@@ -11,11 +11,14 @@
     "Shared audio renderer",
     "Documentation"
   ],
+  "dateVerified" : "2026-09-20",
   "epicID" : {
     "rawValue" : "EP-009"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0019"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -23,18 +26,25 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-16T15:01:35Z"
+    "updatedAt" : "2026-09-20T23:54:41Z"
   },
   "notes" : [
     "Planning complete. This Task qualifies the host integration delivered by T-0027 and T-0028; it does not replace EP-008 release qualification or authorize submission.",
-    "Observed approved-requirement violations become Issues. A simulator build, deterministic buffer test, or listening assertion from an agent is not physical-device acceptance."
+    "Observed approved-requirement violations become Issues. A simulator build, deterministic buffer test, or listening assertion from an agent is not physical-device acceptance.",
+    "Activated with SP-019 by user on 2026-09-20."
   ],
   "priority" : "high",
   "rationale" : "The product cannot claim actual reference-tone playback until the new platform hosts have deterministic integration coverage and separately recorded hardware evidence.",
   "requirementIDs" : [
-    { "rawValue" : "JT-NFR-004" },
-    { "rawValue" : "JT-NFR-044" },
-    { "rawValue" : "JT-NFR-045" }
+    {
+      "rawValue" : "JT-NFR-004"
+    },
+    {
+      "rawValue" : "JT-NFR-044"
+    },
+    {
+      "rawValue" : "JT-NFR-045"
+    }
   ],
   "sprintID" : {
     "rawValue" : "SP-019"
@@ -49,7 +59,7 @@
       "rawValue" : "T-0029"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Qualify audible playback integration and failure containment"
   }
 }

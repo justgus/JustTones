@@ -10,6 +10,7 @@
       "rawValue" : "JT-AC-043"
     }
   ],
+  "closeDate" : "2026-09-20",
   "goal" : "Connect the qualified shared tone renderer to real iPhone and Watch audio output while preserving explicit-play, click-free, and failure-containment behavior.",
   "issueIDs" : [
     {
@@ -28,7 +29,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-17T22:32:47Z"
+    "updatedAt" : "2026-09-20T23:55:22Z"
   },
   "notes" : [
     "Planning complete. EP-009 is a prerequisite for EP-008 release qualification and remains backlog until the user authorizes activation.",
@@ -76,7 +77,7 @@
       "rawValue" : "EP-009"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Audible Playback Integration"
   }
 }

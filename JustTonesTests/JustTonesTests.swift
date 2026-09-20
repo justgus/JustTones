@@ -54,7 +54,32 @@ struct JustTonesTests {
         #expect(driver.startedSelections.count == 1)
     }
 
-    @MainActor @Test func delayedActivationCannotStartToneAfterStop() throws {
+    @MainActor @Test(arguments: [
+        TonePlaybackDriverEvent.interrupted,
+        .routeUnavailable,
+        .engineFailed
+    ]) func playbackHostStopsImmediatelyForEveryRuntimeFailure(
+        _ event: TonePlaybackDriverEvent
+    ) async throws {
+        let driver = RecordingToneDriver()
+        let host = TonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+
+        host.play(selection)
+        await Task.yield()
+        driver.eventHandler?(event)
+
+        let expectedState: TonePlaybackLifecycleState = switch event {
+        case .interrupted: .unavailable(.interrupted)
+        case .routeUnavailable: .unavailable(.routeUnavailable)
+        case .engineFailed: .unavailable(.engineFailed)
+        }
+        #expect(host.state == expectedState)
+        #expect(driver.immediateStopCount == 1)
+        #expect(driver.startedSelections == [selection])
+    }
+
+    @MainActor @Test func delayedActivationCannotStartToneAfterStop() async throws {
         let driver = RecordingToneDriver(pausesAtStart: true)
         let host = TonePlaybackHost(driver: driver)
         let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))

@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "docs\/Qualification\/SP-019-Evidence.md"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (46 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTonesWatch -destination platform=watchOS\\ Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0 -derivedDataPath \/private\/tmp\/JustTones-SP019-Watch test (11 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -destination platform=iOS\\ Simulator,id=7F6D1F8B-390F-4D81-81FE-B52AEF477FF9 -only-testing:JustTonesTests -derivedDataPath \/private\/tmp\/JustTones-SP019-iPhone18 test (passed)",
+  "environment" : "Xcode-beta; macOS host; watchOS 27.0 Apple Watch Series 11 (42mm) simulator; iOS 27.0 iPhone 18 Pro simulator. Initial iPhone 17 Pro attempt was blocked by CoreSimulator clone creation. No physical-device, listening, route, latency, endurance, energy, thermal, Low Power Mode, or accessibility qualification performed.",
+  "id" : {
+    "rawValue" : "EV-0019"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-019 deterministic iPhone and Watch host qualification passed; physical-device qualification remains unverified.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0029"
+    }
+  ]
+}
