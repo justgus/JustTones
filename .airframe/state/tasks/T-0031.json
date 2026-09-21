@@ -22,6 +22,9 @@
     },
     {
       "rawValue" : "EV-0021"
+    },
+    {
+      "rawValue" : "EV-0023"
     }
   ],
   "metadata" : {
@@ -30,7 +33,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-21T19:56:53Z"
+    "updatedAt" : "2026-09-21T20:14:08Z"
   },
   "notes" : [
     "The code was written before this Task existed and is retroactively governed here. The implemented scope now includes pitch-entry editing, built-in hide\/restore, versioned silent working-state restoration, and compiled UI\/persistence coverage. It remains Implemented - Not Verified because CoreSimulator could not launch the test targets."

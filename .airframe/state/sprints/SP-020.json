@@ -13,7 +13,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-21T19:59:03Z"
+    "updatedAt" : "2026-09-21T20:17:29Z"
   },
   "notes" : [
     "Active concurrently with SP-021 by the user's explicit 2026-09-21 authorization."
@@ -28,7 +28,7 @@
       "rawValue" : "SP-020"
     },
     "kind" : "sprint",
-    "status" : "review",
+    "status" : "closed",
     "title" : "iPhone Timbre Selection"
   }
 }

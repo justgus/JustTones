@@ -17,15 +17,15 @@ Currently: **11 Epics** | Next available: **EP-012**
 | EP-007 | Accessibility, Safety, and Resilience | Closed | TBD | 2026-09-16 |
 | EP-008 | Content and App Store Release Qualification | Backlog | TBD | TBD |
 | EP-009 | Audible Playback Integration | Closed | TBD | 2026-09-20 |
-| EP-010 | iPhone Timbre Selection and Qualification | Active | TBD | TBD |
+| EP-010 | iPhone Timbre Selection and Qualification | Closed | TBD | 2026-09-21 |
 | EP-011 | iPhone Custom Tuning Profile Authoring | Closed | TBD | 2026-09-21 |
 
 ## Statistics
 
 - **Total Epics:** 11
 - **Backlog:** 1
-- **Active:** 1
-- **Closed:** 9
+- **Active:** 0
+- **Closed:** 10
 - **Next available:** EP-012
 
 *Last Updated: 2026-09-21*

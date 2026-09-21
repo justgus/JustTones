@@ -31,7 +31,7 @@ Currently: **21 Sprints** | Next available: **SP-022**
 | SP-017 | iPhone Audible Playback Host | EP-009 | T-0027 | None | Closed |
 | SP-018 | Watch Audible Playback Host | EP-009 | T-0028 | I-0004, I-0002, I-0003 | Closed |
 | SP-019 | Audible Playback Integration Qualification | EP-009 | T-0029 | None | Closed |
-| SP-020 | iPhone Timbre Selection | EP-010 | T-0030 | None | Review |
+| SP-020 | iPhone Timbre Selection | EP-010 | T-0030 | None | Closed |
 | SP-021 | Custom Profile Authoring | EP-011 | T-0031 | None | Closed |
 
 ## Statistics
@@ -40,8 +40,8 @@ Currently: **21 Sprints** | Next available: **SP-022**
 - **Backlog:** 0
 - **Planning:** 0
 - **Active:** 0
-- **Review:** 1
-- **Closed:** 20
+- **Review:** 0
+- **Closed:** 21
 - **Next available:** SP-022
 
 *Last Updated: 2026-09-21*

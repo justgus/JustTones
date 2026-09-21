@@ -20,6 +20,9 @@
     },
     {
       "rawValue" : "EV-0023"
+    },
+    {
+      "rawValue" : "EV-0022"
     }
   ],
   "metadata" : {
@@ -28,7 +31,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-21T19:56:45Z"
+    "updatedAt" : "2026-09-21T20:14:06Z"
   },
   "notes" : [
     "The code was written before this Task existed and is retroactively governed here. The implemented scope now covers preferred-timbre selection, unavailable-identifier fallback\/disclosure, and persisted silent working state. It remains Implemented - Not Verified pending executable simulator tests and physical listening, route, and latency qualification."
