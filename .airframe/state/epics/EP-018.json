@@ -1,0 +1,75 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-048"
+    },
+    {
+      "rawValue" : "JT-AC-049"
+    },
+    {
+      "rawValue" : "JT-AC-050"
+    }
+  ],
+  "goal" : "Define and approve a non-redundant, instrument-facing interaction architecture for JustTones, beginning with iPhone and yielding an explicit Apple Watch adaptation contract.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T22:16:52Z"
+  },
+  "notes" : [
+    "Design-only backlog Epic created from the primary-screen redundancy review. It authorizes no production UI change by itself.",
+    "The resulting decisions are inputs to the delivery work in EP-013 through EP-016; it does not supersede their functional requirements."
+  ],
+  "outOfScope" : [
+    "Production SwiftUI implementation or visual rebrand",
+    "New audio, profile, synchronization, or system-integration capabilities",
+    "iPad-specific layouts"
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-018-Planning.md"
+  ],
+  "rationale" : "The current primary tone interface repeats selected pitch, timbre, and output-level information in both status and control surfaces. A deliberate hierarchy is needed before further feature delivery makes the interface denser, and the iPhone model must guide the constrained Watch experience.",
+  "scope" : [
+    "iPhone information architecture and control hierarchy",
+    "State-specific presentation and progressive disclosure",
+    "Accessibility, Dynamic Type, and localization layout decisions",
+    "Apple Watch adaptation contract and implementation handoff"
+  ],
+  "sprintIDs" : [
+    {
+      "rawValue" : "SP-022"
+    },
+    {
+      "rawValue" : "SP-023"
+    },
+    {
+      "rawValue" : "SP-024"
+    }
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0032"
+    },
+    {
+      "rawValue" : "T-0033"
+    },
+    {
+      "rawValue" : "T-0034"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-018"
+    },
+    "kind" : "epic",
+    "status" : "active",
+    "title" : "iPhone-First Interaction Architecture and Watch Adaptation"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-018"
+  },
+  "goal" : "Establish the iPhone primary-screen information architecture: one canonical presentation for each value, direct access to essential playback controls, and an audited removal of passive duplicates.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T22:55:07Z"
+  },
+  "notes" : [
+    "Design-only Sprint. T-0032 is backlog and owns the iPhone screen inventory and hierarchy specification.",
+    "SP-023 may begin only after the user accepts the resulting iPhone interaction model."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0032"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-022"
+    },
+    "kind" : "sprint",
+    "status" : "active",
+    "title" : "iPhone Interaction Architecture"
+  }
+}

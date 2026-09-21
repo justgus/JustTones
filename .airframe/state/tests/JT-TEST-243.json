@@ -1,0 +1,55 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-049"
+    }
+  ],
+  "artifactReferences" : [
+    "docs\/Epics\/EP-018-Planning.md"
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "Every required state has a defined presentation and secondary-screen playback retains an immediately available Stop path."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-243"
+  },
+  "kind" : "manual",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Verify the design specification covers stopped, playing, transition, unavailable, and secondary-screen playback states with accessibility and localization constraints.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-037"
+    },
+    {
+      "rawValue" : "JT-FR-042"
+    },
+    {
+      "rawValue" : "JT-FR-085"
+    },
+    {
+      "rawValue" : "JT-FR-091"
+    }
+  ],
+  "status" : "draft",
+  "steps" : [
+    "Inspect the approved state and accessibility specification."
+  ],
+  "title" : "Playback-state and accessibility specification inspection",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0033"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-048"
+    }
+  ],
+  "artifactReferences" : [
+    "docs\/Design\/iPhone-Primary-Tone-Screen.md"
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "No passive duplicate status presentation remains and required controls remain on the primary playback screen."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-242"
+  },
+  "kind" : "manual",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "SP-022 planning completed on 2026-09-21; remains Draft pending user authorization of T-0032 and review of the specification."
+  ],
+  "objective" : "Verify the approved iPhone specification gives each primary-screen value and control one canonical presentation and preserves all required direct controls.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-036"
+    },
+    {
+      "rawValue" : "JT-FR-041"
+    }
+  ],
+  "status" : "draft",
+  "steps" : [
+    "Inspect the approved screen inventory and state layout against the primary-screen requirements."
+  ],
+  "title" : "iPhone interaction architecture inspection",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0032"
+    }
+  ]
+}

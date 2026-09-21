@@ -1,0 +1,34 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-018"
+  },
+  "goal" : "Specify iPhone playback states, accessibility and layout constraints, persistent playback treatment, and implementation handoffs to the existing delivery Epics.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T22:52:21Z"
+  },
+  "notes" : [
+    "Design-only Sprint. T-0033 is backlog and owns the state, accessibility, and handoff specification.",
+    "Depends on the user-accepted interaction model from SP-022; it authorizes no SwiftUI implementation."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0033"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-023"
+    },
+    "kind" : "sprint",
+    "status" : "planning",
+    "title" : "iPhone State, Accessibility, and Handoff Specification"
+  }
+}

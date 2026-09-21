@@ -1,0 +1,21 @@
+{
+  "disposition" : "unverified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-050"
+  },
+  "isVerified" : false,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "ownerID" : {
+    "rawValue" : "EP-018"
+  },
+  "text" : "The Watch adaptation contract preserves safe essential playback operation, defines focused timbre and output-level controls, and records the iPhone-only administration boundary."
+}

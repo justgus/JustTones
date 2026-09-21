@@ -1,0 +1,52 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-050"
+    }
+  ],
+  "artifactReferences" : [
+    "docs\/Epics\/EP-018-Planning.md"
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "The contract defines essential primary controls, focused timbre and level interaction, and the iPhone-only administration boundary."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-244"
+  },
+  "kind" : "manual",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Verify the Watch contract retains essential reference-tone operation while placing authoring on iPhone and protecting output-level adjustment from ordinary scrolling.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-047"
+    },
+    {
+      "rawValue" : "JT-FR-050"
+    },
+    {
+      "rawValue" : "JT-FR-057"
+    }
+  ],
+  "status" : "draft",
+  "steps" : [
+    "Inspect the approved Watch adaptation contract."
+  ],
+  "title" : "Apple Watch interaction adaptation inspection",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0034"
+    }
+  ]
+}

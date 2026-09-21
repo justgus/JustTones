@@ -1,0 +1,34 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-018"
+  },
+  "goal" : "Adapt the accepted iPhone interaction model to the constrained Apple Watch context while preserving safe, independent reference-tone operation.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T22:52:24Z"
+  },
+  "notes" : [
+    "Design-only Sprint. T-0034 is backlog and owns the Watch layout and focused-control contract.",
+    "Depends on the accepted iPhone model from SP-022 and its state specification from SP-023; it authorizes no watchOS implementation."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0034"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-024"
+    },
+    "kind" : "sprint",
+    "status" : "planning",
+    "title" : "Apple Watch Interaction Adaptation"
+  }
+}

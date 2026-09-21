@@ -1,0 +1,50 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-048"
+  ],
+  "component" : "",
+  "componentsAffected" : [
+
+  ],
+  "epicID" : {
+    "rawValue" : "EP-018"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T22:55:10Z"
+  },
+  "notes" : [
+
+  ],
+  "priority" : "medium",
+  "rationale" : "The primary iPhone screen currently repeats selected values in passive status and control surfaces. A reviewed hierarchy is required before implementation can remove those duplicates safely.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-036"
+    },
+    {
+      "rawValue" : "JT-FR-041"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-022"
+  },
+  "testSteps" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0032"
+    },
+    "kind" : "task",
+    "status" : "active",
+    "title" : "Specify iPhone interaction architecture"
+  }
+}

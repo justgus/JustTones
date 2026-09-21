@@ -1,0 +1,21 @@
+{
+  "disposition" : "unverified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-048"
+  },
+  "isVerified" : false,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "ownerID" : {
+    "rawValue" : "EP-018"
+  },
+  "text" : "The iPhone interaction specification assigns every primary-screen value and control one canonical location, removes passive duplicate status presentation, and preserves direct access to required playback controls."
+}

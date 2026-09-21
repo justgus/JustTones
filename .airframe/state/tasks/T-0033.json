@@ -1,0 +1,56 @@
+{
+  "acceptanceCriteria" : [
+
+  ],
+  "component" : "",
+  "componentsAffected" : [
+
+  ],
+  "epicID" : {
+    "rawValue" : "EP-018"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T22:16:52Z"
+  },
+  "notes" : [
+
+  ],
+  "priority" : "medium",
+  "rationale" : "",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-037"
+    },
+    {
+      "rawValue" : "JT-FR-042"
+    },
+    {
+      "rawValue" : "JT-FR-085"
+    },
+    {
+      "rawValue" : "JT-FR-091"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-023"
+  },
+  "testSteps" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0033"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Specify iPhone states, accessibility, and delivery handoff"
+  }
+}

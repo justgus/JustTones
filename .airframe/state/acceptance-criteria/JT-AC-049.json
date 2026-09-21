@@ -1,0 +1,21 @@
+{
+  "disposition" : "unverified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-049"
+  },
+  "isVerified" : false,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "ownerID" : {
+    "rawValue" : "EP-018"
+  },
+  "text" : "The state and accessibility specification defines stopped, playing, transitional, unavailable, and secondary-screen playback behavior, including a persistent immediate Stop path when required."
+}
