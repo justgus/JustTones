@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "In Low Power Mode, JustTones shall continue a deliberately started tone wherever the operating system permits. It shall not lower synthesis accuracy, silently alter timbre, or resume after a system termination. Any unavailable behavior shall be disclosed without obstructing later playback.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

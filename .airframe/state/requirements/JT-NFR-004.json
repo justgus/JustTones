@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The visible playback state shall agree with actual audio output after route changes, interruptions, background transitions, media-control actions, and audio-engine failures.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

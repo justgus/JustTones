@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Settings shall clearly separate playback defaults, musical presentation, catalog visibility, Watch synchronization status, hearing-safety information, data export and reset, help, privacy, and About information.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

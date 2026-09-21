@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone app shall provide search across built-in and custom profiles and tuning systems using their names, alternate names, instruments, regions, traditions, descriptive metadata, contained pitches, and sounding frequencies.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

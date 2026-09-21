@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Every timbre shall preserve the selected pitch as its fundamental frequency and shall satisfy the same pitch-accuracy requirement.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

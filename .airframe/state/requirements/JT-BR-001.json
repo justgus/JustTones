@@ -27,7 +27,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall provide musicians with an audible reference pitch for tuning an instrument by ear.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

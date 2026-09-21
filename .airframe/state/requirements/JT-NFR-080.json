@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The support and privacy URLs shall be publicly reachable before submission. A process shall exist for receiving support requests, recording defects, publishing corrected documentation, and evaluating reported pitch or safety problems.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

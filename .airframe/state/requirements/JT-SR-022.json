@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Release builds shall exclude developer menus, test fixtures, verbose audio tracing, mock stores, fault injection, and controls capable of bypassing validation or safety behavior.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

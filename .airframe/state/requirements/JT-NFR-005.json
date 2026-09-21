@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "User changes shall be saved promptly without a separate Save action, and an interrupted write shall not corrupt previously valid profile data.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

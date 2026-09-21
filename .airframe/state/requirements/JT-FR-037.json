@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Selecting a pitch while playback is stopped shall update the selection without producing sound. Playback shall begin only when the musician activates Play, consistent with JT-SR-003.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

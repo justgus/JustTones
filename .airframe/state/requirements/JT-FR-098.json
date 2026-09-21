@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A user-facing error shall state what failed, whether data or playback was affected, what can be done next, whether retry is safe, and where details can be found. Raw framework errors, codes, and internal filenames shall not be the primary message.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

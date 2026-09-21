@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall display enough frequency precision to distinguish supported 0.1 Hz adjustments without implying greater physical accuracy than the selected pitch definition provides; ordinary display and direct entry shall show one decimal place, with additional calculated precision available in a detailed view.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

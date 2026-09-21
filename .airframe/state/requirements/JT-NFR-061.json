@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Immediately before submission, JustTones shall be reviewed against the then-current App Review Guidelines, App Store Connect requirements, required SDK versions, privacy rules, and applicable regional declarations. Any change affecting product behavior shall return to requirements review.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

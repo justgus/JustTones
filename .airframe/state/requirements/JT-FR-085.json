@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone app shall provide a concise, accessible offline summary explaining that risk depends on level and duration; in-app level is not an SPL measurement; users should start low; ambient noise can encourage unsafe levels; isolation can reduce the need for volume; Apple safety controls should remain enabled; and persistent hearing symptoms warrant stopping and seeking qualified professional advice. It shall link to current Apple and WHO information without requiring network access for the essential summary.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

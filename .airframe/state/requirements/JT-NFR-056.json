@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Version 1 shall provide reviewed English interface and help content. Additional interface languages require reviewed translations and localization test evidence but shall not be prerequisites for version 1.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

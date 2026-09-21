@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Under ordinary playback with the largest supported practical profile collection loaded, the iPhone app should remain below 150 MB resident memory and the Watch app below 75 MB. Exceeding either budget shall require measured justification and explicit approval before release.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

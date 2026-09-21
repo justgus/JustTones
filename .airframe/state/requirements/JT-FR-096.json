@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone app shall provide concise offline help covering playback, profiles, tuning systems, reference pitch, written and sounding pitch, timbres, import\/export, Watch synchronization, hearing safety, data recovery, and known hardware limitations.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

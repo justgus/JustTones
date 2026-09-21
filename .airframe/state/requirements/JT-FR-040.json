@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Changing profiles while playback is active shall stop playback. The newly selected profile shall remain silent until the musician explicitly starts it, allowing any JT-FR-033 tuning-reference warning to be reviewed first.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

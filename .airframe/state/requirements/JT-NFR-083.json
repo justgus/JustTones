@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The released source revision, archive metadata, symbol files, catalog, schema, privacy text, store metadata, and evidence shall be retained sufficiently to diagnose production defects and prepare a corrective update without depending on mutable development state.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

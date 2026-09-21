@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Using a built-in speaker or wired route, audible output shall begin within 150 ms after the musician activates Play. Route latency outside the app's control shall be measured and reported separately.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

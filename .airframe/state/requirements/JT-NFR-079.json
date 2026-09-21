@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Before selecting distribution regions, the Account Holder shall review applicable App Store agreements, trader status, tax and banking state, content rights, and region-specific declarations. A territory shall not be enabled when required information or rights are unavailable.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

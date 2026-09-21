@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Version 1 shall generate one selected fundamental pitch at a time. It shall not provide simultaneous profile entries, intervals, chords, or drones.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

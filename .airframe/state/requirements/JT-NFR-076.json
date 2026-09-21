@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Review notes shall explain tone generation without microphone access, playback controls, background playback, Watch installation and independent playback, safe sample import, capability purposes, and absence of account or network requirements.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

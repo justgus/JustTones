@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A tuning profile may specify a preferred timbre. Selecting that profile while stopped shall select its available preferred timbre without starting playback. Output level shall remain device-specific rather than profile-specific.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

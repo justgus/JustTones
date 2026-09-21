@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A publicly accessible privacy policy shall be linked in App Store Connect and within JustTones. It shall accurately state local-data, networking, diagnostic, document, Watch synchronization, retention, export, and deletion behavior.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Selecting another timbre during playback shall transition to it without stopping the selected pitch and without an audible click, discontinuity, or unintended pitch change.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

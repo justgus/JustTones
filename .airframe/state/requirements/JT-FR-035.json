@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall permit multiple profiles and tuning systems to share the same display name while distinguishing them by stable identifiers and contextual metadata.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

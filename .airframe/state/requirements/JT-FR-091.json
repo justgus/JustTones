@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Displayed and entered frequencies, cents, percentages, durations, and dates shall follow the user's locale where appropriate. Internal calculations and `.justtones` documents shall remain locale-independent.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Pitch selection, Play\/Stop, previous\/next pitch, timbre, and output level shall remain accessible without leaving the primary playback screen. Detailed profile editing and tuning-system authoring may use secondary screens.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

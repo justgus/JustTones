@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "On each required physical-device class, JustTones shall complete two hours of continuous playback without a crash or forced termination, JustTones-attributable dropout, excessive pitch drift, amplitude accumulation or decay, playback-state inconsistency, or persisted-data corruption. iPhone testing shall include locked-screen playback; Watch testing shall include display-dimmed and wrist-down operation where permitted.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

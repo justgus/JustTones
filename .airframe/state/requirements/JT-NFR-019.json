@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Timbres shall be normalized so changing timbre at a fixed pitch and app output level does not cause an excessive increase in perceived loudness. Objective level comparison and a listening review shall qualify every shipped timbre.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

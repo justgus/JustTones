@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone and Watch components and any included dependency shall provide complete, mutually consistent privacy manifests and App Store privacy answers representing actual behavior.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

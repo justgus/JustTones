@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Help, empty states, errors, recovery controls, diagnostic details, and About information shall satisfy approved accessibility requirements on iPhone and Watch where applicable.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

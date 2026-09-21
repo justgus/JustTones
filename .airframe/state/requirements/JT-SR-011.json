@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Other than required signal ramps, normalization, clipping prevention, and operating-system behavior, JustTones shall not silently reduce output under the label of hearing safety. Safety interventions shall remain truthful and user-visible.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

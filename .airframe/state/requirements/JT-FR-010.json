@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A musician shall be able to export user-created tuning systems and profiles in the same portable format used for import.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

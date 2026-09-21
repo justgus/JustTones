@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The Watch shall activate a synchronized data update only after the complete update has been received and validated. An incomplete, invalid, or interrupted update shall leave the last valid Watch data available.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

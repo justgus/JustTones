@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Where useful for support, an error may expose a secondary details view containing a bounded, privacy-reviewed diagnostic description that the musician can copy deliberately.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

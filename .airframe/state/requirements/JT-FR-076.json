@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "If an imported or synchronized profile references an unavailable timbre, JustTones shall remain silent, identify the unavailable preference, select a safe built-in fallback, and preserve the original timbre identifier for possible future restoration.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

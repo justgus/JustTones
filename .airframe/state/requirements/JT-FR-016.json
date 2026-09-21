@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A musician shall be able to enter and play a frequency directly from 16.0 through 12,000.0 Hz inclusive in increments of 0.1 Hz without assigning it a Western note name.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

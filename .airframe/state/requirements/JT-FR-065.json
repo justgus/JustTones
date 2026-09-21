@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The catalog shall distinguish temperaments and tuning systems, pitch-measurement models, scales and modes, instrument tuning profiles, and ensemble or performance reference pitches. Pitch-bearing content shall not be mislabeled as a temperament merely because it contains pitch information.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

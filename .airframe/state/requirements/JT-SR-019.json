@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The app shall request only capabilities required for approved behavior. Every entitlement, background mode, document type, App Group, and Watch capability shall have a documented requirement and test.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

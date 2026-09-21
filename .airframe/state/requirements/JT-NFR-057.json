@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The interface shall be tested with pseudo-localized expansion, accented characters, non-Latin content, locale-specific numbers, and right-to-left mirroring so future translations do not require redesign of the primary workflow.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

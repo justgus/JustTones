@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "If no valid playable profile is available, JustTones shall remain silent and offer clear actions to restore built-ins, create a profile, or import valid data.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Unsupported newer major versions shall be rejected without partial import; compatible newer minor versions may be accepted when unknown optional fields can be safely preserved or ignored; supported older versions shall migrate deterministically; and preview shall disclose ignored or migrated information.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

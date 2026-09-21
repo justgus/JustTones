@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The interface shall support Dynamic Type through the iOS accessibility sizes. Content may reflow or scroll, but essential information and controls shall not overlap, truncate ambiguously, or become unreachable.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

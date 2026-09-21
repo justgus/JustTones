@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Hearing-safety text shall be reviewed before release for factual accuracy, calm wording, accessibility, localization, and avoidance of medical or calibrated-level claims unsupported by the app.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

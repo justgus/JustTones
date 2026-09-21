@@ -27,7 +27,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A musician shall be able to maintain multiple tuning profiles for different instruments and tunings.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

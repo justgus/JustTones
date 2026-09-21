@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "If the Watch cannot interpret data created by a newer iPhone app version, it shall retain its last compatible data, identify the compatibility problem, and avoid partially importing the unsupported update.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

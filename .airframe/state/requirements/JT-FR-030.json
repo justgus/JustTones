@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Profiles shall support repeated pitches, arbitrary entry ordering, and practical entry counts without assuming a particular number of strings, courses, or notes.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

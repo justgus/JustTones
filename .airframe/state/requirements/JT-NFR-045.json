@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Playback state changes caused by user actions, interruptions, route changes, engine failures, backgrounding, and cross-device data updates shall use a defined state model with automated transition coverage. Conflicting events shall resolve without unexpected playback.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

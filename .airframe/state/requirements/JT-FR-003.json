@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall allow the musician to set the A4 reference frequency from 350.0 through 500.0 Hz inclusive in increments of 0.1 Hz, defaulting to 440.0 Hz; changing the reference shall recalculate profile pitch frequencies without changing their musical identities.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

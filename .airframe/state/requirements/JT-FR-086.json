@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone app shall export an individual profile; selected profiles with required tuning dependencies; an individual custom tuning system; or all user-created musical data as one backup document. Built-ins shall normally use stable references and catalog versions rather than unnecessary duplication.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

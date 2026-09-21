@@ -27,7 +27,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A musician shall be able to select a musical note and deliberately start or stop its reference tone.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

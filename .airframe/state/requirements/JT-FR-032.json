@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A profile entry may specify both a displayed written pitch and its sounding pitch; playback shall use the sounding pitch while the interface may display either or both.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

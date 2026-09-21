@@ -1,0 +1,46 @@
+{
+  "acceptanceCriterionIDs" : [
+
+  ],
+  "goal" : "Produce a complete, reproducible run of record for the approved requirements.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Backlog planning created during the requirements-completeness audit. This Epic begins only after delivery work is complete."
+  ],
+  "outOfScope" : [
+
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-017-Planning.md"
+  ],
+  "rationale" : "Test definitions provide full traceability but do not yet provide complete executed evidence for the requirement set.",
+  "scope" : [
+    "Test implementation gap audit",
+    "Automated and manual run-of-record evidence",
+    "Requirement-to-evidence reconciliation"
+  ],
+  "sprintIDs" : [
+
+  ],
+  "taskIDs" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-017"
+    },
+    "kind" : "epic",
+    "status" : "backlog",
+    "title" : "Requirements Verification Run of Record"
+  }
+}

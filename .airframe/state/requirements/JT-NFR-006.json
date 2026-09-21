@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "All app functions shall be operable with VoiceOver. Controls shall expose meaningful names, values, states, and actions; pitch labels shall be spoken unambiguously with accidental and octave information.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

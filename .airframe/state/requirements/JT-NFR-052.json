@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "If the local store cannot be decoded or validated, JustTones shall preserve it for possible recovery, attempt the last valid snapshot, avoid silently replacing user data with defaults, explain the condition, offer import restoration or reset, and retain unaffected recoverable data where practical.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

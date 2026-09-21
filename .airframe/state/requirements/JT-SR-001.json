@@ -32,7 +32,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Imported tuning documents shall contain data only, shall not execute code, and shall be validated for schema version, numeric bounds, finite values, structural limits, and references before becoming active.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

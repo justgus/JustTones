@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "While playback is active, selecting another pitch entry in the current profile shall transition directly to that pitch using the click-free transition required by JT-FR-014. It shall not require Stop followed by Play.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

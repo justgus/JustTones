@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The interface and documents shall preserve supported Unicode accidentals, diacritics, non-Latin names, alternate names, and culturally specific terminology without lossy transliteration.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

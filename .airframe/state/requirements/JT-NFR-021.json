@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "During continuous playback, a timbre's sustained portion shall not drift in fundamental frequency, decay to silence, accumulate amplitude, develop discontinuities, or change character because of envelope or phase-state exhaustion.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

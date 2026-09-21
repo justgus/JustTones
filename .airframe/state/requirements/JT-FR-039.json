@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The primary screen shall provide one-action movement to the previous or next entry in the current profile. Entry order, repeated pitches, and group boundaries shall be preserved.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

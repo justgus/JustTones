@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The App Store application shall target iPhone rather than provide a native iPad interface. Running as an iPhone compatibility app on another Apple platform shall not constitute a supported or release-qualified configuration unless explicitly added later. Apple-silicon Mac and Apple Vision Pro availability shall be disabled for version 1 where App Store Connect permits it.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "While a tone is active, JustTones shall request uninterrupted performance audio and continue playback through transient system alerts and notifications wherever the operating system permits; alert presentation or suppression shall remain controlled by the operating system.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

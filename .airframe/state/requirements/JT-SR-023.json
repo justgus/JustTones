@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Version 1 shall use Apple system frameworks and project-owned code. A third-party runtime dependency may be added only after explicit approval, license review, privacy review, security review, size evaluation, and corresponding requirements updates.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

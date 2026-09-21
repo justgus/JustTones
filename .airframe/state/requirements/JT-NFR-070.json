@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Before creating or finalizing the App Store record, the name JustTones shall be checked for availability and reviewed for unacceptable confusion with JustTune or another existing product. Metadata shall describe JustTones as a tone generator, not a microphone-based tuner.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

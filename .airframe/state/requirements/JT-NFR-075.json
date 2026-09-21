@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Where App Store Connect supports or requires Watch imagery or description, the listing shall accurately show local Watch playback and disconnected operation without implying full profile authoring.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

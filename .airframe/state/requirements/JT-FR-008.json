@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall import versioned, declarative documents containing tuning-system models, tuning systems, tuning profiles, or compatible combinations of these objects.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Every distributed build shall have a unique build number. Marketing versions, build versions, archive names, test evidence, privacy manifests, release notes, and App Store Connect records shall identify the same release candidate.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

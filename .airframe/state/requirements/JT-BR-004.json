@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones version 1 shall be distributed as an iPhone application with an Apple Watch companion application. Native iPad, Mac, Apple TV, and Apple Vision Pro applications are outside version 1 scope.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

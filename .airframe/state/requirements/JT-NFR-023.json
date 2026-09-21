@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The deployment targets shall be iOS 27.0 or later and watchOS 27.0 or later. JustTones shall support subsequent compatible 27.x updates.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

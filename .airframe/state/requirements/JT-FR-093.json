@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The musician shall be able to choose conventional letter-name presentation or fixed-do syllables for applicable chromatic pitches. Imported or tradition-specific labels shall remain available and shall not be forcibly converted. Movable-do analysis is outside version 1 scope.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

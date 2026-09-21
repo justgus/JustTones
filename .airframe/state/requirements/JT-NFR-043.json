@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Battery consumption shall be measured separately for iPhone foreground playback, iPhone locked or background playback, Watch active-display playback, Watch wrist-down playback, and built-in and representative wireless routes. Results shall become release evidence and a material unexplained regression shall block release authorization.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

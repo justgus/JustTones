@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The Watch shall provide a secondary status view showing whether it has valid local data, whether synchronization is pending, the time of the last successful update, and any actionable synchronization failure.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

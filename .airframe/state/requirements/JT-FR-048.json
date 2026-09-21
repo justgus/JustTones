@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "While stopped, selecting a pitch on the Watch shall remain silent. While playing, selecting the previous, next, or another entry shall transition directly using the same click-free behavior as the iPhone app.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

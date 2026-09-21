@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone data store and user exports shall be the authoritative recoverable sources for user-created musical data. The Watch copy shall be treated as a playback replica rather than the sole backup.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Confirmed iPhone deletions, built-in visibility changes, and replacements shall propagate to the Watch. If the currently selected Watch object is removed, playback shall stop and the Watch shall select a valid fallback without starting sound.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

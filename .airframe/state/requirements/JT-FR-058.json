@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "When the iPhone is unreachable, the Watch shall continue operating from its last valid synchronized data. It shall not require network access or display connectivity errors that obstruct playback.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The primary category should be Music unless review identifies a more accurate category. The App Store age-rating questionnaire shall be answered from actual content and behavior; no rating shall be guessed or represented as guaranteed before App Store Connect calculates it.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

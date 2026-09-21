@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The App Store name, subtitle, description, keywords, categories, age-rating answers, privacy answers, support URL, privacy URL, copyright, version, compatibility, and promotional claims shall accurately describe the submitted build.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

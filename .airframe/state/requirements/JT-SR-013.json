@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall not display a decibel SPL or exposure-dose estimate unless the complete device-and-route combination provides sufficiently reliable calibrated information through supported Apple APIs. An unavailable estimate shall be omitted rather than guessed.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

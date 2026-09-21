@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Deleting a custom profile, tuning system, or tuning shall require confirmation or offer a clearly visible Undo operation. Deleting an object referenced elsewhere shall explain the impact before proceeding.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

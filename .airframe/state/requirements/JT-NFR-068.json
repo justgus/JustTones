@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Submission shall have no known crash, data-loss, privacy, security, unexpected-playback, pitch-accuracy, clipping, or accessibility-blocking defect; no open critical or high-severity defect; and every deferred lower-severity defect documented with impact and explicit release acceptance.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

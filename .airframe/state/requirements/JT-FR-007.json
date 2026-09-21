@@ -32,7 +32,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A musician shall be able to create, edit, duplicate, name, and delete custom tuning systems using cents, frequency ratios, equal divisions, or explicit frequencies.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

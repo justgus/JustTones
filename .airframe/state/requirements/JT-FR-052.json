@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A tone deliberately started on the Watch shall continue when the display dims or the musician lowers her wrist, subject to watchOS audio-session and interruption rules. Playback shall not require the display to remain fully active.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

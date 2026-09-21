@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall not promise that deleting and reinstalling the app preserves local data. Help text shall explain that recovery depends on an available operating-system backup or a previously exported JustTones document.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

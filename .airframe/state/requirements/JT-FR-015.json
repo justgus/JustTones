@@ -32,7 +32,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall support named musical pitches from C0 through C9 inclusive, approximately 16.35–8,372.02 Hz under the default reference system.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A failure in audio rendering, Watch synchronization, catalog loading, import processing, or persistence shall not corrupt unrelated valid data or leave the application permanently unusable.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

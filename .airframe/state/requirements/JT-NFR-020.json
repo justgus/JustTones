@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Each timbre shall be tested across the supported pitch range. Where its intended character cannot be maintained, JustTones shall simplify its synthesis without changing the requested fundamental rather than introduce unstable or misleading artifacts.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

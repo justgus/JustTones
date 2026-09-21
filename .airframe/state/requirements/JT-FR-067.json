@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Traditions that depend on a particular maker, instrument, ensemble, performer, or measured specimen may be supplied as editable templates. Such a template shall require or permit the musician to enter the applicable pitch values.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

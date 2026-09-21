@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Every Watch function shall be operable with VoiceOver. Pitch announcements shall unambiguously include the note spelling and octave, and controls shall expose playback state and their resulting action.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

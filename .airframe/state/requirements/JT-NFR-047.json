@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Slow, unavailable, malformed, or incompatible Watch synchronization shall not delay iPhone playback, editing, launch, or local persistence.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

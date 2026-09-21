@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A control activation shall produce visible or accessibility-semantic feedback within 100 ms, even when the resulting persistence, synchronization, or audio operation completes asynchronously.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

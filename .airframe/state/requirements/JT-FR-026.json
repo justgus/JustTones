@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall stop audible output cleanly when an accepted call, Siri, or another exclusive audio session causes its audio session to become inactive, while retaining the selected profile, pitch, timbre, and output level.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

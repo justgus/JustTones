@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "While playing through a built-in or wired route, a requested pitch or timbre transition shall begin within 100 ms of the user action, including the required click-free ramp or crossfade.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

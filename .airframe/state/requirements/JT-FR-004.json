@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall support tuning systems with an arbitrary number of pitch divisions whose degrees may be defined by frequency ratios or cents relative to a reference pitch.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

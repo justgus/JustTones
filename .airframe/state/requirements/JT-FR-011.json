@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Once started, a reference tone shall continue without musical fade-out, decay to silence, automatic timeout, or repeated attack until the musician stops it or playback is interrupted by the operating system; an instrument-inspired attack may transition into a stable sustained tone.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

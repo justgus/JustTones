@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Each instrument-inspired timbre may have a recognizable attack and spectral character, but it shall transition into an indefinitely sustained tone. Guitar- and piano-inspired sounds shall not decay away or require repeated retriggering.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

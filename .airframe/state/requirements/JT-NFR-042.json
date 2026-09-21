@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A two-hour playback qualification shall not cause an otherwise normally operating device to enter a serious or critical thermal state attributable to JustTones. The app shall remain pitch-correct if the system reduces processing capacity.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

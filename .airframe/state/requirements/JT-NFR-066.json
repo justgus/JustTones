@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Before an update is released, it shall be tested over every supported previously distributed production schema version and the immediately preceding TestFlight build. Upgrade shall preserve user data and remain silent until explicitly played. The initial release shall cover designated supported development and TestFlight schemas.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

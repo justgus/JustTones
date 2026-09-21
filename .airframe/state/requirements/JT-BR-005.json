@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones version 1 shall contain no subscription, advertising, or in-app purchase. All approved functionality shall be available after installation or any one-time App Store purchase.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

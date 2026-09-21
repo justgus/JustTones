@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Release qualification shall include physical devices representing the oldest and a current supported generation, and the smallest and largest supported display classes, for both iPhone and Apple Watch. A single device may satisfy more than one category.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

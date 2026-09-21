@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The primary iPhone functions shall remain usable in portrait and landscape orientations and across supported iPhone display sizes, including when accessibility text sizes are enabled.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Before import commitment, every required identifier reference shall resolve within the document, to a compatible installed built-in, or through an explicitly approved conflict resolution. Prohibited cycles shall be rejected.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

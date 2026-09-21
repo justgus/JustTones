@@ -1,0 +1,46 @@
+{
+  "acceptanceCriterionIDs" : [
+
+  ],
+  "goal" : "Complete the Watch replica, synchronization, and independent playback workflow.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied."
+  ],
+  "outOfScope" : [
+
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-015-Planning.md"
+  ],
+  "rationale" : "Watch foundations exist, but end-user synchronization status, propagation, and device qualification need completion.",
+  "scope" : [
+    "Watch selection and playback UX",
+    "Synchronization status and propagation",
+    "Compatibility and disconnected operation"
+  ],
+  "sprintIDs" : [
+
+  ],
+  "taskIDs" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-015"
+    },
+    "kind" : "epic",
+    "status" : "backlog",
+    "title" : "Watch Synchronization and Independent Workflow Completion"
+  }
+}

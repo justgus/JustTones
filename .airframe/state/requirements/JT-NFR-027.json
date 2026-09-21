@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Simulator tests may qualify calculations, persistence, synchronization logic, and interface behavior, but shall not qualify physical audio output, route behavior, interruption behavior, background playback, wrist-down behavior, perceived timbre, latency, or hearing-safety behavior.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

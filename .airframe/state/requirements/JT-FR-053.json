@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Calls, Siri, route changes, and exclusive Watch audio interruptions shall stop local Watch playback cleanly. Playback shall never resume automatically after the interruption.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

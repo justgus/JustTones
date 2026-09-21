@@ -1,0 +1,46 @@
+{
+  "acceptanceCriterionIDs" : [
+
+  ],
+  "goal" : "Deliver an accessible, localized, recoverable, and supportable product experience.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied."
+  ],
+  "outOfScope" : [
+
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-016-Planning.md"
+  ],
+  "rationale" : "Current safety and basic settings are insufficient to satisfy the approved support, localization, recovery, and accessibility surface.",
+  "scope" : [
+    "Accessibility and localization",
+    "Offline help and error recovery",
+    "Settings, privacy, About, and support"
+  ],
+  "sprintIDs" : [
+
+  ],
+  "taskIDs" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-016"
+    },
+    "kind" : "epic",
+    "status" : "backlog",
+    "title" : "Accessible, Localized, and Supportable Product Experience"
+  }
+}

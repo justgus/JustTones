@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Selection, playback, warnings, errors, and disabled states shall not be communicated by color, animation, position, or sound alone. Each shall have a textual or accessibility-semantic equivalent.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

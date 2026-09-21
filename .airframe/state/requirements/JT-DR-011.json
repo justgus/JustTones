@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The portable interchange document shall use the `.justtones` extension and a registered application-specific content type recognizable through Files, Share Sheet, Mail, Messages, AirDrop, and other system document providers.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

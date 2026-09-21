@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The release checklist shall accurately complete Apple's encryption and export-compliance declarations based on the actual binary and its use of Apple-provided security facilities. No exemption shall be assumed without review.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

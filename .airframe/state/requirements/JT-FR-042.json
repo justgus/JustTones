@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "When navigating to a secondary screen while a tone remains active, the interface shall retain a persistent indication of the active tone and an immediately available Stop control.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "User-created data shall use an appropriate persistent application location eligible for normal operating-system backup and restoration policies. Reconstructible caches and temporary imports shall not be backed up. JustTones shall not claim that a backup exists or is encrypted.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

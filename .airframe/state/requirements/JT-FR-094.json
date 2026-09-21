@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "For pitches with equivalent sounding values, the musician may choose a default sharp or flat spelling while a profile's explicit or culturally significant spelling continues to take precedence.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Before restoring a complete JustTones backup, the app shall validate it and show what will be added, replaced, renamed, or retained. Restoration shall use approved import conflict choices and remain cancelable until committed.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

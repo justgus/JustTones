@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The format shall use exact integer numerator and denominator ratios; finite decimal cents and hertz values; integer equal-division counts with finite intervals; and unambiguous reference pitches and frequencies. NaN, infinity, zero denominators, ambiguous units, and out-of-bounds values are invalid.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

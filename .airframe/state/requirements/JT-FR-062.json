@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall ship a versioned catalog of built-in tuning systems, tuning profiles, and synthesis timbres. Every released catalog version shall have a reviewable manifest identifying its contents.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Each timbre shall have a stable identifier and a versioned declarative definition containing its oscillator mixture, harmonic amplitudes, envelopes, filters, modulation, controlled noise, normalization, and applicable pitch-range metadata.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

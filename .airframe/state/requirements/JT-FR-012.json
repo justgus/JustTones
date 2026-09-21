@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall provide multiple locally synthesized timbres, including harmonically rich instrument-inspired tones, without requiring a library of recorded instrument samples.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Physical-device qualification shall exercise, where supported, the built-in iPhone speaker, built-in Apple Watch speaker, wired or USB audio, representative Bluetooth audio, AirPlay from iPhone, and route connection, removal, and replacement during playback.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

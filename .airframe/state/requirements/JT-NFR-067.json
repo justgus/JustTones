@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The release candidate shall complete an internal TestFlight qualification on physical iPhone and Watch hardware. The App Store archive, not a separately configured debug build, shall be used for final acceptance.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

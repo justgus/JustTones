@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Before release, each built-in definition shall specify its exact pitches, ratios, cents, ordering, spelling, reference assumptions, and display metadata in a separately reviewable catalog specification.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

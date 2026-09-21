@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Every shipped timbre shall undergo documented listening review on an iPhone speaker, an Apple Watch speaker where supported, wired or USB audio, representative Bluetooth audio, and in quiet and moderately noisy environments. The review shall evaluate pitch clarity, tuning usefulness, fatigue, transition quality, and descriptive-name fitness without claiming sampled-instrument reproduction.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

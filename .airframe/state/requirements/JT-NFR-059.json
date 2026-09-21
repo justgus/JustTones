@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones, JustTune, profile, tuning system, tuning, pitch, frequency, written pitch, sounding pitch, timbre, and output level shall be used consistently across interface, accessibility, help, errors, schema, tests, and App Store material.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

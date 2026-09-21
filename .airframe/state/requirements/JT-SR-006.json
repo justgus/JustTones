@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall not describe an in-app output percentage, digital peak, device volume position, or uncalibrated route estimate as a safe sound-pressure level.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

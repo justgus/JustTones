@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The musician shall be able to browse or filter built-in content by instrument family, tradition or region, historical period, tuning-system family, and intended use where those classifications apply.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

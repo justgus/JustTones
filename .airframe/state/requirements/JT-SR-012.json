@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "After any audio-route change, JustTones shall remain stopped. Before explicit restart on a recognized headphone route, any applicable high-level or extreme-pitch warning shall be presented.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

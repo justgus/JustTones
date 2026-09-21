@@ -32,7 +32,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Internally calculated and digitally rendered fundamental frequencies shall differ from their requested values by no more than ±0.1 cent across the supported range; physical transducer and audio-route performance shall be qualified separately.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

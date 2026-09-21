@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "When the active audio route changes or is removed, JustTones shall stop playback and require the musician to restart it explicitly on the new route.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

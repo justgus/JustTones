@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The Watch shall identify the active audio route sufficiently for the musician to understand whether sound is using the Watch speaker or a connected audio device. Route changes shall follow the stop behavior required by JT-SR-004.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "After an interruption, the Watch shall preserve the selected profile, pitch, timbre, and output level and provide a prominent one-action Resume control when watchOS permits playback again.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

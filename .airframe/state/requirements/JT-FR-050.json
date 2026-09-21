@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The Watch shall allow the musician to select a supported timbre and adjust the Watch app's output level. The Digital Crown may provide level adjustment when that control has explicit focus, but ordinary scrolling shall not inadvertently change output level.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

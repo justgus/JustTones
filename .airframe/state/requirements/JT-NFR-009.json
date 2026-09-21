@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall support Light Mode, Dark Mode, Increased Contrast, and Differentiate Without Color while maintaining legible text, controls, focus indicators, and playback state.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

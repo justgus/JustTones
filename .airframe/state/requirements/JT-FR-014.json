@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall apply a 5–15 ms perceptually unobtrusive signal ramp when starting or stopping playback and a corresponding crossfade or ramp sequence when changing pitch or timbre, preventing clicks without creating a musical fade.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

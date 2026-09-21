@@ -1,0 +1,46 @@
+{
+  "acceptanceCriterionIDs" : [
+
+  ],
+  "goal" : "Deliver musician-facing tuning-system authoring and portable document interchange.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied."
+  ],
+  "outOfScope" : [
+
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-012-Planning.md"
+  ],
+  "rationale" : "The core interchange model exists, but musician-facing authoring, import review, and sharing are not delivered.",
+  "scope" : [
+    "Custom tuning-system authoring",
+    "Import preview and conflict resolution",
+    "Portable export and sharing"
+  ],
+  "sprintIDs" : [
+
+  ],
+  "taskIDs" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-012"
+    },
+    "kind" : "epic",
+    "status" : "backlog",
+    "title" : "Tuning-System Authoring and Portable Interchange"
+  }
+}

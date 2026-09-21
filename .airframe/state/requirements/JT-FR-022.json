@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A tone explicitly started by the musician shall continue while the device is locked or JustTones is backgrounded until explicitly stopped, interrupted, or terminated by the operating system.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

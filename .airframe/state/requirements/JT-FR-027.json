@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A tuning profile shall have a stable identifier, display name, optional description, optional instrument and tradition metadata, tuning system, reference-pitch configuration, and ordered pitch entries.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

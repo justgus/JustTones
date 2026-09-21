@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone app shall provide a deliberate reset that removes user-created profiles, tuning systems, imports, preferences, and warning acknowledgements while restoring the built-in catalog and first-launch defaults. Reset shall require explicit confirmation and explain available recovery paths.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

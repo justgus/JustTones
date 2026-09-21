@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Development may use Xcode-beta and the beta iOS\/watchOS 27 SDKs. Before release authorization, the project shall be rebuilt and its complete release test suite rerun using Apple's final supported Xcode and SDK release.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

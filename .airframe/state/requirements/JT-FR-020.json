@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall render through the system-selected built-in speaker, wired output, Bluetooth output, AirPlay output, or other supported audio route without independently changing the system route or system volume.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

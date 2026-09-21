@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "User-created profiles, tuning systems, preferences, and imported content shall be stored locally on the iPhone without requiring an account, server, or network connection.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

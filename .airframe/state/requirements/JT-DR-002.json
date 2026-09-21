@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Custom profiles, tuning systems, pitch entries, grouping, display spellings, and reference configurations shall persist locally using a versioned representation with deterministic migration.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

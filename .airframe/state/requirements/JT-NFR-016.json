@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "A historical or culturally specific definition shall not be accepted for release until its mathematical implementation and presentation have been reviewed against its cited sources. The review and calculation results shall become test evidence.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -32,7 +32,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The tuning interchange document shall be versioned, preserve stable identifiers and display names, express pitches using unambiguous units, and support optional provenance, author, description, region, tradition, instrument, and source information.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

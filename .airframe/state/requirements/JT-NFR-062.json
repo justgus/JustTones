@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The submitted build shall contain no placeholder content, incomplete feature, broken link, temporary website, unavailable help page, or knowingly nonfunctional approved behavior.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The installed application shall not depend on a large prerecorded instrument-sample library; timbre definitions shall use compact synthesis parameters and only minimal supporting audio resources if explicitly justified.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

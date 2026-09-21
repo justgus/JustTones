@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "No production submission or release shall occur until the Agile Cockpit shows complete required evidence and the user explicitly grants applicable verification and close authorizations. An agent may prepare artifacts but shall not infer release authority.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Normal operation shall make no application-initiated network request. Opening a user-selected external support, Apple, WHO, or source citation link through the system browser is permitted.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

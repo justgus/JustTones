@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Interactive controls shall use appropriately sized touch targets and shall remain usable with Voice Control and Switch Control. Gestures shall have visible, accessible alternatives.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

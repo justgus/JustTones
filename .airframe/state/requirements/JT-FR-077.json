@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Timbre identifiers and synthesis definitions shall be consistent between iPhone and Watch. Given the same pitch and timbre definition, both devices shall synthesize the same intended signal before device- and route-specific reproduction.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

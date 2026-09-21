@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "After any legally or technically required system presentation, first launch shall open directly to the silent default chromatic profile. JustTones shall not require an account, tutorial, or onboarding completion before use.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

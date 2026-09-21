@@ -32,7 +32,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Every shipped timbre shall be normalized and peak-limited to prevent digital clipping across supported pitches, transitions, and output levels, with a maximum digital peak no greater than −1 dBFS.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

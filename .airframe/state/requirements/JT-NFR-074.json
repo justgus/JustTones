@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "App Store screenshots shall be captured from the qualified release candidate, show actual supported behavior, contain no misleading feature or device claim, and use Apple's then-current required dimensions and formats. At least one shall clearly show primary tone generation.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

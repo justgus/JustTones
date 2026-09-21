@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Playback, stopping, selection changes, warnings, and errors shall have accessibility-semantic and visual indications. Haptics may supplement these indications but shall not be the only means of communicating state.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

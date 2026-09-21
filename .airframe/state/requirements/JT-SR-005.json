@@ -32,7 +32,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "After an exclusive interruption ends, JustTones shall not resume audible output automatically; when the system permits resumption, JustTones shall provide a prominent one-action Resume control.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

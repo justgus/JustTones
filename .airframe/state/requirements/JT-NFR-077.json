@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The submission package shall include or link to a small, safe, schema-valid `.justtones` example enabling review of import, preview, conflicts, and playback without external setup.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

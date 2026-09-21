@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The musician shall be able to select any locally available profile and browse its ordered pitch entries on the Watch. Selecting a different profile shall stop active Watch playback and require an explicit new Play action.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

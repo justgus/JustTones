@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The release evidence package shall include passing automated and manual results; physical-device, route, accessibility, performance, privacy, dependency, logging, catalog, archive, metadata, screenshot, and known-defect evidence.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

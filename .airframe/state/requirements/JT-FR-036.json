@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The primary screen shall prominently show the selected profile, pitch label, sounding frequency, timbre, output level, and actual playback state, with an unmistakable Play\/Stop control.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

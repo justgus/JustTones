@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall support user-defined pitch-degree values for traditions whose tuning varies by instrument, ensemble, school, or performer, without presenting one implementation as a universal standard.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

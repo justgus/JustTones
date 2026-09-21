@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Version 1 shall permit selection among built-in timbres but shall not include user authoring or import of arbitrary synthesis algorithms. The interchange format may preserve recognized timbre identifiers but shall not contain executable synthesis code.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

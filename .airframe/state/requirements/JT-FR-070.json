@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "On first launch, JustTones shall select a general-purpose chromatic reference profile using twelve-tone equal temperament and A4 equal to 440 Hz. It shall remain silent until Play is activated.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

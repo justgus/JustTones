@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "On the oldest qualified device, a cold launch shall present an interactive primary screen within 2 seconds under ordinary conditions. Data migration may take longer only when progress and recovery state are clearly presented.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

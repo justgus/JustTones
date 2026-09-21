@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The iPhone and Watch shall maintain independent pitch selection, output level, route, and playback state. Starting or stopping playback on one device shall not automatically start playback on the other.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

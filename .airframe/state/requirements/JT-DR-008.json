@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Version 1 shall not use CloudKit, an application-operated server, or another cloud database. Watch synchronization shall remain device-to-device companion synchronization.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

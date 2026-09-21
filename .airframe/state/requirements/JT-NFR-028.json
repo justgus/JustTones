@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Product-facing and build-system identifiers shall be reviewed to prevent confusion with JustTune, including product and display names, bundle identifiers, project targets and schemes, icons, entitlements and App Groups, privacy manifests, type identifiers, App Store metadata, test plans, and result artifacts. No JustTune identifier or tuner-specific microphone behavior shall be copied into JustTones unintentionally.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

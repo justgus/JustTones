@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The thinned version 1 installation shall not exceed 30 MB for the iPhone component or 15 MB for the Watch component unless a larger size is explicitly justified and approved. Generated test data and development artifacts shall not be included in release bundles.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

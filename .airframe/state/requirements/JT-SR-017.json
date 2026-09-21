@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall contain no advertising, tracking, behavioral analytics, fingerprinting, or third-party telemetry SDK. Apple-provided aggregate diagnostics independently shared with Apple are outside the app's collection behavior.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

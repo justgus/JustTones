@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "All user-facing interface text, accessibility text, warnings, errors, help, App Store text sources, and document-type descriptions shall use localization resources rather than hard-coded display strings.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The Watch companion shall be installable through Apple's supported paired-app installation mechanisms and shall launch and operate from its local valid data without requiring the iPhone app to be currently running.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

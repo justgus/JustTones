@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall not start or resume playback because of app launch, foregrounding, unlocking, note selection, profile selection, route connection, or interruption recovery.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

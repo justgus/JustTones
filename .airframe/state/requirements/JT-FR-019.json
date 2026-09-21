@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall provide an output-level control from silence through its maximum synthesized level without modifying the device's system volume.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Release qualification shall verify initial level, warning thresholds, acknowledgements, route changes, headphones, extreme pitches, extended playback, system safety interaction, and absence of unexpected level increases on physical devices.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

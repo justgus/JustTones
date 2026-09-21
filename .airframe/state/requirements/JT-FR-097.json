@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Complex concepts and recoverable errors shall provide contextual explanations or a direct route to relevant help without obstructing ordinary experienced use.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

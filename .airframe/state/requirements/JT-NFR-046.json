@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Automatic persistence shall not block primary-screen interaction or real-time audio rendering. Rapid consecutive edits shall settle to the latest complete valid state without losing an acknowledged edit.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall support every iPhone and Apple Watch model on which Apple permits installation of the applicable target operating system, subject to documented operating-system and hardware audio capabilities.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

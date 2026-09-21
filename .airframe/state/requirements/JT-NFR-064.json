@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The submitted archive shall be traceable to a specific source revision, final Xcode and SDK versions, versioned built-in catalog, versioned interchange schema, test evidence, and archive validation result. Rebuilding the same source and configuration should produce functionally equivalent behavior where signing prevents byte identity.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

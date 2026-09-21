@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "The primary Watch screen shall prominently present the selected profile entry, pitch label, sounding frequency, and actual playback state, with immediately accessible Play\/Stop and previous\/next controls.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

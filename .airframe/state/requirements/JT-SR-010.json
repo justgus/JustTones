@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "After 60 minutes of uninterrupted playback, and once per subsequent hour, JustTones shall provide a non-auditory, non-blocking reminder to check listening level and take a listening break. A Watch haptic may supplement it. The reminder shall not automatically stop, reduce, or interrupt the tone.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

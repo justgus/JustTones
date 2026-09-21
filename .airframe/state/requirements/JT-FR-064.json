@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "JustTones shall not present a variable traditional tuning as the single correct tuning for a culture, instrument, or repertoire. Variable definitions shall be labeled as examples, documented models, or editable templates.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

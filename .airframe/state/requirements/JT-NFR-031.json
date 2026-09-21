@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Release archives shall contain only Apple-supported production architectures, shall contain no simulator slices or debug-only facilities, and shall pass Apple's archive validation for both the iPhone and Watch components.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],

@@ -1,0 +1,46 @@
+{
+  "acceptanceCriterionIDs" : [
+
+  ],
+  "goal" : "Complete profile semantics, catalog discovery, and recovery workflows.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied."
+  ],
+  "outOfScope" : [
+
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-014-Planning.md"
+  ],
+  "rationale" : "Custom profile creation is delivered, but catalog discovery and several complete profile behaviors are not.",
+  "scope" : [
+    "Profile semantics and recovery",
+    "Catalog filtering and search",
+    "Content metadata and empty states"
+  ],
+  "sprintIDs" : [
+
+  ],
+  "taskIDs" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-014"
+    },
+    "kind" : "epic",
+    "status" : "backlog",
+    "title" : "Profile, Catalog, and Content Discovery Completion"
+  }
+}

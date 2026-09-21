@@ -29,7 +29,7 @@
   "sourceKind" : "manual",
   "sourceURI" : "docs\/Requirements-Specification.md",
   "statement" : "Before committing an import, JustTones shall show what will be added or changed and shall allow the musician to cancel, replace, keep both, or rename conflicting items.",
-  "status" : "draft",
+  "status" : "active",
   "supersedesIDs" : [
 
   ],
