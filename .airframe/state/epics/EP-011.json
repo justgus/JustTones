@@ -1,0 +1,57 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-046"
+    },
+    {
+      "rawValue" : "JT-AC-047"
+    }
+  ],
+  "closeDate" : "2026-09-21",
+  "goal" : "Deliver and qualify iPhone-local custom tuning-profile authoring over the approved shared model and store.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T20:00:19Z"
+  },
+  "notes" : [
+    "Corrective Epic created after unsanctioned implementation was discovered. The user explicitly authorized activation and parallel work with EP-010\/SP-020 on 2026-09-21."
+  ],
+  "outOfScope" : [
+    "Watch profile authoring, cloud synchronization, accounts, analytics, network access, and custom tuning-system authoring."
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-011-Planning.md"
+  ],
+  "rationale" : "SP-007 delivered profile data and persistence while SP-010 planned iPhone authoring, but the planned presentation was never truthfully completed or qualified.",
+  "scope" : [
+    "Custom profile and pitch-entry lifecycle UI",
+    "Built-in-template duplication and protection",
+    "Local persistence, silent restore, and UI coverage"
+  ],
+  "sprintIDs" : [
+    {
+      "rawValue" : "SP-021"
+    }
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0031"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-011"
+    },
+    "kind" : "epic",
+    "status" : "closed",
+    "title" : "iPhone Custom Tuning Profile Authoring"
+  }
+}

@@ -4,7 +4,7 @@ This is the main index for Agile Airframe Epics.
 
 ## All Epics
 
-Currently: **9 Epics** | Next available: **EP-010**
+Currently: **11 Epics** | Next available: **EP-012**
 
 | Epic | Title | Status | Start Date | Close Date |
 | ---- | ----- | ------ | ---------- | ---------- |
@@ -17,13 +17,15 @@ Currently: **9 Epics** | Next available: **EP-010**
 | EP-007 | Accessibility, Safety, and Resilience | Closed | TBD | 2026-09-16 |
 | EP-008 | Content and App Store Release Qualification | Backlog | TBD | TBD |
 | EP-009 | Audible Playback Integration | Closed | TBD | 2026-09-20 |
+| EP-010 | iPhone Timbre Selection and Qualification | Active | TBD | TBD |
+| EP-011 | iPhone Custom Tuning Profile Authoring | Closed | TBD | 2026-09-21 |
 
 ## Statistics
 
-- **Total Epics:** 9
+- **Total Epics:** 11
 - **Backlog:** 1
-- **Active:** 0
-- **Closed:** 8
-- **Next available:** EP-010
+- **Active:** 1
+- **Closed:** 9
+- **Next available:** EP-012
 
-*Last Updated: 2026-09-20*
+*Last Updated: 2026-09-21*

@@ -1,0 +1,59 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-046"
+    }
+  ],
+  "artifactReferences" : [
+    "JustTonesUITests\/JustTonesUITests.swift"
+  ],
+  "automationCommand" : "JustTonesUITests custom-profile lifecycle coverage",
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "Each requested mutation is retained locally; selection never starts audio and the primary screen remains truthful."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-240"
+  },
+  "kind" : "ui",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Verify creation, rename, edit, duplicate, reorder, deletion, and pitch-entry reorder for local custom profiles.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-UR-002"
+    },
+    {
+      "rawValue" : "JT-FR-029"
+    },
+    {
+      "rawValue" : "JT-FR-036"
+    },
+    {
+      "rawValue" : "JT-FR-041"
+    },
+    {
+      "rawValue" : "JT-FR-057"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "Create a profile, modify it and its pitch entries, duplicate and reorder it, select it, then delete it."
+  ],
+  "title" : "iPhone custom profile lifecycle and silent selection",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0031"
+    }
+  ]
+}

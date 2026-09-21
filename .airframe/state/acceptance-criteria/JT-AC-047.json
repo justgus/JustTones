@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-047"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T19:58:20Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-011"
+  },
+  "text" : "Built-in templates remain immutable; a duplicated template can be edited independently and local changes survive relaunch without restoring audible playback."
+}

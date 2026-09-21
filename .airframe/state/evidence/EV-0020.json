@@ -1,0 +1,33 @@
+{
+  "artifactReferences" : [
+    "JustTones.xcodeproj"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -configuration Debug -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' build",
+  "environment" : "Xcode-beta; iPhone simulator destination",
+  "id" : {
+    "rawValue" : "EV-0020"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "Correct full JustTones scheme build completed with iPhone destination; Watch companion compiled and embedded under the Watch simulator SDK.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0030"
+    },
+    {
+      "rawValue" : "T-0031"
+    }
+  ]
+}

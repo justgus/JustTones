@@ -38,6 +38,60 @@ struct TuningProfileTests {
         #expect(empty.entries.isEmpty)
     }
 
+    @Test func customProfileLifecycleRetainsIndependentDuplicatesAndStoppedSelection() throws {
+        let directory = try temporaryDirectory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+
+        let original = try TuningProfile(
+            name: "My Open D",
+            entries: [try TuningProfileEntry(label: "D4", pitch: .named(NamedPitch(letter: .d, octave: 4)))],
+            preferredTimbreID: BuiltInTimbre.guitar.rawValue
+        )
+        var library = try TuningProfileLibrary(profiles: [original])
+        var duplicate = try library.duplicate(id: original.id, name: "My Open D Copy")
+        duplicate.entries.append(try TuningProfileEntry(label: "A4", pitch: .named(NamedPitch(letter: .a, octave: 4))))
+        try library.replace(duplicate)
+        try library.move(id: duplicate.id, to: 0)
+
+        let store = LocalProfileStore(directoryURL: directory)
+        try store.save(ProfileStoreDocument(library: library, selectedProfileID: duplicate.id))
+        let restored = try store.load().document
+
+        #expect(restored.library.profiles.map(\.name) == ["My Open D Copy", "My Open D"])
+        #expect(restored.library.profiles[0].entries.count == 2)
+        #expect(restored.library.profiles[1].entries.count == 1)
+        #expect(restored.selectedProfileID == duplicate.id)
+    }
+
+    @Test func versionedStoreRetainsSilentWorkingStateAndHiddenBuiltInTemplates() throws {
+        let directory = try temporaryDirectory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let entry = try TuningProfileEntry(label: "A4", pitch: .named(NamedPitch(letter: .a, octave: 4)))
+        let profile = try TuningProfile(name: "Personal", entries: [entry])
+        let hiddenTemplateID = UUID()
+        let state = try ProfileWorkingState(
+            selectedProfileID: profile.id,
+            selectedEntryID: entry.id,
+            selectedTimbreID: BuiltInTimbre.brass.rawValue,
+            outputLevel: 0.45
+        )
+        let document = try ProfileStoreDocument(
+            library: TuningProfileLibrary(profiles: [profile]),
+            selectedProfileID: profile.id,
+            hiddenBuiltInProfileIDs: [hiddenTemplateID],
+            workingState: state
+        )
+        let store = LocalProfileStore(directoryURL: directory)
+
+        try store.save(document)
+        let restored = try store.load().document
+
+        #expect(restored.schemaVersion == ProfileStoreDocument.currentSchemaVersion)
+        #expect(restored.workingState == state)
+        #expect(restored.hiddenBuiltInProfileIDs == [hiddenTemplateID])
+        #expect(restored.library.profiles == [profile])
+    }
+
     @Test func storeRoundTripMigratesLegacyProfilesAndRecoversFromSnapshot() throws {
         let directory = try temporaryDirectory()
         defer { try? FileManager.default.removeItem(at: directory) }

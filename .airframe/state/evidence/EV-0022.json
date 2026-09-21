@@ -1,0 +1,33 @@
+{
+  "artifactReferences" : [
+    "JustTonesTests\/JustTonesTests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' test",
+  "environment" : "Xcode-beta; CoreSimulator clone failure",
+  "id" : {
+    "rawValue" : "EV-0022"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "Full scheme test bundle did not start because CoreSimulator could not clone the selected iPhone simulator; this is infrastructure evidence, not a product-test failure.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0030"
+    },
+    {
+      "rawValue" : "T-0031"
+    }
+  ]
+}

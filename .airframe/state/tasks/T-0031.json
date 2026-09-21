@@ -1,0 +1,79 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-046",
+    "JT-AC-047"
+  ],
+  "component" : "iPhone custom tuning-profile authoring",
+  "componentsAffected" : [
+    "JustTones\/ContentView.swift",
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/TuningProfile.swift",
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/LocalProfileStore.swift"
+  ],
+  "dateVerified" : "2026-09-21",
+  "epicID" : {
+    "rawValue" : "EP-011"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0020"
+    },
+    {
+      "rawValue" : "EV-0022"
+    },
+    {
+      "rawValue" : "EV-0021"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T19:56:53Z"
+  },
+  "notes" : [
+    "The code was written before this Task existed and is retroactively governed here. The implemented scope now includes pitch-entry editing, built-in hide\/restore, versioned silent working-state restoration, and compiled UI\/persistence coverage. It remains Implemented - Not Verified because CoreSimulator could not launch the test targets."
+  ],
+  "priority" : "high",
+  "rationale" : "The shared profile model and durable local store exist, but the approved iPhone authoring workflow was not delivered or qualified.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-029"
+    },
+    {
+      "rawValue" : "JT-FR-034"
+    },
+    {
+      "rawValue" : "JT-FR-036"
+    },
+    {
+      "rawValue" : "JT-FR-041"
+    },
+    {
+      "rawValue" : "JT-FR-044"
+    },
+    {
+      "rawValue" : "JT-FR-057"
+    },
+    {
+      "rawValue" : "JT-UR-002"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-021"
+  },
+  "testSteps" : [
+    "Implement and run JT-TEST-240 and JT-TEST-241.",
+    "Exercise profile and entry create\/edit\/duplicate\/reorder\/delete plus built-in-template duplication.",
+    "Verify relaunch restores only a stopped working selection and never starts audio."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0031"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement and qualify custom tuning-profile authoring"
+  }
+}

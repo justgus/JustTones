@@ -12,6 +12,29 @@ public enum BuiltInTimbre: String, CaseIterable, Codable, Hashable, Sendable {
     case brass
 }
 
+/// Resolves persisted or imported timbre identifiers without discarding unknown identifiers. The
+/// presentation layer can disclose `unavailableIdentifier`, while the audio layer always receives
+/// a safe built-in choice.
+public struct TimbrePreferenceResolution: Equatable, Sendable {
+    public let selected: BuiltInTimbre
+    public let unavailableIdentifier: String?
+
+    public init(identifier: String?, fallback: BuiltInTimbre = .sine) {
+        guard let identifier else {
+            selected = fallback
+            unavailableIdentifier = nil
+            return
+        }
+        if let timbre = BuiltInTimbre(rawValue: identifier) {
+            selected = timbre
+            unavailableIdentifier = nil
+        } else {
+            selected = fallback
+            unavailableIdentifier = identifier
+        }
+    }
+}
+
 public struct TimbrePartial: Codable, Hashable, Sendable {
     public let harmonic: Int
     public let amplitude: Float

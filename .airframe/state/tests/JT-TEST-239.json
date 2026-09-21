@@ -1,0 +1,63 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-045"
+    }
+  ],
+  "artifactReferences" : [
+    "JustTonesTests\/JustTonesTests.swift",
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TimbreTests.swift"
+  ],
+  "automationCommand" : "JustTonesTests preferred-timbre coverage",
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "Available preferences select silently; unavailable identifiers are retained and surfaced with a safe fallback; no arbitrary synthesis authoring is exposed."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-239"
+  },
+  "kind" : "integration",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Verify profile preferred-timbre selection, unavailable-preference fallback, and fixed built-in-timbre scope.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-075"
+    },
+    {
+      "rawValue" : "JT-FR-076"
+    },
+    {
+      "rawValue" : "JT-FR-078"
+    },
+    {
+      "rawValue" : "JT-NFR-017"
+    },
+    {
+      "rawValue" : "JT-NFR-019"
+    },
+    {
+      "rawValue" : "JT-NFR-034"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "Select profiles with supported and unavailable preferred timbre identifiers while stopped and playing."
+  ],
+  "title" : "iPhone preferred and unavailable timbre behavior",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0030"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-045"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T20:00:56Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-010"
+  },
+  "text" : "The iPhone timbre selection has deterministic host and UI coverage for stopped and playing states, preferred-profile behavior, unavailable-preference fallback, and no-arbitrary-timbre-authoring scope."
+}

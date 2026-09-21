@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-046"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T19:58:16Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-011"
+  },
+  "text" : "A musician can create, rename, edit, duplicate, reorder, and delete a local custom profile, reorder its pitch entries, and select it without starting playback."
+}

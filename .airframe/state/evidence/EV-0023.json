@@ -1,0 +1,33 @@
+{
+  "artifactReferences" : [
+    "JustTonesUITests\/JustTonesUITests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' build-for-testing",
+  "environment" : "Xcode-beta; iPhone simulator destination; Watch companion embedded",
+  "id" : {
+    "rawValue" : "EV-0023"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "The full iPhone scheme and both unit\/UI test targets compiled successfully after the T-0030 and T-0031 implementation.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0030"
+    },
+    {
+      "rawValue" : "T-0031"
+    }
+  ]
+}

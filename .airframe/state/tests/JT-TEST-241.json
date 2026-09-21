@@ -1,0 +1,53 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-047"
+    }
+  ],
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TuningProfileTests.swift"
+  ],
+  "automationCommand" : "JustTonesTests profile persistence and UI restore coverage",
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "The template is unchanged, the custom duplicate persists, and the app restores a stopped selection."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-241"
+  },
+  "kind" : "integration",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+
+  ],
+  "objective" : "Verify catalog templates remain immutable, a duplicate is independently editable, and selected profile state survives relaunch without restoring playback.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-034"
+    },
+    {
+      "rawValue" : "JT-FR-044"
+    },
+    {
+      "rawValue" : "JT-FR-057"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "Duplicate a built-in template, edit its name and pitches, relaunch, and compare the template and duplicate."
+  ],
+  "title" : "Built-in profile duplication, persistence, and silent restore",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0031"
+    }
+  ]
+}

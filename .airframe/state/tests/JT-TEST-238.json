@@ -1,22 +1,23 @@
 {
   "acceptanceCriterionIDs" : [
     {
-      "rawValue" : "JT-AC-043"
+      "rawValue" : "JT-AC-044"
     }
   ],
   "artifactReferences" : [
-
+    "JustTonesTests\/JustTonesTests.swift"
   ],
+  "automationCommand" : "JustTonesTests timbre-selection host and UI coverage",
   "evidenceIDs" : [
 
   ],
   "expectedResults" : [
-    "Every result identifies its evidence source; automated behavior meets explicit-play and truthful-stop rules; unexecuted physical observations remain open rather than inferred."
+    "Only the selected built-in timbre is used; active transitions remain continuous, click-free, and pitch-preserving."
   ],
   "id" : {
     "rawValue" : "JT-TEST-238"
   },
-  "kind" : "acceptance",
+  "kind" : "integration",
   "metadata" : {
     "schemaVersion" : {
       "major" : 1,
@@ -27,32 +28,32 @@
   "notes" : [
 
   ],
-  "objective" : "Qualify explicit-play, failure containment, and evidence provenance across iPhone and Watch audio hosts.",
+  "objective" : "Verify every built-in timbre is selectable from the iPhone primary screen and an active change preserves the selected fundamental without stopping playback.",
   "requirementIDs" : [
     {
-      "rawValue" : "JT-NFR-004"
+      "rawValue" : "JT-FR-012"
     },
     {
-      "rawValue" : "JT-NFR-044"
+      "rawValue" : "JT-FR-013"
     },
     {
-      "rawValue" : "JT-NFR-045"
+      "rawValue" : "JT-FR-014"
+    },
+    {
+      "rawValue" : "JT-FR-074"
+    },
+    {
+      "rawValue" : "JT-FR-078"
     }
   ],
   "status" : "ready",
   "steps" : [
-    "Run deterministic host and renderer checks, inspect supported simulator behavior, and collect separately labeled physical-device observations for listening, route, interruption, latency, endurance, energy, thermal, and accessibility conditions."
+    "Exercise stopped and playing selection for every built-in timbre at representative and boundary pitches."
   ],
-  "title" : "Audible playback evidence and failure-containment matrix",
+  "title" : "iPhone built-in timbre selection and active transition",
   "workItemIDs" : [
     {
-      "rawValue" : "EP-009"
-    },
-    {
-      "rawValue" : "SP-019"
-    },
-    {
-      "rawValue" : "T-0029"
+      "rawValue" : "T-0030"
     }
   ]
 }

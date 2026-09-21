@@ -1,0 +1,86 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-044",
+    "JT-AC-045"
+  ],
+  "component" : "iPhone timbre selection and playback host",
+  "componentsAffected" : [
+    "JustTones\/ContentView.swift",
+    "JustTones\/TonePlaybackHost.swift",
+    "JustTonesTests\/JustTonesTests.swift",
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/Timbre.swift"
+  ],
+  "dateVerified" : "2026-09-21",
+  "epicID" : {
+    "rawValue" : "EP-010"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0020"
+    },
+    {
+      "rawValue" : "EV-0023"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T19:56:45Z"
+  },
+  "notes" : [
+    "The code was written before this Task existed and is retroactively governed here. The implemented scope now covers preferred-timbre selection, unavailable-identifier fallback\/disclosure, and persisted silent working state. It remains Implemented - Not Verified pending executable simulator tests and physical listening, route, and latency qualification."
+  ],
+  "priority" : "high",
+  "rationale" : "The fixed timbre catalog is already synthesized and deterministically qualified, but musicians could not choose it in the iPhone workflow.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-012"
+    },
+    {
+      "rawValue" : "JT-FR-013"
+    },
+    {
+      "rawValue" : "JT-FR-014"
+    },
+    {
+      "rawValue" : "JT-FR-074"
+    },
+    {
+      "rawValue" : "JT-FR-075"
+    },
+    {
+      "rawValue" : "JT-FR-076"
+    },
+    {
+      "rawValue" : "JT-FR-078"
+    },
+    {
+      "rawValue" : "JT-NFR-017"
+    },
+    {
+      "rawValue" : "JT-NFR-019"
+    },
+    {
+      "rawValue" : "JT-NFR-034"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-020"
+  },
+  "testSteps" : [
+    "Implement and run JT-TEST-238 and JT-TEST-239.",
+    "Exercise every built-in timbre while stopped and playing; retain explicit Play as the only start action.",
+    "Record simulator results separately from physical listening, route, and latency observations."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0030"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Expose and qualify iPhone timbre selection"
+  }
+}

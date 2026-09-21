@@ -53,4 +53,14 @@ struct TimbreTests {
         #expect(renderer.selectedFrequency == ToneRenderFrequency(frequency))
         #expect(output.allSatisfy { $0.isFinite && abs($0) <= TimbreDefinition.maximumPeak })
     }
+
+    @Test func unavailableTimbreFallsBackWithoutDiscardingItsIdentifier() {
+        let known = TimbrePreferenceResolution(identifier: BuiltInTimbre.flute.rawValue)
+        #expect(known.selected == .flute)
+        #expect(known.unavailableIdentifier == nil)
+
+        let unavailable = TimbrePreferenceResolution(identifier: "org.example.future-timbre")
+        #expect(unavailable.selected == .sine)
+        #expect(unavailable.unavailableIdentifier == "org.example.future-timbre")
+    }
 }

@@ -33,6 +33,24 @@ struct JustTonesTests {
         #expect(driver.stopCount == 1)
     }
 
+    @MainActor @Test(arguments: BuiltInTimbre.allCases.filter { $0 != .sine })
+    func playbackHostChangesEveryBuiltInTimbreWithoutStoppingAnActiveTone(
+        _ timbre: BuiltInTimbre
+    ) async throws {
+        let driver = RecordingToneDriver()
+        let host = TonePlaybackHost(driver: driver)
+        let sine = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440), timbre: .sine)
+        let changed = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440), timbre: timbre)
+
+        host.play(sine)
+        await Task.yield()
+        host.changeTimbre(changed)
+
+        #expect(host.state == .playing)
+        #expect(driver.stopCount == 0)
+        #expect(driver.updatedSelections == [changed])
+    }
+
     @MainActor @Test func playbackHostReportsEngineStartFailureTruthfully() async throws {
         let driver = RecordingToneDriver(shouldFailStart: true)
         let host = TonePlaybackHost(driver: driver)
@@ -144,6 +162,7 @@ struct JustTonesTests {
 private final class RecordingToneDriver: TonePlaybackHostingDriver {
     var eventHandler: (@MainActor (TonePlaybackDriverEvent) -> Void)?
     var startedSelections: [TonePlaybackSelection] = []
+    var updatedSelections: [TonePlaybackSelection] = []
     var stopCount = 0
     var immediateStopCount = 0
     private let shouldFailStart: Bool
@@ -162,6 +181,7 @@ private final class RecordingToneDriver: TonePlaybackHostingDriver {
             await withCheckedContinuation { startContinuation = $0 }
         }
     }
+    func updateTone(_ selection: TonePlaybackSelection) { updatedSelections.append(selection) }
     func completeStart() { startContinuation?.resume(); startContinuation = nil }
     func stopTone() { stopCount += 1 }
     func stopImmediately() { immediateStopCount += 1 }

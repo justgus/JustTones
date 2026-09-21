@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TuningProfileTests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore",
+  "environment" : "Xcode-beta; Swift Package Manager",
+  "id" : {
+    "rawValue" : "EV-0021"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "Shared-core automated suite passed, including custom-profile persistence and independent duplicate coverage.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0031"
+    }
+  ]
+}

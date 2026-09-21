@@ -1,0 +1,56 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-044"
+    },
+    {
+      "rawValue" : "JT-AC-045"
+    }
+  ],
+  "goal" : "Expose and qualify the approved fixed timbre catalog in the iPhone musician workflow.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T17:39:47Z"
+  },
+  "notes" : [
+    "Corrective Epic created after unsanctioned implementation was discovered. The user explicitly authorized activation and parallel work with EP-011\/SP-021 on 2026-09-21."
+  ],
+  "outOfScope" : [
+    "New synthesis algorithms, sampled instruments, user-authored timbres, Watch presentation redesign, and release submission."
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-010-Planning.md"
+  ],
+  "rationale" : "SP-005 qualified the shared timbre catalog and SP-010 planned the iPhone presentation, but no governing execution record delivered the user-visible selection workflow.",
+  "scope" : [
+    "iPhone timbre picker and active transition",
+    "Preferred timbre and unavailable-preference behavior",
+    "Deterministic host\/UI coverage and evidence separation"
+  ],
+  "sprintIDs" : [
+    {
+      "rawValue" : "SP-020"
+    }
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0030"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-010"
+    },
+    "kind" : "epic",
+    "status" : "active",
+    "title" : "iPhone Timbre Selection and Qualification"
+  }
+}

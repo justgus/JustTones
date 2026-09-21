@@ -8,7 +8,7 @@ Currently: **None**
 
 ## All Sprints
 
-Currently: **19 Sprints** | Next available: **SP-020**
+Currently: **21 Sprints** | Next available: **SP-022**
 
 | Sprint | Title | Epic | Tasks | Issues | Status |
 | ------ | ----- | ---- | ----- | ------ | ------ |
@@ -31,15 +31,17 @@ Currently: **19 Sprints** | Next available: **SP-020**
 | SP-017 | iPhone Audible Playback Host | EP-009 | T-0027 | None | Closed |
 | SP-018 | Watch Audible Playback Host | EP-009 | T-0028 | I-0004, I-0002, I-0003 | Closed |
 | SP-019 | Audible Playback Integration Qualification | EP-009 | T-0029 | None | Closed |
+| SP-020 | iPhone Timbre Selection | EP-010 | T-0030 | None | Review |
+| SP-021 | Custom Profile Authoring | EP-011 | T-0031 | None | Closed |
 
 ## Statistics
 
-- **Total Sprints:** 19
+- **Total Sprints:** 21
 - **Backlog:** 0
 - **Planning:** 0
 - **Active:** 0
-- **Review:** 0
-- **Closed:** 19
-- **Next available:** SP-020
+- **Review:** 1
+- **Closed:** 20
+- **Next available:** SP-022
 
-*Last Updated: 2026-09-20*
+*Last Updated: 2026-09-21*

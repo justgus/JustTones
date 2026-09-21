@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-044"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T20:00:54Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-010"
+  },
+  "text" : "A musician can choose any shipped built-in timbre on the iPhone primary tone screen; while playing, the selected pitch remains continuous and the transition is click-free."
+}

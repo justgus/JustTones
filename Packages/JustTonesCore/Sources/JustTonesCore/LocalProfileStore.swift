@@ -20,16 +20,22 @@ public struct ProfileStoreLoadResult: Sendable {
 /// The versioned, local representation of musician-owned profile data. Catalog content is not
 /// embedded here; it is introduced separately in SP-008.
 public struct ProfileStoreDocument: Codable, Hashable, Sendable {
-    public static let currentSchemaVersion = 1
+    public static let currentSchemaVersion = 2
 
     public let schemaVersion: Int
     public var library: TuningProfileLibrary
+    /// Retained for schema-one compatibility. New callers should use `workingState` because a
+    /// selected profile may be either a musician-owned profile or a built-in template.
     public var selectedProfileID: UUID?
+    public var hiddenBuiltInProfileIDs: Set<UUID>
+    public var workingState: ProfileWorkingState?
 
     public init(
         schemaVersion: Int = Self.currentSchemaVersion,
         library: TuningProfileLibrary = try! TuningProfileLibrary(),
-        selectedProfileID: UUID? = nil
+        selectedProfileID: UUID? = nil,
+        hiddenBuiltInProfileIDs: Set<UUID> = [],
+        workingState: ProfileWorkingState? = nil
     ) throws {
         guard schemaVersion == Self.currentSchemaVersion else {
             throw ProfileStoreError.unsupportedSchemaVersion(schemaVersion)
@@ -40,6 +46,8 @@ public struct ProfileStoreDocument: Codable, Hashable, Sendable {
         self.schemaVersion = schemaVersion
         self.library = library
         self.selectedProfileID = selectedProfileID
+        self.hiddenBuiltInProfileIDs = hiddenBuiltInProfileIDs
+        self.workingState = workingState
     }
 
     public func validate() throws {
@@ -49,6 +57,37 @@ public struct ProfileStoreDocument: Codable, Hashable, Sendable {
         try library.validate()
         if let selectedProfileID, !library.profiles.contains(where: { $0.id == selectedProfileID }) {
             throw TuningProfileValidationError.unknownProfile
+        }
+        try workingState?.validate()
+    }
+}
+
+/// The last non-audible UI selection. Persisting this separately from playback state guarantees a
+/// relaunch restores the musician's context but can never resume audio.
+public struct ProfileWorkingState: Codable, Hashable, Sendable {
+    public var selectedProfileID: UUID?
+    public var selectedEntryID: UUID?
+    /// This remains a raw identifier so an unavailable imported value can be retained for future
+    /// restoration even when a platform currently falls back to a built-in timbre.
+    public var selectedTimbreID: String?
+    public var outputLevel: Float?
+
+    public init(
+        selectedProfileID: UUID? = nil,
+        selectedEntryID: UUID? = nil,
+        selectedTimbreID: String? = nil,
+        outputLevel: Float? = nil
+    ) throws {
+        self.selectedProfileID = selectedProfileID
+        self.selectedEntryID = selectedEntryID
+        self.selectedTimbreID = selectedTimbreID
+        self.outputLevel = outputLevel
+        try validate()
+    }
+
+    public func validate() throws {
+        if let outputLevel, (!outputLevel.isFinite || !(0 ... 1).contains(outputLevel)) {
+            throw ProfileStoreError.invalidStore
         }
     }
 }
@@ -129,6 +168,12 @@ public struct LocalProfileStore {
             try document.validate()
             return document
         } catch {
+            if let legacyDocument = try? decoder.decode(SchemaOneDocument.self, from: data) {
+                return try ProfileStoreDocument(
+                    library: legacyDocument.library,
+                    selectedProfileID: legacyDocument.selectedProfileID
+                )
+            }
             // Schema zero stored its library as a bare array; retain this narrow migration while
             // rejecting any other malformed or future document.
             if let profiles = try? decoder.decode([TuningProfile].self, from: data) {
@@ -136,6 +181,23 @@ public struct LocalProfileStore {
             }
             throw ProfileStoreError.invalidStore
         }
+    }
+
+    private struct SchemaOneDocument: Codable {
+        let schemaVersion: Int
+        let library: TuningProfileLibrary
+        let selectedProfileID: UUID?
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let version = try container.decode(Int.self, forKey: .schemaVersion)
+            guard version == 1 else { throw ProfileStoreError.unsupportedSchemaVersion(version) }
+            schemaVersion = version
+            library = try container.decode(TuningProfileLibrary.self, forKey: .library)
+            selectedProfileID = try container.decodeIfPresent(UUID.self, forKey: .selectedProfileID)
+        }
+
+        private enum CodingKeys: String, CodingKey { case schemaVersion, library, selectedProfileID }
     }
 
     private func preserveCorruptStore() throws -> String {

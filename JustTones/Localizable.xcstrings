@@ -10,7 +10,22 @@
     "%@ Hz" : {
 
     },
+    "%@ is unavailable. Sine is selected instead." : {
+
+    },
     "About" : {
+
+    },
+    "Accidental" : {
+
+    },
+    "Add" : {
+
+    },
+    "Add pitch" : {
+
+    },
+    "Add Pitch" : {
 
     },
     "Apple hearing health" : {
@@ -25,16 +40,46 @@
     "Cancel" : {
 
     },
+    "Changes the synthesized character without changing the selected pitch" : {
+
+    },
     "Check your listening level and consider taking a listening break. Risk depends on level, duration, equipment, and system volume." : {
 
     },
     "Continue" : {
 
     },
+    "Create a profile for an instrument, tuning, or personal pitch set." : {
+
+    },
     "Default output" : {
 
     },
+    "Delete" : {
+
+    },
     "Done" : {
+
+    },
+    "Duplicate" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Edit Pitch" : {
+
+    },
+    "Edit Profile" : {
+
+    },
+    "Edits this pitch entry" : {
+
+    },
+    "Frequency" : {
+
+    },
+    "Frequency in Hz" : {
 
     },
     "Hearing safety" : {
@@ -43,7 +88,16 @@
     "Hearing-safety information" : {
 
     },
+    "Hidden built-in profiles" : {
+
+    },
+    "Hide" : {
+
+    },
     "In-app output level" : {
+
+    },
+    "Instrument (optional)" : {
 
     },
     "JustTones" : {
@@ -59,6 +113,9 @@
     "JustTones is a silent-by-default reference-tone tool for musicians." : {
 
     },
+    "Label (optional)" : {
+
+    },
     "Learn more" : {
 
     },
@@ -68,13 +125,31 @@
     "Listening reminder" : {
 
     },
+    "Name" : {
+
+    },
+    "Named note" : {
+
+    },
+    "New profile" : {
+
+    },
     "Next" : {
+
+    },
+    "Note" : {
+
+    },
+    "Octave %lld" : {
 
     },
     "OK" : {
 
     },
     "Output level" : {
+
+    },
+    "Pitch type" : {
 
     },
     "Pitches" : {
@@ -89,7 +164,13 @@
     "Plays the selected reference tone" : {
 
     },
+    "Preferred timbre" : {
+
+    },
     "Previous" : {
+
+    },
+    "Profile" : {
 
     },
     "Profiles" : {
@@ -109,7 +190,13 @@
         }
       }
     },
+    "Restore" : {
+
+    },
     "Risk depends on listening level, duration, equipment, and system volume. The in-app output level is not an SPL or exposure measurement. Start low, and take breaks during extended playback." : {
+
+    },
+    "Save" : {
 
     },
     "Selected" : {
@@ -119,9 +206,6 @@
 
     },
     "Settings" : {
-
-    },
-    "Sine" : {
 
     },
     "Stop" : {
@@ -136,7 +220,16 @@
     "Timbre" : {
 
     },
+    "Unavailable" : {
+
+    },
+    "Unavailable preferred timbre: %@. Sine selected as a safe fallback." : {
+
+    },
     "World Health Organization: safe listening" : {
+
+    },
+    "Your profiles" : {
 
     }
   },

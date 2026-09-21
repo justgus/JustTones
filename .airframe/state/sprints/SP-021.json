@@ -1,0 +1,34 @@
+{
+  "endDate" : "2026-09-21",
+  "epicID" : {
+    "rawValue" : "EP-011"
+  },
+  "goal" : "Implement and qualify local custom tuning-profile authoring on iPhone.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T19:58:53Z"
+  },
+  "notes" : [
+    "Active concurrently with SP-020 by the user's explicit 2026-09-21 authorization."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0031"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-021"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "Custom Profile Authoring"
+  }
+}

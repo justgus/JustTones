@@ -34,6 +34,17 @@ final class TonePlaybackHost {
         publishState()
     }
 
+    /// Timbre is the one selection dimension the renderer can safely change in-place. It keeps
+    /// the selected fundamental and level intact while the realtime renderer performs its finite
+    /// crossfade; a stopped tone remains stopped.
+    func changeTimbre(_ selection: TonePlaybackSelection) {
+        guard lifecycle.state == .playing else {
+            select(selection)
+            return
+        }
+        driver.updateTone(selection)
+    }
+
     func play(_ selection: TonePlaybackSelection) {
         select(selection)
         guard lifecycle.requestStart() else { return }
@@ -92,6 +103,7 @@ final class TonePlaybackHost {
 protocol TonePlaybackHostingDriver: AnyObject {
     var eventHandler: (@MainActor (TonePlaybackDriverEvent) -> Void)? { get set }
     func startTone(selection: TonePlaybackSelection) async throws
+    func updateTone(_ selection: TonePlaybackSelection)
     func stopTone()
     func stopImmediately()
 }
@@ -140,6 +152,8 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
     }
 
     func stopTone() { mailbox?.submit(.stop) }
+
+    func updateTone(_ selection: TonePlaybackSelection) { mailbox?.submit(.play(selection)) }
 
     func stopImmediately() {
         mailbox?.submit(.stop)

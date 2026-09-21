@@ -1,0 +1,34 @@
+{
+  "endDate" : "2026-09-21",
+  "epicID" : {
+    "rawValue" : "EP-010"
+  },
+  "goal" : "Implement and qualify the iPhone's selectable built-in timbre workflow.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-21T19:59:03Z"
+  },
+  "notes" : [
+    "Active concurrently with SP-021 by the user's explicit 2026-09-21 authorization."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0030"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-020"
+    },
+    "kind" : "sprint",
+    "status" : "review",
+    "title" : "iPhone Timbre Selection"
+  }
+}
