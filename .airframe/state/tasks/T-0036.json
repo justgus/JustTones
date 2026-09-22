@@ -7,11 +7,14 @@
   "componentsAffected" : [
     "iPhone document-picker import, preview, conflict-resolution, and actionable error surfaces over the existing bounded parser."
   ],
+  "dateVerified" : "2026-09-22",
   "epicID" : {
     "rawValue" : "EP-012"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0029"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -19,7 +22,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T14:55:26Z"
+    "updatedAt" : "2026-09-22T21:10:36Z"
   },
   "notes" : [
     "Use scoped system document access and treat all imported fields as untrusted.",
@@ -79,7 +82,7 @@
       "rawValue" : "T-0036"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Implement import review and conflict resolution"
   }
 }

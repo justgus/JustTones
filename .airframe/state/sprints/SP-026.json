@@ -1,4 +1,8 @@
 {
+  "endDate" : "2026-09-22",
+  "epicID" : {
+    "rawValue" : "EP-012"
+  },
   "goal" : "",
   "issueIDs" : [
 
@@ -9,7 +13,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T14:56:17Z"
+    "updatedAt" : "2026-09-22T21:21:58Z"
   },
   "notes" : [
 
@@ -24,7 +28,7 @@
       "rawValue" : "SP-026"
     },
     "kind" : "sprint",
-    "status" : "backlog",
+    "status" : "closed",
     "title" : "Import Review and Conflict Resolution"
   }
 }

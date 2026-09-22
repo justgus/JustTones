@@ -20,12 +20,13 @@ Deliver musician-facing tuning-system authoring and portable document interchang
 | Sprint | Goal | Status |
 | ------ | ---- | ------ |
 | SP-025 |  | Closed |
+| SP-026 |  | Closed |
 
 ### Related Tasks
 
 | Task | Title | Status |
 | ---- | ----- | ------ |
-| T-0036 | Implement import review and conflict resolution | Backlog |
+| T-0036 | Implement import review and conflict resolution | Implemented - Verified |
 | T-0035 | Implement custom tuning-system authoring | Implemented - Verified |
 | T-0037 | Implement portable export and sharing | Backlog |
 

@@ -56,4 +56,40 @@ struct JustTonesInterchangeTests {
             _ = try JustTonesInterchange.previewImport(malformed, into: try TuningProfileLibrary())
         }
     }
+
+    @Test func documentImportReviewsSystemsAndRetainsProfileReferencesWhenKeepingBoth() throws {
+        let systemID = UUID(uuidString: "F8073E5D-7DE6-4D72-B7CE-1B47CE0B5B11")!
+        let incomingSystem = try JustTonesInterchangeTuningSystem(
+            id: systemID,
+            system: TuningDomainFixtures.qualificationSystem()
+        )
+        let incomingProfile = try TuningProfile(
+            name: "Imported profile",
+            tuningSystemID: systemID.uuidString,
+            entries: []
+        )
+        let data = try JustTonesInterchange.export(
+            JustTonesInterchangeDocument(profiles: [incomingProfile], tuningSystems: [incomingSystem])
+        )
+
+        let localSystem = try JustTonesInterchangeTuningSystem(
+            id: systemID,
+            system: TuningSystem(name: "Local system", degrees: incomingSystem.system.degrees)
+        )
+        let local = try ProfileStoreDocument(tuningSystems: [localSystem])
+        let preview = try JustTonesInterchange.previewImport(data, into: local)
+        #expect(preview.conflicts.map(\.key) == [
+            JustTonesImportConflictKey(kind: .tuningSystem, objectID: systemID)
+        ])
+
+        let imported = try JustTonesInterchange.apply(
+            preview,
+            to: local,
+            resolutions: [JustTonesImportConflictKey(kind: .tuningSystem, objectID: systemID): .keepBoth]
+        )
+        #expect(imported.tuningSystems.count == 2)
+        #expect(imported.library.profiles.count == 1)
+        #expect(imported.library.profiles[0].tuningSystemID != systemID.uuidString)
+        #expect(imported.tuningSystems.contains { $0.id.uuidString == imported.library.profiles[0].tuningSystemID })
+    }
 }

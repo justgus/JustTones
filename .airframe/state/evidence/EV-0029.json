@@ -1,0 +1,29 @@
+{
+  "artifactReferences" : [
+    "User live-app verification reported in conversation on 2026-09-22; no retained screenshot, recording, or test log."
+  ],
+  "ciReferences" : [
+
+  ],
+  "environment" : "User live-app session; device/simulator unspecified",
+  "id" : {
+    "rawValue" : "EV-0029"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "User-performed live-app verification of the SP-026 import-review and conflict-resolution functionality. No captured artifact was retained.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0036"
+    }
+  ]
+}

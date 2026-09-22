@@ -120,6 +120,51 @@ public struct JustTonesImportPreview: Sendable {
     }
 }
 
+/// The kind is part of an import conflict identity: a profile and a tuning system are separate
+/// objects even if a malformed external author happened to assign them the same UUID.
+public enum JustTonesImportObjectKind: String, Equatable, Hashable, Sendable {
+    case profile
+    case tuningSystem
+}
+
+public struct JustTonesImportConflictKey: Equatable, Hashable, Sendable, Identifiable {
+    public let kind: JustTonesImportObjectKind
+    public let objectID: UUID
+
+    public var id: String { "\(kind.rawValue):\(objectID.uuidString)" }
+
+    public init(kind: JustTonesImportObjectKind, objectID: UUID) {
+        self.kind = kind
+        self.objectID = objectID
+    }
+}
+
+public struct JustTonesDocumentImportItem: Equatable, Sendable, Identifiable {
+    public let key: JustTonesImportConflictKey
+    public let name: String
+    public let disposition: JustTonesImportDisposition
+
+    public var id: String { key.id }
+}
+
+/// A pure proposal for importing into the complete local document. It deliberately includes both
+/// musician-owned systems and profiles so callers can save one validated document atomically.
+public struct JustTonesDocumentImportPreview: Sendable, Identifiable {
+    public let id: UUID
+    public let document: JustTonesInterchangeDocument
+    public let items: [JustTonesDocumentImportItem]
+
+    public var conflicts: [JustTonesDocumentImportItem] {
+        items.filter { $0.disposition == .conflict }
+    }
+
+    public init(document: JustTonesInterchangeDocument, items: [JustTonesDocumentImportItem]) {
+        self.id = UUID()
+        self.document = document
+        self.items = items
+    }
+}
+
 public enum JustTonesInterchange {
     /// Decodes untrusted data only after byte, nesting, object, and text bounds have been checked.
     public static func previewImport(
@@ -189,6 +234,119 @@ public enum JustTonesInterchange {
         return result
     }
 
+    /// Previews all portable objects against the user's complete local document. No local state is
+    /// mutated by this operation, including when decoding or validation fails.
+    public static func previewImport(
+        _ data: Data,
+        into localDocument: ProfileStoreDocument
+    ) throws -> JustTonesDocumentImportPreview {
+        try localDocument.validate()
+        let profilePreview = try previewImport(data, into: localDocument.library)
+        let document = profilePreview.document
+        let profileItems = profilePreview.items.map {
+            JustTonesDocumentImportItem(
+                key: JustTonesImportConflictKey(kind: .profile, objectID: $0.id),
+                name: $0.name,
+                disposition: $0.disposition
+            )
+        }
+        let systemItems = document.tuningSystems.map { incoming in
+            let existing = localDocument.tuningSystems.first(where: { $0.id == incoming.id })
+            return JustTonesDocumentImportItem(
+                key: JustTonesImportConflictKey(kind: .tuningSystem, objectID: incoming.id),
+                name: incoming.system.name,
+                disposition: existing == nil ? .add : (existing == incoming ? .unchanged : .conflict)
+            )
+        }
+        return JustTonesDocumentImportPreview(document: document, items: systemItems + profileItems)
+    }
+
+    /// Resolves a reviewed proposal on a copy of local state. The result is suitable for a single
+    /// `LocalProfileStore.save` call; any invalid choice throws before a caller can persist it.
+    public static func apply(
+        _ preview: JustTonesDocumentImportPreview,
+        to localDocument: ProfileStoreDocument,
+        resolutions: [JustTonesImportConflictKey: JustTonesImportConflictResolution]
+    ) throws -> ProfileStoreDocument {
+        try localDocument.validate()
+        for item in preview.conflicts {
+            guard resolutions[item.key] != nil else {
+                throw JustTonesInterchangeError.missingConflictResolution(item.key.objectID)
+            }
+        }
+
+        var systems = localDocument.tuningSystems
+        var importedSystemIdentifiers: [UUID: UUID] = [:]
+        for incoming in preview.document.tuningSystems {
+            let key = JustTonesImportConflictKey(kind: .tuningSystem, objectID: incoming.id)
+            let item = preview.items.first(where: { $0.key == key })!
+            switch item.disposition {
+            case .add:
+                systems.append(incoming)
+                importedSystemIdentifiers[incoming.id] = incoming.id
+            case .unchanged:
+                importedSystemIdentifiers[incoming.id] = incoming.id
+            case .conflict:
+                guard let resolution = resolutions[key] else {
+                    throw JustTonesInterchangeError.missingConflictResolution(incoming.id)
+                }
+                switch resolution {
+                case .replace:
+                    guard let index = systems.firstIndex(where: { $0.id == incoming.id }) else {
+                        throw JustTonesInterchangeError.invalidConflictResolution(incoming.id)
+                    }
+                    systems[index] = incoming
+                    importedSystemIdentifiers[incoming.id] = incoming.id
+                case .keepBoth:
+                    let duplicate = try duplicateForImport(incoming, name: incoming.system.name)
+                    systems.append(duplicate)
+                    importedSystemIdentifiers[incoming.id] = duplicate.id
+                case let .rename(name):
+                    guard !name.isEmpty else { throw JustTonesInterchangeError.invalidConflictResolution(incoming.id) }
+                    let duplicate = try duplicateForImport(incoming, name: name)
+                    systems.append(duplicate)
+                    importedSystemIdentifiers[incoming.id] = duplicate.id
+                }
+            }
+        }
+
+        var profiles = localDocument.library
+        for incoming in preview.document.profiles {
+            let key = JustTonesImportConflictKey(kind: .profile, objectID: incoming.id)
+            let item = preview.items.first(where: { $0.key == key })!
+            let translated = try profile(incoming, replacingSystemIdentifiers: importedSystemIdentifiers)
+            switch item.disposition {
+            case .add:
+                try profiles.add(translated)
+            case .unchanged:
+                continue
+            case .conflict:
+                guard let resolution = resolutions[key] else {
+                    throw JustTonesInterchangeError.missingConflictResolution(incoming.id)
+                }
+                switch resolution {
+                case .replace:
+                    try profiles.replace(translated)
+                case .keepBoth:
+                    try profiles.add(try duplicateForImport(translated, name: translated.name))
+                case let .rename(name):
+                    guard !name.isEmpty else { throw JustTonesInterchangeError.invalidConflictResolution(incoming.id) }
+                    try profiles.add(try duplicateForImport(translated, name: name))
+                }
+            }
+        }
+
+        // This also checks imported profile references against imported and built-in systems.
+        _ = try JustTonesInterchangeDocument(profiles: profiles.profiles, tuningSystems: systems)
+        return try ProfileStoreDocument(
+            library: profiles,
+            tuningSystems: systems,
+            selectedProfileID: localDocument.selectedProfileID,
+            hiddenBuiltInProfileIDs: localDocument.hiddenBuiltInProfileIDs,
+            workingState: localDocument.workingState
+        )
+    }
+
     /// Exports stable, UTF-8, human-readable JSON with sorted keys. Encoding is followed by the
     /// same decode/validation path used for import so invalid output is never handed to a caller.
     public static func export(_ document: JustTonesInterchangeDocument) throws -> Data {
@@ -209,6 +367,43 @@ public enum JustTonesInterchange {
             instrument: profile.instrument,
             tuningSystemID: profile.tuningSystemID,
             entries: entries,
+            tags: profile.tags,
+            preferredTimbreID: profile.preferredTimbreID,
+            soundingSemitoneOffset: profile.soundingSemitoneOffset
+        )
+    }
+
+    private static func duplicateForImport(
+        _ tuningSystem: JustTonesInterchangeTuningSystem,
+        name: String
+    ) throws -> JustTonesInterchangeTuningSystem {
+        try JustTonesInterchangeTuningSystem(
+            system: TuningSystem(
+                name: name,
+                context: tuningSystem.system.context,
+                degrees: tuningSystem.system.degrees
+            )
+        )
+    }
+
+    private static func profile(
+        _ profile: TuningProfile,
+        replacingSystemIdentifiers identifiers: [UUID: UUID]
+    ) throws -> TuningProfile {
+        let tuningSystemID: String?
+        if let rawIdentifier = profile.tuningSystemID,
+           let identifier = UUID(uuidString: rawIdentifier),
+           let replacement = identifiers[identifier] {
+            tuningSystemID = replacement.uuidString
+        } else {
+            tuningSystemID = profile.tuningSystemID
+        }
+        return try TuningProfile(
+            id: profile.id,
+            name: profile.name,
+            instrument: profile.instrument,
+            tuningSystemID: tuningSystemID,
+            entries: profile.entries,
             tags: profile.tags,
             preferredTimbreID: profile.preferredTimbreID,
             soundingSemitoneOffset: profile.soundingSemitoneOffset

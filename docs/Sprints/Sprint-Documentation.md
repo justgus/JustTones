@@ -37,17 +37,17 @@ Currently: **27 Sprints** | Next available: **SP-028**
 | SP-023 | iPhone State, Accessibility, and Handoff Specification | EP-018 | T-0033 | None | Closed |
 | SP-024 | Apple Watch Interaction Adaptation | EP-018 | T-0034 | None | Closed |
 | SP-025 | Custom Tuning-System Authoring | EP-012 | T-0035 | None | Closed |
-| SP-026 | Import Review and Conflict Resolution | None | T-0036 | None | Backlog |
+| SP-026 | Import Review and Conflict Resolution | EP-012 | T-0036 | None | Closed |
 | SP-027 | Portable Export and Sharing | None | T-0037 | None | Backlog |
 
 ## Statistics
 
 - **Total Sprints:** 27
-- **Backlog:** 2
+- **Backlog:** 1
 - **Planning:** 0
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 25
+- **Closed:** 26
 - **Next available:** SP-028
 
 *Last Updated: 2026-09-22*

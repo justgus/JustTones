@@ -20,7 +20,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T16:34:59Z"
+    "updatedAt" : "2026-09-22T18:59:54Z"
   },
   "notes" : [
     "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied."
@@ -41,6 +41,9 @@
   "sprintIDs" : [
     {
       "rawValue" : "SP-025"
+    },
+    {
+      "rawValue" : "SP-026"
     }
   ],
   "taskIDs" : [

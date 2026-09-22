@@ -1,6 +1,7 @@
 import SwiftUI
 import JustTonesCore
 import AVFoundation
+import UniformTypeIdentifiers
 
 struct ContentView: View {
     @State private var index = 0
@@ -23,6 +24,9 @@ struct ContentView: View {
     @State private var remindersPresented = 0
     @State private var showListeningReminder = false
     @State private var safetyInfoPresented = false
+    @State private var importPresented = false
+    @State private var importPreview: JustTonesDocumentImportPreview?
+    @State private var importError: String?
 
     private var entry: TuningProfileEntry { profile.entries[index] }
     private var frequency: Double { (try? entry.pitch.frequency()) ?? 0 }
@@ -116,6 +120,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) { Button("Profiles", systemImage: "music.note.list") { profiles = true } }
                 ToolbarItem(placement: .topBarLeading) { Button("Tuning systems", systemImage: "tuningfork") { tuningSystems = true } }
+                ToolbarItem(placement: .topBarTrailing) { Button("Import", systemImage: "square.and.arrow.down") { importPresented = true } }
                 ToolbarItem(placement: .topBarTrailing) { Button("Settings", systemImage: "gearshape") { settings = true } }
             }
             .sheet(isPresented: $profiles) {
@@ -132,7 +137,16 @@ struct ContentView: View {
             .sheet(isPresented: $settings) {
                 SettingsSheet(safetyInfoPresented: $safetyInfoPresented)
             }
+            .sheet(item: $importPreview) { preview in
+                ImportReviewSheet(preview: preview, apply: applyImport)
+            }
             .sheet(isPresented: $safetyInfoPresented) { HearingSafetySheet() }
+            .fileImporter(
+                isPresented: $importPresented,
+                allowedContentTypes: [UTType(filenameExtension: "justtones") ?? .json, .json]
+            ) { result in
+                reviewImport(result)
+            }
             .onAppear {
                 normalizeStoredLevel()
                 if !loadStoredState() {
@@ -194,6 +208,14 @@ struct ContentView: View {
                 Button("Continue") { acknowledgeSafetyWarning(warning) }
             } message: { warning in
                 Text(safetyWarningMessage(for: warning))
+            }
+            .alert("Import unavailable", isPresented: Binding(
+                get: { importError != nil },
+                set: { if !$0 { importError = nil } }
+            )) {
+                Button("OK", role: .cancel) { importError = nil }
+            } message: {
+                Text(importError ?? "The document could not be imported.")
             }
         }
     }
@@ -392,6 +414,126 @@ struct ContentView: View {
             workingState: workingState
         ) else { return }
         try? store.save(document)
+    }
+
+    private func currentLocalDocument() throws -> ProfileStoreDocument {
+        let library = try TuningProfileLibrary(profiles: userProfiles)
+        return try ProfileStoreDocument(
+            library: library,
+            tuningSystems: userTuningSystems,
+            hiddenBuiltInProfileIDs: hiddenBuiltInProfileIDs
+        )
+    }
+
+    private func reviewImport(_ result: Result<URL, Error>) {
+        do {
+            let url = try result.get()
+            let hasScopedAccess = url.startAccessingSecurityScopedResource()
+            defer { if hasScopedAccess { url.stopAccessingSecurityScopedResource() } }
+            let data = try Data(contentsOf: url)
+            importPreview = try JustTonesInterchange.previewImport(data, into: currentLocalDocument())
+        } catch {
+            importError = "Review could not open this document. No changes were made."
+        }
+    }
+
+    private func applyImport(_ preview: JustTonesDocumentImportPreview, _ resolutions: [JustTonesImportConflictKey: JustTonesImportConflictResolution]) {
+        do {
+            let imported = try JustTonesInterchange.apply(
+                preview,
+                to: currentLocalDocument(),
+                resolutions: resolutions
+            )
+            guard let store = profileStore else { throw ProfileStoreError.invalidStore }
+            try store.save(imported)
+            userProfiles = imported.library.profiles
+            userTuningSystems = imported.tuningSystems
+            hiddenBuiltInProfileIDs = imported.hiddenBuiltInProfileIDs
+            importPreview = nil
+        } catch {
+            importError = "Import could not be applied. Your existing profiles and tuning systems were left unchanged."
+        }
+    }
+}
+
+private enum ImportReviewChoice: String, CaseIterable, Identifiable {
+    case replace = "Replace existing"
+    case keepBoth = "Keep both"
+    case rename = "Rename imported copy"
+
+    var id: String { rawValue }
+
+    func resolution(for name: String) -> JustTonesImportConflictResolution {
+        switch self {
+        case .replace: .replace
+        case .keepBoth: .keepBoth
+        case .rename: .rename("\(name) (Imported)")
+        }
+    }
+}
+
+private struct ImportReviewSheet: View {
+    let preview: JustTonesDocumentImportPreview
+    let apply: (JustTonesDocumentImportPreview, [JustTonesImportConflictKey: JustTonesImportConflictResolution]) -> Void
+    @Environment(\.dismiss) private var dismiss
+    @State private var choices: [JustTonesImportConflictKey: ImportReviewChoice] = [:]
+    @State private var renamedCopies: [JustTonesImportConflictKey: String] = [:]
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section("Review") {
+                    Text("Nothing is changed until you choose Import.")
+                        .foregroundStyle(.secondary)
+                }
+                ForEach(preview.items) { item in
+                    Section(item.key.kind == .profile ? "Profile" : "Tuning system") {
+                        Text(item.name)
+                        switch item.disposition {
+                        case .add: Label("Will be added", systemImage: "plus.circle")
+                        case .unchanged: Label("Already up to date", systemImage: "checkmark.circle")
+                        case .conflict:
+                            Picker("Conflict", selection: choiceBinding(for: item)) {
+                                ForEach(ImportReviewChoice.allCases) { choice in
+                                    Text(choice.rawValue).tag(choice)
+                                }
+                            }
+                            if choices[item.key] == .rename {
+                                TextField("Imported name", text: renamedNameBinding(for: item))
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Import review")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Import") {
+                        let resolutions = Dictionary(uniqueKeysWithValues: preview.conflicts.map {
+                            let choice = choices[$0.key] ?? .replace
+                            let name = renamedCopies[$0.key] ?? "\($0.name) (Imported)"
+                            return ($0.key, choice.resolution(for: name))
+                        })
+                        apply(preview, resolutions)
+                    }
+                }
+            }
+        }
+    }
+
+    private func choiceBinding(for item: JustTonesDocumentImportItem) -> Binding<ImportReviewChoice> {
+        Binding(
+            get: { choices[item.key] ?? .replace },
+            set: { choices[item.key] = $0 }
+        )
+    }
+
+    private func renamedNameBinding(for item: JustTonesDocumentImportItem) -> Binding<String> {
+        Binding(
+            get: { renamedCopies[item.key] ?? "\(item.name) (Imported)" },
+            set: { renamedCopies[item.key] = $0 }
+        )
     }
 }
 

@@ -1,0 +1,64 @@
+{
+  "auditEventIDs" : [
+    {
+      "rawValue" : "AUD-AGILE-PLAN-6"
+    }
+  ],
+  "commands" : [
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore",
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -destination \"platform=iOS Simulator,name=iPhone 17 Pro\" test"
+  ],
+  "decisionState" : "approved",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/JustTonesInterchange.swift — combined profile\/system preview, conflict model, and all-or-nothing apply support.",
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/LocalProfileStore.swift — only the validated full-document commit boundary required by import.",
+    "JustTones\/ContentView.swift — iPhone document picker, preview, conflict-resolution, cancellation, and error UI.",
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/JustTonesInterchangeTests.swift — valid, migration, conflict, atomicity, and hostile-fixture coverage.",
+    "JustTonesUITests\/JustTonesUITests.swift — stopped-state document selection, preview, cancel, and conflict-choice coverage."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-013"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "No cloud import, background transfer, app-initiated network traffic, Watch import UI, unsafe deserialization, or import-triggered playback is authorized."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Extend the platform-neutral preview and apply model to reconcile both profiles and user-owned tuning systems against the version-three local document, including referential-integrity checks before mutation.",
+    "Add a scoped iPhone document-picker flow, a pre-commit preview, per-conflict replace\/keep-both\/rename choices, cancellation, and bounded actionable error categories.",
+    "Commit only one fully validated local-store document after every conflict is resolved; preserve the active playback selection and do not start audio during import."
+  ],
+  "summary" : "Deliver a bounded, iPhone-only .justtones import workflow that previews profile and custom tuning-system changes, requires explicit conflict choices, and atomically commits only the approved validated result.",
+  "targetEpicID" : {
+    "rawValue" : "EP-012"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-026"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0036"
+    }
+  ],
+  "title" : "SP-026 import review and conflict-resolution plan",
+  "verificationCriteria" : [
+    "JT-TEST-013 proves supported versioned documents reconstruct valid combined object graphs without semantic loss.",
+    "JT-TEST-014 proves preview is non-mutating and each explicit conflict choice produces only its disclosed result.",
+    "JT-TEST-016 and JT-TEST-017 cover schema\/metadata compatibility and malformed, oversized, unsupported, unresolved, or executable-content rejection without partial persistence."
+  ]
+}
