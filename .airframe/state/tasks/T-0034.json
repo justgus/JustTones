@@ -6,6 +6,7 @@
   "componentsAffected" : [
 
   ],
+  "dateVerified" : "2026-09-22",
   "epicID" : {
     "rawValue" : "EP-018"
   },
@@ -20,7 +21,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T14:39:36Z"
+    "updatedAt" : "2026-09-22T14:49:51Z"
   },
   "notes" : [
 
@@ -49,7 +50,7 @@
       "rawValue" : "T-0034"
     },
     "kind" : "task",
-    "status" : "implementedNotVerified",
+    "status" : "implementedVerified",
     "title" : "Specify Apple Watch interaction adaptation"
   }
 }

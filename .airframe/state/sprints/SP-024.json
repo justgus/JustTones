@@ -1,4 +1,5 @@
 {
+  "endDate" : "2026-09-22",
   "epicID" : {
     "rawValue" : "EP-018"
   },
@@ -12,7 +13,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T14:35:40Z"
+    "updatedAt" : "2026-09-22T14:50:08Z"
   },
   "notes" : [
     "Design-only Sprint. T-0034 is active and owns the Watch layout and focused-control contract.",
@@ -28,7 +29,7 @@
       "rawValue" : "SP-024"
     },
     "kind" : "sprint",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Apple Watch Interaction Adaptation"
   }
 }

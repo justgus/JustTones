@@ -25,14 +25,14 @@ Currently: **18 Epics** | Next available: **EP-019**
 | EP-015 | Watch Synchronization and Independent Workflow Completion | Backlog | TBD | TBD |
 | EP-016 | Accessible, Localized, and Supportable Product Experience | Backlog | TBD | TBD |
 | EP-017 | Requirements Verification Run of Record | Backlog | TBD | TBD |
-| EP-018 | iPhone-First Interaction Architecture and Watch Adaptation | Active | TBD | TBD |
+| EP-018 | iPhone-First Interaction Architecture and Watch Adaptation | Closed | TBD | 2026-09-22 |
 
 ## Statistics
 
 - **Total Epics:** 18
 - **Backlog:** 7
-- **Active:** 1
-- **Closed:** 10
+- **Active:** 0
+- **Closed:** 11
 - **Next available:** EP-019
 
 *Last Updated: 2026-09-22*

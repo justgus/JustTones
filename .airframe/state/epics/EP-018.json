@@ -10,6 +10,7 @@
       "rawValue" : "JT-AC-050"
     }
   ],
+  "closeDate" : "2026-09-22",
   "goal" : "Define and approve a non-redundant, instrument-facing interaction architecture for JustTones, beginning with iPhone and yielding an explicit Apple Watch adaptation contract.",
   "issueIDs" : [
 
@@ -20,7 +21,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T14:35:40Z"
+    "updatedAt" : "2026-09-22T14:50:12Z"
   },
   "notes" : [
     "Design-only backlog Epic created from the primary-screen redundancy review. It authorizes no production UI change by itself.",
@@ -69,7 +70,7 @@
       "rawValue" : "EP-018"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "iPhone-First Interaction Architecture and Watch Adaptation"
   }
 }
