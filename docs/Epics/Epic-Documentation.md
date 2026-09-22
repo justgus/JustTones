@@ -19,7 +19,7 @@ Currently: **18 Epics** | Next available: **EP-019**
 | EP-009 | Audible Playback Integration | Closed | TBD | 2026-09-20 |
 | EP-010 | iPhone Timbre Selection and Qualification | Closed | TBD | 2026-09-21 |
 | EP-011 | iPhone Custom Tuning Profile Authoring | Closed | TBD | 2026-09-21 |
-| EP-012 | Tuning-System Authoring and Portable Interchange | Backlog | TBD | TBD |
+| EP-012 | Tuning-System Authoring and Portable Interchange | Active | TBD | TBD |
 | EP-013 | Playback Session and System Integration | Backlog | TBD | TBD |
 | EP-014 | Profile, Catalog, and Content Discovery Completion | Backlog | TBD | TBD |
 | EP-015 | Watch Synchronization and Independent Workflow Completion | Backlog | TBD | TBD |
@@ -30,8 +30,8 @@ Currently: **18 Epics** | Next available: **EP-019**
 ## Statistics
 
 - **Total Epics:** 18
-- **Backlog:** 7
-- **Active:** 0
+- **Backlog:** 6
+- **Active:** 1
 - **Closed:** 11
 - **Next available:** EP-019
 

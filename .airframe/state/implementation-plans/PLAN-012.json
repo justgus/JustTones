@@ -1,0 +1,64 @@
+{
+  "auditEventIDs" : [
+    {
+      "rawValue" : "AUD-AGILE-PLAN-1"
+    }
+  ],
+  "commands" : [
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore",
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -destination \"platform=iOS Simulator,name=iPhone 17 Pro\" test"
+  ],
+  "decisionState" : "approved",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/LocalProfileStore.swift — versioned local-system persistence and deterministic migration.",
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/Tuning.swift — only narrowly scoped domain support required by authoring validation.",
+    "JustTones\/ContentView.swift — iPhone-only custom-system list and editor workflow.",
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TuningTests.swift and persistence tests — lifecycle, representation, bounds, and migration coverage.",
+    "JustTonesUITests\/JustTonesUITests.swift — stopped-state authoring workflow coverage."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-012"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "No microphone access, application network traffic, cloud services, accounts, analytics, Watch authoring, or second tuning-system data model are authorized."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Migrate the versioned local store to retain stable identities and validated user-owned tuning systems alongside profiles, while preserving prior documents and atomic recovery behavior.",
+    "Add iPhone list, create, edit, duplicate, rename, and delete flows that construct validated TuningSystem values using cents, ratios, equal divisions, and explicit frequencies.",
+    "Keep built-in catalog systems immutable and keep all system authoring iPhone-only; profile selection and playback behavior remain silent and unchanged."
+  ],
+  "summary" : "Deliver a local iPhone authoring workflow for musician-owned tuning systems by extending the versioned local store, presenting validated drafts for each supported degree representation, and keeping all selection and persistence paths non-audible.",
+  "targetEpicID" : {
+    "rawValue" : "EP-012"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-025"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0035"
+    }
+  ],
+  "title" : "SP-025 custom tuning-system authoring plan",
+  "verificationCriteria" : [
+    "JT-TEST-012 exercises create, edit, duplicate, rename, and delete across all four degree representations.",
+    "Focused persistence tests prove supported migration, stable identity, rejected invalid drafts, and atomic preservation of the last valid store.",
+    "iPhone UI evidence confirms authoring and selection do not start audio; simulator evidence is reported separately from any physical-device listening observation."
+  ]
+}

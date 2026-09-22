@@ -1,6 +1,8 @@
 {
   "acceptanceCriterionIDs" : [
-
+    {
+      "rawValue" : "JT-AC-053"
+    }
   ],
   "artifactReferences" : [
     "round-trip comparison report"
@@ -46,6 +48,15 @@
     },
     {
       "rawValue" : "T-0019"
+    },
+    {
+      "rawValue" : "EP-012"
+    },
+    {
+      "rawValue" : "SP-027"
+    },
+    {
+      "rawValue" : "T-0037"
     }
   ]
 }

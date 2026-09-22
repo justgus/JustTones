@@ -1,0 +1,29 @@
+{
+  "artifactReferences" : [
+    "User live-app verification reported in conversation on 2026-09-22; no retained screenshot, recording, or test log."
+  ],
+  "ciReferences" : [
+
+  ],
+  "environment" : "User live-app session; device\/simulator unspecified",
+  "id" : {
+    "rawValue" : "EV-0028"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "User-performed live-app verification: custom tuning systems were created, duplicated, modified, and removed; degree entries were added, duplicated, modified, and deleted using cents, frequency ratios, equal divisions, and explicit frequencies. No captured artifact was retained.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0035"
+    }
+  ]
+}

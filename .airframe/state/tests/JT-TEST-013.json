@@ -2,6 +2,9 @@
   "acceptanceCriterionIDs" : [
     {
       "rawValue" : "JT-AC-019"
+    },
+    {
+      "rawValue" : "JT-AC-052"
     }
   ],
   "artifactReferences" : [
@@ -48,6 +51,15 @@
     },
     {
       "rawValue" : "T-0019"
+    },
+    {
+      "rawValue" : "EP-012"
+    },
+    {
+      "rawValue" : "SP-026"
+    },
+    {
+      "rawValue" : "T-0036"
     }
   ]
 }

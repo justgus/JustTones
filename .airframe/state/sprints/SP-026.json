@@ -1,0 +1,30 @@
+{
+  "goal" : "",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-22T14:56:17Z"
+  },
+  "notes" : [
+
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0036"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-026"
+    },
+    "kind" : "sprint",
+    "status" : "backlog",
+    "title" : "Import Review and Conflict Resolution"
+  }
+}

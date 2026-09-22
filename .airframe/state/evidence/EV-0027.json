@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TuningTests.swift; Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/TuningProfileTests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore",
+  "environment" : "Xcode-beta Swift 6, macOS host",
+  "id" : {
+    "rawValue" : "EV-0027"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-025 focused core authoring and persistence tests passed: 51 tests, including schema-three custom-system persistence, schema-two migration, and editor-representation accessors.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0035"
+    }
+  ]
+}

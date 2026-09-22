@@ -43,6 +43,27 @@ public struct TuningDegreeDefinition: Codable, Hashable, Sendable {
         }
     }
 
+    /// Values exposed for a musician-facing editor. Exactly one accessor is non-nil for a value.
+    public var equalDivisionComponents: (step: Int, divisionsPerOctave: Int)? {
+        guard case let .equalDivision(step, divisionsPerOctave) = storage else { return nil }
+        return (step, divisionsPerOctave)
+    }
+
+    public var ratioValue: Double? {
+        guard case let .ratio(value) = storage else { return nil }
+        return value
+    }
+
+    public var centsValue: Double? {
+        guard case let .cents(value) = storage else { return nil }
+        return value
+    }
+
+    public var explicitFrequencyValue: Double? {
+        guard case let .explicitFrequency(value) = storage else { return nil }
+        return value.hertz
+    }
+
     public init(equalDivisionStep step: Int, divisionsPerOctave: Int) throws {
         guard divisionsPerOctave > 0, divisionsPerOctave <= TuningSystem.maximumDegreeCount else {
             throw TuningValidationError.invalidEqualDivisionCount

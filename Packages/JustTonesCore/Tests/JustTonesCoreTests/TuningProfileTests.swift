@@ -92,6 +92,29 @@ struct TuningProfileTests {
         #expect(restored.library.profiles == [profile])
     }
 
+    @Test func versionThreeStoreRetainsCustomSystemsAndMigratesSchemaTwoDocuments() throws {
+        let directory = try temporaryDirectory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let store = LocalProfileStore(directoryURL: directory)
+        let system = try TuningSystem(name: "Personal 19", context: TuningContext(specificSystem: "Personal 19", region: "Practice"), degrees: [
+            try TuningDegree(id: "step", definition: TuningDegreeDefinition(equalDivisionStep: 5, divisionsPerOctave: 19)),
+            try TuningDegree(id: "ratio", definition: TuningDegreeDefinition(ratio: 3.0 / 2.0)),
+            try TuningDegree(id: "cents", definition: TuningDegreeDefinition(cents: 700)),
+            try TuningDegree(id: "frequency", definition: TuningDegreeDefinition(explicitFrequency: DirectFrequency(hertz: 432))),
+        ])
+        let owned = try JustTonesInterchangeTuningSystem(id: UUID(), system: system)
+        let document = try ProfileStoreDocument(tuningSystems: [owned])
+
+        try store.save(document)
+        #expect(try store.load().document.tuningSystems == [owned])
+
+        let schemaTwo = SchemaTwoFixture(schemaVersion: 2, library: try TuningProfileLibrary(), selectedProfileID: nil, hiddenBuiltInProfileIDs: [], workingState: nil)
+        try JSONEncoder().encode(schemaTwo).write(to: store.storeURL)
+        let migrated = try store.load().document
+        #expect(migrated.schemaVersion == ProfileStoreDocument.currentSchemaVersion)
+        #expect(migrated.tuningSystems.isEmpty)
+    }
+
     @Test func storeRoundTripMigratesLegacyProfilesAndRecoversFromSnapshot() throws {
         let directory = try temporaryDirectory()
         defer { try? FileManager.default.removeItem(at: directory) }
@@ -164,5 +187,13 @@ struct TuningProfileTests {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent("JustTonesProfileTests-\(UUID().uuidString)")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         return directory
+    }
+
+    private struct SchemaTwoFixture: Codable {
+        let schemaVersion: Int
+        let library: TuningProfileLibrary
+        let selectedProfileID: UUID?
+        let hiddenBuiltInProfileIDs: Set<UUID>
+        let workingState: ProfileWorkingState?
     }
 }

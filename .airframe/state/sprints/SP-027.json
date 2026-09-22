@@ -1,0 +1,30 @@
+{
+  "goal" : "",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-22T14:56:20Z"
+  },
+  "notes" : [
+
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0037"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-027"
+    },
+    "kind" : "sprint",
+    "status" : "backlog",
+    "title" : "Portable Export and Sharing"
+  }
+}

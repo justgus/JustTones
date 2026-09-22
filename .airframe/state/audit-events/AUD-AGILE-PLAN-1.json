@@ -1,9 +1,9 @@
 {
   "afterRecordID" : {
-    "rawValue" : "PLAN-009"
+    "rawValue" : "PLAN-012"
   },
   "beforeRecordID" : {
-    "rawValue" : "PLAN-009"
+    "rawValue" : "PLAN-012"
   },
   "event" : {
     "action" : "OP-HUMAN-APPROVE-PLAN",
@@ -22,9 +22,9 @@
     "targetProjectID" : {
       "rawValue" : "PRJ-JUSTTONES"
     },
-    "timestamp" : "2026-09-14T20:21:10Z",
+    "timestamp" : "2026-09-22T16:42:55Z",
     "workItemID" : {
-      "rawValue" : "PLAN-009"
+      "rawValue" : "PLAN-012"
     }
   },
   "metadata" : {

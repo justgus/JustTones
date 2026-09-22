@@ -79,6 +79,19 @@ struct TuningTests {
         #expect(try decoded.resolvedFrequencies() == [550])
     }
 
+    @Test func editorAccessorsPreserveEachDegreeRepresentation() throws {
+        let equal = try TuningDegreeDefinition(equalDivisionStep: 7, divisionsPerOctave: 19)
+        let ratio = try TuningDegreeDefinition(ratio: 1.5)
+        let cents = try TuningDegreeDefinition(cents: 701.955)
+        let frequency = TuningDegreeDefinition(explicitFrequency: try DirectFrequency(hertz: 432))
+
+        #expect(equal.equalDivisionComponents?.step == 7)
+        #expect(equal.equalDivisionComponents?.divisionsPerOctave == 19)
+        #expect(ratio.ratioValue == 1.5)
+        #expect(cents.centsValue == 701.955)
+        #expect(frequency.explicitFrequencyValue == 432)
+    }
+
     @Test func degreeAndResolutionLimitsFailDeterministically() throws {
         #expect(throws: TuningValidationError.invalidEqualDivisionCount) {
             try TuningDegreeDefinition(equalDivisionStep: 1, divisionsPerOctave: 0)

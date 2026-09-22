@@ -1,0 +1,85 @@
+{
+  "acceptanceCriteria" : [
+    "Present a pre-commit import preview identifying additions, changes, migrations, ignored fields, and validation failures.",
+    "Support cancel, replace, keep-both, and rename choices for conflicts without partial library mutation."
+  ],
+  "component" : "iPhone document-picker import, preview, conflict-resolution, and actionable error surfaces over the existing bounded parser.",
+  "componentsAffected" : [
+    "iPhone document-picker import, preview, conflict-resolution, and actionable error surfaces over the existing bounded parser."
+  ],
+  "epicID" : {
+    "rawValue" : "EP-012"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-22T14:55:26Z"
+  },
+  "notes" : [
+    "Use scoped system document access and treat all imported fields as untrusted.",
+    "Do not create background network, CloudKit, server, account, analytics, or Watch import UI."
+  ],
+  "priority" : "high",
+  "rationale" : "Use scoped system document access and treat all imported fields as untrusted.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-DR-001"
+    },
+    {
+      "rawValue" : "JT-DR-012"
+    },
+    {
+      "rawValue" : "JT-DR-013"
+    },
+    {
+      "rawValue" : "JT-DR-014"
+    },
+    {
+      "rawValue" : "JT-DR-016"
+    },
+    {
+      "rawValue" : "JT-FR-008"
+    },
+    {
+      "rawValue" : "JT-FR-009"
+    },
+    {
+      "rawValue" : "JT-SR-014"
+    },
+    {
+      "rawValue" : "JT-SR-015"
+    },
+    {
+      "rawValue" : "JT-SR-020"
+    },
+    {
+      "rawValue" : "JT-SR-021"
+    },
+    {
+      "rawValue" : "JT-SR-024"
+    },
+    {
+      "rawValue" : "JT-SR-025"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-026"
+  },
+  "testSteps" : [
+    "Run JT-TEST-013, JT-TEST-014, JT-TEST-016, and JT-TEST-017 with UI and adversarial-fixture evidence."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0036"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Implement import review and conflict resolution"
+  }
+}

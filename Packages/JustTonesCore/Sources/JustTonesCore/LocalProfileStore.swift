@@ -20,10 +20,12 @@ public struct ProfileStoreLoadResult: Sendable {
 /// The versioned, local representation of musician-owned profile data. Catalog content is not
 /// embedded here; it is introduced separately in SP-008.
 public struct ProfileStoreDocument: Codable, Hashable, Sendable {
-    public static let currentSchemaVersion = 2
+    public static let currentSchemaVersion = 3
 
     public let schemaVersion: Int
     public var library: TuningProfileLibrary
+    /// Musician-owned systems only. Built-in catalog systems remain outside the local store.
+    public var tuningSystems: [JustTonesInterchangeTuningSystem]
     /// Retained for schema-one compatibility. New callers should use `workingState` because a
     /// selected profile may be either a musician-owned profile or a built-in template.
     public var selectedProfileID: UUID?
@@ -33,6 +35,7 @@ public struct ProfileStoreDocument: Codable, Hashable, Sendable {
     public init(
         schemaVersion: Int = Self.currentSchemaVersion,
         library: TuningProfileLibrary = try! TuningProfileLibrary(),
+        tuningSystems: [JustTonesInterchangeTuningSystem] = [],
         selectedProfileID: UUID? = nil,
         hiddenBuiltInProfileIDs: Set<UUID> = [],
         workingState: ProfileWorkingState? = nil
@@ -45,6 +48,7 @@ public struct ProfileStoreDocument: Codable, Hashable, Sendable {
         }
         self.schemaVersion = schemaVersion
         self.library = library
+        self.tuningSystems = tuningSystems
         self.selectedProfileID = selectedProfileID
         self.hiddenBuiltInProfileIDs = hiddenBuiltInProfileIDs
         self.workingState = workingState
@@ -55,6 +59,10 @@ public struct ProfileStoreDocument: Codable, Hashable, Sendable {
             throw ProfileStoreError.unsupportedSchemaVersion(schemaVersion)
         }
         try library.validate()
+        guard Set(tuningSystems.map(\.id)).count == tuningSystems.count else {
+            throw ProfileStoreError.invalidStore
+        }
+        try tuningSystems.forEach { try $0.validate() }
         if let selectedProfileID, !library.profiles.contains(where: { $0.id == selectedProfileID }) {
             throw TuningProfileValidationError.unknownProfile
         }
@@ -168,6 +176,14 @@ public struct LocalProfileStore {
             try document.validate()
             return document
         } catch {
+            if let schemaTwoDocument = try? decoder.decode(SchemaTwoDocument.self, from: data) {
+                return try ProfileStoreDocument(
+                    library: schemaTwoDocument.library,
+                    selectedProfileID: schemaTwoDocument.selectedProfileID,
+                    hiddenBuiltInProfileIDs: schemaTwoDocument.hiddenBuiltInProfileIDs,
+                    workingState: schemaTwoDocument.workingState
+                )
+            }
             if let legacyDocument = try? decoder.decode(SchemaOneDocument.self, from: data) {
                 return try ProfileStoreDocument(
                     library: legacyDocument.library,
@@ -180,6 +196,29 @@ public struct LocalProfileStore {
                 return try ProfileStoreDocument(library: TuningProfileLibrary(profiles: profiles))
             }
             throw ProfileStoreError.invalidStore
+        }
+    }
+
+    private struct SchemaTwoDocument: Codable {
+        let schemaVersion: Int
+        let library: TuningProfileLibrary
+        let selectedProfileID: UUID?
+        let hiddenBuiltInProfileIDs: Set<UUID>
+        let workingState: ProfileWorkingState?
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let version = try container.decode(Int.self, forKey: .schemaVersion)
+            guard version == 2 else { throw ProfileStoreError.unsupportedSchemaVersion(version) }
+            schemaVersion = version
+            library = try container.decode(TuningProfileLibrary.self, forKey: .library)
+            selectedProfileID = try container.decodeIfPresent(UUID.self, forKey: .selectedProfileID)
+            hiddenBuiltInProfileIDs = try container.decodeIfPresent(Set<UUID>.self, forKey: .hiddenBuiltInProfileIDs) ?? []
+            workingState = try container.decodeIfPresent(ProfileWorkingState.self, forKey: .workingState)
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case schemaVersion, library, selectedProfileID, hiddenBuiltInProfileIDs, workingState
         }
     }
 

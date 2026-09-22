@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-051"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-22T18:45:39Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-012"
+  },
+  "text" : "A musician can create, name, edit, duplicate, and delete a local custom tuning system whose bounded pitch degrees use cents, exact frequency ratios, equal divisions, or explicit frequencies; valid changes persist without starting playback."
+}

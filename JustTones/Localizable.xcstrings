@@ -13,6 +13,16 @@
     "%@ is unavailable. Sine is selected instead." : {
 
     },
+    "%lld pitch %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld pitch %2$@"
+          }
+        }
+      }
+    },
     "About" : {
 
     },
@@ -20,6 +30,9 @@
 
     },
     "Add" : {
+
+    },
+    "Add degree" : {
 
     },
     "Add pitch" : {
@@ -40,6 +53,9 @@
     "Cancel" : {
 
     },
+    "Cents" : {
+
+    },
     "Changes the synthesized character without changing the selected pitch" : {
 
     },
@@ -52,10 +68,19 @@
     "Create a profile for an instrument, tuning, or personal pitch set." : {
 
     },
+    "Create a tuning system using cents, ratios, equal divisions, or explicit frequencies." : {
+
+    },
     "Default output" : {
 
     },
+    "Degree identifier" : {
+
+    },
     "Delete" : {
+
+    },
+    "Divisions per octave" : {
 
     },
     "Done" : {
@@ -73,10 +98,19 @@
     "Edit Profile" : {
 
     },
+    "Edit Tuning System" : {
+
+    },
+    "Edits this custom tuning system" : {
+
+    },
     "Edits this pitch entry" : {
 
     },
     "Frequency" : {
+
+    },
+    "Frequency (Hz)" : {
 
     },
     "Frequency in Hz" : {
@@ -98,6 +132,9 @@
 
     },
     "Instrument (optional)" : {
+
+    },
+    "Instrument or context (optional)" : {
 
     },
     "JustTones" : {
@@ -134,6 +171,9 @@
     "New profile" : {
 
     },
+    "New tuning system" : {
+
+    },
     "Next" : {
 
     },
@@ -147,6 +187,9 @@
 
     },
     "Output level" : {
+
+    },
+    "Pitch degrees" : {
 
     },
     "Pitch type" : {
@@ -176,6 +219,12 @@
     "Profiles" : {
 
     },
+    "Provenance (optional)" : {
+
+    },
+    "Ratio" : {
+
+    },
     "Reference" : {
 
     },
@@ -189,6 +238,12 @@
           }
         }
       }
+    },
+    "Region (optional)" : {
+
+    },
+    "Representation" : {
+
     },
     "Restore" : {
 
@@ -208,6 +263,9 @@
     "Settings" : {
 
     },
+    "Step" : {
+
+    },
     "Stop" : {
 
     },
@@ -220,6 +278,18 @@
     "Timbre" : {
 
     },
+    "Tradition (optional)" : {
+
+    },
+    "Tuning system" : {
+
+    },
+    "Tuning systems" : {
+
+    },
+    "Tuning Systems" : {
+
+    },
     "Unavailable" : {
 
     },
@@ -230,6 +300,9 @@
 
     },
     "Your profiles" : {
+
+    },
+    "Your tuning systems" : {
 
     }
   },

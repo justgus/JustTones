@@ -2,7 +2,7 @@
 
 Epics listed here are proposed and queued for future planning.
 
-Currently: **7 backlog Epics**
+Currently: **6 backlog Epics**
 
 ---
 
@@ -13,14 +13,6 @@ Currently: **7 backlog Epics**
 
 **Goal:**
 Qualify built-in content and the exact release candidate for App Store submission under user control.
-
-## EP-012: Tuning-System Authoring and Portable Interchange
-
-**Status:** Backlog
-**Owner:** 
-
-**Goal:**
-Deliver musician-facing tuning-system authoring and portable document interchange.
 
 ## EP-013: Playback Session and System Integration
 

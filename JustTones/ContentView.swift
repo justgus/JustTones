@@ -6,9 +6,11 @@ struct ContentView: View {
     @State private var index = 0
     @State private var playbackHost = TonePlaybackHost()
     @State private var profiles = false
+    @State private var tuningSystems = false
     @State private var settings = false
     @State private var profile = BuiltInCatalog.defaultProfile
     @State private var userProfiles: [TuningProfile] = []
+    @State private var userTuningSystems: [JustTonesInterchangeTuningSystem] = []
     @State private var hiddenBuiltInProfileIDs: Set<UUID> = []
     @State private var timbre: BuiltInTimbre = .sine
     @State private var unavailableTimbrePreference: String?
@@ -113,6 +115,7 @@ struct ContentView: View {
             .navigationTitle("JustTones")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) { Button("Profiles", systemImage: "music.note.list") { profiles = true } }
+                ToolbarItem(placement: .topBarLeading) { Button("Tuning systems", systemImage: "tuningfork") { tuningSystems = true } }
                 ToolbarItem(placement: .topBarTrailing) { Button("Settings", systemImage: "gearshape") { settings = true } }
             }
             .sheet(isPresented: $profiles) {
@@ -122,6 +125,9 @@ struct ContentView: View {
                     userProfiles: $userProfiles,
                     hiddenBuiltInProfileIDs: $hiddenBuiltInProfileIDs
                 )
+            }
+            .sheet(isPresented: $tuningSystems) {
+                TuningSystemSheet(systems: $userTuningSystems)
             }
             .sheet(isPresented: $settings) {
                 SettingsSheet(safetyInfoPresented: $safetyInfoPresented)
@@ -156,6 +162,7 @@ struct ContentView: View {
                 persistUserProfiles()
             }
             .onChange(of: userProfiles) { _, _ in persistUserProfiles() }
+            .onChange(of: userTuningSystems) { _, _ in persistUserProfiles() }
             .onChange(of: hiddenBuiltInProfileIDs) { _, _ in persistUserProfiles() }
             .onChange(of: playbackHost.state) { _, state in
                 if state != .playing {
@@ -339,6 +346,7 @@ struct ContentView: View {
         guard let store = profileStore,
               let result = try? store.load() else { return false }
         userProfiles = result.document.library.profiles
+        userTuningSystems = result.document.tuningSystems
         hiddenBuiltInProfileIDs = result.document.hiddenBuiltInProfileIDs
 
         let state = result.document.workingState
@@ -378,6 +386,7 @@ struct ContentView: View {
         )
         guard let document = try? ProfileStoreDocument(
             library: library,
+            tuningSystems: userTuningSystems,
             selectedProfileID: selectedID,
             hiddenBuiltInProfileIDs: hiddenBuiltInProfileIDs,
             workingState: workingState
@@ -753,6 +762,241 @@ private extension Accidental {
         }
     }
     var displayName: String { symbol.isEmpty ? "Natural" : symbol }
+}
+
+private struct TuningSystemSheet: View {
+    @Binding var systems: [JustTonesInterchangeTuningSystem]
+    @Environment(\.dismiss) private var dismiss
+    @State private var editingSystem: JustTonesInterchangeTuningSystem?
+    @State private var duplicatingSystem: JustTonesInterchangeTuningSystem?
+    @State private var creatingSystem = false
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section("Your tuning systems") {
+                    if systems.isEmpty {
+                        Text("Create a tuning system using cents, ratios, equal divisions, or explicit frequencies.")
+                            .foregroundStyle(.secondary)
+                    }
+                    ForEach(systems) { item in
+                        Button { editingSystem = item } label: {
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(item.system.name)
+                                Text("\(item.system.degrees.count) pitch \(item.system.degrees.count == 1 ? "degree" : "degrees")")
+                                    .font(.caption).foregroundStyle(.secondary)
+                            }
+                        }
+                        .accessibilityHint("Edits this custom tuning system")
+                        .swipeActions {
+                            Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
+                            Button("Duplicate") { duplicate(item) }.tint(.accentColor)
+                        }
+                        .contextMenu {
+                            Button("Duplicate") { duplicate(item) }
+                            Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Tuning Systems")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
+                ToolbarItem(placement: .bottomBar) { Button("New tuning system", systemImage: "plus") { creatingSystem = true } }
+            }
+            .sheet(isPresented: $creatingSystem) {
+                TuningSystemEditor { save($0, replacing: nil) }
+            }
+            .sheet(item: $editingSystem) { item in
+                TuningSystemEditor(existing: item) { save($0, replacing: item.id) }
+            }
+            .sheet(item: $duplicatingSystem) { item in
+                TuningSystemEditor(existing: item, isDuplicate: true) { save($0, replacing: nil) }
+            }
+        }
+    }
+
+    private func duplicate(_ item: JustTonesInterchangeTuningSystem) {
+        duplicatingSystem = item
+    }
+
+    private func save(_ system: TuningSystem, replacing id: UUID?) {
+        guard let item = try? JustTonesInterchangeTuningSystem(id: id ?? UUID(), system: system) else { return }
+        if let index = systems.firstIndex(where: { $0.id == item.id }) { systems[index] = item }
+        else { systems.append(item) }
+    }
+}
+
+private struct TuningSystemEditor: View {
+    @Environment(\.dismiss) private var dismiss
+    @State private var draft: TuningSystemDraft
+    @State private var errorMessage: String?
+    let onSave: (TuningSystem) -> Void
+
+    init(existing: JustTonesInterchangeTuningSystem? = nil, isDuplicate: Bool = false, onSave: @escaping (TuningSystem) -> Void) {
+        var initialDraft = TuningSystemDraft(system: existing?.system)
+        if isDuplicate { initialDraft.name += " Copy" }
+        _draft = State(initialValue: initialDraft)
+        self.onSave = onSave
+    }
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section("Tuning system") {
+                    TextField("Name", text: $draft.name)
+                    TextField("Tradition (optional)", text: $draft.tradition)
+                    TextField("Region (optional)", text: $draft.region)
+                    TextField("Instrument or context (optional)", text: $draft.instrumentOrContext)
+                    TextField("Provenance (optional)", text: $draft.provenance)
+                }
+                Section("Pitch degrees") {
+                    ForEach($draft.degrees) { $degree in
+                        TuningDegreeEditor(draft: $degree)
+                    }
+                    .onDelete { draft.degrees.remove(atOffsets: $0) }
+                    .onMove { draft.degrees.move(fromOffsets: $0, toOffset: $1) }
+                    Button("Add degree", systemImage: "plus") { draft.degrees.append(TuningDegreeDraft()) }
+                }
+                if let errorMessage {
+                    Section { Label(errorMessage, systemImage: "exclamationmark.triangle").foregroundStyle(.red) }
+                }
+            }
+            .navigationTitle("Edit Tuning System")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) { EditButton() }
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") { save() }
+                        .disabled(draft.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || draft.degrees.isEmpty)
+                }
+            }
+        }
+    }
+
+    private func save() {
+        do {
+            let system = try draft.makeSystem()
+            onSave(system)
+            dismiss()
+        } catch {
+            errorMessage = "Check the name and each pitch-degree value. \(error.localizedDescription)"
+        }
+    }
+}
+
+private struct TuningDegreeEditor: View {
+    @Binding var draft: TuningDegreeDraft
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            TextField("Degree identifier", text: $draft.degreeID)
+            Picker("Representation", selection: $draft.kind) {
+                ForEach(TuningDegreeKind.allCases, id: \.self) { Text($0.label).tag($0) }
+            }
+            .pickerStyle(.menu)
+            switch draft.kind {
+            case .cents: TextField("Cents", text: $draft.primaryValue).keyboardType(.decimalPad)
+            case .ratio: TextField("Ratio", text: $draft.primaryValue).keyboardType(.decimalPad)
+            case .explicitFrequency: TextField("Frequency (Hz)", text: $draft.primaryValue).keyboardType(.decimalPad)
+            case .equalDivision:
+                TextField("Step", text: $draft.primaryValue).keyboardType(.numberPad)
+                TextField("Divisions per octave", text: $draft.secondaryValue).keyboardType(.numberPad)
+            }
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+private struct TuningSystemDraft {
+    var name: String = "New Tuning System"
+    var tradition = ""
+    var region = ""
+    var instrumentOrContext = ""
+    var provenance = ""
+    var degrees: [TuningDegreeDraft] = [TuningDegreeDraft()]
+
+    init(system: TuningSystem?) {
+        guard let system else { return }
+        name = system.name
+        tradition = system.context?.tradition ?? ""
+        region = system.context?.region ?? ""
+        instrumentOrContext = system.context?.instrumentOrContext ?? ""
+        provenance = system.context?.provenance ?? ""
+        degrees = system.degrees.map(TuningDegreeDraft.init)
+    }
+
+    func makeSystem() throws -> TuningSystem {
+        let context = try TuningContext(
+            specificSystem: name,
+            tradition: tradition.emptyToNil,
+            region: region.emptyToNil,
+            instrumentOrContext: instrumentOrContext.emptyToNil,
+            provenance: provenance.emptyToNil
+        )
+        return try TuningSystem(name: name, context: context, degrees: degrees.enumerated().map { offset, degree in
+            try degree.makeDegree(defaultID: "degree-\(offset + 1)")
+        })
+    }
+}
+
+private struct TuningDegreeDraft: Identifiable {
+    let draftID = UUID()
+    var degreeID: String = ""
+    var kind: TuningDegreeKind = .cents
+    var primaryValue = "0"
+    var secondaryValue = "12"
+
+    var id: UUID { draftID }
+
+    init() {}
+    init(_ degree: TuningDegree) {
+        degreeID = degree.id
+        kind = degree.definition.kind
+        switch kind {
+        case .cents: primaryValue = String(degree.definition.centsValue ?? 0)
+        case .ratio: primaryValue = String(degree.definition.ratioValue ?? 1)
+        case .explicitFrequency: primaryValue = String(degree.definition.explicitFrequencyValue ?? 440)
+        case .equalDivision:
+            let values = degree.definition.equalDivisionComponents ?? (0, 12)
+            primaryValue = String(values.step)
+            secondaryValue = String(values.divisionsPerOctave)
+        }
+    }
+
+    func makeDegree(defaultID: String) throws -> TuningDegree {
+        let definition: TuningDegreeDefinition
+        switch kind {
+        case .cents: definition = try TuningDegreeDefinition(cents: try numeric(primaryValue))
+        case .ratio: definition = try TuningDegreeDefinition(ratio: try numeric(primaryValue))
+        case .explicitFrequency: definition = TuningDegreeDefinition(explicitFrequency: try DirectFrequency(hertz: numeric(primaryValue)))
+        case .equalDivision:
+            guard let step = Int(primaryValue), let divisions = Int(secondaryValue) else { throw TuningValidationError.invalidEqualDivisionCount }
+            definition = try TuningDegreeDefinition(equalDivisionStep: step, divisionsPerOctave: divisions)
+        }
+        return try TuningDegree(id: degreeID.trimmingCharacters(in: .whitespacesAndNewlines).emptyToNil ?? defaultID, definition: definition)
+    }
+
+    private func numeric(_ text: String) throws -> Double {
+        guard let value = Double(text.trimmingCharacters(in: .whitespacesAndNewlines)), value.isFinite else { throw TuningValidationError.nonFiniteValue }
+        return value
+    }
+}
+
+private extension TuningDegreeKind {
+    static var allCases: [TuningDegreeKind] { [.cents, .ratio, .equalDivision, .explicitFrequency] }
+    var label: String {
+        switch self {
+        case .cents: "Cents"
+        case .ratio: "Frequency ratio"
+        case .equalDivision: "Equal divisions"
+        case .explicitFrequency: "Explicit frequency"
+        }
+    }
+}
+
+private extension String {
+    var emptyToNil: String? { isEmpty ? nil : self }
 }
 
 private struct SettingsSheet: View {

@@ -1,6 +1,11 @@
 {
   "acceptanceCriterionIDs" : [
-
+    {
+      "rawValue" : "JT-AC-052"
+    },
+    {
+      "rawValue" : "JT-AC-053"
+    }
   ],
   "artifactReferences" : [
     "schema, canonical fixtures, and compatibility matrix"
@@ -46,6 +51,21 @@
     },
     {
       "rawValue" : "T-0019"
+    },
+    {
+      "rawValue" : "EP-012"
+    },
+    {
+      "rawValue" : "SP-026"
+    },
+    {
+      "rawValue" : "SP-027"
+    },
+    {
+      "rawValue" : "T-0036"
+    },
+    {
+      "rawValue" : "T-0037"
     }
   ]
 }

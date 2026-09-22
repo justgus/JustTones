@@ -1,0 +1,96 @@
+{
+  "acceptanceCriteria" : [
+    "Export user-created systems and profiles as valid .justtones documents through the system Share Sheet.",
+    "Round trips into a clean local library preserve identities, names, metadata, ordering, and pitch definitions without semantic loss."
+  ],
+  "component" : "iPhone export selection, document creation, system sharing, and round-trip verification over the existing declarative interchange format.",
+  "componentsAffected" : [
+    "iPhone export selection, document creation, system sharing, and round-trip verification over the existing declarative interchange format."
+  ],
+  "epicID" : {
+    "rawValue" : "EP-012"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-22T14:56:13Z"
+  },
+  "notes" : [
+    "Export only user-created data; no cloud database, account, application network traffic, or custom sharing transport."
+  ],
+  "priority" : "high",
+  "rationale" : "Export only user-created data; no cloud database, account, application network traffic, or custom sharing transport.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-DR-001"
+    },
+    {
+      "rawValue" : "JT-DR-007"
+    },
+    {
+      "rawValue" : "JT-DR-011"
+    },
+    {
+      "rawValue" : "JT-DR-012"
+    },
+    {
+      "rawValue" : "JT-DR-013"
+    },
+    {
+      "rawValue" : "JT-DR-014"
+    },
+    {
+      "rawValue" : "JT-DR-015"
+    },
+    {
+      "rawValue" : "JT-DR-016"
+    },
+    {
+      "rawValue" : "JT-FR-010"
+    },
+    {
+      "rawValue" : "JT-SR-014"
+    },
+    {
+      "rawValue" : "JT-SR-015"
+    },
+    {
+      "rawValue" : "JT-SR-016"
+    },
+    {
+      "rawValue" : "JT-SR-017"
+    },
+    {
+      "rawValue" : "JT-SR-018"
+    },
+    {
+      "rawValue" : "JT-SR-019"
+    },
+    {
+      "rawValue" : "JT-SR-022"
+    },
+    {
+      "rawValue" : "JT-SR-023"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-027"
+  },
+  "testSteps" : [
+    "Run JT-TEST-015 and JT-TEST-016 with share-flow and clean-library round-trip evidence."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0037"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Implement portable export and sharing"
+  }
+}

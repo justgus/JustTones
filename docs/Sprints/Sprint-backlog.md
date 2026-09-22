@@ -2,10 +2,46 @@
 
 Sprints listed here are attached to an Epic but are not yet in Planning, Active, Review, or Closed status.
 
-Currently: **0 backlog Sprints**
+Currently: **2 backlog Sprints**
 
 ---
 
-No Sprints are currently in Backlog.
+## SP-026: Import Review and Conflict Resolution
+
+**Status:** Backlog
+**Epic:** TBD
+**Goal:** 
+**Start Date:** TBD
+**End Date:** TBD
+**Capacity:** TBD
+
+### Assigned Tasks
+
+| Task | Title | Priority | Status |
+| ---- | ----- | -------- | ------ |
+| T-0036 | Implement import review and conflict resolution | High | Backlog |
+
+### Assigned Issues
+
+None.
+
+## SP-027: Portable Export and Sharing
+
+**Status:** Backlog
+**Epic:** TBD
+**Goal:** 
+**Start Date:** TBD
+**End Date:** TBD
+**Capacity:** TBD
+
+### Assigned Tasks
+
+| Task | Title | Priority | Status |
+| ---- | ----- | -------- | ------ |
+| T-0037 | Implement portable export and sharing | High | Backlog |
+
+### Assigned Issues
+
+None.
 
 *Last Updated: 2026-09-22*

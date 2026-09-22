@@ -64,4 +64,23 @@ final class JustTonesUITests: XCTestCase {
         app.buttons["Delete"].tap()
         XCTAssertFalse(app.buttons[editedName].exists)
     }
+
+    func testCustomTuningSystemCanBeCreatedWithoutStartingPlayback() {
+        let app = XCUIApplication()
+        let name = "UI Tuning \(UUID().uuidString.prefix(8))"
+        app.launch()
+
+        app.buttons["Tuning systems"].tap()
+        app.buttons["New tuning system"].tap()
+        let nameField = app.textFields["Name"]
+        XCTAssertTrue(nameField.waitForExistence(timeout: 2))
+        nameField.tap()
+        nameField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 17))
+        nameField.typeText(name)
+        app.buttons["Save"].tap()
+
+        XCTAssertTrue(app.buttons[name].waitForExistence(timeout: 2))
+        app.buttons["Done"].tap()
+        XCTAssertTrue(app.staticTexts["Stopped"].exists)
+    }
 }

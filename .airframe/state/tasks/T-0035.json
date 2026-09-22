@@ -1,0 +1,77 @@
+{
+  "acceptanceCriteria" : [
+    "Provide create, edit, duplicate, rename, and delete flows for local custom systems using cents, ratios, equal divisions, and explicit frequencies.",
+    "Reject invalid or out-of-bounds degree definitions before persistence and preserve a stopped playback state."
+  ],
+  "component" : "iPhone authoring presentation over the existing shared tuning-system model and versioned local store.",
+  "componentsAffected" : [
+    "iPhone authoring presentation over the existing shared tuning-system model and versioned local store.",
+    "Deterministic authoring UI and persistence coverage for each supported pitch-degree representation."
+  ],
+  "dateVerified" : "2026-09-22",
+  "epicID" : {
+    "rawValue" : "EP-012"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0027"
+    },
+    {
+      "rawValue" : "EV-0028"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-22T18:56:46Z"
+  },
+  "notes" : [
+    "Do not add microphone access, network traffic, cloud storage, accounts, analytics, or Watch authoring.",
+    "Reuse the portable declarative model; do not introduce a second tuning-system representation."
+  ],
+  "priority" : "high",
+  "rationale" : "Do not add microphone access, network traffic, cloud storage, accounts, analytics, or Watch authoring.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-DR-002"
+    },
+    {
+      "rawValue" : "JT-DR-007"
+    },
+    {
+      "rawValue" : "JT-DR-008"
+    },
+    {
+      "rawValue" : "JT-DR-009"
+    },
+    {
+      "rawValue" : "JT-FR-004"
+    },
+    {
+      "rawValue" : "JT-FR-005"
+    },
+    {
+      "rawValue" : "JT-FR-006"
+    },
+    {
+      "rawValue" : "JT-FR-007"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-025"
+  },
+  "testSteps" : [
+    "Run JT-TEST-012 plus focused shared-model, persistence, and iPhone UI evidence."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0035"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement custom tuning-system authoring"
+  }
+}

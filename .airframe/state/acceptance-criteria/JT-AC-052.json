@@ -1,0 +1,21 @@
+{
+  "disposition" : "unverified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-052"
+  },
+  "isVerified" : false,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "ownerID" : {
+    "rawValue" : "EP-012"
+  },
+  "text" : "Before an import changes the local library, the musician sees its additions and changes and can cancel, replace, keep both, or rename conflicts; unsupported, malformed, oversized, or unresolved documents leave the last valid data intact."
+}
