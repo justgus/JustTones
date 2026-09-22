@@ -5,7 +5,7 @@
     }
   ],
   "artifactReferences" : [
-    "docs\/Epics\/EP-018-Planning.md"
+    "docs\/Design\/Watch-Interaction-Adaptation.md"
   ],
   "evidenceIDs" : [
 
@@ -25,7 +25,7 @@
     }
   },
   "notes" : [
-
+    "SP-024 design deliverable completed on 2026-09-22; ready for user-directed manual inspection and acceptance."
   ],
   "objective" : "Verify the Watch contract retains essential reference-tone operation while placing authoring on iPhone and protecting output-level adjustment from ordinary scrolling.",
   "requirementIDs" : [
@@ -39,7 +39,7 @@
       "rawValue" : "JT-FR-057"
     }
   ],
-  "status" : "draft",
+  "status" : "ready",
   "steps" : [
     "Inspect the approved Watch adaptation contract."
   ],

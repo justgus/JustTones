@@ -5,7 +5,7 @@
     }
   ],
   "artifactReferences" : [
-    "docs\/Epics\/EP-018-Planning.md"
+    "docs\/Design\/iPhone-Playback-State-Accessibility-and-Handoff.md"
   ],
   "evidenceIDs" : [
 
@@ -25,7 +25,7 @@
     }
   },
   "notes" : [
-
+    "SP-023 design deliverable completed on 2026-09-22; ready for user-directed manual inspection and acceptance."
   ],
   "objective" : "Verify the design specification covers stopped, playing, transition, unavailable, and secondary-screen playback states with accessibility and localization constraints.",
   "requirementIDs" : [
@@ -42,7 +42,7 @@
       "rawValue" : "JT-FR-091"
     }
   ],
-  "status" : "draft",
+  "status" : "ready",
   "steps" : [
     "Inspect the approved state and accessibility specification."
   ],

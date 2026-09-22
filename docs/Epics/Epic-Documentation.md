@@ -4,7 +4,7 @@ This is the main index for Agile Airframe Epics.
 
 ## All Epics
 
-Currently: **11 Epics** | Next available: **EP-012**
+Currently: **18 Epics** | Next available: **EP-019**
 
 | Epic | Title | Status | Start Date | Close Date |
 | ---- | ----- | ------ | ---------- | ---------- |
@@ -19,13 +19,20 @@ Currently: **11 Epics** | Next available: **EP-012**
 | EP-009 | Audible Playback Integration | Closed | TBD | 2026-09-20 |
 | EP-010 | iPhone Timbre Selection and Qualification | Closed | TBD | 2026-09-21 |
 | EP-011 | iPhone Custom Tuning Profile Authoring | Closed | TBD | 2026-09-21 |
+| EP-012 | Tuning-System Authoring and Portable Interchange | Backlog | TBD | TBD |
+| EP-013 | Playback Session and System Integration | Backlog | TBD | TBD |
+| EP-014 | Profile, Catalog, and Content Discovery Completion | Backlog | TBD | TBD |
+| EP-015 | Watch Synchronization and Independent Workflow Completion | Backlog | TBD | TBD |
+| EP-016 | Accessible, Localized, and Supportable Product Experience | Backlog | TBD | TBD |
+| EP-017 | Requirements Verification Run of Record | Backlog | TBD | TBD |
+| EP-018 | iPhone-First Interaction Architecture and Watch Adaptation | Active | TBD | TBD |
 
 ## Statistics
 
-- **Total Epics:** 11
-- **Backlog:** 1
-- **Active:** 0
+- **Total Epics:** 18
+- **Backlog:** 7
+- **Active:** 1
 - **Closed:** 10
-- **Next available:** EP-012
+- **Next available:** EP-019
 
-*Last Updated: 2026-09-21*
+*Last Updated: 2026-09-22*

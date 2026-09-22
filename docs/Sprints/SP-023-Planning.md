@@ -1,6 +1,6 @@
 # SP-023 — iPhone State, Accessibility, and Handoff Specification
 
-**Status:** Backlog. T-0033 remains backlog; activation requires separate user direction.
+**Status:** Planning. T-0033 remains backlog; activation requires separate user direction.
 
 **Goal:** make the accepted iPhone hierarchy implementable without losing safety, accessibility, or supporting requirements.
 
@@ -11,3 +11,9 @@
 **Dependency:** user acceptance of SP-022 output.
 
 **Out of scope:** SwiftUI implementation, physical-device accessibility qualification, and requirements verification run-of-record.
+
+## Completed planning decision
+
+The governing specification is [iPhone Playback State, Accessibility, and Handoff](../Design/iPhone-Playback-State-Accessibility-and-Handoff.md). It defines the primary-screen state model, the persistent active-tone treatment on secondary screens, and the cross-Epic implementation boundaries.
+
+T-0033 is implemented as a design deliverable. Its completion evidence is JT-TEST-243 and a review of the specification; it does not itself authorize a SwiftUI change. User verification remains required.

@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "docs\/Design\/Watch-Interaction-Adaptation.md"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "aicockpit state diagnostics --config .airframe\/airframe-workspace.json --output json",
+  "environment" : "Repository design-document inspection",
+  "id" : {
+    "rawValue" : "EV-0026"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "SP-024 delivered the Apple Watch interaction adaptation contract: compact and expanded surfaces, explicit Crown-level focus, local playback states, disconnected\/synchronizing behavior, accessibility, and iPhone-only administration boundary. No watchOS source was changed.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0034"
+    }
+  ]
+}

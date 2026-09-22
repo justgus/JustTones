@@ -1,6 +1,6 @@
 # iPhone Primary Tone Screen
 
-**Design status:** SP-022 planning output. It defines interaction and layout intent; it does not authorize implementation.
+**Design status:** SP-022 implementation deliverable, pending user verification. It defines interaction and layout intent; it does not authorize production UI implementation.
 
 ## User objective
 

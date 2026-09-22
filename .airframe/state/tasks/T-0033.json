@@ -1,16 +1,19 @@
 {
   "acceptanceCriteria" : [
-
+    "JT-AC-049"
   ],
   "component" : "",
   "componentsAffected" : [
 
   ],
+  "dateVerified" : "2026-09-22",
   "epicID" : {
     "rawValue" : "EP-018"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0025"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -18,13 +21,13 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-21T22:16:52Z"
+    "updatedAt" : "2026-09-22T14:31:30Z"
   },
   "notes" : [
 
   ],
   "priority" : "medium",
-  "rationale" : "",
+  "rationale" : "A single presentation contract is needed so playback, safety, accessibility, and localization behavior remain understandable across primary and secondary iPhone screens.",
   "requirementIDs" : [
     {
       "rawValue" : "JT-FR-037"
@@ -50,7 +53,7 @@
       "rawValue" : "T-0033"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Specify iPhone states, accessibility, and delivery handoff"
   }
 }

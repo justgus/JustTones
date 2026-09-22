@@ -8,7 +8,7 @@ Currently: **None**
 
 ## All Sprints
 
-Currently: **21 Sprints** | Next available: **SP-022**
+Currently: **24 Sprints** | Next available: **SP-025**
 
 | Sprint | Title | Epic | Tasks | Issues | Status |
 | ------ | ----- | ---- | ----- | ------ | ------ |
@@ -33,15 +33,18 @@ Currently: **21 Sprints** | Next available: **SP-022**
 | SP-019 | Audible Playback Integration Qualification | EP-009 | T-0029 | None | Closed |
 | SP-020 | iPhone Timbre Selection | EP-010 | T-0030 | None | Closed |
 | SP-021 | Custom Profile Authoring | EP-011 | T-0031 | None | Closed |
+| SP-022 | iPhone Interaction Architecture | EP-018 | T-0032 | None | Closed |
+| SP-023 | iPhone State, Accessibility, and Handoff Specification | EP-018 | T-0033 | None | Closed |
+| SP-024 | Apple Watch Interaction Adaptation | EP-018 | T-0034 | None | Active |
 
 ## Statistics
 
-- **Total Sprints:** 21
+- **Total Sprints:** 24
 - **Backlog:** 0
-- **Planning:** 0
+- **Planning:** 1
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 21
-- **Next available:** SP-022
+- **Closed:** 23
+- **Next available:** SP-025
 
-*Last Updated: 2026-09-21*
+*Last Updated: 2026-09-22*

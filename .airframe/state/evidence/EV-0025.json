@@ -1,0 +1,28 @@
+{
+  "artifactReferences" : [
+    "docs\/Design\/iPhone-Playback-State-Accessibility-and-Handoff.md"
+  ],
+  "ciReferences" : [
+
+  ],
+  "id" : {
+    "rawValue" : "EV-0025"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "SP-023 delivered the iPhone playback-state, accessibility, localization, persistent Stop-control, and cross-Epic handoff specification. No SwiftUI source was changed.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0033"
+    }
+  ]
+}

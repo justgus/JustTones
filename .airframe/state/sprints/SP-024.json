@@ -12,10 +12,10 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-21T22:52:24Z"
+    "updatedAt" : "2026-09-22T14:35:40Z"
   },
   "notes" : [
-    "Design-only Sprint. T-0034 is backlog and owns the Watch layout and focused-control contract.",
+    "Design-only Sprint. T-0034 is active and owns the Watch layout and focused-control contract.",
     "Depends on the accepted iPhone model from SP-022 and its state specification from SP-023; it authorizes no watchOS implementation."
   ],
   "taskIDs" : [
@@ -28,7 +28,7 @@
       "rawValue" : "SP-024"
     },
     "kind" : "sprint",
-    "status" : "planning",
+    "status" : "active",
     "title" : "Apple Watch Interaction Adaptation"
   }
 }

@@ -1,6 +1,6 @@
 {
   "acceptanceCriteria" : [
-
+    "JT-AC-050"
   ],
   "component" : "",
   "componentsAffected" : [
@@ -10,7 +10,9 @@
     "rawValue" : "EP-018"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0026"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -18,7 +20,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-21T22:16:52Z"
+    "updatedAt" : "2026-09-22T14:39:36Z"
   },
   "notes" : [
 
@@ -47,7 +49,7 @@
       "rawValue" : "T-0034"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedNotVerified",
     "title" : "Specify Apple Watch interaction adaptation"
   }
 }

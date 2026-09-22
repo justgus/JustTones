@@ -1,4 +1,5 @@
 {
+  "endDate" : "2026-09-22",
   "epicID" : {
     "rawValue" : "EP-018"
   },
@@ -12,7 +13,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-21T22:55:07Z"
+    "updatedAt" : "2026-09-22T13:26:00Z"
   },
   "notes" : [
     "Design-only Sprint. T-0032 is backlog and owns the iPhone screen inventory and hierarchy specification.",
@@ -28,7 +29,7 @@
       "rawValue" : "SP-022"
     },
     "kind" : "sprint",
-    "status" : "active",
+    "status" : "closed",
     "title" : "iPhone Interaction Architecture"
   }
 }

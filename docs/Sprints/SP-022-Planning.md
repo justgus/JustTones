@@ -16,4 +16,4 @@
 
 The governing iPhone specification is [iPhone Primary Tone Screen](../Design/iPhone-Primary-Tone-Screen.md). Its design rule is simple: the header reports the current tone, while a control reports and changes only its own value. There is no separate passive summary grid.
 
-T-0032 becomes eligible for activation only when the user authorizes design execution. Its completion evidence is a reviewed screen inventory and JT-TEST-242; it does not include a SwiftUI change.
+T-0032 is implemented as a design deliverable. Its completion evidence is the screen inventory and JT-TEST-242; it does not include a SwiftUI change. User verification remains required.

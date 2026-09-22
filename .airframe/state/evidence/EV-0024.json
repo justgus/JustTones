@@ -1,0 +1,28 @@
+{
+  "artifactReferences" : [
+    "docs\/Design\/iPhone-Primary-Tone-Screen.md"
+  ],
+  "ciReferences" : [
+
+  ],
+  "id" : {
+    "rawValue" : "EV-0024"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "SP-022 delivered the iPhone interaction architecture specification: audited duplicated state, defined the canonical hierarchy and state contract, and recorded accessibility and implementation boundaries. No SwiftUI source was changed.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0032"
+    }
+  ]
+}

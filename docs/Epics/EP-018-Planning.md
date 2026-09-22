@@ -68,8 +68,8 @@ The Sprints are deliberately sequential. Only one may be activated at a time.
 
 | Sprint | Status | Governing task | Outcome |
 | --- | --- | --- | --- |
-| SP-022 — iPhone Interaction Architecture | Backlog | T-0032 | An audited iPhone screen inventory and canonical information/control hierarchy. |
-| SP-023 — iPhone State, Accessibility, and Handoff Specification | Backlog | T-0033 | State, accessibility, localization, and persistent-playback specifications, plus delivery handoffs. |
-| SP-024 — Apple Watch Interaction Adaptation | Backlog | T-0034 | A Watch interaction contract derived from the accepted iPhone model. |
+| SP-022 — iPhone Interaction Architecture | Closed | T-0032 | An audited iPhone screen inventory and canonical information/control hierarchy. |
+| SP-023 — iPhone State, Accessibility, and Handoff Specification | Closed | T-0033 | State, accessibility, localization, and persistent-playback specifications, plus delivery handoffs. |
+| SP-024 — Apple Watch Interaction Adaptation | Active | T-0034 | A Watch interaction contract derived from the accepted iPhone model. |
 
-SP-022 is the next candidate for activation. The design output must be accepted before SP-023 begins; SP-024 depends on the accepted iPhone model. The three associated inspection tests are deliberately Draft until their governing specifications exist and can be reviewed.
+SP-024 is the active Sprint. The iPhone-model and state-specification outputs from SP-022 and SP-023 are verified. JT-TEST-244 remains Draft until the Watch contract exists and can be reviewed.

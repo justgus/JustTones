@@ -25,7 +25,7 @@
     }
   },
   "notes" : [
-    "SP-022 planning completed on 2026-09-21; remains Draft pending user authorization of T-0032 and review of the specification."
+    "SP-022 design deliverable completed on 2026-09-22; ready for user-directed manual inspection and acceptance."
   ],
   "objective" : "Verify the approved iPhone specification gives each primary-screen value and control one canonical presentation and preserves all required direct controls.",
   "requirementIDs" : [
@@ -36,7 +36,7 @@
       "rawValue" : "JT-FR-041"
     }
   ],
-  "status" : "draft",
+  "status" : "ready",
   "steps" : [
     "Inspect the approved screen inventory and state layout against the primary-screen requirements."
   ],
