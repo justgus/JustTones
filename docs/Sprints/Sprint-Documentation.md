@@ -38,16 +38,16 @@ Currently: **27 Sprints** | Next available: **SP-028**
 | SP-024 | Apple Watch Interaction Adaptation | EP-018 | T-0034 | None | Closed |
 | SP-025 | Custom Tuning-System Authoring | EP-012 | T-0035 | None | Closed |
 | SP-026 | Import Review and Conflict Resolution | EP-012 | T-0036 | None | Closed |
-| SP-027 | Portable Export and Sharing | None | T-0037 | None | Backlog |
+| SP-027 | Portable Export and Sharing | EP-012 | T-0037 | None | Closed |
 
 ## Statistics
 
 - **Total Sprints:** 27
-- **Backlog:** 1
+- **Backlog:** 0
 - **Planning:** 0
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 26
+- **Closed:** 27
 - **Next available:** SP-028
 
-*Last Updated: 2026-09-22*
+*Last Updated: 2026-09-23*

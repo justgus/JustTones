@@ -2,6 +2,7 @@ import SwiftUI
 import JustTonesCore
 import AVFoundation
 import UniformTypeIdentifiers
+import UIKit
 
 struct ContentView: View {
     @State private var index = 0
@@ -27,6 +28,7 @@ struct ContentView: View {
     @State private var importPresented = false
     @State private var importPreview: JustTonesDocumentImportPreview?
     @State private var importError: String?
+    @State private var exportPresented = false
 
     private var entry: TuningProfileEntry { profile.entries[index] }
     private var frequency: Double { (try? entry.pitch.frequency()) ?? 0 }
@@ -121,6 +123,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarLeading) { Button("Profiles", systemImage: "music.note.list") { profiles = true } }
                 ToolbarItem(placement: .topBarLeading) { Button("Tuning systems", systemImage: "tuningfork") { tuningSystems = true } }
                 ToolbarItem(placement: .topBarTrailing) { Button("Import", systemImage: "square.and.arrow.down") { importPresented = true } }
+                ToolbarItem(placement: .topBarTrailing) { Button("Export", systemImage: "square.and.arrow.up") { exportPresented = true } }
                 ToolbarItem(placement: .topBarTrailing) { Button("Settings", systemImage: "gearshape") { settings = true } }
             }
             .sheet(isPresented: $profiles) {
@@ -136,6 +139,13 @@ struct ContentView: View {
             }
             .sheet(isPresented: $settings) {
                 SettingsSheet(safetyInfoPresented: $safetyInfoPresented)
+            }
+            .sheet(isPresented: $exportPresented) {
+                ExportSelectionSheet(
+                    profiles: userProfiles,
+                    tuningSystems: userTuningSystems,
+                    prepareExport: prepareExport
+                )
             }
             .sheet(item: $importPreview) { preview in
                 ImportReviewSheet(preview: preview, apply: applyImport)
@@ -454,6 +464,167 @@ struct ContentView: View {
             importError = "Import could not be applied. Your existing profiles and tuning systems were left unchanged."
         }
     }
+
+    private func prepareExport(profileIDs: Set<UUID>, tuningSystemIDs: Set<UUID>) throws -> URL {
+        let selectedProfiles = userProfiles.filter { profileIDs.contains($0.id) }
+        let selectedSystems = userTuningSystems.filter { tuningSystemIDs.contains($0.id) }
+        let data = try JustTonesInterchange.exportUserContent(
+            profiles: selectedProfiles,
+            tuningSystems: selectedSystems
+        )
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("JustTones-Export-\(UUID().uuidString)")
+            .appendingPathExtension("justtones")
+        try data.write(to: url, options: .atomic)
+        return url
+    }
+}
+
+private struct ExportSelectionSheet: View {
+    let profiles: [TuningProfile]
+    let tuningSystems: [JustTonesInterchangeTuningSystem]
+    let prepareExport: (Set<UUID>, Set<UUID>) throws -> URL
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var selectedProfileIDs: Set<UUID>
+    @State private var selectedTuningSystemIDs: Set<UUID>
+    @State private var preparedURL: URL?
+    @State private var errorMessage: String?
+    @State private var sharingPresented = false
+
+    init(
+        profiles: [TuningProfile],
+        tuningSystems: [JustTonesInterchangeTuningSystem],
+        prepareExport: @escaping (Set<UUID>, Set<UUID>) throws -> URL
+    ) {
+        self.profiles = profiles
+        self.tuningSystems = tuningSystems
+        self.prepareExport = prepareExport
+        _selectedProfileIDs = State(initialValue: Set(profiles.map(\.id)))
+        _selectedTuningSystemIDs = State(initialValue: Set(tuningSystems.map(\.id)))
+    }
+
+    var body: some View {
+        NavigationStack {
+            Group {
+                if let preparedURL {
+                    VStack(spacing: 20) {
+                        Image(systemName: "doc.checkmark")
+                            .font(.system(size: 48))
+                            .foregroundStyle(.tint)
+                        Text("Your .justtones document is ready to share.")
+                            .multilineTextAlignment(.center)
+                        Button("Share document", systemImage: "square.and.arrow.up") {
+                            sharingPresented = true
+                        }
+                        .buttonStyle(.borderedProminent)
+                        Button("Choose different content") {
+                            discardPreparedExport(preparedURL)
+                        }
+                    }
+                    .padding()
+                } else {
+                    Form {
+                        Section("Profiles") {
+                            if profiles.isEmpty {
+                                Text("No user-created profiles are available.")
+                                    .foregroundStyle(.secondary)
+                            }
+                            ForEach(profiles) { profile in
+                                Toggle(profile.name, isOn: selectionBinding(for: profile.id, in: $selectedProfileIDs))
+                            }
+                        }
+                        Section("Tuning systems") {
+                            if tuningSystems.isEmpty {
+                                Text("No user-created tuning systems are available.")
+                                    .foregroundStyle(.secondary)
+                            }
+                            ForEach(tuningSystems) { system in
+                                Toggle(system.system.name, isOn: selectionBinding(for: system.id, in: $selectedTuningSystemIDs))
+                            }
+                        }
+                        Section {
+                            Text("Only user-created content is included. Profiles that use a user-created tuning system require that system to be selected too.")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Export content")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Done") { dismiss() }
+                }
+                if preparedURL == nil {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Prepare") { prepare() }
+                            .disabled(selectedProfileIDs.isEmpty && selectedTuningSystemIDs.isEmpty)
+                    }
+                }
+            }
+            .alert("Export unavailable", isPresented: Binding(
+                get: { errorMessage != nil },
+                set: { if !$0 { errorMessage = nil } }
+            )) {
+                Button("OK", role: .cancel) { errorMessage = nil }
+            } message: {
+                Text(errorMessage ?? "The selected content could not be exported.")
+            }
+            .sheet(isPresented: $sharingPresented) {
+                if let preparedURL {
+                    ActivityShareSheet(url: preparedURL) {
+                        sharingPresented = false
+                        discardPreparedExport(preparedURL)
+                    }
+                }
+            }
+            .onDisappear {
+                if let preparedURL { discardPreparedExport(preparedURL) }
+            }
+        }
+    }
+
+    private func selectionBinding(for id: UUID, in selectedIDs: Binding<Set<UUID>>) -> Binding<Bool> {
+        Binding(
+            get: { selectedIDs.wrappedValue.contains(id) },
+            set: { isSelected in
+                if isSelected { selectedIDs.wrappedValue.insert(id) }
+                else { selectedIDs.wrappedValue.remove(id) }
+            }
+        )
+    }
+
+    private func prepare() {
+        do {
+            preparedURL = try prepareExport(selectedProfileIDs, selectedTuningSystemIDs)
+        } catch JustTonesInterchangeError.unresolvedReference {
+            errorMessage = "Select the user-created tuning system used by every selected profile."
+        } catch {
+            errorMessage = "The selected content could not be exported. No library data was changed."
+        }
+    }
+
+    private func discardPreparedExport(_ url: URL) {
+        try? FileManager.default.removeItem(at: url)
+        preparedURL = nil
+        sharingPresented = false
+    }
+}
+
+private struct ActivityShareSheet: UIViewControllerRepresentable {
+    let url: URL
+    let completion: () -> Void
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        controller.completionWithItemsHandler = { _, _, _, _ in
+            DispatchQueue.main.async { completion() }
+        }
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 private enum ImportReviewChoice: String, CaseIterable, Identifiable {

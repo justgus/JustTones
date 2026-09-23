@@ -7,11 +7,14 @@
   "componentsAffected" : [
     "iPhone export selection, document creation, system sharing, and round-trip verification over the existing declarative interchange format."
   ],
+  "dateVerified" : "2026-09-23",
   "epicID" : {
     "rawValue" : "EP-012"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0030"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -19,7 +22,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T14:56:13Z"
+    "updatedAt" : "2026-09-23T18:21:20Z"
   },
   "notes" : [
     "Export only user-created data; no cloud database, account, application network traffic, or custom sharing transport."
@@ -90,7 +93,7 @@
       "rawValue" : "T-0037"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Implement portable export and sharing"
   }
 }

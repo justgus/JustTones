@@ -10,6 +10,7 @@
       "rawValue" : "JT-AC-053"
     }
   ],
+  "closeDate" : "2026-09-23",
   "goal" : "Deliver musician-facing tuning-system authoring and portable document interchange.",
   "issueIDs" : [
 
@@ -20,7 +21,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-22T18:59:54Z"
+    "updatedAt" : "2026-09-23T18:22:10Z"
   },
   "notes" : [
     "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied."
@@ -44,6 +45,9 @@
     },
     {
       "rawValue" : "SP-026"
+    },
+    {
+      "rawValue" : "SP-027"
     }
   ],
   "taskIDs" : [
@@ -62,7 +66,7 @@
       "rawValue" : "EP-012"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Tuning-System Authoring and Portable Interchange"
   }
 }

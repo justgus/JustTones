@@ -83,4 +83,27 @@ final class JustTonesUITests: XCTestCase {
         app.buttons["Done"].tap()
         XCTAssertTrue(app.staticTexts["Stopped"].exists)
     }
+
+    func testUserCreatedProfileCanBePreparedForExportWithoutStartingPlayback() {
+        let app = XCUIApplication()
+        let name = "Export Profile \(UUID().uuidString.prefix(8))"
+        app.launch()
+
+        app.buttons["Profiles"].tap()
+        app.buttons["New profile"].tap()
+        let nameField = app.textFields["Name"]
+        XCTAssertTrue(nameField.waitForExistence(timeout: 2))
+        nameField.tap()
+        nameField.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 11))
+        nameField.typeText(name)
+        app.buttons["Save"].tap()
+
+        app.buttons["Done"].tap()
+        app.buttons["Export"].tap()
+        XCTAssertTrue(app.navigationBars["Export content"].waitForExistence(timeout: 2))
+        app.buttons["Prepare"].tap()
+
+        XCTAssertTrue(app.staticTexts["Your .justtones document is ready to share."].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Stopped"].exists)
+    }
 }

@@ -82,6 +82,7 @@ public enum JustTonesInterchangeLimits {
 }
 
 public enum JustTonesInterchangeError: Error, Equatable, Sendable {
+    case emptyExportSelection
     case resourceLimitExceeded(String)
     case malformedDocument
     case invalidFormat
@@ -166,6 +167,25 @@ public struct JustTonesDocumentImportPreview: Sendable, Identifiable {
 }
 
 public enum JustTonesInterchange {
+    /// Builds a portable document solely from local, musician-owned objects. Callers supply these
+    /// collections from their local store; built-in catalog content is deliberately not accepted
+    /// here. A profile that refers to a user-owned system therefore requires that system to be
+    /// selected too, while references to the built-in catalog remain valid as usual.
+    public static func exportUserContent(
+        profiles: [TuningProfile],
+        tuningSystems: [JustTonesInterchangeTuningSystem]
+    ) throws -> Data {
+        guard !profiles.isEmpty || !tuningSystems.isEmpty else {
+            throw JustTonesInterchangeError.emptyExportSelection
+        }
+        return try export(
+            JustTonesInterchangeDocument(
+                profiles: profiles,
+                tuningSystems: tuningSystems
+            )
+        )
+    }
+
     /// Decodes untrusted data only after byte, nesting, object, and text bounds have been checked.
     public static func previewImport(
         _ data: Data,

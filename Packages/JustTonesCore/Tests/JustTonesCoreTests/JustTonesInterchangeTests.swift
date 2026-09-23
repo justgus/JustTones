@@ -3,6 +3,38 @@ import Testing
 @testable import JustTonesCore
 
 struct JustTonesInterchangeTests {
+    @Test func selectedUserContentRoundTripsIntoACleanLibraryWithoutSemanticLoss() throws {
+        let systemID = UUID(uuidString: "B464EA59-0B6A-4E7A-AE18-253576ADD2D1")!
+        let system = try JustTonesInterchangeTuningSystem(
+            id: systemID,
+            system: TuningDomainFixtures.qualificationSystem()
+        )
+        let profile = try TuningProfile(
+            id: UUID(uuidString: "6B117E48-0FD6-44C9-8A99-AB43BC1B8621")!,
+            name: "Exported profile",
+            tuningSystemID: systemID.uuidString,
+            entries: [try TuningProfileEntry(label: "A4", pitch: .named(NamedPitch(letter: .a, octave: 4)))],
+            tags: ["round-trip"]
+        )
+
+        let data = try JustTonesInterchange.exportUserContent(
+            profiles: [profile],
+            tuningSystems: [system]
+        )
+        let preview = try JustTonesInterchange.previewImport(data, into: try ProfileStoreDocument())
+        let restored = try JustTonesInterchange.apply(preview, to: try ProfileStoreDocument(), resolutions: [:])
+
+        #expect(restored.library.profiles == [profile])
+        #expect(restored.tuningSystems == [system])
+        #expect(String(decoding: data, as: UTF8.self).contains("\"format\" : \"justtones\""))
+    }
+
+    @Test func userContentExportRejectsAnEmptySelection() {
+        #expect(throws: JustTonesInterchangeError.emptyExportSelection) {
+            _ = try JustTonesInterchange.exportUserContent(profiles: [], tuningSystems: [])
+        }
+    }
+
     @Test func exportIsDeterministicAndPreservesUnicodeProfileMetadata() throws {
         let profile = try TuningProfile(
             id: UUID(uuidString: "F04EA522-1889-48E5-AF14-31E86D10F010")!,

@@ -1,0 +1,60 @@
+{
+  "auditEventIDs" : [
+
+  ],
+  "commands" : [
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore",
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -destination \"platform=iOS Simulator,name=iPhone 17 Pro\" test"
+  ],
+  "decisionState" : "pending",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/JustTonesInterchange.swift — validated export-document construction and deterministic serialization over the existing declarative schema.",
+    "JustTones\/ContentView.swift — iPhone-only user-content selection, export action, temporary-document lifecycle, and system Share Sheet presentation.",
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/JustTonesInterchangeTests.swift — user-content filtering, serialization, identity\/metadata\/order\/pitch preservation, and clean-library round-trip coverage.",
+    "JustTonesUITests\/JustTonesUITests.swift — stopped-state export selection and share-presentation coverage."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-014"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "No cloud storage, accounts, analytics, networking, custom sharing transport, built-in catalog export, Watch export UI, or playback-state mutation is authorized."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Add a platform-neutral export builder that selects only user-owned profiles and tuning systems, preserves stable identities, metadata, ordering, and pitch definitions, validates the complete interchange document, and encodes deterministic UTF-8 JSON with the .justtones extension.",
+    "Add an iPhone export-selection surface and a temporary-file lifecycle that invokes the supported system Share Sheet only after the musician explicitly selects export; no export action may start playback or mutate the local library.",
+    "Cover representative systems and profiles, schema-valid serialization, Share Sheet presentation, and import of the exported document into a clean local store for semantic comparison."
+  ],
+  "summary" : "Deliver an iPhone-only, offline export workflow that serializes explicitly selected user-created tuning systems and profiles into the existing versioned declarative .justtones format, presents the system Share Sheet, and proves a clean-library import round trip without semantic loss.",
+  "targetEpicID" : {
+    "rawValue" : "EP-012"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-027"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0037"
+    }
+  ],
+  "title" : "SP-027 portable export and sharing plan",
+  "verificationCriteria" : [
+    "JT-TEST-015 proves representative user-created systems and profiles can be exported through system sharing and imported into a clean library with identity, metadata, order, and pitch definitions preserved.",
+    "JT-TEST-016 proves schema-version, explicit pitch representation, Unicode metadata, and optional context survive the exported-document round trip."
+  ]
+}
