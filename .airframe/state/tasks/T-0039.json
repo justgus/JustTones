@@ -1,0 +1,68 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-052"
+  ],
+  "component" : "",
+  "componentsAffected" : [
+
+  ],
+  "dateVerified" : "2026-09-24",
+  "epicID" : {
+    "rawValue" : "EP-019"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0034"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-24T14:13:27Z"
+  },
+  "notes" : [
+
+  ],
+  "priority" : "medium",
+  "rationale" : "Active playback must remain truthful, visible, and immediately stoppable after navigation, without compromising accessibility or localization behavior.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-042"
+    },
+    {
+      "rawValue" : "JT-FR-085"
+    },
+    {
+      "rawValue" : "JT-FR-086"
+    },
+    {
+      "rawValue" : "JT-FR-087"
+    },
+    {
+      "rawValue" : "JT-FR-089"
+    },
+    {
+      "rawValue" : "JT-FR-090"
+    },
+    {
+      "rawValue" : "JT-FR-092"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-029"
+  },
+  "testSteps" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0039"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement iPhone playback continuity and accessible layout"
+  }
+}

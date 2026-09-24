@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "JustTones\/ContentView.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' build-for-testing -quiet (passed)",
+  "environment" : "Xcode-beta; iPhone 17 Pro simulator 27.0",
+  "id" : {
+    "rawValue" : "EV-0033"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "SP-028 pitch-wheel follow-up uses a UIKit-backed picker with explicit 72-point rows and a 216-point viewport, preventing large adjacent pitch labels from overlapping while retaining index-driven ordered selection.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0038"
+    }
+  ]
+}

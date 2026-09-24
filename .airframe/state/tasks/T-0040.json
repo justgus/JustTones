@@ -1,0 +1,65 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-053"
+  ],
+  "component" : "",
+  "componentsAffected" : [
+
+  ],
+  "epicID" : {
+    "rawValue" : "EP-019"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-23T18:43:21Z"
+  },
+  "notes" : [
+
+  ],
+  "priority" : "medium",
+  "rationale" : "The current Watch primary surface exposes controls that the approved adaptation moves into focused secondary contexts.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-046"
+    },
+    {
+      "rawValue" : "JT-FR-047"
+    },
+    {
+      "rawValue" : "JT-FR-048"
+    },
+    {
+      "rawValue" : "JT-FR-049"
+    },
+    {
+      "rawValue" : "JT-FR-050"
+    },
+    {
+      "rawValue" : "JT-FR-051"
+    },
+    {
+      "rawValue" : "JT-FR-057"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-030"
+  },
+  "testSteps" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0040"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Implement Watch interaction adaptation"
+  }
+}

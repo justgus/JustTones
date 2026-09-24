@@ -8,7 +8,7 @@ Currently: **None**
 
 ## All Sprints
 
-Currently: **27 Sprints** | Next available: **SP-028**
+Currently: **31 Sprints** | Next available: **SP-032**
 
 | Sprint | Title | Epic | Tasks | Issues | Status |
 | ------ | ----- | ---- | ----- | ------ | ------ |
@@ -39,15 +39,19 @@ Currently: **27 Sprints** | Next available: **SP-028**
 | SP-025 | Custom Tuning-System Authoring | EP-012 | T-0035 | None | Closed |
 | SP-026 | Import Review and Conflict Resolution | EP-012 | T-0036 | None | Closed |
 | SP-027 | Portable Export and Sharing | EP-012 | T-0037 | None | Closed |
+| SP-028 | iPhone Primary Tone Surface | EP-019 | T-0038 | None | Closed |
+| SP-029 | iPhone Playback Continuity and Accessibility | EP-019 | T-0039 | None | Closed |
+| SP-030 | Watch Interaction Surface | EP-019 | T-0040 | None | Planning |
+| SP-031 | Watch State and Data Status | EP-019 | T-0041 | None | Planning |
 
 ## Statistics
 
-- **Total Sprints:** 27
+- **Total Sprints:** 31
 - **Backlog:** 0
-- **Planning:** 0
+- **Planning:** 2
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 27
-- **Next available:** SP-028
+- **Closed:** 29
+- **Next available:** SP-032
 
-*Last Updated: 2026-09-23*
+*Last Updated: 2026-09-24*

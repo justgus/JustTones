@@ -1,0 +1,62 @@
+{
+  "auditEventIDs" : [
+
+  ],
+  "commands" : [
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -showdestinations",
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test"
+  ],
+  "decisionState" : "pending",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "JustTones\/ContentView.swift — compose secondary destinations through a shared active-tone presentation, bind it only to host-confirmed state, and maintain warning\/keyboard-safe placement.",
+    "JustTones\/TonePlaybackHost.swift — expose only the presentation data needed to state the actual active tone, if current UI state cannot truthfully represent it; do not change renderer or session lifecycle behavior in this Sprint.",
+    "JustTones\/Localizable.xcstrings — add localizable active-tone state, summary, and Stop labels.",
+    "JustTonesUITests\/JustTonesUITests.swift and JustTonesTests\/JustTonesTests.swift — add state\/secondary-destination coverage and deterministic presentation assertions."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-016"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "This Sprint does not authorize audio-engine idle teardown, session deactivation policy, background-mode changes, or a fix for the reported device-heating defect; that needs a dedicated playback-safety issue or explicitly expanded scope."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Introduce an iPhone-only reusable active-tone presentation for secondary sheets and navigation destinations. It appears only while the host reports Starting or Playing, displays the sounding pitch\/frequency and textual actual state, and provides one immediately reachable text-labeled Stop action.",
+    "Adopt the presentation in the Profiles, Tuning systems, Settings, export, import-review, and hearing-safety destinations without obscuring destructive confirmations, safety warnings, keyboards, or destination-specific navigation. It must disappear only after stopped\/unavailable host state is confirmed.",
+    "Keep the primary header as the sole passive playback presentation on the tone screen. The secondary bar is summary-and-Stop only: it must not expose pitch, timbre, output, profile, authoring, import, or export controls.",
+    "Localize new state, Stop, and active-tone strings; use locale-aware pitch\/frequency values; ensure VoiceOver order is tone summary, state, Stop; announce meaningful state changes once; preserve full-size Stop access under Dynamic Type and high contrast.",
+    "Add focused host\/UI coverage for bar visibility across Starting, Playing, Stop, unavailable, profile navigation, nested sheets, warnings, and Dynamic Type-compatible layout. Exercise JT-TEST-059 and the direct accessibility requirements linked to T-0039."
+  ],
+  "summary" : "Implement one truthful, persistent active-tone\/Stop treatment for iPhone secondary destinations and qualify its VoiceOver, Dynamic Type, localization, warning-focus, and state-transition behavior without creating a second editable tone screen.",
+  "targetEpicID" : {
+    "rawValue" : "EP-019"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-029"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0039"
+    }
+  ],
+  "title" : "SP-029 iPhone playback continuity and accessibility plan",
+  "verificationCriteria" : [
+    "JT-TEST-059 demonstrates that navigation away from an active tone retains one concise active-tone summary and immediate Stop path, which disappears only after host-confirmed stopped\/unavailable state.",
+    "Manual VoiceOver, Dynamic Type, localized-text, warning-focus, interruption, route, and physical-device inspection validates the full state\/presentation contract without treating simulator success as listening or accessibility acceptance."
+  ]
+}

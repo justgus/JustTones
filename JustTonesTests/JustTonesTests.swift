@@ -12,10 +12,12 @@ struct JustTonesTests {
         await Task.yield()
         #expect(host.state == .playing)
         #expect(driver.startedSelections == [selection])
+        #expect(host.activeSelection == selection)
 
         host.stop()
         #expect(host.state == .stopped)
         #expect(driver.stopCount == 1)
+        #expect(host.activeSelection == nil)
     }
 
     @MainActor @Test func playbackHostStopsOnSelectionAndLevelChanges() async throws {

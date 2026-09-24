@@ -27,6 +27,13 @@ final class TonePlaybackHost {
 
     var isPlaying: Bool { state == .playing }
 
+    /// Presentation-only snapshot for secondary destinations. It is available only while the
+    /// host has accepted an active start request or confirmed playback, never while merely ready.
+    var activeSelection: TonePlaybackSelection? {
+        guard state == .starting || state == .playing else { return nil }
+        return lifecycle.selection
+    }
+
     func select(_ selection: TonePlaybackSelection) {
         let wasActive = lifecycle.state == .starting || lifecycle.state == .playing
         lifecycle.select(selection)

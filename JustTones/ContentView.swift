@@ -43,18 +43,24 @@ struct ContentView: View {
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
                             .accessibilityAddTraits(.isHeader)
-                        Text(entry.label ?? "Reference pitch")
-                            .font(.system(size: 72, weight: .semibold, design: .rounded))
-                            .monospacedDigit()
-                            .minimumScaleFactor(0.6)
-                            .lineLimit(1)
-                            .accessibilityLabel("Selected pitch, \(entry.label ?? "reference pitch")")
-                            .accessibilityValue("\(frequency.formatted(.number.precision(.fractionLength(1)))) hertz")
+                        // The current pitch is the primary selection control. Its wheel rows are
+                        // deliberately taller than the large pitch text so adjacent values never
+                        // overlap while the vertical gesture still follows profile order.
+                        PitchWheelPicker(
+                            labels: profile.entries.map { $0.label ?? "Pitch" },
+                            selection: $index
+                        )
+                        .frame(height: 216)
+                        .accessibilityLabel("Selected pitch")
+                        .accessibilityValue("\(entry.label ?? "reference pitch"), \(frequency.formatted(.number.precision(.fractionLength(1)))) hertz")
+                        .accessibilityIdentifier("pitchPicker")
                         Text("\(frequency.formatted(.number.precision(.fractionLength(1)))) Hz")
                             .accessibilityHidden(true)
+                        playbackStateBadge
                     }
                     .frame(maxWidth: .infinity).padding(.vertical, 24)
                     .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
+                    .accessibilityIdentifier("toneHeader")
 
                     // Large accessibility text and narrow split-screen widths retain all actions
                     // by falling back to a vertical arrangement instead of clipping controls.
@@ -64,28 +70,33 @@ struct ContentView: View {
                     }
                     .buttonStyle(.bordered)
 
-                    Grid(horizontalSpacing: 18, verticalSpacing: 12) {
-                        GridRow { Text("Timbre").foregroundStyle(.secondary); Text(timbre.displayName).gridColumnAlignment(.trailing) }
-                        GridRow { Text("Output level").foregroundStyle(.secondary); Text(outputLevel, format: .percent.precision(.fractionLength(0))).gridColumnAlignment(.trailing) }
-                        GridRow { Text("Playback").foregroundStyle(.secondary); Text(playbackStatus).gridColumnAlignment(.trailing) }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading).padding()
-                    .background(.quaternary, in: RoundedRectangle(cornerRadius: 16))
-
                     VStack(alignment: .leading, spacing: 8) {
-                        Picker("Timbre", selection: $timbre) {
-                            ForEach(BuiltInTimbre.allCases, id: \.self) { timbre in
-                                Text(timbre.displayName).tag(timbre)
+                        VStack(spacing: 4) {
+                            Text("Timbre")
+                                .font(.headline)
+                            HStack {
+                                Spacer()
+                                Picker("Timbre", selection: $timbre) {
+                                    ForEach(BuiltInTimbre.allCases, id: \.self) { timbre in
+                                        Text(timbre.displayName).tag(timbre)
+                                    }
+                                }
+                                .pickerStyle(.menu)
+                                .labelsHidden()
+                                .accessibilityLabel("Timbre")
+                                .accessibilityIdentifier("timbrePicker")
+                                .accessibilityHint("Changes the synthesized character without changing the selected pitch")
+                                Spacer()
                             }
                         }
-                        .pickerStyle(.menu)
-                        .accessibilityIdentifier("timbrePicker")
-                        .accessibilityHint("Changes the synthesized character without changing the selected pitch")
 
-                        LabeledContent("Output level", value: outputLevel.formatted(.percent.precision(.fractionLength(0))))
+                        Text("Output level \(outputLevel.formatted(.percent.precision(.fractionLength(0))))")
+                            .font(.headline)
+                            .accessibilityHidden(true)
                         Slider(value: $outputLevel, in: 0 ... 1, step: 0.05)
-                            .accessibilityLabel("In-app output level")
+                            .accessibilityLabel("Output level")
                             .accessibilityValue(outputLevel.formatted(.percent.precision(.fractionLength(0))))
+                            .accessibilityIdentifier("outputLevelSlider")
                         Text("This in-app percentage is not a sound-pressure-level measurement.")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -100,22 +111,6 @@ struct ContentView: View {
                         }
                     }
 
-                    GroupBox("Pitches") {
-                        ForEach(Array(profile.entries.enumerated()), id: \.element.id) { i, item in
-                            Button { index = i } label: {
-                                HStack {
-                                    Text(item.label ?? "Pitch")
-                                    Spacer()
-                                    if i == index {
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .accessibilityHidden(true)
-                                    }
-                                }
-                            }
-                                .accessibilityValue(i == index ? "Selected" : "")
-                                .buttonStyle(.plain).padding(.vertical, 7)
-                        }
-                    }
                 }.padding()
             }
             .navigationTitle("JustTones")
@@ -127,30 +122,36 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarTrailing) { Button("Settings", systemImage: "gearshape") { settings = true } }
             }
             .sheet(isPresented: $profiles) {
-                ProfileSheet(
-                    profile: $profile,
-                    index: $index,
-                    userProfiles: $userProfiles,
-                    hiddenBuiltInProfileIDs: $hiddenBuiltInProfileIDs
-                )
+                secondaryDestination {
+                    ProfileSheet(
+                        profile: $profile,
+                        index: $index,
+                        userProfiles: $userProfiles,
+                        hiddenBuiltInProfileIDs: $hiddenBuiltInProfileIDs
+                    )
+                }
             }
             .sheet(isPresented: $tuningSystems) {
-                TuningSystemSheet(systems: $userTuningSystems)
+                secondaryDestination { TuningSystemSheet(systems: $userTuningSystems) }
             }
             .sheet(isPresented: $settings) {
-                SettingsSheet(safetyInfoPresented: $safetyInfoPresented)
+                secondaryDestination { SettingsSheet(safetyInfoPresented: $safetyInfoPresented) }
             }
             .sheet(isPresented: $exportPresented) {
-                ExportSelectionSheet(
-                    profiles: userProfiles,
-                    tuningSystems: userTuningSystems,
-                    prepareExport: prepareExport
-                )
+                secondaryDestination {
+                    ExportSelectionSheet(
+                        profiles: userProfiles,
+                        tuningSystems: userTuningSystems,
+                        prepareExport: prepareExport
+                    )
+                }
             }
             .sheet(item: $importPreview) { preview in
-                ImportReviewSheet(preview: preview, apply: applyImport)
+                secondaryDestination { ImportReviewSheet(preview: preview, apply: applyImport) }
             }
-            .sheet(isPresented: $safetyInfoPresented) { HearingSafetySheet() }
+            .sheet(isPresented: $safetyInfoPresented) {
+                secondaryDestination { HearingSafetySheet() }
+            }
             .fileImporter(
                 isPresented: $importPresented,
                 allowedContentTypes: [UTType(filenameExtension: "justtones") ?? .json, .json]
@@ -231,6 +232,22 @@ struct ContentView: View {
     }
     private func move(_ delta: Int) { index = min(max(0, index + delta), profile.entries.count - 1) }
 
+    private var activeTonePresentation: ActiveTonePresentation? {
+        guard let selection = playbackHost.activeSelection else { return nil }
+        return ActiveTonePresentation(
+            pitch: entry.label ?? "Pitch",
+            frequency: selection.frequency.hertz,
+            state: playbackStatePresentation
+        )
+    }
+
+    @ViewBuilder
+    private func secondaryDestination<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        ActiveToneDestination(activeTone: activeTonePresentation, stop: { playbackHost.stop() }) {
+            content()
+        }
+    }
+
     @ViewBuilder
     private var toneControls: some View {
         Button("Previous", systemImage: "chevron.left") { move(-1) }
@@ -239,7 +256,7 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
             .tint(playbackHost.isPlaying || playbackHost.state == .starting ? .red : .accentColor)
             .accessibilityHint(playbackHost.isPlaying ? "Stops the reference tone" : "Plays the selected reference tone")
-            .accessibilityValue(playbackStatus)
+            .accessibilityValue(Text(playbackStatePresentation.title))
         Button("Next", systemImage: "chevron.right") { move(1) }
             .disabled(index == profile.entries.count - 1)
     }
@@ -249,6 +266,19 @@ struct ContentView: View {
             get: { pendingSafetyWarning != nil },
             set: { if !$0 { cancelSafetyWarning() } }
         )
+    }
+
+    @ViewBuilder
+    private var playbackStateBadge: some View {
+        let presentation = playbackStatePresentation
+        Label {
+            Text(presentation.title)
+        } icon: {
+            Image(systemName: presentation.symbol)
+        }
+        .font(.caption.weight(.medium))
+        .foregroundStyle(presentation.tint)
+        .accessibilityIdentifier("playbackStateBadge")
     }
 
     private var safetyWarningTitle: String {
@@ -341,12 +371,22 @@ struct ContentView: View {
         }
     }
 
-    private var playbackStatus: String {
+    private var playbackStatePresentation: PlaybackStatePresentation {
         switch playbackHost.state {
-        case .stopped: "Stopped"
-        case .starting: "Starting"
-        case .playing: "Playing"
-        case .unavailable: "Unavailable"
+        case .stopped:
+            PlaybackStatePresentation(title: "Ready", symbol: "checkmark.circle", tint: .secondary)
+        case .starting:
+            PlaybackStatePresentation(title: "Starting", symbol: "waveform", tint: .orange)
+        case .playing:
+            PlaybackStatePresentation(title: "Playing", symbol: "waveform", tint: .green)
+        case .unavailable(.interrupted):
+            PlaybackStatePresentation(title: "Interrupted", symbol: "exclamationmark.triangle", tint: .orange)
+        case .unavailable(.routeUnavailable):
+            PlaybackStatePresentation(title: "Audio route unavailable", symbol: "speaker.slash", tint: .orange)
+        case .unavailable(.sessionActivationFailed):
+            PlaybackStatePresentation(title: "Audio unavailable", symbol: "speaker.slash", tint: .orange)
+        case .unavailable(.engineFailed):
+            PlaybackStatePresentation(title: "Audio engine unavailable", symbol: "speaker.slash", tint: .orange)
         }
     }
 
@@ -477,6 +517,141 @@ struct ContentView: View {
             .appendingPathExtension("justtones")
         try data.write(to: url, options: .atomic)
         return url
+    }
+}
+
+private struct PlaybackStatePresentation {
+    let title: LocalizedStringResource
+    let symbol: String
+    let tint: Color
+}
+
+private struct ActiveTonePresentation {
+    let pitch: String
+    let frequency: Double
+    let state: PlaybackStatePresentation
+}
+
+private struct ActiveToneDestination<Content: View>: View {
+    let activeTone: ActiveTonePresentation?
+    let stop: () -> Void
+    let content: Content
+
+    init(
+        activeTone: ActiveTonePresentation?,
+        stop: @escaping () -> Void,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.activeTone = activeTone
+        self.stop = stop
+        self.content = content()
+    }
+
+    var body: some View {
+        content
+            .safeAreaInset(edge: .top, spacing: 0) {
+                if let activeTone {
+                    ActiveToneBar(activeTone: activeTone, stop: stop)
+                }
+            }
+    }
+}
+
+private struct ActiveToneBar: View {
+    let activeTone: ActiveTonePresentation
+    let stop: () -> Void
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 12) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Active tone")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                Text(activeTone.pitch)
+                    .font(.headline)
+                Text("\(activeTone.frequency.formatted(.number.precision(.fractionLength(1)))) Hz")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .accessibilityLabel("Frequency")
+                    .accessibilityValue("\(activeTone.frequency.formatted(.number.precision(.fractionLength(1)))) hertz")
+                Label {
+                    Text(activeTone.state.title)
+                } icon: {
+                    Image(systemName: activeTone.state.symbol)
+                }
+                .font(.caption.weight(.medium))
+                .foregroundStyle(activeTone.state.tint)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Active tone, \(activeTone.pitch), \(activeTone.frequency.formatted(.number.precision(.fractionLength(1)))) hertz, \(String(localized: activeTone.state.title))")
+            Spacer(minLength: 8)
+            Button("Stop", systemImage: "stop.fill", action: stop)
+                .buttonStyle(.borderedProminent)
+                .tint(.red)
+                .accessibilityHint("Stops the reference tone")
+                .accessibilityIdentifier("activeToneStop")
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 10)
+        .background(.regularMaterial)
+        .accessibilityIdentifier("activeToneBar")
+    }
+}
+
+/// A `UIPickerView` gives the primary pitch wheel explicit row height, which SwiftUI's wheel
+/// style does not expose. The binding continues to drive the existing selection/audio behavior.
+private struct PitchWheelPicker: UIViewRepresentable {
+    let labels: [String]
+    @Binding var selection: Int
+
+    func makeCoordinator() -> Coordinator { Coordinator(labels: labels, selection: $selection) }
+
+    func makeUIView(context: Context) -> UIPickerView {
+        let picker = UIPickerView()
+        picker.dataSource = context.coordinator
+        picker.delegate = context.coordinator
+        picker.accessibilityTraits = .adjustable
+        return picker
+    }
+
+    func updateUIView(_ picker: UIPickerView, context: Context) {
+        let coordinator = context.coordinator
+        if coordinator.labels != labels {
+            coordinator.labels = labels
+            picker.reloadAllComponents()
+        }
+        let selectedRow = min(max(0, selection), max(0, labels.count - 1))
+        if picker.selectedRow(inComponent: 0) != selectedRow {
+            picker.selectRow(selectedRow, inComponent: 0, animated: false)
+        }
+    }
+
+    final class Coordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+        var labels: [String]
+        @Binding var selection: Int
+
+        init(labels: [String], selection: Binding<Int>) {
+            self.labels = labels
+            _selection = selection
+        }
+
+        func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { labels.count }
+        func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { 72 }
+
+        func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+            let label = (view as? UILabel) ?? UILabel()
+            label.textAlignment = .center
+            label.font = .monospacedDigitSystemFont(ofSize: 52, weight: .semibold)
+            label.adjustsFontSizeToFitWidth = true
+            label.minimumScaleFactor = 0.7
+            label.text = labels[row]
+            return label
+        }
+
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            selection = row
+        }
     }
 }
 

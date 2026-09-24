@@ -1,0 +1,31 @@
+{
+  "artifactReferences" : [
+    "JustTones\/ContentView.swift",
+    "JustTonesUITests\/JustTonesUITests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' build-for-testing -quiet (passed; existing UI-test actor-isolation warnings remain)",
+  "environment" : "Xcode-beta; iPhone 17 Pro simulator 27.0",
+  "id" : {
+    "rawValue" : "EV-0032"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "SP-028 follow-up simplified pitch selection: the large tone-header label is now a wheel picker that preserves profile order and the existing index-driven playback behavior; the lower pitch picker was removed. The timbre menu now has a centered visible label.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0038"
+    }
+  ]
+}

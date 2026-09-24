@@ -1,0 +1,83 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-051"
+    },
+    {
+      "rawValue" : "JT-AC-052"
+    },
+    {
+      "rawValue" : "JT-AC-053"
+    },
+    {
+      "rawValue" : "JT-AC-054"
+    }
+  ],
+  "goal" : "Implement the complete EP-018 iPhone-first interaction architecture across the iPhone and independent Apple Watch experiences.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-23T18:47:40Z"
+  },
+  "notes" : [
+    "Planning only: no Sprint or Task is active, and no production implementation is authorized by this record.",
+    "EP-013 through EP-016 retain their broader backlog scope; EP-019 implements only the accepted EP-018 architecture and directly necessary state presentation."
+  ],
+  "outOfScope" : [
+    "New audio capabilities, microphone detection, cloud\/network services, accounts, analytics, or background modes",
+    "General catalog, authoring, interchange, release, and iPad-specific work outside the EP-018 interaction contract"
+  ],
+  "owner" : "",
+  "planningDocumentPaths" : [
+    "docs\/Epics\/EP-019-Planning.md"
+  ],
+  "rationale" : "EP-018 has a verified design contract, but the current iPhone and Watch UI still retain the duplicate and unsafe interaction patterns the architecture was intended to replace.",
+  "scope" : [
+    "iPhone canonical tone hierarchy and persistent playback control",
+    "Direct architecture accessibility and localization behavior",
+    "Independent Watch compact, focused-control, and state\/data-status surfaces",
+    "Automated, simulator, paired-Watch, and physical-device verification planning"
+  ],
+  "sprintIDs" : [
+    {
+      "rawValue" : "SP-028"
+    },
+    {
+      "rawValue" : "SP-029"
+    },
+    {
+      "rawValue" : "SP-030"
+    },
+    {
+      "rawValue" : "SP-031"
+    }
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0038"
+    },
+    {
+      "rawValue" : "T-0039"
+    },
+    {
+      "rawValue" : "T-0040"
+    },
+    {
+      "rawValue" : "T-0041"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "EP-019"
+    },
+    "kind" : "epic",
+    "status" : "active",
+    "title" : "iPhone-First Interaction Architecture Implementation"
+  }
+}

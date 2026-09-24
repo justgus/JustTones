@@ -1,0 +1,62 @@
+{
+  "auditEventIDs" : [
+
+  ],
+  "commands" : [
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -showdestinations",
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test"
+  ],
+  "decisionState" : "pending",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "JustTones\/ContentView.swift — reorganize the primary tone stack, introduce the header state presentation, consolidate sound controls, preserve accessible order\/labels, and expose stable UI identifiers needed by tests.",
+    "JustTones\/Localizable.xcstrings — localize every new or changed visible and accessibility string, including state labels and the output-level value-bearing label.",
+    "JustTonesUITests\/JustTonesUITests.swift — primary-surface UI coverage for JT-TEST-053 through JT-TEST-058, if the existing target source layout is available.",
+    "JustTonesTests\/JustTonesTests.swift and\/or focused playback-host tests — only the deterministic state assertions necessary to make UI-state presentation testable."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-015"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "No audio-engine, audio-session, background-mode, microphone, network, account, analytics, Watch, or secondary-destination persistent-bar change is authorized by SP-028. The persistent-bar work belongs to SP-029."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Replace the passive Grid in JustTones\/ContentView.swift with a header-owned textual playback-state badge alongside the existing profile, pitch, and locale-formatted frequency; map Stopped, Starting, Playing, Stopping when exposed, and Unavailable to truthful host lifecycle presentation.",
+    "Retain Previous, prominent Play\/Stop, and Next as the only transport; preserve silent stopped pitch selection, click-free active pitch transitions, explicit safety review, and stop-before-profile-change behavior.",
+    "Make the menu timbre picker and a single labeled output slider the only canonical timbre\/level presentations. The slider label\/value must include the current localized percentage and the existing non-SPL explanatory text; remove the separate LabeledContent value and passive summary duplicates.",
+    "Keep Profiles and Settings as secondary destinations; do not move authoring, tuning-system, import\/export, or other administration into the primary stack.",
+    "Add\/extend JustTones UI coverage for canonical locations, absent duplicate grid, silent selection while stopped, direct active navigation, profile-change stop behavior, and controls visible during playback. Add deterministic lifecycle coverage only if a state presentation cannot be reliably observed through UI automation."
+  ],
+  "summary" : "Implement the EP-018 iPhone primary-screen hierarchy by replacing duplicate passive status with one truthful tone header, retaining direct transport and controls, and adding focused UI\/state coverage without changing the qualified audio engine or starting audio implicitly.",
+  "targetEpicID" : {
+    "rawValue" : "EP-019"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-028"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0038"
+    }
+  ],
+  "title" : "SP-028 iPhone primary tone surface plan",
+  "verificationCriteria" : [
+    "JT-TEST-053 through JT-TEST-058 demonstrate the canonical iPhone surface, silent stopped selection, direct active pitch transitions, ordered previous\/next, safe profile changes, and persistent primary controls.",
+    "Manual inspection at accessibility text sizes, with VoiceOver, and with localized text verifies the specified ordering, textual state, non-clipping layout, and locale-aware frequency\/percentage presentation."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "artifactReferences" : [
+    "JustTones/ContentView.swift",
+    "JustTones/TonePlaybackHost.swift",
+    "JustTonesTests/JustTonesTests.swift",
+    "JustTonesUITests/JustTonesUITests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' build-for-testing -quiet (passed); test-without-building -only-testing:JustTonesTests (blocked: CoreSimulator failed to clone iPhone 17 Pro)",
+  "environment" : "Xcode-beta; iPhone 17 Pro simulator 27.0",
+  "id" : {
+    "rawValue" : "EV-0034"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-042"
+    }
+  ],
+  "result" : "informational",
+  "summary" : "SP-029 adds an iPhone active-tone summary and explicit Stop control to the participating app-owned secondary destinations. It is driven only by confirmed Starting or Playing host state, includes pitch, locale-formatted frequency, and textual state, and disappears on stopped or unavailable state. Build-for-testing passed; simulator test execution and manual device accessibility verification remain outstanding.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0039"
+    }
+  ]
+}

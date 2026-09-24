@@ -1,0 +1,71 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-051"
+  ],
+  "component" : "",
+  "componentsAffected" : [
+
+  ],
+  "dateVerified" : "2026-09-23",
+  "epicID" : {
+    "rawValue" : "EP-019"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0031"
+    },
+    {
+      "rawValue" : "EV-0032"
+    },
+    {
+      "rawValue" : "EV-0033"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-23T21:16:07Z"
+  },
+  "notes" : [
+
+  ],
+  "priority" : "medium",
+  "rationale" : "The present primary screen duplicates passive state and does not express the approved canonical hierarchy.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-036"
+    },
+    {
+      "rawValue" : "JT-FR-037"
+    },
+    {
+      "rawValue" : "JT-FR-038"
+    },
+    {
+      "rawValue" : "JT-FR-039"
+    },
+    {
+      "rawValue" : "JT-FR-040"
+    },
+    {
+      "rawValue" : "JT-FR-041"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-028"
+  },
+  "testSteps" : [
+
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0038"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement iPhone primary tone architecture"
+  }
+}

@@ -19,7 +19,11 @@ final class JustTonesUITests: XCTestCase {
         app.buttons["Brass"].tap()
 
         XCTAssertTrue(app.staticTexts["Brass"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Stopped"].exists)
+        XCTAssertTrue(app.otherElements["playbackStateBadge"].exists)
+        XCTAssertTrue(app.staticTexts["Ready"].exists)
+        XCTAssertFalse(app.staticTexts["Playback"].exists)
+        XCTAssertTrue(app.pickers["pitchPicker"].exists)
+        XCTAssertFalse(app.otherElements["activeToneBar"].exists)
     }
 
     func testCustomProfileCanBeCreatedEditedDuplicatedSelectedAndDeleted() {
@@ -56,7 +60,7 @@ final class JustTonesUITests: XCTestCase {
         XCTAssertTrue(app.buttons["\(editedName) Copy"].waitForExistence(timeout: 2))
         editedProfile.tap()
         XCTAssertTrue(app.staticTexts[editedName].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Stopped"].exists)
+        XCTAssertTrue(app.staticTexts["Ready"].exists)
 
         app.buttons["Profiles"].tap()
         let selectedProfile = app.buttons[editedName]
@@ -81,7 +85,7 @@ final class JustTonesUITests: XCTestCase {
 
         XCTAssertTrue(app.buttons[name].waitForExistence(timeout: 2))
         app.buttons["Done"].tap()
-        XCTAssertTrue(app.staticTexts["Stopped"].exists)
+        XCTAssertTrue(app.staticTexts["Ready"].exists)
     }
 
     func testUserCreatedProfileCanBePreparedForExportWithoutStartingPlayback() {
@@ -104,6 +108,6 @@ final class JustTonesUITests: XCTestCase {
         app.buttons["Prepare"].tap()
 
         XCTAssertTrue(app.staticTexts["Your .justtones document is ready to share."].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Stopped"].exists)
+        XCTAssertTrue(app.staticTexts["Ready"].exists)
     }
 }

@@ -1,0 +1,34 @@
+{
+  "epicID" : {
+    "rawValue" : "EP-019"
+  },
+  "goal" : "Implement the compact, independently playable Apple Watch interaction surface and focused sound controls specified by EP-018.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-23T18:43:21Z"
+  },
+  "notes" : [
+    "Planning only; this Sprint follows SP-029.",
+    "Watch selection, playback, route, and output state remain local and independent from the iPhone."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0040"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-030"
+    },
+    "kind" : "sprint",
+    "status" : "planning",
+    "title" : "Watch Interaction Surface"
+  }
+}

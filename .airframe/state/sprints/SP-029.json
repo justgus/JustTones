@@ -1,0 +1,35 @@
+{
+  "endDate" : "2026-09-24",
+  "epicID" : {
+    "rawValue" : "EP-019"
+  },
+  "goal" : "Implement truthful iPhone playback continuity and the EP-018 accessibility\/localization contract on the affected surfaces.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-24T14:15:56Z"
+  },
+  "notes" : [
+    "Planning only; this Sprint follows SP-028.",
+    "The active-tone bar is the sole persistent playback treatment away from the primary tone screen and must not become a second editable tone surface."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0039"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-029"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "iPhone Playback Continuity and Accessibility"
+  }
+}

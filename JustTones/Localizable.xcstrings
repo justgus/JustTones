@@ -1,10 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
+    "Active tone" : {
 
     },
-    "%@ hertz" : {
+    "" : {
 
     },
     "%@ Hz" : {
@@ -12,6 +12,16 @@
     },
     "%@ is unavailable. Sine is selected instead." : {
 
+    },
+    "%@, %@ hertz" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@ hertz"
+          }
+        }
+      }
     },
     "%lld pitch %@" : {
       "localizations" : {
@@ -41,7 +51,19 @@
     "Add Pitch" : {
 
     },
+    "Already up to date" : {
+
+    },
     "Apple hearing health" : {
+
+    },
+    "Audio engine unavailable" : {
+
+    },
+    "Audio route unavailable" : {
+
+    },
+    "Audio unavailable" : {
 
     },
     "Avoid raising volume to overcome ambient noise. Keep Apple hearing-protection features enabled. If you notice persistent ringing, muffled hearing, or other symptoms, stop listening and seek advice from a qualified professional." : {
@@ -60,6 +82,12 @@
 
     },
     "Check your listening level and consider taking a listening break. Risk depends on level, duration, equipment, and system volume." : {
+
+    },
+    "Choose different content" : {
+
+    },
+    "Conflict" : {
 
     },
     "Continue" : {
@@ -107,6 +135,15 @@
     "Edits this pitch entry" : {
 
     },
+    "Export" : {
+
+    },
+    "Export content" : {
+
+    },
+    "Export unavailable" : {
+
+    },
     "Frequency" : {
 
     },
@@ -128,13 +165,25 @@
     "Hide" : {
 
     },
-    "In-app output level" : {
+    "Import" : {
+
+    },
+    "Import review" : {
+
+    },
+    "Import unavailable" : {
+
+    },
+    "Imported name" : {
 
     },
     "Instrument (optional)" : {
 
     },
     "Instrument or context (optional)" : {
+
+    },
+    "Interrupted" : {
 
     },
     "JustTones" : {
@@ -177,7 +226,16 @@
     "Next" : {
 
     },
+    "No user-created profiles are available." : {
+
+    },
+    "No user-created tuning systems are available." : {
+
+    },
     "Note" : {
+
+    },
+    "Nothing is changed until you choose Import." : {
 
     },
     "Octave %lld" : {
@@ -186,7 +244,13 @@
     "OK" : {
 
     },
+    "Only user-created content is included. Profiles that use a user-created tuning system require that system to be selected too." : {
+
+    },
     "Output level" : {
+
+    },
+    "Output level %@" : {
 
     },
     "Pitch degrees" : {
@@ -204,10 +268,16 @@
     "Playback" : {
 
     },
+    "Playing" : {
+
+    },
     "Plays the selected reference tone" : {
 
     },
     "Preferred timbre" : {
+
+    },
+    "Prepare" : {
 
     },
     "Previous" : {
@@ -223,6 +293,9 @@
 
     },
     "Ratio" : {
+
+    },
+    "Ready" : {
 
     },
     "Reference" : {
@@ -248,6 +321,9 @@
     "Restore" : {
 
     },
+    "Review" : {
+
+    },
     "Risk depends on listening level, duration, equipment, and system volume. The in-app output level is not an SPL or exposure measurement. Start low, and take breaks during extended playback." : {
 
     },
@@ -257,10 +333,16 @@
     "Selected" : {
 
     },
-    "Selected pitch, %@" : {
+    "Selected pitch" : {
 
     },
     "Settings" : {
+
+    },
+    "Share document" : {
+
+    },
+    "Starting" : {
 
     },
     "Step" : {
@@ -296,7 +378,13 @@
     "Unavailable preferred timbre: %@. Sine selected as a safe fallback." : {
 
     },
+    "Will be added" : {
+
+    },
     "World Health Organization: safe listening" : {
+
+    },
+    "Your .justtones document is ready to share." : {
 
     },
     "Your profiles" : {

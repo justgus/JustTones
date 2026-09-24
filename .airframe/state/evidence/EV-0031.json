@@ -1,0 +1,32 @@
+{
+  "artifactReferences" : [
+    "JustTones\/ContentView.swift",
+    "JustTones\/Localizable.xcstrings",
+    "JustTonesUITests\/JustTonesUITests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore: 54 tests passed. iPhone test targets compiled, but execution was blocked when Xcode failed to clone iPhone 17 Pro simulator. Standalone scheme build is blocked by existing Watch AppIconWatch simulator asset content.",
+  "environment" : "Xcode-beta; iOS Simulator 27.0 destination inspection",
+  "id" : {
+    "rawValue" : "EV-0031"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "SP-028 implemented the iPhone canonical tone hierarchy: the passive status grid and standalone output value were removed; the tone header now owns the accessible, truthful state badge; timbre and the value-bearing output slider remain direct controls. Shared-core regression passed (54 tests).",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0038"
+    }
+  ]
+}
