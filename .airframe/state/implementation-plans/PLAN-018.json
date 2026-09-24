@@ -1,0 +1,68 @@
+{
+  "auditEventIDs" : [
+    {
+      "rawValue" : "AUD-AGILE-PLAN-9"
+    }
+  ],
+  "commands" : [
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -showdestinations",
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (42mm)' test"
+  ],
+  "decisionState" : "approved",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "JustTonesWatch\/JustTonesWatchApp.swift — bind the Watch playback host to actual audio-session, interruption, route, and engine outcomes; preserve the local selection and permit only explicit, system-permitted Resume.",
+    "JustTonesWatch\/WatchContentView.swift — present truthful local playback state, one-action Resume where permitted, contextual route detail, and a secondary local-data\/synchronization status surface without turning the primary screen into a connectivity blocker.",
+    "JustTonesWatch\/WatchReplicaModel.swift — retain the last valid local snapshot atomically and expose enough status detail for pending, last-success, recoverable failure, incompatible, and unavailable states without mutating local playback.",
+    "JustTonesWatch\/Localizable.xcstrings — localize interruption, Resume, route, local-data, synchronization-status, error, and accessibility strings.",
+    "JustTonesWatchTests\/JustTonesWatchTests.swift — add deterministic lifecycle, interruption\/Resume, route, offline-valid-data, and synchronization-status transition coverage."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-018"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "SP-030 was closed by the user before this plan. The user reports that Watch playback fails and may present Interrupted when launched with Xcode attached, while detached launch succeeds. This is a physical-device diagnostic condition, not evidence of a root cause or a safe workaround.",
+    "Implementation must observe and represent the actual session, interruption, route, and engine events in both debugger-attached and detached runs. It must not suppress an interruption, manufacture a playing state, or auto-resume merely to make an attached run appear successful.",
+    "No remote iPhone audio control, profile or tuning-system authoring on Watch, background-mode change, cloud or network service, account, analytics, or new dependency is in scope."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Define and present the host-confirmed Watch lifecycle for ready, starting, playing, stopped or unavailable, interruption-resumable, route loss, and engine failure. Preserve selected profile, pitch, timbre, and output level across interruption; show a prominent one-action Resume only when playback is permitted; never resume automatically.",
+    "Instrument and qualify the reported Xcode-attached versus detached physical-Watch behavior using actual audio-session activation, interruption, route, and engine events. Record the Watch model, watchOS, Xcode\/run attachment state, active route, visible state, and playback result; do not conflate simulator behavior with physical audio qualification.",
+    "Expose contextual route disclosure sufficient to distinguish the Watch speaker from a connected device. A route change or removal stops local output and requires an explicit new Play or permitted Resume under the governing safety requirements.",
+    "Provide a secondary status presentation for valid local data, synchronization pending, last successful update, recoverable failure, incompatible data, and unavailable data. Last valid local data remains usable while the iPhone is unreachable, and a delayed, invalid, or failed candidate never restarts or mutates local audio.",
+    "Localize new visible and accessibility strings and add deterministic tests for JT-TEST-078, JT-TEST-079, JT-TEST-084, and JT-TEST-085. Keep physical interruption, route, listening, VoiceOver, Dynamic Type, and debugger-attached qualification as separate human evidence."
+  ],
+  "summary" : "Implement truthful Watch playback, interruption\/Resume, route, and replica-data status while diagnosing the observed Xcode-attached playback interruption without weakening explicit-resume or local-playback safety.",
+  "targetEpicID" : {
+    "rawValue" : "EP-019"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-031"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0041"
+    }
+  ],
+  "title" : "SP-031 Watch state and data-status plan",
+  "verificationCriteria" : [
+    "JT-TEST-078 verifies that a confirmed interruption preserves selection and exposes only explicit permitted Resume; no automated recovery produces sound.",
+    "JT-TEST-079 verifies route disclosure and stop-on-route-change behavior; JT-TEST-084 and JT-TEST-085 verify valid-local-data retention and truthful pending, success, failure, incompatible, and unavailable status presentation without playback mutation.",
+    "Build and simulator results are recorded separately from paired and physical Watch evidence. Physical qualification compares Xcode-attached and detached launch using the same selected tone and route, with session\/route\/interruption evidence rather than treating either outcome as a simulator assertion."
+  ]
+}

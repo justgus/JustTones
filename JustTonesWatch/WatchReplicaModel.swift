@@ -7,10 +7,10 @@ import WatchConnectivity
 final class WatchReplicaModel: ObservableObject {
     enum Status: Equatable {
         case validLocalData(lastSuccess: Date?)
-        case pending
+        case pending(lastSuccess: Date?)
         case noLocalData
-        case failed
-        case incompatible
+        case failed(lastSuccess: Date?)
+        case incompatible(lastSuccess: Date?)
 
         var label: String {
             switch self {
@@ -21,6 +21,22 @@ final class WatchReplicaModel: ObservableObject {
             case .incompatible: "Update Watch app"
             }
         }
+
+        var lastSuccess: Date? {
+            switch self {
+            case let .validLocalData(lastSuccess), let .pending(lastSuccess),
+                 let .failed(lastSuccess), let .incompatible(lastSuccess):
+                lastSuccess
+            case .noLocalData:
+                nil
+            }
+        }
+
+        var hasActionableFailure: Bool {
+            if case .failed = self { return true }
+            if case .incompatible = self { return true }
+            return false
+        }
     }
 
     @Published private(set) var profiles: [TuningProfile]
@@ -30,9 +46,8 @@ final class WatchReplicaModel: ObservableObject {
     private let store: WatchReplicaStore
     private var receiver: WatchReplicaReceiver?
 
-    init() {
-        let directory = Self.replicaDirectory()
-        store = WatchReplicaStore(directoryURL: directory)
+    init(directoryURL: URL? = nil, beginsReceiving: Bool = true) {
+        store = WatchReplicaStore(directoryURL: directoryURL ?? Self.replicaDirectory())
         if let replica = try? store.activeReplica() {
             profiles = replica.document.library.profiles
             status = .validLocalData(lastSuccess: Self.lastModified(at: store.activeURL))
@@ -42,26 +57,26 @@ final class WatchReplicaModel: ObservableObject {
             profiles = BuiltInCatalog.profileTemplates.map(\.profile)
             status = .noLocalData
         }
-        receiver = WatchReplicaReceiver(model: self)
+        if beginsReceiving { receiver = WatchReplicaReceiver(model: self) }
     }
 
     func selectProfile(id: UUID?) {
         selectionWasRemoved = id.map { selected in !profiles.contains(where: { $0.id == selected }) } ?? false
     }
 
-    fileprivate func receive(_ data: Data) {
-        status = .pending
+    func receive(_ data: Data) {
+        status = .pending(lastSuccess: status.lastSuccess)
         do {
             let replica = try store.stageAndActivate(data)
             profiles = replica.document.library.profiles
             status = .validLocalData(lastSuccess: Date())
         } catch WatchReplicaError.incompatibleCatalogVersion {
-            status = .incompatible
+            status = .incompatible(lastSuccess: status.lastSuccess)
         } catch WatchReplicaError.unsupportedSchemaVersion {
-            status = .incompatible
+            status = .incompatible(lastSuccess: status.lastSuccess)
         } catch {
             // Keep the last loaded profiles intact; a failed candidate never clears playable data.
-            status = profiles.isEmpty ? .failed : .validLocalData(lastSuccess: Self.lastModified(at: store.activeURL))
+            status = .failed(lastSuccess: status.lastSuccess ?? Self.lastModified(at: store.activeURL))
         }
     }
 

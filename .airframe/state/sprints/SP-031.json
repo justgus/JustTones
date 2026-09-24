@@ -1,4 +1,5 @@
 {
+  "endDate" : "2026-09-24",
   "epicID" : {
     "rawValue" : "EP-019"
   },
@@ -12,11 +13,12 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-23T18:43:21Z"
+    "updatedAt" : "2026-09-24T20:32:55Z"
   },
   "notes" : [
-    "Planning only; this Sprint follows SP-030.",
-    "A delayed, invalid, or failed synchronization candidate must not restart or otherwise mutate the local audio session."
+    "Planning completed on 2026-09-24; activation is explicitly authorized by the user and follows closed SP-030.",
+    "A delayed, invalid, or failed synchronization candidate must not restart or otherwise mutate the local audio session.",
+    "The reported Xcode-attached playback interruption must be diagnosed through actual session, interruption, route, and engine events; no state may be hidden or automatically resumed to make debugger runs appear successful."
   ],
   "taskIDs" : [
     {
@@ -28,7 +30,7 @@
       "rawValue" : "SP-031"
     },
     "kind" : "sprint",
-    "status" : "planning",
+    "status" : "closed",
     "title" : "Watch State and Data Status"
   }
 }

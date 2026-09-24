@@ -4,43 +4,86 @@
     "" : {
 
     },
-    "%@ hertz" : {
-
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
     },
-    "%@ Hz" : {
-
+    "%@ hertz, profile %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ hertz, profile %2$@"
+          }
+        }
+      }
+    },
+    "%@ Hz (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ Hz (%2$@)"
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
     },
     "%lld percent" : {
 
     },
-    "%lld%%" : {
+    "Audio" : {
+
+    },
+    "Audio and data status" : {
+
+    },
+    "Audio route" : {
+
+    },
+    "Browse pitches" : {
+
+    },
+    "Built-in profiles remain available. Open JustTones on iPhone to send your profiles." : {
 
     },
     "Cancel" : {
 
     },
-    "Companion data status" : {
-
-    },
     "Continue" : {
 
     },
-    "Decrease output" : {
+    "Digital Crown adjusts output level. Double tap Done to return to scrolling." : {
 
     },
-    "Headphone audio levels" : {
+    "Done" : {
 
     },
-    "Hearing safety" : {
+    "Double tap to adjust" : {
 
     },
-    "Helpful resources" : {
+    "Double tap to enter level adjustment." : {
 
     },
-    "In-app output percentage. This is not a sound-pressure-level measurement." : {
+    "Explicitly resumes the selected local reference tone" : {
 
     },
-    "Increase output" : {
+    "In-app percentage; not a sound-pressure-level measurement." : {
 
     },
     "JustTones" : {
@@ -54,16 +97,25 @@
         }
       }
     },
-    "JustTones starts at 25%. Lower the in-app output or stop playback at any time." : {
+    "Keep using local data, then open JustTones on iPhone and send a supported profile update." : {
+
+    },
+    "Last update" : {
 
     },
     "Listening reminder" : {
 
     },
-    "Next" : {
+    "Local data" : {
+
+    },
+    "Local timbre and playback state" : {
 
     },
     "Output level" : {
+
+    },
+    "Output level %lld%%" : {
 
     },
     "Pitches" : {
@@ -72,10 +124,13 @@
     "Play" : {
 
     },
+    "Playback" : {
+
+    },
     "Plays the selected local reference tone" : {
 
     },
-    "Previous" : {
+    "Profile, %@" : {
 
     },
     "Profiles" : {
@@ -92,13 +147,22 @@
         }
       }
     },
+    "Resume" : {
+
+    },
+    "Route" : {
+
+    },
     "Selected" : {
 
     },
     "Selected pitch, %@" : {
 
     },
-    "Sine · %@" : {
+    "Sound controls" : {
+
+    },
+    "Status" : {
 
     },
     "Stop" : {
@@ -107,19 +171,13 @@
     "Stops the local reference tone" : {
 
     },
-    "The displayed percentage is not a sound-pressure-level measurement; exposure also depends on system volume, route, and listening duration." : {
+    "Timbre" : {
 
     },
-    "Timbre Sine, route %@" : {
-
-    },
-    "WHO safe listening" : {
+    "Turn the Digital Crown to adjust" : {
 
     },
     "You have been listening for an hour. Consider a break or reducing the output level." : {
-
-    },
-    "Your control" : {
 
     }
   },

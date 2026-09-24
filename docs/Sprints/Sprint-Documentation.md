@@ -41,17 +41,17 @@ Currently: **31 Sprints** | Next available: **SP-032**
 | SP-027 | Portable Export and Sharing | EP-012 | T-0037 | None | Closed |
 | SP-028 | iPhone Primary Tone Surface | EP-019 | T-0038 | None | Closed |
 | SP-029 | iPhone Playback Continuity and Accessibility | EP-019 | T-0039 | None | Closed |
-| SP-030 | Watch Interaction Surface | EP-019 | T-0040 | None | Planning |
-| SP-031 | Watch State and Data Status | EP-019 | T-0041 | None | Planning |
+| SP-030 | Watch Interaction Surface | EP-019 | T-0040 | None | Closed |
+| SP-031 | Watch State and Data Status | EP-019 | T-0041 | None | Closed |
 
 ## Statistics
 
 - **Total Sprints:** 31
 - **Backlog:** 0
-- **Planning:** 2
+- **Planning:** 0
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 29
+- **Closed:** 31
 - **Next available:** SP-032
 
 *Last Updated: 2026-09-24*

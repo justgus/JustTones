@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "JustTonesWatch\/WatchContentView.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -sdk watchsimulator build (passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (42mm)' test (passed)",
+  "environment" : "Xcode-beta; watchOS Simulator 27.0; Apple Watch Series 11 (42mm)",
+  "id" : {
+    "rawValue" : "EV-0037"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "The Watch persists its selected local profile by stable UUID, restores it when available, and presents profile beside frequency plus timbre beside the local playback state.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0040"
+    }
+  ]
+}

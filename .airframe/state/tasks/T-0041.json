@@ -2,15 +2,22 @@
   "acceptanceCriteria" : [
     "JT-AC-054"
   ],
-  "component" : "",
+  "component" : "Watch playback state and data status",
   "componentsAffected" : [
-
+    "JustTonesWatch playback host",
+    "JustTonesWatch state and status views",
+    "JustTonesWatch replica model",
+    "JustTonesWatch localization",
+    "JustTonesWatch tests"
   ],
+  "dateVerified" : "2026-09-24",
   "epicID" : {
     "rawValue" : "EP-019"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0038"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -18,10 +25,12 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-23T18:43:21Z"
+    "updatedAt" : "2026-09-24T20:31:21Z"
   },
   "notes" : [
-
+    "Planning completed on 2026-09-24. The user reports failed Watch playback and occasional Interrupted status only when Xcode is attached; detached launch succeeds. Treat this as a physical-device diagnostic condition until actual host\/session\/route evidence identifies the cause.",
+    "The implementation must remain truthful and safe: no hidden interruption, optimistic Playing state, or automatic recovery is permitted.",
+    "Implemented on 2026-09-24. Simulator coverage passed; physical Watch route, interruption, accessibility, listening, and attached-versus-detached Xcode comparison remain for user verification."
   ],
   "priority" : "medium",
   "rationale" : "Watch synchronization and host states need the approved truthful presentation while preserving the last valid local snapshot and independent playback safety.",
@@ -43,14 +52,17 @@
     "rawValue" : "SP-031"
   },
   "testSteps" : [
-
+    "JT-TEST-078: exercise confirmed interruption and explicit permitted Resume, preserving selected profile, pitch, timbre, and level with no automatic playback.",
+    "JT-TEST-079: inspect Watch-speaker and connected-device route disclosure plus route-change stop behavior on a physical Watch.",
+    "JT-TEST-084 and JT-TEST-085: verify disconnected operation from the last valid local snapshot and truthful pending, last-success, failed, incompatible, and unavailable data states without audio mutation.",
+    "Run focused Watch tests with the beta toolchain after inspecting destinations. Separately reproduce the same physical-Watch tone and route with Xcode attached and detached, recording watchOS, route, host state, and session\/interruption\/engine evidence."
   ],
   "workItem" : {
     "id" : {
       "rawValue" : "T-0041"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Implement Watch state and data-status adaptation"
   }
 }

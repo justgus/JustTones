@@ -1,6 +1,6 @@
 # EP-019 — iPhone-First Interaction Architecture Implementation
 
-**Status:** Backlog. This Epic is fully planned but no Sprint or Task is active.
+**Status:** Active. SP-030 is closed; SP-031 planning is complete and its activation is authorized by the user on 2026-09-24.
 
 ## Purpose
 

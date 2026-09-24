@@ -1,10 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Active tone" : {
+    "" : {
 
     },
-    "" : {
+    "%@ hertz" : {
 
     },
     "%@ Hz" : {
@@ -38,6 +38,19 @@
     },
     "Accidental" : {
 
+    },
+    "Active tone" : {
+
+    },
+    "Active tone, %@, %@ hertz, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Active tone, %1$@, %2$@ hertz, %3$@"
+          }
+        }
+      }
     },
     "Add" : {
 

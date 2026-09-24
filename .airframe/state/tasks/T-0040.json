@@ -2,15 +2,27 @@
   "acceptanceCriteria" : [
     "JT-AC-053"
   ],
-  "component" : "",
+  "component" : "Watch interaction",
   "componentsAffected" : [
-
+    "JustTonesWatch",
+    "Watch playback host",
+    "Watch localization",
+    "Watch tests"
   ],
+  "dateVerified" : "2026-09-24",
   "epicID" : {
     "rawValue" : "EP-019"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0035"
+    },
+    {
+      "rawValue" : "EV-0036"
+    },
+    {
+      "rawValue" : "EV-0037"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -18,10 +30,11 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-23T18:43:21Z"
+    "updatedAt" : "2026-09-24T19:11:35Z"
   },
   "notes" : [
-
+    "Activated by user authorization on 2026-09-24.",
+    "SP-030 owns the interaction surface. SP-031 owns expanded playback lifecycle, route, and synchronization-status presentation; do not pull that scope forward."
   ],
   "priority" : "medium",
   "rationale" : "The current Watch primary surface exposes controls that the approved adaptation moves into focused secondary contexts.",
@@ -52,14 +65,17 @@
     "rawValue" : "SP-030"
   },
   "testSteps" : [
-
+    "Run JT-TEST-070 with the paired iPhone unavailable and confirm explicit local Watch playback remains independent.",
+    "Run JT-TEST-071 through JT-TEST-075 for the compact primary surface, silent stopped selection, click-free active navigation, safe profile changes, focused Crown level adjustment, and independent device sessions.",
+    "Run JT-TEST-081 to confirm profile and tuning-system administration remains iPhone-only.",
+    "Inspect Watch destinations before selecting a paired simulator; run focused Watch tests with the beta toolchain. Record paired-simulator results separately from physical-Watch listening, Crown, VoiceOver, Dynamic Type, and route observations."
   ],
   "workItem" : {
     "id" : {
       "rawValue" : "T-0040"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Implement Watch interaction adaptation"
   }
 }

@@ -7,15 +7,16 @@ struct WatchContentView: View {
     @State private var playbackHost = WatchTonePlaybackHost()
     @State private var profileIndex = 0
     @State private var entryIndex = 0
-    @State private var profilesPresented = false
+    @State private var crownEntryIndex = 0.0
     @AppStorage("watchOutputLevel") private var outputLevel = Double(ToneOutputLevel.default.value)
+    @AppStorage("watchTimbre") private var timbreRawValue = BuiltInTimbre.sine.rawValue
+    @AppStorage("watchSelectedProfileID") private var selectedProfileID = ""
     @AppStorage("watchAcknowledgedHeadphoneHighLevelWarning") private var acknowledgedHeadphoneWarning = false
     @State private var pendingSafetyWarning: HearingSafetyWarning?
     @State private var playAfterSafetyWarning = false
     @State private var playbackStartedAt: Date?
     @State private var remindersPresented = 0
     @State private var showListeningReminder = false
-    @State private var safetyInfoPresented = false
 
     private var profiles: [TuningProfile] {
         let playable = replica.profiles.filter { !$0.entries.isEmpty }
@@ -24,89 +25,90 @@ struct WatchContentView: View {
     private var profile: TuningProfile { profiles[min(profileIndex, profiles.count - 1)] }
     private var entry: TuningProfileEntry { profile.entries[min(entryIndex, profile.entries.count - 1)] }
     private var frequency: Double { (try? entry.pitch.frequency()) ?? 0 }
+    private var timbre: BuiltInTimbre { BuiltInTimbre(rawValue: timbreRawValue) ?? .sine }
+    private var isActive: Bool { playbackHost.state == .starting || playbackHost.isPlaying }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                Text(profile.name)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .accessibilityAddTraits(.isHeader)
-                Text(entry.label ?? "Pitch").font(.system(.title, design: .rounded)).fontWeight(.semibold)
-                    .accessibilityLabel("Selected pitch, \(entry.label ?? "pitch")")
-                    .accessibilityValue("\(frequency, format: .number.precision(.fractionLength(1))) hertz")
-                Text("\(frequency, format: .number.precision(.fractionLength(1))) Hz")
-                Text(playbackStatus)
-                    .font(.caption).foregroundStyle(playbackHost.isPlaying ? .green : .secondary)
-                Text(replica.status.label)
-                    .font(.caption2).foregroundStyle(.secondary)
-                    .accessibilityLabel("Companion data status")
-                    .accessibilityValue(replica.status.label)
+        NavigationStack {
+            GeometryReader { geometry in
+                VStack(spacing: 8) {
+                    toneReadout(fontSize: min(76, max(36, geometry.size.width * 0.45)))
 
-                Button(playbackHost.isPlaying || playbackHost.state == .starting ? "Stop" : "Play", systemImage: playbackHost.isPlaying || playbackHost.state == .starting ? "stop.fill" : "play.fill") {
-                    requestPlaybackToggle()
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(playbackHost.isPlaying || playbackHost.state == .starting ? .red : .accentColor)
-                .accessibilityHint(playbackHost.isPlaying ? "Stops the local reference tone" : "Plays the selected local reference tone")
-                .accessibilityValue(playbackStatus)
+                    Text("\(timbreDisplayName) \(playbackStatus)")
+                        .font(.caption)
+                        .foregroundStyle(playbackHost.isPlaying ? .green : .secondary)
+                        .accessibilityLabel("Local timbre and playback state")
+                        .accessibilityValue("\(timbreDisplayName), \(playbackStatus)")
 
-                // Retain side-by-side controls on ordinary displays, but allow accessibility
-                // text sizes and smaller watches to use a vertical layout without clipping.
-                ViewThatFits(in: .horizontal) {
+                    Spacer(minLength: 0)
+
                     HStack {
-                        pitchNavigationButtons
-                    }
-                    VStack {
-                        pitchNavigationButtons
-                    }
-                }
-                .buttonStyle(.bordered)
+                        NavigationLink {
+                            WatchProfileSelection(
+                                profiles: profiles,
+                                selectedProfileIndex: profileIndex,
+                                selectedEntryIndex: entryIndex,
+                                selectProfile: selectProfile,
+                                selectEntry: selectEntry
+                            )
+                        } label: {
+                            Image(systemName: "music.note.list")
+                        }
+                        .accessibilityLabel("Profile, \(profile.name)")
 
-                Button("Profiles", systemImage: "music.note.list") { profilesPresented = true }
-                    .buttonStyle(.plain)
-                HStack {
-                    Button { adjustOutput(by: -0.05) } label: {
-                        Image(systemName: "minus")
+                        Spacer()
+
+                        Button(action: requestPlaybackToggle) {
+                            Image(systemName: isActive ? "stop.fill" : playbackHost.isResumable ? "arrow.clockwise" : "play.fill")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(isActive ? .red : .accentColor)
+                        .accessibilityLabel(isActive ? "Stop" : playbackHost.isResumable ? "Resume" : "Play")
+                        .accessibilityHint(isActive ? "Stops the local reference tone" : playbackHost.isResumable ? "Explicitly resumes the selected local reference tone" : "Plays the selected local reference tone")
+
+                        Spacer()
+
+                        NavigationLink {
+                            WatchSoundControls(
+                                outputLevel: $outputLevel,
+                                timbreRawValue: $timbreRawValue,
+                                playbackHost: playbackHost,
+                                replica: replica
+                            )
+                        } label: {
+                            Image(systemName: "speaker.wave.2")
+                        }
+                        .accessibilityLabel("Sound controls")
                     }
-                    .accessibilityLabel("Decrease output")
-                    Spacer()
-                    Text("\(Int((outputLevel * 100).rounded()))%")
-                        .monospacedDigit()
-                        .frame(minWidth: 42)
-                        .accessibilityLabel("Output level")
-                        .accessibilityValue("\(Int((outputLevel * 100).rounded())) percent")
-                    Spacer()
-                    Button { adjustOutput(by: 0.05) } label: {
-                        Image(systemName: "plus")
-                    }
-                    .accessibilityLabel("Increase output")
+                    .buttonStyle(.bordered)
                 }
-                .buttonStyle(.bordered)
-                .accessibilityElement(children: .contain)
-                .accessibilityHint("In-app output percentage. This is not a sound-pressure-level measurement.")
-                Button("Hearing safety", systemImage: "ear.badge.checkmark") { safetyInfoPresented = true }
-                    .buttonStyle(.plain)
-                Text("Sine · \(routeDescription)")
-                    .font(.caption2).foregroundStyle(.secondary)
-                    .accessibilityLabel("Timbre Sine, route \(routeDescription)")
+                .padding(.horizontal)
+                .focusable(true)
+                .digitalCrownRotation(
+                    $crownEntryIndex,
+                    from: 0,
+                    through: Double(max(1, profile.entries.count - 1)),
+                    by: 1,
+                    sensitivity: .medium,
+                    isContinuous: false,
+                    isHapticFeedbackEnabled: true
+                )
+                .onChange(of: crownEntryIndex) { _, newValue in
+                    selectEntry(Int(newValue.rounded()))
+                }
             }
-            .padding(.horizontal)
         }
-        .sheet(isPresented: $profilesPresented) {
-            WatchProfileList(profiles: profiles, profileIndex: $profileIndex, entryIndex: $entryIndex)
-        }
-        .sheet(isPresented: $safetyInfoPresented) { WatchHearingSafetySheet() }
         .onAppear {
-            normalizeStoredLevel()
+            normalizeStoredValues()
+            restoreSelectedProfile()
+            crownEntryIndex = Double(entryIndex)
             synchronizeSelection()
         }
         .onChange(of: outputLevel) { _, newValue in
             handleLevelChange(newValue)
             synchronizeSelection()
         }
+        .onChange(of: timbreRawValue) { _, _ in synchronizeSelection() }
         .onChange(of: playbackHost.state) { _, state in
             playbackStartedAt = state == .playing ? .now : nil
             remindersPresented = 0
@@ -116,9 +118,8 @@ struct WatchContentView: View {
             while !Task.isCancelled && playbackHost.isPlaying {
                 try? await Task.sleep(for: .seconds(60))
                 guard playbackHost.isPlaying, let playbackStartedAt else { continue }
-                let elapsed = Date.now.timeIntervalSince(playbackStartedAt)
                 if HearingSafetyPolicy.isReminderDue(
-                    uninterruptedPlayback: elapsed,
+                    uninterruptedPlayback: Date.now.timeIntervalSince(playbackStartedAt),
                     remindersAlreadyPresented: remindersPresented
                 ) {
                     remindersPresented += 1
@@ -135,33 +136,94 @@ struct WatchContentView: View {
         .alert(safetyWarningTitle, isPresented: safetyWarningPresented) {
             Button("Cancel", role: .cancel) { cancelSafetyWarning() }
             Button("Continue") { acknowledgeSafetyWarning() }
-        } message: {
-            Text(safetyWarningMessage)
-        }
+        } message: { Text(safetyWarningMessage) }
         .onChange(of: replica.profiles) { _, profiles in
-            let selectedID = profile.id
-            if let newIndex = profiles.firstIndex(where: { $0.id == selectedID }) {
-                profileIndex = newIndex
-                entryIndex = min(entryIndex, max(0, profiles[newIndex].entries.count - 1))
+            let selectedID = UUID(uuidString: selectedProfileID) ?? profile.id
+            if let index = profiles.firstIndex(where: { $0.id == selectedID }) {
+                profileIndex = index
+                entryIndex = min(entryIndex, max(0, profiles[index].entries.count - 1))
             } else {
+                playbackHost.stop()
                 profileIndex = 0
                 entryIndex = 0
-                playbackHost.stop()
+                selectedProfileID = profile.id.uuidString
                 replica.selectProfile(id: selectedID)
+                synchronizeSelection()
             }
         }
-        .onChange(of: profileIndex) { _, _ in
-            entryIndex = 0
-            synchronizeSelection()
-            replica.selectProfile(id: profile.id)
-        }
-        .onChange(of: entryIndex) { _, _ in synchronizeSelection() }
     }
 
-    private func move(_ delta: Int) { entryIndex = min(max(0, entryIndex + delta), profile.entries.count - 1) }
+    private func toneReadout(fontSize: CGFloat) -> some View {
+        let label = entry.label ?? "Pitch"
+        let displayedFrequency = frequency.formatted(.number.precision(.fractionLength(1)))
+        return VStack(spacing: 2) {
+            Text(label)
+                .font(.system(size: fontSize, weight: .semibold, design: .rounded))
+                .lineLimit(1)
+                .minimumScaleFactor(0.45)
+            Text("\(displayedFrequency) Hz (\(profile.name))")
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.65)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Selected pitch, \(label)")
+        .accessibilityValue("\(displayedFrequency) hertz, profile \(profile.name)")
+    }
 
-    private func adjustOutput(by delta: Double) {
-        outputLevel = min(max(outputLevel + delta, 0), 1)
+    private func selectProfile(_ index: Int) {
+        guard profiles.indices.contains(index), index != profileIndex else { return }
+        playbackHost.stop()
+        profileIndex = index
+        entryIndex = 0
+        crownEntryIndex = 0
+        selectedProfileID = profile.id.uuidString
+        replica.selectProfile(id: profile.id)
+        synchronizeSelection()
+    }
+
+    private func selectEntry(_ index: Int) {
+        guard profile.entries.indices.contains(index), index != entryIndex else { return }
+        entryIndex = index
+        crownEntryIndex = Double(index)
+        synchronizeSelection()
+    }
+
+    private func requestPlaybackToggle() {
+        guard !isActive else { playbackHost.stop(); return }
+        if playbackHost.isResumable {
+            playbackHost.resume()
+            return
+        }
+        guard let level = try? ToneOutputLevel(Float(outputLevel)) else { return }
+        if let warning = HearingSafetyPolicy.warning(
+            level: level,
+            frequency: frequency,
+            hasRecognizedHeadphones: hasRecognizedHeadphones,
+            hasAcknowledgedHeadphoneHighLevelWarning: acknowledgedHeadphoneWarning
+        ) {
+            playAfterSafetyWarning = true
+            pendingSafetyWarning = warning
+        } else {
+            startPlayback()
+        }
+    }
+
+    private func startPlayback() {
+        guard let selection = makeSelection() else { return }
+        playbackHost.play(selection)
+    }
+
+    private func synchronizeSelection() {
+        guard let selection = makeSelection() else { return }
+        if playbackHost.isPlaying { playbackHost.transition(selection) }
+        else { playbackHost.select(selection) }
+    }
+
+    private func makeSelection() -> TonePlaybackSelection? {
+        guard let level = try? ToneOutputLevel(Float(outputLevel)),
+              let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return nil }
+        return TonePlaybackSelection(frequency: renderFrequency, timbre: timbre, level: level)
     }
 
     private var safetyWarningPresented: Binding<Bool> {
@@ -178,43 +240,10 @@ struct WatchContentView: View {
 
     private var safetyWarningMessage: String {
         switch pendingSafetyWarning {
-        case .headphoneHighLevel:
-            "Actual exposure depends on system volume, equipment, and listening duration. This percentage is not a safe-level measurement."
-        case .extremePitchHighLevel:
-            "Very high frequencies can be difficult to judge by perceived loudness. Approach this pitch at a low level."
+        case .headphoneHighLevel: "Actual exposure depends on system volume, equipment, and listening duration. This percentage is not a safe-level measurement."
+        case .extremePitchHighLevel: "Very high frequencies can be difficult to judge by perceived loudness. Approach this pitch at a low level."
         case nil: ""
         }
-    }
-
-    private func requestPlaybackToggle() {
-        guard !playbackHost.isPlaying, playbackHost.state != .starting else {
-            playbackHost.stop()
-            return
-        }
-        guard let level = try? ToneOutputLevel(Float(outputLevel)) else { return }
-        if let warning = HearingSafetyPolicy.warning(
-            level: level,
-            frequency: frequency,
-            hasRecognizedHeadphones: hasRecognizedHeadphones,
-            hasAcknowledgedHeadphoneHighLevelWarning: acknowledgedHeadphoneWarning
-        ) {
-            playAfterSafetyWarning = true
-            pendingSafetyWarning = warning
-            return
-        }
-        startPlayback()
-    }
-
-    private func startPlayback() {
-        guard let level = try? ToneOutputLevel(Float(outputLevel)),
-              let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
-        playbackHost.play(TonePlaybackSelection(frequency: renderFrequency, timbre: .sine, level: level))
-    }
-
-    private func synchronizeSelection() {
-        guard let level = try? ToneOutputLevel(Float(outputLevel)),
-              let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
-        playbackHost.select(TonePlaybackSelection(frequency: renderFrequency, timbre: .sine, level: level))
     }
 
     private func handleLevelChange(_ level: Double) {
@@ -241,8 +270,35 @@ struct WatchContentView: View {
         playbackHost.stop()
     }
 
-    private func normalizeStoredLevel() {
+    private func normalizeStoredValues() {
         outputLevel = min(max(outputLevel, 0), 1)
+        if BuiltInTimbre(rawValue: timbreRawValue) == nil { timbreRawValue = BuiltInTimbre.sine.rawValue }
+    }
+
+    private func restoreSelectedProfile() {
+        guard let savedID = UUID(uuidString: selectedProfileID) else {
+            selectedProfileID = profile.id.uuidString
+            return
+        }
+        guard let index = profiles.firstIndex(where: { $0.id == savedID }) else {
+            selectedProfileID = profile.id.uuidString
+            return
+        }
+        profileIndex = index
+        entryIndex = min(entryIndex, max(0, profiles[index].entries.count - 1))
+    }
+
+    private var timbreDisplayName: String {
+        switch timbre {
+        case .sine: "Sine"
+        case .warmHarmonic: "Warm harmonic"
+        case .guitar: "Guitar"
+        case .piano: "Piano"
+        case .bowedString: "Bowed string"
+        case .flute: "Flute"
+        case .clarinet: "Clarinet"
+        case .brass: "Brass"
+        }
     }
 
     private var hasRecognizedHeadphones: Bool {
@@ -251,13 +307,9 @@ struct WatchContentView: View {
         }
     }
 
-    private var routeDescription: String {
-        AVAudioSession.sharedInstance().currentRoute.outputs.first?.portName ?? "No output"
-    }
-
     private var playbackStatus: String {
         switch playbackHost.state {
-        case .stopped: "Stopped"
+        case .stopped: "Ready"
         case .starting: "Starting"
         case .playing: "Playing"
         case .unavailable(.interrupted): "Interrupted"
@@ -266,79 +318,147 @@ struct WatchContentView: View {
         case .unavailable(.engineFailed): "Audio engine unavailable"
         }
     }
-
-    @ViewBuilder
-    private var pitchNavigationButtons: some View {
-        Button("Previous", systemImage: "chevron.left") { move(-1) }
-            .disabled(entryIndex == 0)
-        Button("Next", systemImage: "chevron.right") { move(1) }
-            .disabled(entryIndex == profile.entries.count - 1)
-    }
 }
 
-private struct WatchHearingSafetySheet: View {
+private struct WatchSoundControls: View {
+    @Binding var outputLevel: Double
+    @Binding var timbreRawValue: String
+    let playbackHost: WatchTonePlaybackHost
+    @ObservedObject var replica: WatchReplicaModel
+    @State private var levelAdjustmentFocused = false
+    @State private var crownLevel = Double(ToneOutputLevel.default.value)
+
     var body: some View {
         List {
-            Section("Your control") {
-                Text("JustTones starts at 25%. Lower the in-app output or stop playback at any time.")
-                Text("The displayed percentage is not a sound-pressure-level measurement; exposure also depends on system volume, route, and listening duration.")
+            Section("Audio status") {
+                LabeledContent("Playback", value: playbackStatus)
+                LabeledContent("Route", value: playbackHost.routeDescription)
+                if let lastEvent = playbackHost.lastEventDescription {
+                    Text(lastEvent)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
-            Section("Helpful resources") {
-                Link("Headphone audio levels", destination: URL(string: "https://support.apple.com/guide/iphone/headphone-audio-levels-iph0596a9152/ios")!)
-                Link("WHO safe listening", destination: URL(string: "https://www.who.int/health-topics/hearing-loss/safe-listening")!)
+            Picker("Timbre", selection: $timbreRawValue) {
+                ForEach(BuiltInTimbre.allCases, id: \.rawValue) { timbre in
+                    Text(timbre.rawValue.capitalized).tag(timbre.rawValue)
+                }
+            }
+            Button {
+                levelAdjustmentFocused.toggle()
+                crownLevel = outputLevel
+            } label: {
+                VStack(alignment: .leading) {
+                    Text(levelAdjustmentFocused ? "Done" : "Output level")
+                    Text("Output level \(Int((outputLevel * 100).rounded()))%")
+                    Text(levelAdjustmentFocused ? "Turn the Digital Crown to adjust" : "Double tap to adjust")
+                        .font(.caption2).foregroundStyle(.secondary)
+                    Text("In-app percentage; not a sound-pressure-level measurement.")
+                        .font(.caption2).foregroundStyle(.secondary)
+                }
+            }
+            .accessibilityValue("\(Int((outputLevel * 100).rounded())) percent")
+            .accessibilityHint(levelAdjustmentFocused ? "Digital Crown adjusts output level. Double tap Done to return to scrolling." : "Double tap to enter level adjustment.")
+            .focusable(levelAdjustmentFocused)
+            .modifier(CrownLevelAdjustment(enabled: levelAdjustmentFocused, crownLevel: $crownLevel))
+            .onChange(of: crownLevel) { _, value in
+                guard levelAdjustmentFocused else { return }
+                outputLevel = min(max(value, 0), 1)
+            }
+            Section("Local data") {
+                Text(replica.status.label)
+                if let lastSuccess = replica.status.lastSuccess {
+                    LabeledContent("Last update", value: lastSuccess.formatted(date: .abbreviated, time: .shortened))
+                }
+                if replica.status.hasActionableFailure {
+                    Text("Keep using local data, then open JustTones on iPhone and send a supported profile update.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } else if case .noLocalData = replica.status {
+                    Text("Built-in profiles remain available. Open JustTones on iPhone to send your profiles.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
-        .navigationTitle("Hearing safety")
+        .navigationTitle("Sound controls")
+        .onAppear { crownLevel = outputLevel }
+        .onDisappear { levelAdjustmentFocused = false }
+    }
+
+    private var playbackStatus: String {
+        switch playbackHost.state {
+        case .stopped: "Ready"
+        case .starting: "Starting"
+        case .playing: "Playing"
+        case .unavailable(.interrupted): "Interrupted — Resume when ready"
+        case .unavailable(.routeUnavailable): "Route changed — Play again"
+        case .unavailable(.sessionActivationFailed): "Audio unavailable"
+        case .unavailable(.engineFailed): "Audio engine unavailable"
+        }
     }
 }
 
-private struct WatchProfileList: View {
+private struct CrownLevelAdjustment: ViewModifier {
+    let enabled: Bool
+    @Binding var crownLevel: Double
+
+    func body(content: Content) -> some View {
+        if enabled {
+            content.digitalCrownRotation($crownLevel, from: 0, through: 1, by: 0.05, sensitivity: .medium, isContinuous: false, isHapticFeedbackEnabled: true)
+        } else {
+            content
+        }
+    }
+}
+
+private struct WatchProfileSelection: View {
     let profiles: [TuningProfile]
-    @Binding var profileIndex: Int
-    @Binding var entryIndex: Int
-    @Environment(\.dismiss) private var dismiss
+    let selectedProfileIndex: Int
+    let selectedEntryIndex: Int
+    let selectProfile: (Int) -> Void
+    let selectEntry: (Int) -> Void
+
     var body: some View {
-        NavigationStack {
-            List {
-                Section("Profiles") {
-                    ForEach(Array(profiles.enumerated()), id: \.element.id) { item in
-                        Button {
-                            profileIndex = item.offset
-                            entryIndex = 0
-                            dismiss()
-                        } label: {
-                            HStack {
-                                Text(item.element.name)
-                                Spacer()
-                                if item.offset == profileIndex {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .accessibilityHidden(true)
-                                }
-                            }
+        List {
+            Section("Profiles") {
+                ForEach(Array(profiles.enumerated()), id: \.element.id) { item in
+                    Button { selectProfile(item.offset) } label: {
+                        HStack {
+                            Text(item.element.name)
+                            Spacer()
+                            if item.offset == selectedProfileIndex { Image(systemName: "checkmark.circle.fill").accessibilityHidden(true) }
                         }
-                        .accessibilityValue(item.offset == profileIndex ? "Selected" : "")
                     }
-                }
-                Section("Pitches") {
-                    ForEach(Array(profiles[min(profileIndex, profiles.count - 1)].entries.enumerated()), id: \.element.id) { item in
-                        Button {
-                            entryIndex = item.offset
-                            dismiss()
-                        } label: {
-                            HStack {
-                                Text(item.element.label ?? "Pitch")
-                                Spacer()
-                                if item.offset == entryIndex {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .accessibilityHidden(true)
-                                }
-                            }
-                        }
-                        .accessibilityValue(item.offset == entryIndex ? "Selected" : "")
-                    }
+                    .accessibilityValue(item.offset == selectedProfileIndex ? "Selected" : "")
                 }
             }
-            .navigationTitle("Profiles")
+            NavigationLink("Browse pitches") {
+                WatchPitchSelection(entries: profiles[selectedProfileIndex].entries, selectedEntryIndex: selectedEntryIndex, selectEntry: selectEntry)
+            }
         }
+        .navigationTitle("Profiles")
+    }
+}
+
+private struct WatchPitchSelection: View {
+    let entries: [TuningProfileEntry]
+    let selectedEntryIndex: Int
+    let selectEntry: (Int) -> Void
+
+    var body: some View {
+        List {
+            ForEach(Array(entries.enumerated()), id: \.element.id) { item in
+                Button { selectEntry(item.offset) } label: {
+                    HStack {
+                        Text(item.element.label ?? "Pitch")
+                        Spacer()
+                        if item.offset == selectedEntryIndex { Image(systemName: "checkmark.circle.fill").accessibilityHidden(true) }
+                    }
+                }
+                .accessibilityValue(item.offset == selectedEntryIndex ? "Selected" : "")
+            }
+        }
+        .navigationTitle("Pitches")
     }
 }

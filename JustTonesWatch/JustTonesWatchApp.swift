@@ -1,18 +1,23 @@
 import AVFoundation
 import JustTonesCore
 import Observation
+import os
 import SwiftUI
 import Synchronization
 
 @Observable @MainActor
 final class WatchTonePlaybackHost {
     private(set) var state: TonePlaybackLifecycleState = .stopped
+    private(set) var routeDescription = "Watch speaker"
+    private(set) var lastEventDescription: String?
     private let driver: any WatchTonePlaybackHostingDriver
+    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.caposoft.JustTonesWatch", category: "WatchAudio")
     private var lifecycle = TonePlaybackLifecycle()
     private var startGeneration = 0
 
     init(driver: (any WatchTonePlaybackHostingDriver)? = nil) {
         self.driver = driver ?? WatchAVAudioToneOutputDriver()
+        routeDescription = self.driver.currentRouteDescription
         self.driver.eventHandler = { [weak self] event in
             guard let self else { return }
             switch event {
@@ -24,6 +29,7 @@ final class WatchTonePlaybackHost {
     }
 
     var isPlaying: Bool { state == .playing }
+    var isResumable: Bool { state == .unavailable(.interrupted) && lifecycle.selection != nil }
 
     func select(_ selection: TonePlaybackSelection) {
         let wasActive = lifecycle.state == .starting || lifecycle.state == .playing
@@ -32,9 +38,33 @@ final class WatchTonePlaybackHost {
         publishState()
     }
 
+    /// Updates the local renderer while it is already playing. This is deliberately separate
+    /// from `select`, whose stopped-state semantics are used for profile changes and ordinary
+    /// silent selection.
+    func transition(_ selection: TonePlaybackSelection) {
+        guard lifecycle.state == .playing else {
+            select(selection)
+            return
+        }
+        driver.updateTone(selection: selection)
+    }
+
     func play(_ selection: TonePlaybackSelection) {
         select(selection)
-        guard lifecycle.requestStart() else { return }
+        startSelectedTone()
+    }
+
+    /// Resume is intentionally available only after a confirmed interruption. It uses the
+    /// retained local selection and still requires successful session activation before state
+    /// becomes Playing.
+    func resume() {
+        guard isResumable else { return }
+        startSelectedTone()
+    }
+
+    private func startSelectedTone() {
+        guard let selection = lifecycle.selection, lifecycle.requestStart() else { return }
+        logger.notice("Starting local Watch tone on route: \(self.driver.currentRouteDescription, privacy: .public)")
         publishState()
         startGeneration &+= 1
         let generation = startGeneration
@@ -47,9 +77,15 @@ final class WatchTonePlaybackHost {
                     return
                 }
                 lifecycle.sessionDidActivate()
+                routeDescription = driver.currentRouteDescription
+                lastEventDescription = nil
+                logger.notice("Local Watch tone started on route: \(self.routeDescription, privacy: .public)")
             } catch {
                 guard generation == startGeneration else { return }
                 lifecycle.sessionActivationFailed()
+                routeDescription = driver.currentRouteDescription
+                lastEventDescription = "Audio session activation failed"
+                logger.error("Watch audio session activation failed: \(String(describing: error), privacy: .public)")
             }
             publishState()
         }
@@ -59,6 +95,7 @@ final class WatchTonePlaybackHost {
         startGeneration &+= 1
         driver.stopTone()
         lifecycle.stop()
+        lastEventDescription = nil
         publishState()
     }
 
@@ -66,6 +103,9 @@ final class WatchTonePlaybackHost {
         startGeneration &+= 1
         driver.stopImmediately()
         lifecycle.interrupted()
+        routeDescription = driver.currentRouteDescription
+        lastEventDescription = "Audio session interrupted"
+        logger.notice("Watch audio session became inactive")
         publishState()
     }
 
@@ -73,6 +113,9 @@ final class WatchTonePlaybackHost {
         startGeneration &+= 1
         driver.stopImmediately()
         lifecycle.routeBecameUnavailable()
+        routeDescription = driver.currentRouteDescription
+        lastEventDescription = "Audio route changed"
+        logger.notice("Watch audio route changed to: \(self.routeDescription, privacy: .public)")
         publishState()
     }
 
@@ -80,6 +123,9 @@ final class WatchTonePlaybackHost {
         startGeneration &+= 1
         driver.stopImmediately()
         lifecycle.engineFailed()
+        routeDescription = driver.currentRouteDescription
+        lastEventDescription = "Audio engine configuration changed"
+        logger.error("Watch audio engine configuration changed")
         publishState()
     }
 
@@ -89,7 +135,9 @@ final class WatchTonePlaybackHost {
 @MainActor
 protocol WatchTonePlaybackHostingDriver: AnyObject {
     var eventHandler: (@MainActor (WatchTonePlaybackDriverEvent) -> Void)? { get set }
+    var currentRouteDescription: String { get }
     func startTone(selection: TonePlaybackSelection) async throws
+    func updateTone(selection: TonePlaybackSelection)
     func stopTone()
     func stopImmediately()
 }
@@ -105,6 +153,13 @@ final class WatchAVAudioToneOutputDriver: NSObject, WatchTonePlaybackHostingDriv
     private var sourceNode: AVAudioSourceNode?
     private var mailbox: WatchToneRenderMailbox?
 
+    var currentRouteDescription: String {
+        let outputs = session.currentRoute.outputs
+        guard let output = outputs.first else { return "No audio route" }
+        if output.portType == .builtInSpeaker { return "Watch speaker" }
+        return output.portName.isEmpty ? output.portType.rawValue : output.portName
+    }
+
     override init() {
         super.init()
         NotificationCenter.default.addObserver(forName: AVAudioSession.didBecomeInactiveNotification, object: session, queue: .main) { [weak self] _ in
@@ -112,7 +167,8 @@ final class WatchAVAudioToneOutputDriver: NSObject, WatchTonePlaybackHostingDriv
         }
         NotificationCenter.default.addObserver(forName: AVAudioSession.routeChangeNotification, object: session, queue: .main) { [weak self] notification in
             guard let reason = notification.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt,
-                  reason == AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue else { return }
+                  let routeReason = AVAudioSession.RouteChangeReason(rawValue: reason),
+                  [.newDeviceAvailable, .oldDeviceUnavailable, .override, .wakeFromSleep].contains(routeReason) else { return }
             Task { @MainActor in self?.eventHandler?(.routeUnavailable) }
         }
         NotificationCenter.default.addObserver(forName: .AVAudioEngineConfigurationChange, object: engine, queue: .main) { [weak self] _ in
@@ -129,6 +185,8 @@ final class WatchAVAudioToneOutputDriver: NSObject, WatchTonePlaybackHostingDriv
             try engine.start()
         }
     }
+
+    func updateTone(selection: TonePlaybackSelection) { mailbox?.submit(.play(selection)) }
 
     func stopTone() { mailbox?.submit(.stop) }
     func stopImmediately() {

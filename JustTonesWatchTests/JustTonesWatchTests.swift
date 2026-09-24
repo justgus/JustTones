@@ -1,4 +1,5 @@
 import Testing
+import Foundation
 import JustTonesCore
 @testable import JustTonesWatch
 
@@ -85,6 +86,72 @@ struct JustTonesWatchTests {
         #expect(driver.immediateStopCount == 1)
     }
 
+    @MainActor @Test func interruptedWatchToneRequiresExplicitResumeAndRetainsSelection() async throws {
+        let driver = WatchRecordingToneDriver()
+        let host = WatchTonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440), timbre: .guitar)
+
+        host.play(selection)
+        await Task.yield()
+        driver.eventHandler?(.interrupted)
+
+        #expect(host.state == .unavailable(.interrupted))
+        #expect(host.isResumable)
+        #expect(driver.startedSelections == [selection])
+
+        host.resume()
+        await Task.yield()
+
+        #expect(host.state == .playing)
+        #expect(driver.startedSelections == [selection, selection])
+    }
+
+    @MainActor @Test func routeChangeIsNotResumableAndPreservesRouteDiagnostic() async throws {
+        let driver = WatchRecordingToneDriver(routeDescription: "Studio headphones")
+        let host = WatchTonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+
+        host.play(selection)
+        await Task.yield()
+        driver.eventHandler?(.routeUnavailable)
+
+        #expect(host.state == .unavailable(.routeUnavailable))
+        #expect(!host.isResumable)
+        #expect(host.routeDescription == "Studio headphones")
+        #expect(host.lastEventDescription == "Audio route changed")
+    }
+
+    @MainActor @Test func failedReplicaCandidateRetainsPlayableLocalProfilesAndReportsFailure() throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let model = WatchReplicaModel(directoryURL: directory, beginsReceiving: false)
+        let existingProfiles = model.profiles
+
+        model.receive(Data("invalid replica".utf8))
+
+        #expect(model.profiles == existingProfiles)
+        #expect(model.status.hasActionableFailure)
+        if case .failed = model.status {
+        } else {
+            Issue.record("An invalid candidate must produce actionable failure status")
+        }
+    }
+
+    @MainActor @Test func activeWatchToneTransitionsLocallyWithoutASecondStartRequest() async throws {
+        let driver = WatchRecordingToneDriver()
+        let host = WatchTonePlaybackHost(driver: driver)
+        let a4 = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+        let a5 = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 880), timbre: .guitar)
+
+        host.play(a4)
+        await Task.yield()
+        host.transition(a5)
+
+        #expect(host.state == .playing)
+        #expect(driver.startedSelections == [a4])
+        #expect(driver.updatedSelections == [a5])
+    }
+
     @Test func sharedPitchFixturesRunInTheWatchHost() throws {
         for (pitch, expected) in PitchDomainFixtures.twelveToneEqualTemperament {
             let frequency = try Pitch.named(pitch).frequency()
@@ -138,16 +205,19 @@ struct JustTonesWatchTests {
 @MainActor
 private final class WatchRecordingToneDriver: WatchTonePlaybackHostingDriver {
     var eventHandler: (@MainActor (WatchTonePlaybackDriverEvent) -> Void)?
+    let currentRouteDescription: String
     var startedSelections: [TonePlaybackSelection] = []
+    var updatedSelections: [TonePlaybackSelection] = []
     var stopCount = 0
     var immediateStopCount = 0
     private let shouldFailStart: Bool
     private let pausesAtStart: Bool
     private var startContinuation: CheckedContinuation<Void, Never>?
 
-    init(shouldFailStart: Bool = false, pausesAtStart: Bool = false) {
+    init(shouldFailStart: Bool = false, pausesAtStart: Bool = false, routeDescription: String = "Watch speaker") {
         self.shouldFailStart = shouldFailStart
         self.pausesAtStart = pausesAtStart
+        self.currentRouteDescription = routeDescription
     }
 
     func startTone(selection: TonePlaybackSelection) async throws {
@@ -157,6 +227,8 @@ private final class WatchRecordingToneDriver: WatchTonePlaybackHostingDriver {
             await withCheckedContinuation { startContinuation = $0 }
         }
     }
+
+    func updateTone(selection: TonePlaybackSelection) { updatedSelections.append(selection) }
 
     func completeStart() { startContinuation?.resume(); startContinuation = nil }
     func stopTone() { stopCount += 1 }

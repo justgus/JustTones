@@ -1,12 +1,14 @@
 {
   "auditEventIDs" : [
-
+    {
+      "rawValue" : "AUD-AGILE-PLAN-5"
+    }
   ],
   "commands" : [
     "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore",
     "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -destination \"platform=iOS Simulator,name=iPhone 17 Pro\" test"
   ],
-  "decisionState" : "pending",
+  "decisionState" : "approved",
   "evidenceIDs" : [
 
   ],

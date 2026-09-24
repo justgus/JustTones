@@ -13,6 +13,7 @@
       "rawValue" : "JT-AC-054"
     }
   ],
+  "closeDate" : "2026-09-24",
   "goal" : "Implement the complete EP-018 iPhone-first interaction architecture across the iPhone and independent Apple Watch experiences.",
   "issueIDs" : [
 
@@ -23,10 +24,10 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-23T18:47:40Z"
+    "updatedAt" : "2026-09-24T20:33:15Z"
   },
   "notes" : [
-    "Planning only: no Sprint or Task is active, and no production implementation is authorized by this record.",
+    "SP-030 is closed and T-0040 is implemented and verified. SP-031 and T-0041 are active by user authorization on 2026-09-24.",
     "EP-013 through EP-016 retain their broader backlog scope; EP-019 implements only the accepted EP-018 architecture and directly necessary state presentation."
   ],
   "outOfScope" : [
@@ -77,7 +78,7 @@
       "rawValue" : "EP-019"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "iPhone-First Interaction Architecture Implementation"
   }
 }

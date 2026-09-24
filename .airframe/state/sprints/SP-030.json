@@ -1,4 +1,5 @@
 {
+  "endDate" : "2026-09-24",
   "epicID" : {
     "rawValue" : "EP-019"
   },
@@ -12,10 +13,10 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-23T18:43:21Z"
+    "updatedAt" : "2026-09-24T19:12:09Z"
   },
   "notes" : [
-    "Planning only; this Sprint follows SP-029.",
+    "Activated by user authorization on 2026-09-24; this Sprint follows closed SP-029.",
     "Watch selection, playback, route, and output state remain local and independent from the iPhone."
   ],
   "taskIDs" : [
@@ -28,7 +29,7 @@
       "rawValue" : "SP-030"
     },
     "kind" : "sprint",
-    "status" : "planning",
+    "status" : "closed",
     "title" : "Watch Interaction Surface"
   }
 }

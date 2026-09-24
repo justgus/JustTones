@@ -1,0 +1,67 @@
+{
+  "auditEventIDs" : [
+    {
+      "rawValue" : "AUD-AGILE-PLAN-8"
+    }
+  ],
+  "commands" : [
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -showdestinations",
+    "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm)' test"
+  ],
+  "decisionState" : "approved",
+  "evidenceIDs" : [
+
+  ],
+  "externalEffects" : [
+
+  ],
+  "fileChanges" : [
+    "JustTonesWatch\/WatchContentView.swift — restructure the compact primary surface; add pushed profile and pitch selection plus a focused sound-controls destination; keep all Watch interaction local.",
+    "JustTonesWatch\/JustTonesWatchApp.swift — expose or preserve only the local playback-host state and click-free selection behavior necessary for truthful Watch presentation; do not alter the render-path safety rules.",
+    "JustTonesWatch\/Localizable.xcstrings — localize visible and accessibility labels, playback states, level-adjustment instructions, values, and non-SPL explanation.",
+    "JustTonesWatchTests\/JustTonesWatchTests.swift — add deterministic local playback and selection transition coverage; add a Watch UI-test target only if the project requires one to automate the specified surface behavior."
+  ],
+  "id" : {
+    "rawValue" : "PLAN-017"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "This plan is planning-only and does not activate SP-030 or authorize implementation.",
+    "SP-031 retains interruption\/resume, route disclosure, disconnected-data, synchronization, failure, and unavailable-state presentation beyond what is already required to keep this surface truthful.",
+    "No iPhone remote-control behavior, profile or tuning-system authoring on Watch, network service, account, analytics, background-mode, or new dependency is in scope."
+  ],
+  "proposedByActorID" : {
+    "rawValue" : "ACTOR-LLM"
+  },
+  "scope" : [
+    "Restructure WatchContentView into the compact local primary surface: profile entry, selected pitch and locale-formatted frequency, host-confirmed local playback state, Previous, prominent text-labeled Play\/Stop, Next, and Sound controls. Do not retain passive timbre\/route\/level summaries or mutable output controls in the primary scrolling surface.",
+    "Push locally available profile selection and ordered pitch browsing into secondary destinations. Stopped pitch selection stays silent; active previous, next, or pitch selection uses the existing local click-free transition. A profile change stops local Watch playback before selection changes and requires an explicit new Play.",
+    "Provide a focused Sound controls destination with exactly a value-bearing supported-timbre selector and output-level control. Crown rotation may change level only after deliberate Level adjustment focus; Back, Done, dismissal, or losing row focus exits that mode. Level changes remain bounded, announce once, and never begin playback.",
+    "Keep profile and tuning-system creation, editing, import, export, conflict resolution, hiding, restoration, and deletion iPhone-only. Preserve independent Watch selection, output, route, and playback state; an action on one device must not automatically start or stop the other.",
+    "Add focused automated coverage for JT-TEST-070 through JT-TEST-075 and JT-TEST-081 where technically practical, including deterministic host\/view-model assertions for state transitions that Watch UI automation cannot observe. Qualify VoiceOver order, compact\/large text layout, localized values, paired simulation, and physical Watch Crown\/listening behavior separately."
+  ],
+  "summary" : "Implement the EP-018 compact, independently playable Watch tone surface with safe focused sound controls and an iPhone-only administration boundary, while leaving Watch data-status and extended lifecycle presentation to SP-031.",
+  "targetEpicID" : {
+    "rawValue" : "EP-019"
+  },
+  "targetSprintID" : {
+    "rawValue" : "SP-030"
+  },
+  "targetTaskIDs" : [
+    {
+      "rawValue" : "T-0040"
+    }
+  ],
+  "title" : "SP-030 Watch interaction surface plan",
+  "verificationCriteria" : [
+    "JT-TEST-070 through JT-TEST-075 demonstrate independent local Watch playback, the compact primary controls, silent stopped selection, click-free active selection, safe profile changes, deliberate Crown-only level adjustment, and independent iPhone\/Watch sessions.",
+    "JT-TEST-081 demonstrates that Watch exposes local selection and playback only, with all profile and tuning-system administration remaining on iPhone.",
+    "Paired-simulator evidence and physical-Watch listening, Crown, VoiceOver, Dynamic Type, localization, and route observations are recorded independently; a build or simulator pass alone is not physical-device acceptance."
+  ]
+}

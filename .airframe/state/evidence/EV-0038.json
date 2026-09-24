@@ -1,0 +1,44 @@
+{
+  "artifactReferences" : [
+    "JustTonesWatch/JustTonesWatchApp.swift",
+    "JustTonesWatch/WatchContentView.swift",
+    "JustTonesWatch/WatchReplicaModel.swift",
+    "JustTonesWatchTests/JustTonesWatchTests.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTonesWatch -destination 'platform=watchOS Simulator,id=8DF24897-43FE-4334-B22E-6DF9B30F1DD0' test",
+  "environment" : "Xcode-beta; watchOS Simulator 27.0; Apple Watch Series 11 (42mm)",
+  "id" : {
+    "rawValue" : "EV-0038"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-054"
+    },
+    {
+      "rawValue" : "JT-FR-055"
+    },
+    {
+      "rawValue" : "JT-FR-058"
+    },
+    {
+      "rawValue" : "JT-FR-059"
+    }
+  ],
+  "result" : "passed",
+  "summary" : "Focused Watch simulator tests passed for explicit interruption Resume, non-resumable route change with route diagnostics, and invalid replica retention with actionable sync failure. Physical Watch route, interruption, listening, accessibility, and Xcode-attached versus detached playback comparison remain unverified.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0041"
+    }
+  ]
+}
