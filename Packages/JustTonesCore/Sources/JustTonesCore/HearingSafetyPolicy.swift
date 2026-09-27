@@ -12,6 +12,12 @@ public enum HearingSafetyPolicy {
     public static let extremePitchThreshold: Double = 8_000
     public static let reminderInterval: TimeInterval = 60 * 60
 
+    /// Very high pitches may not be reproduced reliably by a built-in phone speaker. This is a
+    /// capability notice only; it never alters the selected frequency or playback level.
+    public static func shouldRecommendExternalAudio(frequency: Double) -> Bool {
+        frequency.isFinite && frequency >= extremePitchThreshold
+    }
+
     /// Returns the warning that must be acknowledged before the requested action proceeds.
     /// A headphone high-level acknowledgement is retained for the current installation; the
     /// extreme-pitch warning remains action-specific because pitch and level may both change.

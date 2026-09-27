@@ -1,8 +1,9 @@
 {
+  "endDate" : "2026-09-27",
   "epicID" : {
     "rawValue" : "EP-013"
   },
-  "goal" : "Implement route capability and duration presentation, then record the required physical iPhone audio qualification without treating simulator checks as physical evidence.",
+  "goal" : "Planning completed on 2026-09-26. Keep this Sprint backlog until SP-032 session behavior is ready for physical qualification.",
   "issueIDs" : [
 
   ],
@@ -12,7 +13,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-26T12:45:38Z"
+    "updatedAt" : "2026-09-27T21:41:46Z"
   },
   "notes" : [
     "Planning completed on 2026-09-26. Keep this Sprint backlog until SP-032 session behavior is ready for physical qualification.",
@@ -28,7 +29,7 @@
       "rawValue" : "SP-033"
     },
     "kind" : "sprint",
-    "status" : "backlog",
+    "status" : "closed",
     "title" : "Route Capability and Physical Qualification"
   }
 }

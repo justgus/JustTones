@@ -10,6 +10,7 @@
       "rawValue" : "JT-AC-057"
     }
   ],
+  "closeDate" : "2026-09-27",
   "goal" : "Complete safe iPhone playback-session and system integration behavior.",
   "issueIDs" : [
 
@@ -20,7 +21,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-27T17:28:44Z"
+    "updatedAt" : "2026-09-27T22:04:51Z"
   },
   "notes" : [
     "Planning completed and Epic activation explicitly authorized by the user on 2026-09-26.",
@@ -53,10 +54,10 @@
   ],
   "taskIDs" : [
     {
-      "rawValue" : "T-0043"
+      "rawValue" : "T-0042"
     },
     {
-      "rawValue" : "T-0042"
+      "rawValue" : "T-0043"
     }
   ],
   "workItem" : {
@@ -64,7 +65,7 @@
       "rawValue" : "EP-013"
     },
     "kind" : "epic",
-    "status" : "active",
+    "status" : "closed",
     "title" : "Playback Session and System Integration"
   }
 }

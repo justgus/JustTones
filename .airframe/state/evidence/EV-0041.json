@@ -1,0 +1,32 @@
+{
+  "artifactReferences" : [
+    "JustTonesTests\/JustTonesTests.swift",
+    "Packages\/JustTonesCore\/Tests\/JustTonesCoreTests\/PlaybackLifecycleTests.swift",
+    "\/private\/tmp\/JustTones-JT057-UnitTests.xcresult"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift test --package-path Packages\/JustTonesCore (54 tests passed); DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -destination platform=iOS Simulator,id=372ED38B-9700-48EC-9250-149EF63DFBF4 -parallel-testing-enabled NO -only-testing:JustTonesTests -derivedDataPath \/private\/tmp\/JustTones-JT057-DerivedData-2 -resultBundlePath \/private\/tmp\/JustTones-JT057-UnitTests.xcresult test (12 tests passed, 0 failures, 0 skipped; 20 parameterized executions reported by xcresulttool).",
+  "environment" : "Xcode-beta 27.2; macOS 27.2; iPhone 17 \/ iOS Simulator 27.0; result bundle \/private\/tmp\/JustTones-JT057-UnitTests.xcresult. Simulator evidence only; first default-parallel test attempt failed during CoreSimulator device cloning and was not counted.",
+  "id" : {
+    "rawValue" : "EV-0041"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "Automated evidence only for JT-AC-057: all 54 JustTonesCore package tests passed; iPhone 17 (iOS 27.0) simulator app test session passed (12 tests; 0 failures, 0 skipped; parameterized cases included). Covers deterministic renderer, playback lifecycle, system-stop, route\/interruption\/engine-failure handling and app-host state. This does not establish physical audio output, route behavior, real interruptions, background\/lock behavior, perceived sound, latency, endurance, thermal, or energy qualification.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0042"
+    }
+  ]
+}

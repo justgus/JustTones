@@ -22,6 +22,8 @@ struct ContentView: View {
     @State private var pendingLevel = 0.25
     @State private var playAfterSafetyWarning = false
     @State private var playbackStartedAt: Date?
+    @State private var playbackDuration: TimeInterval = 0
+    @State private var currentOutputDescription = String(localized: "Checking output")
     @State private var remindersPresented = 0
     @State private var showListeningReminder = false
     @State private var safetyInfoPresented = false
@@ -57,6 +59,30 @@ struct ContentView: View {
                         Text("\(frequency.formatted(.number.precision(.fractionLength(1)))) Hz")
                             .accessibilityHidden(true)
                         playbackStateBadge
+                        if playbackHost.isPlaying {
+                            Text("Playing for \(formattedPlaybackDuration)")
+                                .font(.caption.monospacedDigit())
+                                .accessibilityElement(children: .ignore)
+                                .accessibilityLabel("Uninterrupted playback duration")
+                                .accessibilityValue(accessiblePlaybackDuration)
+                                .accessibilityIdentifier("playbackDuration")
+                        }
+                        Text("Output: \(currentOutputDescription)")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .accessibilityLabel("Current audio output")
+                            .accessibilityValue(currentOutputDescription)
+                            .accessibilityIdentifier("currentAudioOutput")
+                        if HearingSafetyPolicy.shouldRecommendExternalAudio(frequency: frequency) {
+                            Label(
+                                "Very high pitches may not be reproduced clearly by some speakers. Suitable headphones or an external speaker may help; your selected pitch is unchanged.",
+                                systemImage: "speaker.wave.2"
+                            )
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityIdentifier("audioCapabilityNotice")
+                        }
                     }
                     .frame(maxWidth: .infinity).padding(.vertical, 24)
                     .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
@@ -159,11 +185,15 @@ struct ContentView: View {
                 reviewImport(result)
             }
             .onAppear {
+                refreshOutputDescription()
                 normalizeStoredLevel()
                 if !loadStoredState() {
                     selectPreferredTimbre(for: profile)
                 }
                 synchronizeSelection()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)) { _ in
+                refreshOutputDescription()
             }
             .onChange(of: outputLevel) { oldValue, newValue in
                 handleLevelChange(from: oldValue, to: newValue)
@@ -192,19 +222,23 @@ struct ContentView: View {
             .onChange(of: playbackHost.state) { _, state in
                 if state == .playing {
                     playbackStartedAt = .now
+                    playbackDuration = 0
                     remindersPresented = 0
                 } else {
                     playbackStartedAt = nil
+                    playbackDuration = 0
                     remindersPresented = 0
                 }
+                refreshOutputDescription()
             }
             .task(id: playbackHost.state) {
                 guard playbackHost.isPlaying else { return }
                 while !Task.isCancelled {
-                    try? await Task.sleep(nanoseconds: 60_000_000_000)
+                    try? await Task.sleep(for: .seconds(1))
                     guard playbackHost.isPlaying, let playbackStartedAt else { return }
+                    playbackDuration = Date.now.timeIntervalSince(playbackStartedAt)
                     if HearingSafetyPolicy.isReminderDue(
-                        uninterruptedPlayback: Date().timeIntervalSince(playbackStartedAt),
+                        uninterruptedPlayback: playbackDuration,
                         remindersAlreadyPresented: remindersPresented
                     ) {
                         remindersPresented += 1
@@ -290,6 +324,40 @@ struct ContentView: View {
         case .extremePitchHighLevel: "High pitch and output level"
         case nil: "Listening safety"
         }
+    }
+
+    private var formattedPlaybackDuration: String {
+        let elapsed = max(0, Int(playbackDuration))
+        let minutes = elapsed / 60
+        let seconds = elapsed % 60
+        return "\(minutes):\(seconds.formatted(.number.precision(.integerLength(2))))"
+    }
+
+    private var accessiblePlaybackDuration: String {
+        let elapsed = max(0, Int(playbackDuration))
+        let minutes = elapsed / 60
+        let seconds = elapsed % 60
+        return String(localized: "\(minutes) minutes, \(seconds) seconds")
+    }
+
+    private func refreshOutputDescription() {
+        let outputs = AVAudioSession.sharedInstance().currentRoute.outputs
+        guard !outputs.isEmpty else {
+            currentOutputDescription = "No active output reported"
+            return
+        }
+        currentOutputDescription = outputs.map { output in
+            switch output.portType {
+            case .builtInSpeaker: "iPhone speaker"
+            case .headphones: "Headphones"
+            case .lineOut: "Line output"
+            case .bluetoothA2DP, .bluetoothHFP, .bluetoothLE: "Bluetooth audio"
+            case .airPlay: "AirPlay"
+            case .usbAudio: "USB audio"
+            case .carAudio: "Car audio"
+            default: output.portName
+            }
+        }.joined(separator: ", ")
     }
 
     private func safetyWarningMessage(for warning: HearingSafetyWarning) -> String {

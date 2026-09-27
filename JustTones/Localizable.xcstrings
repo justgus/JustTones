@@ -23,6 +23,9 @@
         }
       }
     },
+    "%lld minutes, %lld seconds" : {
+
+    },
     "%lld pitch %@" : {
       "localizations" : {
         "en" : {
@@ -97,6 +100,9 @@
     "Check your listening level and consider taking a listening break. Risk depends on level, duration, equipment, and system volume." : {
 
     },
+    "Checking output" : {
+
+    },
     "Choose different content" : {
 
     },
@@ -110,6 +116,9 @@
 
     },
     "Create a tuning system using cents, ratios, equal divisions, or explicit frequencies." : {
+
+    },
+    "Current audio output" : {
 
     },
     "Default output" : {
@@ -266,6 +275,9 @@
     "Output level %@" : {
 
     },
+    "Output: %@" : {
+
+    },
     "Pitch degrees" : {
 
     },
@@ -282,6 +294,9 @@
 
     },
     "Playing" : {
+
+    },
+    "Playing for %@" : {
 
     },
     "Plays the selected reference tone" : {
@@ -392,6 +407,12 @@
 
     },
     "Unavailable preferred timbre: %@. Sine selected as a safe fallback." : {
+
+    },
+    "Uninterrupted playback duration" : {
+
+    },
+    "Very high pitches may not be reproduced clearly by some speakers. Suitable headphones or an external speaker may help; your selected pitch is unchanged." : {
 
     },
     "Will be added" : {

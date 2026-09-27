@@ -9,11 +9,14 @@
     "Route capability disclosure and accessible uninterrupted-playback duration.",
     "Physical iPhone audio-route, listening, latency, endurance, thermal, and energy qualification records."
   ],
+  "dateVerified" : "2026-09-27",
   "epicID" : {
     "rawValue" : "EP-013"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0039"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -21,7 +24,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-26T12:43:14Z"
+    "updatedAt" : "2026-09-27T21:40:05Z"
   },
   "notes" : [
     "Simulator checks cannot be offered as evidence for physical output, route behavior, interruption behavior, background playback, perceived timbre, latency, endurance, thermal, or hearing safety."
@@ -29,7 +32,45 @@
   "priority" : "high",
   "rationale" : "Simulator checks cannot be offered as evidence for physical output, route behavior, interruption behavior, background playback, perceived timbre, latency, endurance, thermal, or hearing safety.",
   "requirementIDs" : [
-
+    {
+      "rawValue" : "JT-FR-018"
+    },
+    {
+      "rawValue" : "JT-FR-081"
+    },
+    {
+      "rawValue" : "JT-FR-082"
+    },
+    {
+      "rawValue" : "JT-FR-084"
+    },
+    {
+      "rawValue" : "JT-NFR-025"
+    },
+    {
+      "rawValue" : "JT-NFR-026"
+    },
+    {
+      "rawValue" : "JT-NFR-027"
+    },
+    {
+      "rawValue" : "JT-NFR-033"
+    },
+    {
+      "rawValue" : "JT-NFR-038"
+    },
+    {
+      "rawValue" : "JT-NFR-040"
+    },
+    {
+      "rawValue" : "JT-NFR-041"
+    },
+    {
+      "rawValue" : "JT-NFR-042"
+    },
+    {
+      "rawValue" : "JT-NFR-043"
+    }
   ],
   "sprintID" : {
     "rawValue" : "SP-033"
@@ -42,7 +83,7 @@
       "rawValue" : "T-0043"
     },
     "kind" : "task",
-    "status" : "backlog",
+    "status" : "implementedVerified",
     "title" : "Implement route capability, playback duration, and physical audio qualification"
   }
 }

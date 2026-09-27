@@ -14,7 +14,9 @@
     "rawValue" : "EP-013"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0041"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -22,7 +24,7 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-27T21:06:49Z"
+    "updatedAt" : "2026-09-27T22:02:46Z"
   },
   "notes" : [
     "Do not add microphone access, automatic resume, route forcing, system-volume control, network services, or unapproved background behavior beyond the approved audio session capability."
