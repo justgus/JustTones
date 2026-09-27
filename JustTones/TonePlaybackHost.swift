@@ -1,6 +1,7 @@
 import AVFoundation
 import Foundation
 import JustTonesCore
+import MediaPlayer
 import Observation
 import Synchronization
 
@@ -21,6 +22,7 @@ final class TonePlaybackHost {
             case .interrupted: self.interruptionBegan()
             case .routeUnavailable: self.routeBecameUnavailable()
             case .engineFailed: self.engineFailed()
+            case .stopRequested: self.stop()
             }
         }
     }
@@ -69,6 +71,7 @@ final class TonePlaybackHost {
                 lifecycle.sessionDidActivate()
             } catch {
                 guard generation == startGeneration else { return }
+                driver.stopImmediately()
                 lifecycle.sessionActivationFailed()
             }
             publishState()
@@ -115,7 +118,7 @@ protocol TonePlaybackHostingDriver: AnyObject {
     func stopImmediately()
 }
 
-enum TonePlaybackDriverEvent { case interrupted, routeUnavailable, engineFailed }
+enum TonePlaybackDriverEvent { case interrupted, routeUnavailable, engineFailed, stopRequested }
 
 /// An AVAudioEngine output host. Session activation never blocks the main actor; the callback owns
 /// the renderer and receives only a lock-free, preallocated command.
@@ -126,13 +129,19 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
     private let engine = AVAudioEngine()
     private var sourceNode: AVAudioSourceNode?
     private var mailbox: ToneRenderMailbox?
+    private var stopWorkItem: DispatchWorkItem?
+    private var remoteStopTarget: Any?
+    private var isPlaybackActive = false
 
     override init() {
         super.init()
         NotificationCenter.default.addObserver(
             forName: AVAudioSession.didBecomeInactiveNotification, object: session, queue: .main
         ) { [weak self] _ in
-            Task { @MainActor in self?.eventHandler?(.interrupted) }
+            Task { @MainActor in
+                guard self?.isPlaybackActive == true else { return }
+                self?.eventHandler?(.interrupted)
+            }
         }
         NotificationCenter.default.addObserver(
             forName: AVAudioSession.routeChangeNotification, object: session, queue: .main
@@ -144,11 +153,20 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
         NotificationCenter.default.addObserver(
             forName: .AVAudioEngineConfigurationChange, object: engine, queue: .main
         ) { [weak self] _ in
-            Task { @MainActor in self?.eventHandler?(.engineFailed) }
+            Task { @MainActor in
+                let wasPlaying = self?.isPlaybackActive == true
+                self?.discardAudioGraph()
+                if wasPlaying { self?.eventHandler?(.engineFailed) }
+            }
+        }
+        remoteStopTarget = MPRemoteCommandCenter.shared().stopCommand.addTarget { [weak self] _ in
+            Task { @MainActor in self?.eventHandler?(.stopRequested) }
+            return .success
         }
     }
 
     func startTone(selection: TonePlaybackSelection) async throws {
+        cancelScheduledStop()
         try await configureAndActivateSession()
         try installSourceIfNeeded()
         mailbox?.submit(.play(selection))
@@ -156,14 +174,27 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
             engine.prepare()
             try engine.start()
         }
+        isPlaybackActive = true
+        publishNowPlaying(selection)
     }
 
-    func stopTone() { mailbox?.submit(.stop) }
+    func stopTone() {
+        isPlaybackActive = false
+        mailbox?.submit(.stop)
+        clearNowPlaying()
+        scheduleDeactivationAfterRamp()
+    }
 
-    func updateTone(_ selection: TonePlaybackSelection) { mailbox?.submit(.play(selection)) }
+    func updateTone(_ selection: TonePlaybackSelection) {
+        mailbox?.submit(.play(selection))
+        publishNowPlaying(selection)
+    }
 
     func stopImmediately() {
+        isPlaybackActive = false
+        cancelScheduledStop()
         mailbox?.submit(.stop)
+        clearNowPlaying()
         engine.pause()
         session.deactivate(options: [.notifyOthersOnDeactivation]) { _, _ in }
     }
@@ -174,7 +205,7 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
         try await withCheckedThrowingContinuation { continuation in
             DispatchQueue.global(qos: .userInitiated).async { [session] in
                 do {
-                    try session.setCategory(.playback, mode: .default, options: [])
+                    try session.setCategory(.playback, mode: .default, options: [.mixWithOthers])
                     session.activate(options: []) { activated, error in
                         if activated {
                             continuation.resume()
@@ -208,6 +239,54 @@ final class AVAudioToneOutputDriver: NSObject, TonePlaybackHostingDriver {
         self.sourceNode = sourceNode
         engine.attach(sourceNode)
         try engine.connectNode(sourceNode, to: engine.mainMixerNode, format: sourceFormat)
+    }
+
+    /// A format change invalidates the existing source-node format. Rebuilding happens on the
+    /// next explicit Play request, retaining the selection but never resuming on its own.
+    private func discardAudioGraph() {
+        isPlaybackActive = false
+        cancelScheduledStop()
+        clearNowPlaying()
+        engine.stop()
+        if let sourceNode {
+            engine.disconnectNodeOutput(sourceNode)
+            engine.detach(sourceNode)
+        }
+        sourceNode = nil
+        mailbox = nil
+    }
+
+    private func scheduleDeactivationAfterRamp() {
+        cancelScheduledStop()
+        let item = DispatchWorkItem { [weak self] in
+            guard let self else { return }
+            self.engine.pause()
+            self.session.deactivate(options: [.notifyOthersOnDeactivation]) { _, _ in }
+        }
+        stopWorkItem = item
+        let rampDuration = Double(ToneRendererFixtures.rampFrames) / session.sampleRate
+        DispatchQueue.main.asyncAfter(deadline: .now() + max(0.05, rampDuration * 2), execute: item)
+    }
+
+    private func cancelScheduledStop() {
+        stopWorkItem?.cancel()
+        stopWorkItem = nil
+    }
+
+    private func publishNowPlaying(_ selection: TonePlaybackSelection) {
+        let title = "\(selection.frequency.hertz.formatted(.number.precision(.fractionLength(1)))) Hz"
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+            MPMediaItemPropertyTitle: title,
+            MPMediaItemPropertyAlbumTitle: selection.timbre.rawValue.localizedCapitalized,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: 0,
+            MPNowPlayingInfoPropertyPlaybackRate: 1
+        ]
+        MPRemoteCommandCenter.shared().stopCommand.isEnabled = true
+    }
+
+    private func clearNowPlaying() {
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        MPRemoteCommandCenter.shared().stopCommand.isEnabled = false
     }
 
     /// Source-node callbacks run on RemoteIO, never on the main actor. Keeping the closure

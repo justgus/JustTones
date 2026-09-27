@@ -1,0 +1,21 @@
+{
+  "disposition" : "unverified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-056"
+  },
+  "isVerified" : false,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "ownerID" : {
+    "rawValue" : "EP-013"
+  },
+  "text" : "The iPhone truthfully discloses output-route or extreme-pitch limitations without changing the selected pitch, exposes uninterrupted playback duration accessibly, and preserves selected session data when playback cannot continue."
+}

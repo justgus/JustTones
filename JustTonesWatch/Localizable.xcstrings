@@ -47,13 +47,7 @@
     "%lld percent" : {
 
     },
-    "Audio" : {
-
-    },
-    "Audio and data status" : {
-
-    },
-    "Audio route" : {
+    "Audio status" : {
 
     },
     "Browse pitches" : {
@@ -160,9 +154,6 @@
 
     },
     "Sound controls" : {
-
-    },
-    "Status" : {
 
     },
     "Stop" : {

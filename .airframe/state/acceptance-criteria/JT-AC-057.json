@@ -1,0 +1,21 @@
+{
+  "disposition" : "unverified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-057"
+  },
+  "isVerified" : false,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "ownerID" : {
+    "rawValue" : "EP-013"
+  },
+  "text" : "Session integration is qualified with separately attributed automated and physical-device evidence, including required route, listening, background, media-control, latency, endurance, thermal, and energy observations; simulator results are never substituted for physical audio evidence."
+}

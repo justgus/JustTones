@@ -1,6 +1,14 @@
 {
   "acceptanceCriterionIDs" : [
-
+    {
+      "rawValue" : "JT-AC-055"
+    },
+    {
+      "rawValue" : "JT-AC-056"
+    },
+    {
+      "rawValue" : "JT-AC-057"
+    }
   ],
   "goal" : "Complete safe iPhone playback-session and system integration behavior.",
   "issueIDs" : [
@@ -11,36 +19,52 @@
       "major" : 1,
       "minor" : 0,
       "patch" : 0
-    }
+    },
+    "updatedAt" : "2026-09-27T17:28:44Z"
   },
   "notes" : [
-    "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied."
+    "Planning completed and Epic activation explicitly authorized by the user on 2026-09-26.",
+    "EP-010 remains the completed timbre-selection baseline. This Epic owns iPhone session and system integration, not new synthesis or Watch workflow changes.",
+    "SP-032 is planned but not activated for implementation; SP-033 remains backlog until session behavior is ready for physical qualification."
   ],
   "outOfScope" : [
-
+    "New synthesis algorithms or timbre catalog work",
+    "Microphone pitch detection, route forcing, system-volume control, automatic resume, network services, accounts, analytics, or release submission",
+    "Apple Watch synchronization or independent-Watch workflow changes"
   ],
   "owner" : "",
   "planningDocumentPaths" : [
     "docs\/Epics\/EP-013-Planning.md"
   ],
-  "rationale" : "Synthesis is delivered, while session, media, route, and physical-device qualifications remain incomplete.",
+  "rationale" : "The shared renderer and iPhone timbre baseline exist, but approved iPhone session behavior, media integration, route disclosure, duration presentation, and separately attributed physical qualification remain incomplete.",
   "scope" : [
-    "Background and lock playback",
-    "Media controls and audio mixing",
-    "Route capability and physical listening qualification"
+    "Deliberate iPhone AVAudioSession lifecycle, background and lock playback, interruption and failure behavior",
+    "Applicable system media controls, Silent Mode behavior, and audio mixing",
+    "Truthful route capability disclosure and accessible uninterrupted-playback duration",
+    "Separately attributed deterministic and physical-device route, listening, latency, endurance, thermal, and energy qualification"
   ],
   "sprintIDs" : [
-
+    {
+      "rawValue" : "SP-032"
+    },
+    {
+      "rawValue" : "SP-033"
+    }
   ],
   "taskIDs" : [
-
+    {
+      "rawValue" : "T-0043"
+    },
+    {
+      "rawValue" : "T-0042"
+    }
   ],
   "workItem" : {
     "id" : {
       "rawValue" : "EP-013"
     },
     "kind" : "epic",
-    "status" : "backlog",
+    "status" : "active",
     "title" : "Playback Session and System Integration"
   }
 }

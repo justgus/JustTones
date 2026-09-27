@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-055"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-27T21:07:35Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-013"
+  },
+  "text" : "Deliberately started iPhone playback uses an approved, mixing-capable audio session; it remains truthful and controllable through Silent Mode, background or lock operation where the system permits, applicable media controls, interruptions, route changes, and engine failures, with no automatic playback or resume."
+}

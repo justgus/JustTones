@@ -1,0 +1,84 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-055"
+    }
+  ],
+  "artifactReferences" : [
+
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "System-facing state and controls remain truthful; other-app audio continues; every required stop or failure is clean and preserves the selected session without automatic restart.",
+    "Automated results are retained separately from physical observations."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-245"
+  },
+  "kind" : "integration",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Physical route, interruption, background, and listening portions require device evidence."
+  ],
+  "objective" : "Verify deliberately started iPhone playback uses the configured session and converges truthfully through system media, interruption, route, and engine events.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-020"
+    },
+    {
+      "rawValue" : "JT-FR-021"
+    },
+    {
+      "rawValue" : "JT-FR-022"
+    },
+    {
+      "rawValue" : "JT-FR-023"
+    },
+    {
+      "rawValue" : "JT-FR-024"
+    },
+    {
+      "rawValue" : "JT-FR-025"
+    },
+    {
+      "rawValue" : "JT-FR-026"
+    },
+    {
+      "rawValue" : "JT-FR-083"
+    },
+    {
+      "rawValue" : "JT-NFR-036"
+    },
+    {
+      "rawValue" : "JT-NFR-037"
+    },
+    {
+      "rawValue" : "JT-NFR-045"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "On a physical iPhone, explicitly start playback and exercise Silent Mode, background and lock, media Stop, a permitted transient interruption, an exclusive interruption, route replacement, and a recoverable engine-start failure.",
+    "Run deterministic lifecycle, state-machine, render-path, and format-adaptation coverage separately."
+  ],
+  "title" : "iPhone session, media, and lifecycle integration",
+  "workItemIDs" : [
+    {
+      "rawValue" : "EP-013"
+    },
+    {
+      "rawValue" : "SP-032"
+    },
+    {
+      "rawValue" : "T-0042"
+    }
+  ]
+}

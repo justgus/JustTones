@@ -1,0 +1,35 @@
+{
+  "endDate" : "2026-09-27",
+  "epicID" : {
+    "rawValue" : "EP-013"
+  },
+  "goal" : "Planning completed on 2026-09-26. This Sprint has not been activated for implementation.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-27T21:07:50Z"
+  },
+  "notes" : [
+    "Planning completed on 2026-09-26. This Sprint has not been activated for implementation.",
+    "No microphone access, route forcing, system-volume control, automatic resume, or new network\/background capability is authorized."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0042"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-032"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "iPhone Session, Media, and Lifecycle"
+  }
+}

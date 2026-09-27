@@ -1,0 +1,81 @@
+{
+  "acceptanceCriteria" : [
+    "Explicit Play configures an iPhone session that remains audible in Silent Mode and, where the operating system permits, while locked or backgrounded, without spontaneous playback or resume.",
+    "While active, applicable system media surfaces truthfully expose the selected tone, timbre, state, and an immediate Stop action; JustTones mixes with other app audio without changing the selected route or system volume.",
+    "Interruptions, route loss or format changes, and engine failures converge on a truthful non-playing or unavailable state; selected profile, pitch, timbre, and output level are preserved and Retry is offered when possible."
+  ],
+  "component" : "AVAudioSession category, options, activation, interruption, route-change, and media-remote integration for deliberately started iPhone playback.",
+  "componentsAffected" : [
+    "AVAudioSession category, options, activation, interruption, route-change, and media-remote integration for deliberately started iPhone playback.",
+    "Truthful lifecycle state, explicit recovery, duration handoff, and deterministic integration coverage."
+  ],
+  "dateVerified" : "2026-09-27",
+  "epicID" : {
+    "rawValue" : "EP-013"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-27T21:06:49Z"
+  },
+  "notes" : [
+    "Do not add microphone access, automatic resume, route forcing, system-volume control, network services, or unapproved background behavior beyond the approved audio session capability."
+  ],
+  "priority" : "high",
+  "rationale" : "Do not add microphone access, automatic resume, route forcing, system-volume control, network services, or unapproved background behavior beyond the approved audio session capability.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-020"
+    },
+    {
+      "rawValue" : "JT-FR-021"
+    },
+    {
+      "rawValue" : "JT-FR-022"
+    },
+    {
+      "rawValue" : "JT-FR-023"
+    },
+    {
+      "rawValue" : "JT-FR-024"
+    },
+    {
+      "rawValue" : "JT-FR-025"
+    },
+    {
+      "rawValue" : "JT-FR-026"
+    },
+    {
+      "rawValue" : "JT-FR-083"
+    },
+    {
+      "rawValue" : "JT-NFR-036"
+    },
+    {
+      "rawValue" : "JT-NFR-037"
+    },
+    {
+      "rawValue" : "JT-NFR-045"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-032"
+  },
+  "testSteps" : [
+    "Automated lifecycle and state-machine results; simulator results identified as non-physical; physical iPhone background, lock, Silent Mode, interruption, media-control, and route records retained separately."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0042"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement iPhone playback-session, media-control, and lifecycle behavior"
+  }
+}

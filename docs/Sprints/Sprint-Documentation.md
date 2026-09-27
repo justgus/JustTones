@@ -8,7 +8,7 @@ Currently: **None**
 
 ## All Sprints
 
-Currently: **31 Sprints** | Next available: **SP-032**
+Currently: **33 Sprints** | Next available: **SP-034**
 
 | Sprint | Title | Epic | Tasks | Issues | Status |
 | ------ | ----- | ---- | ----- | ------ | ------ |
@@ -43,15 +43,17 @@ Currently: **31 Sprints** | Next available: **SP-032**
 | SP-029 | iPhone Playback Continuity and Accessibility | EP-019 | T-0039 | None | Closed |
 | SP-030 | Watch Interaction Surface | EP-019 | T-0040 | None | Closed |
 | SP-031 | Watch State and Data Status | EP-019 | T-0041 | None | Closed |
+| SP-032 | iPhone Session, Media, and Lifecycle | EP-013 | T-0042 | None | Closed |
+| SP-033 | Route Capability and Physical Qualification | EP-013 | T-0043 | None | Backlog |
 
 ## Statistics
 
-- **Total Sprints:** 31
-- **Backlog:** 0
+- **Total Sprints:** 33
+- **Backlog:** 1
 - **Planning:** 0
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 31
-- **Next available:** SP-032
+- **Closed:** 32
+- **Next available:** SP-034
 
-*Last Updated: 2026-09-24*
+*Last Updated: 2026-09-27*

@@ -190,7 +190,10 @@ struct ContentView: View {
             .onChange(of: userTuningSystems) { _, _ in persistUserProfiles() }
             .onChange(of: hiddenBuiltInProfileIDs) { _, _ in persistUserProfiles() }
             .onChange(of: playbackHost.state) { _, state in
-                if state != .playing {
+                if state == .playing {
+                    playbackStartedAt = .now
+                    remindersPresented = 0
+                } else {
                     playbackStartedAt = nil
                     remindersPresented = 0
                 }
@@ -252,7 +255,7 @@ struct ContentView: View {
     private var toneControls: some View {
         Button("Previous", systemImage: "chevron.left") { move(-1) }
             .disabled(index == 0)
-        Button(playbackHost.isPlaying || playbackHost.state == .starting ? "Stop" : "Play", systemImage: playbackHost.isPlaying || playbackHost.state == .starting ? "stop.fill" : "play.fill") { requestPlaybackToggle() }
+        Button(playbackControlTitle, systemImage: playbackHost.isPlaying || playbackHost.state == .starting ? "stop.fill" : "play.fill") { requestPlaybackToggle() }
             .buttonStyle(.borderedProminent)
             .tint(playbackHost.isPlaying || playbackHost.state == .starting ? .red : .accentColor)
             .accessibilityHint(playbackHost.isPlaying ? "Stops the reference tone" : "Plays the selected reference tone")
@@ -323,9 +326,6 @@ struct ContentView: View {
               let level = try? ToneOutputLevel(Float(outputLevel)),
               let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
         playbackHost.play(TonePlaybackSelection(frequency: renderFrequency, timbre: timbre, level: level))
-        guard playbackHost.isPlaying else { return }
-        playbackStartedAt = Date()
-        remindersPresented = 0
     }
 
     private func handleLevelChange(from oldValue: Double, to newValue: Double) {
@@ -387,6 +387,14 @@ struct ContentView: View {
             PlaybackStatePresentation(title: "Audio unavailable", symbol: "speaker.slash", tint: .orange)
         case .unavailable(.engineFailed):
             PlaybackStatePresentation(title: "Audio engine unavailable", symbol: "speaker.slash", tint: .orange)
+        }
+    }
+
+    private var playbackControlTitle: LocalizedStringResource {
+        if playbackHost.isPlaying || playbackHost.state == .starting { return "Stop" }
+        switch playbackHost.state {
+        case .unavailable(.sessionActivationFailed), .unavailable(.engineFailed): return "Retry"
+        default: return "Play"
         }
     }
 

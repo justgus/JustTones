@@ -56,10 +56,17 @@ struct JustTonesTests {
     @MainActor @Test func playbackHostReportsEngineStartFailureTruthfully() async throws {
         let driver = RecordingToneDriver(shouldFailStart: true)
         let host = TonePlaybackHost(driver: driver)
-        host.play(TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440)))
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+        host.play(selection)
         await Task.yield()
 
         #expect(host.state == .unavailable(.sessionActivationFailed))
+        #expect(host.activeSelection == nil)
+        #expect(driver.immediateStopCount == 1)
+
+        host.play(selection)
+        await Task.yield()
+        #expect(driver.startedSelections.isEmpty)
     }
 
     @MainActor @Test func playbackHostNeverRestartsAfterRouteOrInterruption() async throws {
@@ -93,9 +100,24 @@ struct JustTonesTests {
         case .interrupted: .unavailable(.interrupted)
         case .routeUnavailable: .unavailable(.routeUnavailable)
         case .engineFailed: .unavailable(.engineFailed)
+        case .stopRequested: .stopped
         }
         #expect(host.state == expectedState)
         #expect(driver.immediateStopCount == 1)
+        #expect(driver.startedSelections == [selection])
+    }
+
+    @MainActor @Test func playbackHostHonorsASystemStopRequestWithoutRestarting() async throws {
+        let driver = RecordingToneDriver()
+        let host = TonePlaybackHost(driver: driver)
+        let selection = TonePlaybackSelection(frequency: try DirectFrequency(hertz: 440))
+
+        host.play(selection)
+        await Task.yield()
+        driver.eventHandler?(.stopRequested)
+
+        #expect(host.state == .stopped)
+        #expect(driver.stopCount == 1)
         #expect(driver.startedSelections == [selection])
     }
 

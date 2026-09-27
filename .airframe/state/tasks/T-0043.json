@@ -1,0 +1,48 @@
+{
+  "acceptanceCriteria" : [
+    "The primary playback status makes uninterrupted duration available accessibly while playing and resets it on a new session.",
+    "When a requested pitch or route cannot be adequately reproduced, the selected pitch remains unchanged and the app gives a non-blocking, truthful equipment recommendation.",
+    "The completed physical qualification matrix distinguishes supported iPhone routes, connection and replacement behavior, listening outcomes, latency, endurance, thermal, and energy observations from automated or simulator evidence."
+  ],
+  "component" : "Route capability disclosure and accessible uninterrupted-playback duration.",
+  "componentsAffected" : [
+    "Route capability disclosure and accessible uninterrupted-playback duration.",
+    "Physical iPhone audio-route, listening, latency, endurance, thermal, and energy qualification records."
+  ],
+  "epicID" : {
+    "rawValue" : "EP-013"
+  },
+  "evidenceIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-26T12:43:14Z"
+  },
+  "notes" : [
+    "Simulator checks cannot be offered as evidence for physical output, route behavior, interruption behavior, background playback, perceived timbre, latency, endurance, thermal, or hearing safety."
+  ],
+  "priority" : "high",
+  "rationale" : "Simulator checks cannot be offered as evidence for physical output, route behavior, interruption behavior, background playback, perceived timbre, latency, endurance, thermal, or hearing safety.",
+  "requirementIDs" : [
+
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-033"
+  },
+  "testSteps" : [
+    "Physical-device records state device, OS, route, selected tone and level, actions, outcome, duration, and any limitation; automated analysis is attached separately."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0043"
+    },
+    "kind" : "task",
+    "status" : "backlog",
+    "title" : "Implement route capability, playback duration, and physical audio qualification"
+  }
+}

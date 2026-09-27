@@ -1,0 +1,92 @@
+{
+  "acceptanceCriterionIDs" : [
+    {
+      "rawValue" : "JT-AC-056"
+    },
+    {
+      "rawValue" : "JT-AC-057"
+    }
+  ],
+  "artifactReferences" : [
+
+  ],
+  "evidenceIDs" : [
+
+  ],
+  "expectedResults" : [
+    "Capability notice is non-blocking and truthful, duration is accessible, and evidence clearly names the device, OS, route, selected tone, level, actions, outcome, and limitations."
+  ],
+  "id" : {
+    "rawValue" : "JT-TEST-246"
+  },
+  "kind" : "manual",
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "notes" : [
+    "Do not use simulator outcomes as physical-audio qualification."
+  ],
+  "objective" : "Verify route capability disclosure, accessible duration, and the physical-device qualification boundaries for sustained iPhone reference-tone playback.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-018"
+    },
+    {
+      "rawValue" : "JT-FR-081"
+    },
+    {
+      "rawValue" : "JT-FR-082"
+    },
+    {
+      "rawValue" : "JT-FR-084"
+    },
+    {
+      "rawValue" : "JT-NFR-025"
+    },
+    {
+      "rawValue" : "JT-NFR-026"
+    },
+    {
+      "rawValue" : "JT-NFR-027"
+    },
+    {
+      "rawValue" : "JT-NFR-033"
+    },
+    {
+      "rawValue" : "JT-NFR-038"
+    },
+    {
+      "rawValue" : "JT-NFR-040"
+    },
+    {
+      "rawValue" : "JT-NFR-041"
+    },
+    {
+      "rawValue" : "JT-NFR-042"
+    },
+    {
+      "rawValue" : "JT-NFR-043"
+    }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "Exercise built-in speaker, wired or USB, Bluetooth, and AirPlay where supported, including connection, removal, and replacement while playing.",
+    "Record duration, output capability disclosure, latency, two-hour endurance, memory, size, thermal, and energy observations using the approved physical-device matrix."
+  ],
+  "title" : "iPhone route capability, duration, and sustained-playback qualification",
+  "workItemIDs" : [
+    {
+      "rawValue" : "EP-013"
+    },
+    {
+      "rawValue" : "SP-033"
+    },
+    {
+      "rawValue" : "T-0043"
+    }
+  ]
+}
