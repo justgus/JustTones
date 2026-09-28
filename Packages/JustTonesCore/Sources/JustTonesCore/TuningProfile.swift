@@ -11,8 +11,8 @@ public enum TuningProfileValidationError: Error, Equatable, Sendable {
     case invalidReorder
 }
 
-/// One ordered pitch in a tuning profile. `TuningReference` retains named, direct, and written /
-/// sounding pitch identity without forcing a display spelling into a frequency.
+/// One ordered pitch in a tuning profile. `TuningReference` retains named, direct, written / sounding,
+/// or tuning-system degree identity until profile context is available for resolution.
 public struct TuningProfileEntry: Codable, Hashable, Sendable, Identifiable {
     public let id: UUID
     public var label: String?
@@ -46,6 +46,9 @@ public struct TuningProfile: Codable, Hashable, Sendable, Identifiable {
     public var tags: [String]
     public var preferredTimbreID: String?
     public var soundingSemitoneOffset: Int
+    /// The profile's A4 reference. It is captured with the profile so global preference changes
+    /// cannot silently retune an existing profile.
+    public var referencePitch: ReferencePitch
 
     public init(
         id: UUID = UUID(),
@@ -55,7 +58,8 @@ public struct TuningProfile: Codable, Hashable, Sendable, Identifiable {
         entries: [TuningProfileEntry],
         tags: [String] = [],
         preferredTimbreID: String? = nil,
-        soundingSemitoneOffset: Int = 0
+        soundingSemitoneOffset: Int = 0,
+        referencePitch: ReferencePitch = .default
     ) throws {
         self.id = id
         self.name = name
@@ -65,6 +69,7 @@ public struct TuningProfile: Codable, Hashable, Sendable, Identifiable {
         self.tags = tags
         self.preferredTimbreID = preferredTimbreID
         self.soundingSemitoneOffset = soundingSemitoneOffset
+        self.referencePitch = referencePitch
         try validate()
     }
 
@@ -79,6 +84,43 @@ public struct TuningProfile: Codable, Hashable, Sendable, Identifiable {
         guard entries.allSatisfy({ $0.groupID?.isEmpty != true }) else {
             throw TuningProfileValidationError.emptyGroupIdentifier
         }
+    }
+
+    public func resolvedFrequency(
+        for entry: TuningProfileEntry,
+        userTuningSystems: [JustTonesInterchangeTuningSystem] = []
+    ) throws -> Double {
+        guard case let .systemDegree(degreeID) = entry.pitch else {
+            return try entry.pitch.frequency(using: referencePitch)
+        }
+        guard let tuningSystemID else { throw TuningResolutionError.missingTuningSystem }
+
+        let normalizedID = tuningSystemID.lowercased()
+        if let builtIn = BuiltInCatalog.tuningSystems.first(where: { $0.id.lowercased() == normalizedID }) {
+            return try builtIn.system.resolvedFrequency(forDegreeID: degreeID, using: referencePitch)
+        }
+        if let userSystem = userTuningSystems.first(where: { $0.id.uuidString.lowercased() == normalizedID }) {
+            return try userSystem.system.resolvedFrequency(forDegreeID: degreeID, using: referencePitch)
+        }
+        throw TuningResolutionError.unresolvedTuningSystem(tuningSystemID)
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, instrument, tuningSystemID, entries, tags, preferredTimbreID, soundingSemitoneOffset, referencePitch
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        instrument = try container.decodeIfPresent(String.self, forKey: .instrument)
+        tuningSystemID = try container.decodeIfPresent(String.self, forKey: .tuningSystemID)
+        entries = try container.decode([TuningProfileEntry].self, forKey: .entries)
+        tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
+        preferredTimbreID = try container.decodeIfPresent(String.self, forKey: .preferredTimbreID)
+        soundingSemitoneOffset = try container.decodeIfPresent(Int.self, forKey: .soundingSemitoneOffset) ?? 0
+        referencePitch = try container.decodeIfPresent(ReferencePitch.self, forKey: .referencePitch) ?? .default
+        try validate()
     }
 }
 
@@ -149,7 +191,8 @@ public struct TuningProfileLibrary: Codable, Hashable, Sendable {
             entries: duplicatedEntries,
             tags: original.tags,
             preferredTimbreID: original.preferredTimbreID,
-            soundingSemitoneOffset: original.soundingSemitoneOffset
+            soundingSemitoneOffset: original.soundingSemitoneOffset,
+            referencePitch: original.referencePitch
         )
         profiles.append(duplicate)
         return duplicate

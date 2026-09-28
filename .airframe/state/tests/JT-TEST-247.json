@@ -1,0 +1,35 @@
+{
+  "acceptanceCriterionIDs" : [ { "rawValue" : "JT-AC-058" } ],
+  "artifactReferences" : [],
+  "evidenceIDs" : [],
+  "expectedResults" : [
+    "Every supported pitch representation resolves to its specified frequency from the selected system and retained profile reference.",
+    "Invalid, unresolved, non-finite, or out-of-range inputs fail deterministically and never produce a substitute frequency.",
+    "Legacy profiles without the new reference field preserve current behavior by decoding with the documented A4=440.0 Hz default."
+  ],
+  "id" : { "rawValue" : "JT-TEST-247" },
+  "kind" : "unit",
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 } },
+  "notes" : [ "Planned for SP-034; not executed. Maintain locale-independent numeric storage." ],
+  "objective" : "Verify versioned profile pitch resolution and migration in the shared core.",
+  "requirementIDs" : [
+    { "rawValue" : "JT-FR-003" },
+    { "rawValue" : "JT-FR-013" },
+    { "rawValue" : "JT-FR-027" },
+    { "rawValue" : "JT-FR-028" },
+    { "rawValue" : "JT-FR-033" }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "Resolve named pitches across octaves and accidentals with the profile's A4 reference; verify direct frequencies remain absolute.",
+    "Resolve stable degree references for equal divisions, ratios, cents offsets, and explicit-frequency definitions against the selected system and reference.",
+    "Exercise 350.0 Hz and 500.0 Hz references, a 0.1 Hz increment, missing system/degree IDs, invalid values, and results outside the supported frequency range.",
+    "Decode legacy schema-3 profile fixtures with no reference field, then encode/decode the migrated profile and compare identity and frequency semantics."
+  ],
+  "title" : "Profile pitch resolution, reference, and migration",
+  "workItemIDs" : [
+    { "rawValue" : "EP-014" },
+    { "rawValue" : "SP-034" },
+    { "rawValue" : "T-0044" }
+  ]
+}

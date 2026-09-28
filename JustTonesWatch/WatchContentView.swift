@@ -17,6 +17,7 @@ struct WatchContentView: View {
     @State private var playbackStartedAt: Date?
     @State private var remindersPresented = 0
     @State private var showListeningReminder = false
+    @State private var profileConfigurationNotice: String?
 
     private var profiles: [TuningProfile] {
         let playable = replica.profiles.filter { !$0.entries.isEmpty }
@@ -24,7 +25,9 @@ struct WatchContentView: View {
     }
     private var profile: TuningProfile { profiles[min(profileIndex, profiles.count - 1)] }
     private var entry: TuningProfileEntry { profile.entries[min(entryIndex, profile.entries.count - 1)] }
-    private var frequency: Double { (try? entry.pitch.frequency()) ?? 0 }
+    private var frequency: Double? {
+        try? profile.resolvedFrequency(for: entry, userTuningSystems: replica.tuningSystems)
+    }
     private var timbre: BuiltInTimbre { BuiltInTimbre(rawValue: timbreRawValue) ?? .sine }
     private var isActive: Bool { playbackHost.state == .starting || playbackHost.isPlaying }
 
@@ -137,7 +140,11 @@ struct WatchContentView: View {
             Button("Cancel", role: .cancel) { cancelSafetyWarning() }
             Button("Continue") { acknowledgeSafetyWarning() }
         } message: { Text(safetyWarningMessage) }
-        .onChange(of: replica.profiles) { _, profiles in
+        .onChange(of: replica.replicatedDocument) { _, _ in
+            // The profile list and custom systems form one validated snapshot. Stop a tone that
+            // might otherwise continue using the previous snapshot's resolved frequency.
+            playbackHost.stop()
+            let profiles = replica.profiles
             let selectedID = UUID(uuidString: selectedProfileID) ?? profile.id
             if let index = profiles.firstIndex(where: { $0.id == selectedID }) {
                 profileIndex = index
@@ -148,37 +155,52 @@ struct WatchContentView: View {
                 entryIndex = 0
                 selectedProfileID = profile.id.uuidString
                 replica.selectProfile(id: selectedID)
-                synchronizeSelection()
             }
+            synchronizeSelection()
         }
     }
 
     private func toneReadout(fontSize: CGFloat) -> some View {
         let label = entry.label ?? "Pitch"
-        let displayedFrequency = frequency.formatted(.number.precision(.fractionLength(1)))
+        let displayedFrequency = frequency.map { "\($0.formatted(.number.precision(.fractionLength(1)))) Hz" } ?? "Unavailable"
         return VStack(spacing: 2) {
             Text(label)
                 .font(.system(size: fontSize, weight: .semibold, design: .rounded))
                 .lineLimit(1)
                 .minimumScaleFactor(0.45)
-            Text("\(displayedFrequency) Hz (\(profile.name))")
+            Text("\(displayedFrequency) (\(profile.name))")
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.65)
+            if frequency == nil {
+                Text("Check this profile’s tuning system")
+                    .font(.caption2)
+                    .foregroundStyle(.orange)
+            }
+            if let profileConfigurationNotice {
+                Text(profileConfigurationNotice)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Selected pitch, \(label)")
-        .accessibilityValue("\(displayedFrequency) hertz, profile \(profile.name)")
+        .accessibilityValue("\(displayedFrequency), profile \(profile.name)")
     }
 
     private func selectProfile(_ index: Int) {
         guard profiles.indices.contains(index), index != profileIndex else { return }
+        let previous = profile
         playbackHost.stop()
         profileIndex = index
         entryIndex = 0
         crownEntryIndex = 0
         selectedProfileID = profile.id.uuidString
         replica.selectProfile(id: profile.id)
+        profileConfigurationNotice = previous.tuningSystemID != profile.tuningSystemID || previous.referencePitch != profile.referencePitch
+            ? "This profile uses a different tuning system or A4 reference."
+            : nil
         synchronizeSelection()
     }
 
@@ -196,6 +218,7 @@ struct WatchContentView: View {
             return
         }
         guard let level = try? ToneOutputLevel(Float(outputLevel)) else { return }
+        guard let frequency else { return }
         if let warning = HearingSafetyPolicy.warning(
             level: level,
             frequency: frequency,
@@ -222,6 +245,7 @@ struct WatchContentView: View {
 
     private func makeSelection() -> TonePlaybackSelection? {
         guard let level = try? ToneOutputLevel(Float(outputLevel)),
+              let frequency,
               let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return nil }
         return TonePlaybackSelection(frequency: renderFrequency, timbre: timbre, level: level)
     }

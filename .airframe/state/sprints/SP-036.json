@@ -1,0 +1,10 @@
+{
+  "endDate" : "TBD",
+  "epicID" : { "rawValue" : "EP-014" },
+  "goal" : "Plan profile creation and duplication from predefined systems with reference retention, grouping, and written/sounding presentation.",
+  "issueIDs" : [],
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:41:36Z" },
+  "notes" : [ "Moved into planning by user authorization on 2026-09-28; Task T-0046 remains backlog and the Sprint is not active.", "Catalog browsing and profile creation must not start playback." ],
+  "taskIDs" : [ { "rawValue" : "T-0046" } ],
+  "workItem" : { "id" : { "rawValue" : "SP-036" }, "kind" : "sprint", "status" : "planning", "title" : "Profile Creation and Tuning Workflows" }
+}

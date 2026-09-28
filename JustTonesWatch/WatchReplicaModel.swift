@@ -39,7 +39,11 @@ final class WatchReplicaModel: ObservableObject {
         }
     }
 
-    @Published private(set) var profiles: [TuningProfile]
+    @Published private(set) var replicatedDocument: ProfileStoreDocument?
+    var profiles: [TuningProfile] {
+        replicatedDocument?.library.profiles ?? BuiltInCatalog.profileTemplates.map(\.profile)
+    }
+    var tuningSystems: [JustTonesInterchangeTuningSystem] { replicatedDocument?.tuningSystems ?? [] }
     @Published private(set) var status: Status
     @Published private(set) var selectionWasRemoved = false
 
@@ -49,12 +53,12 @@ final class WatchReplicaModel: ObservableObject {
     init(directoryURL: URL? = nil, beginsReceiving: Bool = true) {
         store = WatchReplicaStore(directoryURL: directoryURL ?? Self.replicaDirectory())
         if let replica = try? store.activeReplica() {
-            profiles = replica.document.library.profiles
+            replicatedDocument = replica.document
             status = .validLocalData(lastSuccess: Self.lastModified(at: store.activeURL))
         } else {
             // The bundled catalog is available without a companion. It is not represented as a
             // synchronized user-data replica and never causes playback by itself.
-            profiles = BuiltInCatalog.profileTemplates.map(\.profile)
+            replicatedDocument = nil
             status = .noLocalData
         }
         if beginsReceiving { receiver = WatchReplicaReceiver(model: self) }
@@ -68,7 +72,7 @@ final class WatchReplicaModel: ObservableObject {
         status = .pending(lastSuccess: status.lastSuccess)
         do {
             let replica = try store.stageAndActivate(data)
-            profiles = replica.document.library.profiles
+            replicatedDocument = replica.document
             status = .validLocalData(lastSuccess: Date())
         } catch WatchReplicaError.incompatibleCatalogVersion {
             status = .incompatible(lastSuccess: status.lastSuccess)

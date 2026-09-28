@@ -57,6 +57,12 @@ public struct WatchReplica: Codable, Hashable, Sendable {
         }
         do {
             try document.validate()
+            for profile in document.library.profiles {
+                for entry in profile.entries {
+                    guard case .systemDegree = entry.pitch else { continue }
+                    _ = try profile.resolvedFrequency(for: entry, userTuningSystems: document.tuningSystems)
+                }
+            }
         } catch {
             throw WatchReplicaError.invalidPayload
         }

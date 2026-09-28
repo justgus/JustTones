@@ -1,0 +1,21 @@
+{
+  "artifactReferences" : [
+    "Packages/JustTonesCore/Sources/JustTonesCore/Pitch.swift",
+    "Packages/JustTonesCore/Sources/JustTonesCore/Tuning.swift",
+    "Packages/JustTonesCore/Sources/JustTonesCore/TuningProfile.swift",
+    "Packages/JustTonesCore/Sources/JustTonesCore/JustTonesInterchange.swift",
+    "Packages/JustTonesCore/Sources/JustTonesCore/WatchReplica.swift",
+    "JustTones/ContentView.swift",
+    "JustTonesWatch/WatchContentView.swift",
+    "JustTonesWatch/WatchReplicaModel.swift"
+  ],
+  "ciReferences" : [],
+  "command" : "git diff --check (passed); DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swift build --package-path Packages/JustTonesCore --scratch-path /private/tmp/JustTones-SP034-CoreBuild (passed); DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -derivedDataPath /private/tmp/JustTones-SP034-DerivedData -clonedSourcePackagesDirPath /private/tmp/JustTones-SP034-SourcePackages build (failed during Watch asset catalog compilation: AppIconWatch had no applicable content). No tests were run.",
+  "environment" : "Xcode-beta 27.2; shared JustTonesCore package build passed. iPhone/Watch app build reached asset catalog compilation and reported the Watch AppIconWatch asset catalog error. Simulator and device runtime checks were not performed.",
+  "id" : { "rawValue" : "EV-0042" },
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 } },
+  "requirementIDs" : [],
+  "result" : "informational",
+  "summary" : "Shared core compiles and whitespace validation passed. The full iPhone/Watch app build did not complete because the Watch AppIconWatch asset set has no applicable content. Automated tests and device qualification remain incomplete; this evidence does not establish app compilation or runtime correctness.",
+  "workItemIDs" : [ { "rawValue" : "T-0044" } ]
+}

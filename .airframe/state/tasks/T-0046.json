@@ -1,0 +1,19 @@
+{
+  "acceptanceCriteria" : [
+    "Create or duplicate an editable profile from a predefined system without modifying the catalog record or starting playback.",
+    "Retain and display the profile reference configuration; disclose when profile and selected-system references differ.",
+    "Support approved grouping and written/sounding pitch presentation while preserving the resolved sounding frequency and entry identity."
+  ],
+  "component" : "Profile creation and duplication from catalog systems, reference configuration, grouping, and pitch presentation.",
+  "componentsAffected" : [ "iPhone profile editor and catalog workflow", "Shared profile model and persistence", "Watch profile replica and presentation", "Profile workflow tests" ],
+  "evidenceIDs" : [],
+  "epicID" : { "rawValue" : "EP-014" },
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:00:00Z" },
+  "notes" : [ "Planning record only; implementation is not authorized.", "The predefined source remains immutable; the user's resulting profile is editable. No automatic playback on create, duplicate, or selection." ],
+  "priority" : "high",
+  "rationale" : "Discovery becomes useful when a musician can safely turn a selected system into a reusable, editable reference profile.",
+  "requirementIDs" : [ { "rawValue" : "JT-FR-027" }, { "rawValue" : "JT-FR-032" }, { "rawValue" : "JT-FR-033" }, { "rawValue" : "JT-FR-034" }, { "rawValue" : "JT-FR-035" }, { "rawValue" : "JT-FR-043" }, { "rawValue" : "JT-FR-044" }, { "rawValue" : "JT-FR-045" }, { "rawValue" : "JT-FR-070" }, { "rawValue" : "JT-FR-100" } ],
+  "sprintID" : { "rawValue" : "SP-036" },
+  "testSteps" : [ "Create and duplicate from representative predefined systems; verify source immutability and local persistence after reload.", "Exercise reference mismatch presentation and confirm rendered frequency follows the profile's retained reference.", "Verify grouping and written/sounding labels preserve entry identity and resolved frequency on iPhone and Watch." ],
+  "workItem" : { "id" : { "rawValue" : "T-0046" }, "kind" : "task", "status" : "backlog", "title" : "Implement profile creation and tuning workflows" }
+}

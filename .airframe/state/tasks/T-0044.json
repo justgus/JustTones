@@ -1,0 +1,85 @@
+{
+  "acceptanceCriteria" : [
+    "JT-AC-058: persist each profile's tuning system and valid A4 reference; resolve supported entry forms deterministically; display and render the same frequency on iPhone and Watch; disclose unresolved\/mismatched data without substituting a pitch; preserve safe explicit-play, transition, profile-change, and silent-relaunch behavior."
+  ],
+  "component" : "Shared profile pitch model, persistence migration, frequency resolution, and iPhone\/Watch playback inputs.",
+  "componentsAffected" : [
+    "Shared profile and tuning-system model",
+    "iPhone profile display and playback resolution",
+    "Watch validated replica and playback resolution",
+    "Profile persistence and migration tests"
+  ],
+  "dateImplemented" : "2026-09-28",
+  "dateVerified" : "2026-09-28",
+  "epicID" : {
+    "rawValue" : "EP-014"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0042"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-28T17:37:34Z"
+  },
+  "notes" : [
+    "Activated with SP-034 by user authorization on 2026-09-28.",
+    "Implementation recorded as Implemented - Not Verified. Xcode-beta build did not complete because the Watch AppIconWatch asset set has no applicable content; automated tests and device checks remain unrun."
+  ],
+  "priority" : "high",
+  "rationale" : "A profile's selected system and reference are not yet a complete, reproducible source for displayed and rendered frequency.",
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-003"
+    },
+    {
+      "rawValue" : "JT-FR-013"
+    },
+    {
+      "rawValue" : "JT-FR-027"
+    },
+    {
+      "rawValue" : "JT-FR-028"
+    },
+    {
+      "rawValue" : "JT-FR-032"
+    },
+    {
+      "rawValue" : "JT-FR-033"
+    },
+    {
+      "rawValue" : "JT-FR-037"
+    },
+    {
+      "rawValue" : "JT-FR-038"
+    },
+    {
+      "rawValue" : "JT-FR-040"
+    },
+    {
+      "rawValue" : "JT-FR-044"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-034"
+  },
+  "testSteps" : [
+    "Run existing JT-TEST-042, JT-TEST-043, JT-TEST-048, JT-TEST-061, and JT-TEST-235; add and run planned JT-TEST-247 and JT-TEST-248.",
+    "Verify legacy schema-3 profiles migrate with A4=440.0 Hz while retaining named\/direct pitch behavior; check 350.0\/500.0 Hz and 0.1 Hz boundaries, degree identity, invalid references, and supported-frequency limits.",
+    "Compare resolved model values, iPhone presentation and renderer input, and Watch presentation and renderer input from a single profile\/system snapshot.",
+    "Inspect schemes\/destinations and run focused shared-core, iPhone, and Watch tests with Xcode-beta. Record simulator, paired-Watch, physical listening, and accessibility evidence separately."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0044"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement deterministic profile pitch resolution"
+  }
+}

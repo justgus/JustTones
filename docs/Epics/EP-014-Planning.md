@@ -1,44 +1,61 @@
 # EP-014 — Profile, Catalog, and Content Discovery Completion
 
-**Status:** Backlog
+**Status:** Active (SP-034 closed; SP-035 through SP-038 in planning; no Sprint active).
 
-Complete reproducible profile tuning and catalog discovery around the delivered authoring workflow. The result must let a musician discover the existing predefined systems, understand their documented limitations, create or duplicate a usable reference profile, and hear the frequencies calculated by that profile's selected system and reference configuration.
+## Purpose and boundary
 
-**Primary requirements:** JT-FR-027 through JT-FR-035; JT-FR-043 through JT-FR-045; JT-FR-062 through JT-FR-070; JT-FR-100.
+Complete profile pitch semantics and the discovery workflow around the delivered custom-profile baseline. A musician must be able to discover the existing version-one tuning systems, understand their documented limitations, create or duplicate a usable reference profile, and hear frequencies calculated from that profile's selected system and reference configuration.
 
-**Exit evidence:** profile/catalog UI tests; deterministic system-degree-to-playback-resolution tests on iPhone and Watch; persistence, search/filter, and destructive-action recovery tests; and an explicit disposition record for Chinese and Indian content.
+The Epic covers the profile/catalog portions of JT-FR-027 through JT-FR-035, JT-FR-043 through JT-FR-045, JT-FR-062 through JT-FR-070, and JT-FR-100. EP-011 is the dependency for existing custom-profile authoring. EP-019's iPhone and Watch interaction architecture governs the relevant surfaces. Existing EP-004 acceptance criteria remain owned by EP-004; this Epic does not rewrite their verified state.
 
-**Dependency:** EP-011 supplies the completed local custom-profile baseline.
+## Reconciled delivery plan
 
-## Delivery boundary
+| Sprint | Task | Outcome |
+| --- | --- | --- |
+| SP-034 — Profile Pitch Semantics and Resolution | T-0044 — Active | Persist and resolve each supported pitch-entry form through the selected tuning system and reference; display and render the same deterministic frequency on iPhone and Watch. |
+| SP-035 — Predefined Tuning-System Discovery | T-0045 — Backlog | Make the current immutable catalog discoverable, searchable, filterable, and understandable through detail, provenance, limitation, empty-state, and accessibility presentation. |
+| SP-036 — Profile Creation and Tuning Workflows | T-0046 — Backlog | Create or duplicate an editable profile from a selected system; preserve reference configuration, expose mismatches, and support grouping plus written/sounding presentation without surprise playback. |
+| SP-037 — Profile Recovery and Safe Catalog Use | T-0047 — Backlog | Complete referenced-object deletion/undo or confirmation behavior, recovery paths, and end-to-end persistence/regression qualification. |
+| SP-038 — Chinese and Indian Tuning-Profile Source Review | T-0048 — Backlog | Prepare source-qualified, correctly classified candidates for Chinese twelve-lü and Indian śruti; obtain user approval for exact candidates before catalog inclusion. |
 
-The existing version-one catalog entries—12-TET, Pythagorean, five-limit just intonation, quarter-comma meantone, Werckmeister III, Kirnberger III, Vallotti, and Young II—must be visible as read-only predefined systems. The iPhone must distinguish them from musician-owned systems and disclose each system's source and limitations. Discovery, selection, or return from a detail screen must remain silent.
+The Sprints are sequential planning units. Only one may be active at a time. SP-034 is closed; SP-035 through SP-038 are in planning with backlog Tasks. No Sprint is currently active.
 
-A profile's tuning-system identifier and reference configuration must become functional playback inputs, not passive metadata. A profile entry represented by a tuning-system degree, ratio, or cents offset must resolve deterministically through the selected system and reference before its frequency is displayed or rendered. The paired Watch must use the same resolution behavior from its validated replica. Named and direct-frequency entries retain their documented semantics; the implementation must not silently reinterpret an existing profile.
+## Sprint acceptance and verification
 
-The Epic also owns the unfinished profile behavior needed to make this usable and safe: profile reference retention and mismatch disclosure, grouping, written/sounding presentation, catalog metadata, filter/search, empty states, and referenced-object destructive recovery.
+### SP-034 / T-0044
 
-## Proposed sequential Sprints (not created or activated)
+- A profile's tuning-system identifier and reference configuration are persisted, migrated, and used as playback inputs.
+- Named and direct-frequency entries keep their established meanings. Degree, ratio, and cents-offset entries resolve deterministically through the selected system and reference; unsupported or malformed entries fail truthfully without substituting another pitch.
+- iPhone display, iPhone renderer input, Watch display, and Watch renderer input agree for representative and boundary cases, including reference changes and reloads.
+- Verify with focused shared-model, persistence/migration, iPhone playback-resolution, Watch replica-resolution, and silent-selection tests. Keep physical listening separate from deterministic frequency evidence.
 
-These are planning boundaries only. They do not reserve Sprint identifiers, authorize implementation, or change the Epic's Backlog status.
+### SP-035 / T-0045
 
-1. **Profile tuning semantics and resolution** — extend the shared profile representation and migrations where required; preserve each profile's selected system and reference; resolve supported pitch-entry forms deterministically; and connect the resolved result to iPhone and Watch display/playback. Qualify precision, persistence, migration, reference changes, and silent selection.
-2. **Predefined-system discovery and profile workflow** — present the current immutable catalog separately from user systems; provide detail/provenance/limitation views, search and filters; and allow a musician to create or duplicate an editable reference profile from a selected predefined system without starting audio.
-3. **Profile completion and recovery** — finish grouping, written/sounding presentation, reference-mismatch disclosure, empty states, and confirmation or Undo for destructive changes, including clear impact when a profile references a system.
-4. **Chinese and Indian content decision gate** — before catalog expansion, record the user-approved disposition below. If models are admitted, encode and test only the approved candidates; if they are deferred, preserve the existing catalog and define the successor-Epic boundary without claiming the absent content is delivered.
+- The eight existing version-one systems—12-TET, Pythagorean, five-limit just intonation, quarter-comma meantone, Werckmeister III, Kirnberger III, Vallotti, and Young II—are visible as read-only predefined systems, distinct from musician-owned systems.
+- Detail views disclose available source, provenance, and limitations; search and filters have deterministic results and useful empty states.
+- Opening, browsing, selecting, and returning from catalog detail is silent. The catalog remains local and does not imply additional cultural coverage.
+- Verify catalog manifest/data, filtering and search, profile/catalog UI states, accessibility, localization, and silent navigation.
 
-## Chinese and Indian content decision gate
+### SP-036 / T-0046
 
-Chinese twelve-lü and Indian śruti material are not generic “non-Western tunings,” and neither category is a single universal preset. Before the fourth proposed Sprint can admit either one, prepare a separately reviewable candidate record for each proposed entry containing:
+- A musician can create or duplicate an editable reference profile from a predefined system without mutating the catalog entry or starting audio.
+- Profile reference configuration is retained and any mismatch is clearly disclosed. Grouping and written-versus-sounding pitch presentation preserve the underlying resolved frequency.
+- Verify create/duplicate, reload, reference retention/mismatch, grouping, written/sounding identity, and stopped/playing transition behavior on iPhone and Watch.
 
-- a specific name, variant, period/school where applicable, region, and intended musical or instrumental context;
-- exact ordered degree data, representation units, pitch labels, tonic and reference assumptions, and playback/profile mapping;
-- at least one authoritative source, known limitations, disputed interpretations, and an explicit statement of whether the entry is a documented model or editable template; and
-- confirmation that the entry can use the established profile and catalog representation without implying that it is the sole correct tuning for a culture, repertoire, or instrument.
+### SP-037 / T-0047
 
-The user then chooses one of two dispositions:
+- Destructive changes to a profile or tuning system explain their effect on referencing profiles and provide the approved confirmation or Undo recovery path.
+- Empty, missing-reference, malformed-data, and post-deletion states remain recoverable and do not cause unexpected playback or data loss.
+- Verify persistence round trips, search/filter regression, destructive-action recovery, referenced-object behavior, and focused iPhone/Watch regression. Report simulator and human/device evidence separately.
 
-1. **Include bounded candidates in EP-014.** This is appropriate only when the records above are complete, their playback mapping fits the first proposed Sprint, and the number of candidates remains a small catalog extension rather than a research/programme of work.
-2. **Defer to a successor Epic.** This is appropriate when a family needs comparative scholarly research, multiple school/performer/instrument variants, new notation or interaction concepts, further source reconciliation, or a broader content inventory. The successor Epic would own that research and catalog expansion; EP-014 would still deliver the generic discovery and editable-template path.
+## Content disposition: deferred to SP-038
 
-No implementation, scholarly source selection, or catalog expansion follows from this planning document alone. The user retains the decision to activate the Epic, select the disposition, and verify delivery.
+The user deferred Chinese twelve-lü and Indian śruti content from SP-034 and added SP-038 for source review. No candidate catalog entries are included in SP-034 through SP-037. Before either family is added to EP-014, SP-038 must prepare a separately reviewable candidate record specifying its exact name/variant, period or school, region and context; ordered pitch data, units, labels, tonic/reference assumptions and playback mapping; authoritative sources and limitations; and whether it is a documented model or editable template. Each exact candidate requires user approval before catalog inclusion. No variant or definition is preselected by this plan.
+
+The content is deferred from the currently planned general catalog work to SP-038 within EP-014. Until the source review and candidate-specific user approval are complete, the existing catalog and generic discovery/template path remain the boundary. Planning SP-038 does not authorize candidate selection or implementation.
+
+## Out of scope and exit evidence
+
+No cloud synchronization, accounts, analytics, new dependencies, network access, microphone pitch detection, or background capability is added. No unsupported tuning content is implied.
+
+Exit evidence includes deterministic profile-to-playback resolution on iPhone and Watch; catalog manifest, provenance, search/filter and empty-state coverage; profile creation/duplication and reference behavior; persistence/migration; and destructive-action recovery. Record physical listening, accessibility, and user acceptance separately. The user alone activates Sprints, verifies delivery, and closes the Epic.

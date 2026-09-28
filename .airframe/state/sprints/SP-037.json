@@ -1,0 +1,10 @@
+{
+  "endDate" : "TBD",
+  "epicID" : { "rawValue" : "EP-014" },
+  "goal" : "Plan safe profile and tuning-system deletion, reference-aware recovery, and final regression qualification.",
+  "issueIDs" : [],
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:41:36Z" },
+  "notes" : [ "Moved into planning by user authorization on 2026-09-28; Task T-0047 remains backlog and the Sprint is not active.", "Chinese twelve-lü and Indian śruti content is deferred to SP-038 for source review; candidate-specific user approval is required before catalog inclusion." ],
+  "taskIDs" : [ { "rawValue" : "T-0047" } ],
+  "workItem" : { "id" : { "rawValue" : "SP-037" }, "kind" : "sprint", "status" : "planning", "title" : "Profile Recovery and Safe Catalog Use" }
+}

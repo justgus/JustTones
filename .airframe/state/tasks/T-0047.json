@@ -1,0 +1,19 @@
+{
+  "acceptanceCriteria" : [
+    "Before deleting a profile or system referenced by profiles, explain the impact and provide the approved confirmation or Undo recovery behavior.",
+    "Recover gracefully from empty libraries, missing references, invalid persisted profile content, and canceled or undone destructive actions without data loss or unexpected playback.",
+    "Complete focused persistence, search/filter, catalog, profile, and iPhone/Watch regression evidence with simulator and physical-device evidence clearly distinguished."
+  ],
+  "component" : "Referenced-profile and tuning-system destructive actions, recovery, and final regression qualification.",
+  "componentsAffected" : [ "Profile and tuning-system deletion workflows", "Referenced-object impact presentation", "Persistence recovery and empty states", "iPhone/Watch profile and catalog regression tests" ],
+  "evidenceIDs" : [],
+  "epicID" : { "rawValue" : "EP-014" },
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:00:00Z" },
+  "notes" : [ "Planning record only; implementation is not authorized.", "Do not silently orphan profiles or replace missing systems with a different pitch system.", "The Chinese/Indian content disposition remains a separate user decision; this task does not authorize those catalog additions." ],
+  "priority" : "high",
+  "rationale" : "Profiles and tuning systems can be referenced by other user data, so destructive changes need visible impact and recovery.",
+  "requirementIDs" : [ { "rawValue" : "JT-FR-032" }, { "rawValue" : "JT-FR-033" }, { "rawValue" : "JT-FR-067" }, { "rawValue" : "JT-FR-068" }, { "rawValue" : "JT-FR-069" }, { "rawValue" : "JT-FR-070" }, { "rawValue" : "JT-FR-100" } ],
+  "sprintID" : { "rawValue" : "SP-037" },
+  "testSteps" : [ "Exercise deletion, cancellation, undo/restore, and referenced-object impact for profiles and tuning systems.", "Verify empty and missing-reference states and persistence recovery do not cause playback or destructive data substitution.", "Run focused iPhone and Watch regression checks and record user/device checks separately from automated evidence." ],
+  "workItem" : { "id" : { "rawValue" : "T-0047" }, "kind" : "task", "status" : "backlog", "title" : "Implement profile recovery and referenced-object safety" }
+}

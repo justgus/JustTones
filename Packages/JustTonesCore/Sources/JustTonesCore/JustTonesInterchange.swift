@@ -53,6 +53,20 @@ public struct JustTonesInterchangeDocument: Codable, Hashable, Sendable {
                !availableSystems.contains(identifier.lowercased()) {
                 throw JustTonesInterchangeError.unresolvedReference(identifier)
             }
+            for entry in profile.entries {
+                guard case let .systemDegree(degreeID) = entry.pitch else { continue }
+                guard let identifier = profile.tuningSystemID else {
+                    throw JustTonesInterchangeError.unresolvedReference(degreeID)
+                }
+                let system = BuiltInCatalog.tuningSystems.first { $0.id.lowercased() == identifier.lowercased() }?.system
+                    ?? tuningSystems.first { $0.id.uuidString.lowercased() == identifier.lowercased() }?.system
+                guard let system else { throw JustTonesInterchangeError.unresolvedReference(identifier) }
+                do {
+                    _ = try system.resolvedFrequency(forDegreeID: degreeID, using: profile.referencePitch)
+                } catch {
+                    throw JustTonesInterchangeError.unresolvedReference(degreeID)
+                }
+            }
         }
     }
 }
@@ -389,7 +403,8 @@ public enum JustTonesInterchange {
             entries: entries,
             tags: profile.tags,
             preferredTimbreID: profile.preferredTimbreID,
-            soundingSemitoneOffset: profile.soundingSemitoneOffset
+            soundingSemitoneOffset: profile.soundingSemitoneOffset,
+            referencePitch: profile.referencePitch
         )
     }
 
@@ -426,7 +441,8 @@ public enum JustTonesInterchange {
             entries: profile.entries,
             tags: profile.tags,
             preferredTimbreID: profile.preferredTimbreID,
-            soundingSemitoneOffset: profile.soundingSemitoneOffset
+            soundingSemitoneOffset: profile.soundingSemitoneOffset,
+            referencePitch: profile.referencePitch
         )
     }
 

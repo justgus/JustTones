@@ -82,6 +82,20 @@ public struct ReferencePitch: Codable, Hashable, Sendable {
 
     public var hertz: Double { Double(tenthsOfHertz) / 10 }
 
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let tenths = try container.decode(Int.self, forKey: .tenthsOfHertz)
+        try self.init(hertz: Double(tenths) / 10)
+        guard tenthsOfHertz == tenths else { throw PitchValidationError.unsupportedIncrement }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(tenthsOfHertz, forKey: .tenthsOfHertz)
+    }
+
+    private enum CodingKeys: String, CodingKey { case tenthsOfHertz }
+
     private init(uncheckedTenthsOfHertz: Int) {
         self.tenthsOfHertz = uncheckedTenthsOfHertz
     }

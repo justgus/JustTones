@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var profile = BuiltInCatalog.defaultProfile
     @State private var userProfiles: [TuningProfile] = []
     @State private var userTuningSystems: [JustTonesInterchangeTuningSystem] = []
+    @State private var profileConfigurationNotice: String?
     @State private var hiddenBuiltInProfileIDs: Set<UUID> = []
     @State private var timbre: BuiltInTimbre = .sine
     @State private var unavailableTimbrePreference: String?
@@ -33,7 +34,9 @@ struct ContentView: View {
     @State private var exportPresented = false
 
     private var entry: TuningProfileEntry { profile.entries[index] }
-    private var frequency: Double { (try? entry.pitch.frequency()) ?? 0 }
+    private var resolvedFrequency: Double? {
+        try? profile.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems)
+    }
 
     var body: some View {
         NavigationStack {
@@ -54,10 +57,22 @@ struct ContentView: View {
                         )
                         .frame(height: 216)
                         .accessibilityLabel("Selected pitch")
-                        .accessibilityValue("\(entry.label ?? "reference pitch"), \(frequency.formatted(.number.precision(.fractionLength(1)))) hertz")
+                        .accessibilityValue("\(entry.label ?? "reference pitch"), \(resolvedFrequency.map { $0.formatted(.number.precision(.fractionLength(1))) } ?? "unavailable") hertz")
                         .accessibilityIdentifier("pitchPicker")
-                        Text("\(frequency.formatted(.number.precision(.fractionLength(1)))) Hz")
-                            .accessibilityHidden(true)
+                        if let resolvedFrequency {
+                            Text("\(resolvedFrequency.formatted(.number.precision(.fractionLength(1)))) Hz")
+                        } else {
+                            Label("Pitch unavailable — check this profile's tuning system.", systemImage: "exclamationmark.triangle")
+                                .font(.caption)
+                                .foregroundStyle(.orange)
+                                .accessibilityIdentifier("pitchResolutionUnavailable")
+                        }
+                        if let profileConfigurationNotice {
+                            Label(profileConfigurationNotice, systemImage: "info.circle")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
                         playbackStateBadge
                         if playbackHost.isPlaying {
                             Text("Playing for \(formattedPlaybackDuration)")
@@ -73,7 +88,7 @@ struct ContentView: View {
                             .accessibilityLabel("Current audio output")
                             .accessibilityValue(currentOutputDescription)
                             .accessibilityIdentifier("currentAudioOutput")
-                        if HearingSafetyPolicy.shouldRecommendExternalAudio(frequency: frequency) {
+                        if let resolvedFrequency, HearingSafetyPolicy.shouldRecommendExternalAudio(frequency: resolvedFrequency) {
                             Label(
                                 "Very high pitches may not be reproduced clearly by some speakers. Suitable headphones or an external speaker may help; your selected pitch is unchanged.",
                                 systemImage: "speaker.wave.2"
@@ -153,7 +168,9 @@ struct ContentView: View {
                         profile: $profile,
                         index: $index,
                         userProfiles: $userProfiles,
-                        hiddenBuiltInProfileIDs: $hiddenBuiltInProfileIDs
+                        hiddenBuiltInProfileIDs: $hiddenBuiltInProfileIDs,
+                        userTuningSystems: userTuningSystems,
+                        prepareProfileSelection: prepareProfileSelection
                     )
                 }
             }
@@ -205,7 +222,7 @@ struct ContentView: View {
                 persistUserProfiles()
             }
             .onChange(of: timbre) { _, _ in
-                guard let frequency = try? entry.pitch.frequency(),
+                guard let frequency = resolvedFrequency,
                       let level = try? ToneOutputLevel(Float(outputLevel)),
                       let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
                 playbackHost.changeTimbre(TonePlaybackSelection(frequency: renderFrequency, timbre: timbre, level: level))
@@ -374,7 +391,7 @@ struct ContentView: View {
             playbackHost.stop()
             return
         }
-        guard let frequency = try? entry.pitch.frequency(),
+        guard let frequency = resolvedFrequency,
               let level = try? ToneOutputLevel(Float(outputLevel)) else { return }
         if let warning = HearingSafetyPolicy.warning(
             level: level,
@@ -390,7 +407,7 @@ struct ContentView: View {
     }
 
     private func startPlaybackRequest() {
-        guard let frequency = try? entry.pitch.frequency(),
+        guard let frequency = resolvedFrequency,
               let level = try? ToneOutputLevel(Float(outputLevel)),
               let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
         playbackHost.play(TonePlaybackSelection(frequency: renderFrequency, timbre: timbre, level: level))
@@ -467,10 +484,21 @@ struct ContentView: View {
     }
 
     private func synchronizeSelection() {
-        guard let frequency = try? entry.pitch.frequency(),
+        guard let frequency = resolvedFrequency,
               let level = try? ToneOutputLevel(Float(outputLevel)),
               let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
         playbackHost.select(TonePlaybackSelection(frequency: renderFrequency, timbre: timbre, level: level))
+    }
+
+    private func prepareProfileSelection(_ candidate: TuningProfile) {
+        if playbackHost.isPlaying || playbackHost.state == .starting {
+            playbackHost.stop()
+        }
+        if profile.tuningSystemID != candidate.tuningSystemID || profile.referencePitch != candidate.referencePitch {
+            profileConfigurationNotice = "This profile uses a different tuning system or A4 reference; review it before playback."
+        } else {
+            profileConfigurationNotice = nil
+        }
     }
 
     private func selectPreferredTimbre(for profile: TuningProfile) {
@@ -964,6 +992,8 @@ private struct ProfileSheet: View {
     @Binding var index: Int
     @Binding var userProfiles: [TuningProfile]
     @Binding var hiddenBuiltInProfileIDs: Set<UUID>
+    let userTuningSystems: [JustTonesInterchangeTuningSystem]
+    let prepareProfileSelection: (TuningProfile) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var editingProfile: TuningProfile?
 
@@ -994,6 +1024,7 @@ private struct ProfileSheet: View {
                 }
                 ForEach(userProfiles) { candidate in
                     Button {
+                        prepareProfileSelection(candidate)
                         profile = candidate
                         index = 0
                         dismiss()
@@ -1024,6 +1055,7 @@ private struct ProfileSheet: View {
             Section("Built-in profiles") {
                 ForEach(visibleBuiltInTemplates, id: \.id) { template in
                     Button {
+                        prepareProfileSelection(template.profile)
                         profile = template.profile
                         index = 0
                         dismiss()
@@ -1066,12 +1098,13 @@ private struct ProfileSheet: View {
             }
         }
         .sheet(item: $editingProfile) { draft in
-            ProfileEditor(profile: draft) { saved in
+            ProfileEditor(profile: draft, userTuningSystems: userTuningSystems) { saved in
                 if let existing = userProfiles.firstIndex(where: { $0.id == saved.id }) {
                     userProfiles[existing] = saved
                 } else {
                     userProfiles.append(saved)
                 }
+                prepareProfileSelection(saved)
                 profile = saved
                 index = 0
             }
@@ -1093,13 +1126,15 @@ private struct ProfileSheet: View {
             name: "\(candidate.name) Copy", instrument: candidate.instrument,
             tuningSystemID: candidate.tuningSystemID, entries: entries, tags: candidate.tags,
             preferredTimbreID: candidate.preferredTimbreID,
-            soundingSemitoneOffset: candidate.soundingSemitoneOffset
+            soundingSemitoneOffset: candidate.soundingSemitoneOffset,
+            referencePitch: candidate.referencePitch
         )
     }
 
     private func delete(_ candidate: TuningProfile) {
         userProfiles.removeAll { $0.id == candidate.id }
         if profile.id == candidate.id {
+            prepareProfileSelection(BuiltInCatalog.defaultProfile)
             profile = BuiltInCatalog.defaultProfile
             index = 0
         }
@@ -1120,6 +1155,7 @@ private struct ProfileSheet: View {
     private func hide(_ template: CatalogProfileTemplate) {
         hiddenBuiltInProfileIDs.insert(template.profile.id)
         if profile.id == template.profile.id {
+            prepareProfileSelection(BuiltInCatalog.defaultProfile)
             profile = BuiltInCatalog.defaultProfile
             index = 0
         }
@@ -1135,11 +1171,26 @@ private struct ProfileEditor: View {
     @State private var draft: TuningProfile
     @State private var addingPitch = false
     @State private var editingPitch: TuningProfileEntry?
+    let userTuningSystems: [JustTonesInterchangeTuningSystem]
     let onSave: (TuningProfile) -> Void
 
-    init(profile: TuningProfile, onSave: @escaping (TuningProfile) -> Void) {
+    init(profile: TuningProfile, userTuningSystems: [JustTonesInterchangeTuningSystem], onSave: @escaping (TuningProfile) -> Void) {
         _draft = State(initialValue: profile)
+        self.userTuningSystems = userTuningSystems
         self.onSave = onSave
+    }
+
+    private var tuningSystemChoices: [ProfileTuningSystemChoice] {
+        BuiltInCatalog.tuningSystems.map { ProfileTuningSystemChoice(id: $0.id, name: $0.name, system: $0.system) }
+            + userTuningSystems.map { ProfileTuningSystemChoice(id: $0.id.uuidString.lowercased(), name: $0.system.name, system: $0.system) }
+    }
+
+    private var selectedTuningSystem: ProfileTuningSystemChoice? {
+        tuningSystemChoices.first { $0.id.lowercased() == draft.tuningSystemID?.lowercased() }
+    }
+
+    private var hasResolvableEntries: Bool {
+        draft.entries.allSatisfy { (try? draft.resolvedFrequency(for: $0, userTuningSystems: userTuningSystems)) != nil }
     }
 
     var body: some View {
@@ -1148,6 +1199,21 @@ private struct ProfileEditor: View {
                 Section("Profile") {
                     TextField("Name", text: $draft.name)
                     TextField("Instrument (optional)", text: optionalStringBinding(\.instrument))
+                    Picker("Tuning system", selection: Binding(
+                        get: { draft.tuningSystemID ?? "" },
+                        set: { draft.tuningSystemID = $0.isEmpty ? nil : $0 }
+                    )) {
+                        Text("None — named pitches use equal temperament").tag("")
+                        ForEach(tuningSystemChoices) { choice in
+                            Text(choice.name).tag(choice.id)
+                        }
+                    }
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("A4 reference: \(draft.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) Hz")
+                        Slider(value: referencePitchBinding, in: ReferencePitch.minimumHertz ... ReferencePitch.maximumHertz, step: 0.1)
+                            .accessibilityLabel("Profile A4 reference")
+                            .accessibilityValue("\(draft.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) hertz")
+                    }
                     Picker("Preferred timbre", selection: optionalStringBinding(\.preferredTimbreID, defaultValue: BuiltInTimbre.sine.rawValue)) {
                         ForEach(BuiltInTimbre.allCases, id: \.self) { timbre in
                             Text(timbre.displayName).tag(timbre.rawValue)
@@ -1160,7 +1226,7 @@ private struct ProfileEditor: View {
                             HStack {
                                 Text(entry.label ?? "Pitch")
                                 Spacer()
-                                Text((try? entry.pitch.frequency()).map { "\($0.formatted(.number.precision(.fractionLength(1)))) Hz" } ?? "Unavailable")
+                                Text((try? draft.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems)).map { "\($0.formatted(.number.precision(.fractionLength(1)))) Hz" } ?? "Unavailable")
                                     .foregroundStyle(.secondary)
                             }
                         }
@@ -1174,6 +1240,12 @@ private struct ProfileEditor: View {
                     .onMove { draft.entries.move(fromOffsets: $0, toOffset: $1) }
                     Button("Add pitch", systemImage: "plus") { addingPitch = true }
                 }
+                if !hasResolvableEntries {
+                    Section {
+                        Label("One or more pitches do not resolve in this tuning system.", systemImage: "exclamationmark.triangle")
+                            .foregroundStyle(.orange)
+                    }
+                }
             }
             .navigationTitle("Edit Profile")
             .toolbar {
@@ -1181,14 +1253,14 @@ private struct ProfileEditor: View {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") { onSave(draft); dismiss() }
-                        .disabled(draft.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                        .disabled(draft.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !hasResolvableEntries)
                 }
             }
             .sheet(isPresented: $addingPitch) {
-                PitchEditor { entry in draft.entries.append(entry) }
+                PitchEditor(tuningSystem: selectedTuningSystem?.system) { entry in draft.entries.append(entry) }
             }
             .sheet(item: $editingPitch) { entry in
-                PitchEditor(entry: entry) { saved in
+                PitchEditor(entry: entry, tuningSystem: selectedTuningSystem?.system) { saved in
                     guard let index = draft.entries.firstIndex(where: { $0.id == saved.id }) else { return }
                     draft.entries[index] = saved
                 }
@@ -1205,22 +1277,38 @@ private struct ProfileEditor: View {
             set: { draft[keyPath: keyPath] = $0.isEmpty ? nil : $0 }
         )
     }
+
+    private var referencePitchBinding: Binding<Double> {
+        Binding(
+            get: { draft.referencePitch.hertz },
+            set: { if let reference = try? ReferencePitch(hertz: $0) { draft.referencePitch = reference } }
+        )
+    }
+}
+
+private struct ProfileTuningSystemChoice: Identifiable {
+    let id: String
+    let name: String
+    let system: TuningSystem
 }
 
 private struct PitchEditor: View {
     @Environment(\.dismiss) private var dismiss
-    private enum PitchKind: String, CaseIterable, Identifiable { case named, frequency; var id: Self { self } }
+    private enum PitchKind: String, CaseIterable, Identifiable { case named, frequency, systemDegree; var id: Self { self } }
     private let entryID: UUID?
+    private let tuningSystem: TuningSystem?
     @State private var label = ""
     @State private var kind: PitchKind = .named
     @State private var letter: NoteLetter = .a
     @State private var accidental: Accidental = .natural
     @State private var octave = 4
     @State private var directFrequency = "440.0"
+    @State private var degreeID = ""
     let onSave: (TuningProfileEntry) -> Void
 
-    init(entry: TuningProfileEntry? = nil, onSave: @escaping (TuningProfileEntry) -> Void) {
+    init(entry: TuningProfileEntry? = nil, tuningSystem: TuningSystem?, onSave: @escaping (TuningProfileEntry) -> Void) {
         entryID = entry?.id
+        self.tuningSystem = tuningSystem
         _label = State(initialValue: entry?.label ?? "")
         if let entry {
             switch entry.pitch {
@@ -1233,6 +1321,9 @@ private struct PitchEditor: View {
                 _directFrequency = State(initialValue: frequency.hertz.formatted(.number.precision(.fractionLength(1))))
             case .writtenSounding:
                 break
+            case let .systemDegree(identifier):
+                _kind = State(initialValue: .systemDegree)
+                _degreeID = State(initialValue: identifier)
             }
         }
         self.onSave = onSave
@@ -1245,6 +1336,9 @@ private struct PitchEditor: View {
                 Picker("Pitch type", selection: $kind) {
                     Text("Named note").tag(PitchKind.named)
                     Text("Frequency").tag(PitchKind.frequency)
+                    if tuningSystem != nil {
+                        Text("Tuning degree").tag(PitchKind.systemDegree)
+                    }
                 }
                 .pickerStyle(.segmented)
                 if kind == .named {
@@ -1255,9 +1349,18 @@ private struct PitchEditor: View {
                         ForEach(Accidental.allCases, id: \.self) { Text($0.displayName).tag($0) }
                     }
                     Stepper("Octave \(octave)", value: $octave, in: -1...9)
-                } else {
+                } else if kind == .frequency {
                     TextField("Frequency in Hz", text: $directFrequency)
                         .keyboardType(.decimalPad)
+                } else if let tuningSystem {
+                    Picker("Degree", selection: $degreeID) {
+                        ForEach(tuningSystem.degrees) { degree in
+                            Text(degree.id).tag(degree.id)
+                        }
+                    }
+                } else {
+                    Text("Select a tuning system in the profile before adding a tuning degree.")
+                        .foregroundStyle(.secondary)
                 }
             }
             .navigationTitle(entryID == nil ? "Add Pitch" : "Edit Pitch")
@@ -1269,7 +1372,8 @@ private struct PitchEditor: View {
                         onSave(entry)
                         dismiss()
                     }
-                    .disabled(kind == .frequency && DirectFrequencyInput.parse(directFrequency) == nil)
+                    .disabled((kind == .frequency && DirectFrequencyInput.parse(directFrequency) == nil)
+                              || (kind == .systemDegree && (tuningSystem?.degrees.contains(where: { $0.id == degreeID }) != true)))
                 }
             }
         }
@@ -1285,6 +1389,9 @@ private struct PitchEditor: View {
             guard let frequency = DirectFrequencyInput.parse(directFrequency) else { return nil }
             let defaultLabel = "\(frequency.hertz.formatted(.number.precision(.fractionLength(1)))) Hz"
             return try? TuningProfileEntry(id: entryID ?? UUID(), label: label.isEmpty ? defaultLabel : label, pitch: .direct(frequency))
+        case .systemDegree:
+            guard tuningSystem?.degrees.contains(where: { $0.id == degreeID }) == true else { return nil }
+            return try? TuningProfileEntry(id: entryID ?? UUID(), label: label.isEmpty ? degreeID : label, pitch: .systemDegree(degreeID))
         }
     }
 }

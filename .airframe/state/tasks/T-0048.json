@@ -1,0 +1,29 @@
+{
+  "acceptanceCriteria" : [
+    "Prepare a separately reviewable candidate specification for the Chinese twelve-lü content and the Indian śruti content. Each proposal identifies the exact variant, tradition/context, content classification, authoritative sources, ordered pitch data and units, spelling/labels, tonic and reference assumptions, playback mapping, limitations, and disputed interpretations.",
+    "Distinguish tuning systems, pitch-reference models, scales/modes, and instrument or performance profiles where applicable; never present a variable or contested tradition as one universal correct tuning.",
+    "Present the exact source-qualified candidates and their limits to the user for approval before accepting either candidate as built-in catalog content. Implement only the candidates the user approves, using documented-model or editable-template labeling as appropriate.",
+    "For every approved candidate, demonstrate provenance and classification in catalog metadata, deterministic profile-to-frequency resolution with explicit reference assumptions, and tests for the approved data and silent selection/playback behavior."
+  ],
+  "component" : "Source review, classification, and candidate specification for culturally specific tuning-profile content.",
+  "componentsAffected" : [ "Chinese twelve-lü candidate research and specification", "Indian śruti candidate research and specification", "Built-in catalog classification and provenance", "Profile playback mapping and verification" ],
+  "evidenceIDs" : [],
+  "epicID" : { "rawValue" : "EP-014" },
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T16:50:00Z" },
+  "notes" : [
+    "Created for SP-038 after the user deferred these contents from closed SP-034.",
+    "Candidate variants, data, and scholarly interpretations must be established from sources during the Sprint; none are selected by this planning record.",
+    "The approval gate applies to each exact candidate. Planning and Sprint activation alone do not authorize adding unapproved catalog content."
+  ],
+  "priority" : "high",
+  "rationale" : "These traditions cannot be represented responsibly by generic presets; source-qualified variants and explicit reference/mapping decisions are needed before catalog inclusion or playback resolution.",
+  "requirementIDs" : [ { "rawValue" : "JT-FR-062" }, { "rawValue" : "JT-FR-063" }, { "rawValue" : "JT-FR-064" }, { "rawValue" : "JT-FR-065" }, { "rawValue" : "JT-FR-066" }, { "rawValue" : "JT-FR-067" } ],
+  "sprintID" : { "rawValue" : "SP-038" },
+  "testSteps" : [
+    "For each candidate, review the cited authoritative sources and record the exact variant, context, mathematical data, units, labels, reference assumptions, and source limitations.",
+    "Have the user review and approve or reject each exact candidate specification before adding catalog data.",
+    "For approved candidates, verify content classification, provenance display, ordered pitch identity, profile reference handling, and deterministic iPhone/Watch model-to-renderer frequency parity.",
+    "Verify variable definitions use appropriate documented-model or editable-template disclosure and are not presented as universal; confirm profile selection and browsing remain silent."
+  ],
+  "workItem" : { "id" : { "rawValue" : "T-0048" }, "kind" : "task", "status" : "backlog", "title" : "Resolve culturally specific tuning-profile candidates" }
+}

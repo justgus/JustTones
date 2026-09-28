@@ -1,0 +1,10 @@
+{
+  "endDate" : "TBD",
+  "epicID" : { "rawValue" : "EP-014" },
+  "goal" : "Plan read-only discovery, provenance, search, and filtering for the existing version-one tuning-system catalog.",
+  "issueIDs" : [],
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:41:36Z" },
+  "notes" : [ "Moved into planning by user authorization on 2026-09-28; Task T-0045 remains backlog and the Sprint is not active.", "Chinese twelve-lü and Indian śruti content is deferred to SP-038 for source review; do not imply that this catalog includes those candidates." ],
+  "taskIDs" : [ { "rawValue" : "T-0045" } ],
+  "workItem" : { "id" : { "rawValue" : "SP-035" }, "kind" : "sprint", "status" : "planning", "title" : "Predefined Tuning-System Discovery" }
+}

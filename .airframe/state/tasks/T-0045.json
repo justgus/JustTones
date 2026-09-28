@@ -1,0 +1,19 @@
+{
+  "acceptanceCriteria" : [
+    "Present 12-TET, Pythagorean, five-limit just intonation, quarter-comma meantone, Werckmeister III, Kirnberger III, Vallotti, and Young II as read-only predefined systems distinct from user-created systems.",
+    "Provide useful search, filters, detail, provenance/limitation disclosures, accessible labels, and empty states from the existing catalog data.",
+    "Catalog browse, selection, detail navigation, and return remain silent and do not mutate the predefined entries."
+  ],
+  "component" : "iPhone tuning-system catalog discovery, detail, search, and filtering.",
+  "componentsAffected" : [ "Predefined tuning-system catalog and manifest", "iPhone catalog list and detail surfaces", "Search/filter and empty states", "Localization and accessibility", "Catalog UI/data tests" ],
+  "evidenceIDs" : [],
+  "epicID" : { "rawValue" : "EP-014" },
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:00:00Z" },
+  "notes" : [ "Planning record only; implementation is not authorized.", "The catalog remains local. Chinese twelve-lü and Indian śruti candidates are excluded pending the separate user disposition and source records." ],
+  "priority" : "high",
+  "rationale" : "The existing version-one systems need a clear discovery path that communicates what is built in and what is user owned.",
+  "requirementIDs" : [ { "rawValue" : "JT-FR-034" }, { "rawValue" : "JT-FR-062" }, { "rawValue" : "JT-FR-063" }, { "rawValue" : "JT-FR-064" }, { "rawValue" : "JT-FR-065" }, { "rawValue" : "JT-FR-066" }, { "rawValue" : "JT-FR-067" }, { "rawValue" : "JT-FR-068" }, { "rawValue" : "JT-FR-069" } ],
+  "sprintID" : { "rawValue" : "SP-035" },
+  "testSteps" : [ "Inspect catalog manifest and records for stable identity, immutability, sources, limitations, and inventory parity.", "Exercise search/filter matches, no-match states, detail-to-list navigation, and silent selection.", "Inspect catalog surfaces for localization, VoiceOver, and Dynamic Type behavior." ],
+  "workItem" : { "id" : { "rawValue" : "T-0045" }, "kind" : "task", "status" : "backlog", "title" : "Implement predefined tuning-system discovery" }
+}

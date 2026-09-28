@@ -10,6 +10,7 @@ public enum TuningValidationError: Error, Equatable, Sendable {
     case invalidRatio
     case nonFiniteValue
     case emptyDegreeIdentifier
+    case unknownDegreeIdentifier(String)
     case frequencyOutOfRange
     case arithmeticOverflow
 }
@@ -117,6 +118,7 @@ public enum TuningReference: Codable, Hashable, Sendable {
     case named(NamedPitch)
     case direct(DirectFrequency)
     case writtenSounding(WrittenSoundingPitch)
+    case systemDegree(String)
 
     public func frequency(using a4Reference: ReferencePitch = .default) throws -> Double {
         switch self {
@@ -126,8 +128,16 @@ public enum TuningReference: Codable, Hashable, Sendable {
             return frequency.hertz
         case let .writtenSounding(pitch):
             return try pitch.soundingFrequency(using: a4Reference)
+        case .systemDegree:
+            throw TuningResolutionError.profileContextRequired
         }
     }
+}
+
+public enum TuningResolutionError: Error, Equatable, Sendable {
+    case profileContextRequired
+    case missingTuningSystem
+    case unresolvedTuningSystem(String)
 }
 
 /// A stable degree identifier and its mathematical definition.
@@ -191,6 +201,13 @@ public struct TuningSystem: Codable, Hashable, Sendable {
 
     public func resolvedFrequencies(using reference: ReferencePitch = .default) throws -> [Double] {
         try degrees.map { try $0.definition.resolvedFrequency(using: reference) }
+    }
+
+    public func resolvedFrequency(forDegreeID identifier: String, using reference: ReferencePitch = .default) throws -> Double {
+        guard let degree = degrees.first(where: { $0.id == identifier }) else {
+            throw TuningValidationError.unknownDegreeIdentifier(identifier)
+        }
+        return try degree.definition.resolvedFrequency(using: reference)
     }
 
     public func resolvedFrequencies(

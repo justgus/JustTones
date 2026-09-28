@@ -1,0 +1,36 @@
+{
+  "acceptanceCriterionIDs" : [ { "rawValue" : "JT-AC-058" } ],
+  "artifactReferences" : [],
+  "evidenceIDs" : [],
+  "expectedResults" : [
+    "The displayed and rendered frequency is identical on iPhone and Watch for the same validated profile and system data.",
+    "Mismatch and unavailable states are visible before unsafe playback; stopped selection and relaunch never start audio unexpectedly."
+  ],
+  "id" : { "rawValue" : "JT-TEST-248" },
+  "kind" : "integration",
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 } },
+  "notes" : [ "Planned for SP-034; not executed. Simulator and paired/physical Watch results are separate evidence classes." ],
+  "objective" : "Verify profile tuning-system resolution reaches truthful iPhone and Watch presentation and playback inputs.",
+  "requirementIDs" : [
+    { "rawValue" : "JT-FR-003" },
+    { "rawValue" : "JT-FR-013" },
+    { "rawValue" : "JT-FR-033" },
+    { "rawValue" : "JT-FR-037" },
+    { "rawValue" : "JT-FR-038" },
+    { "rawValue" : "JT-FR-040" },
+    { "rawValue" : "JT-FR-044" }
+  ],
+  "status" : "ready",
+  "steps" : [
+    "Compare displayed and renderer-input frequencies on iPhone and Watch for named, direct, and system-degree entries from one profile snapshot.",
+    "Select a pitch while stopped and confirm silence; select a profile with a mismatched system/reference and verify disclosure before Play.",
+    "While playing, change pitch and confirm direct transition; change profile and confirm stop-before-selection; terminate and relaunch and confirm selection restores silently.",
+    "Stage a valid replica, then reject an incompatible or unresolved candidate and confirm the last valid Watch replica and its playback inputs remain intact."
+  ],
+  "title" : "iPhone and Watch profile resolution integration",
+  "workItemIDs" : [
+    { "rawValue" : "EP-014" },
+    { "rawValue" : "SP-034" },
+    { "rawValue" : "T-0044" }
+  ]
+}

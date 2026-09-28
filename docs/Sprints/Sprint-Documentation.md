@@ -8,7 +8,7 @@ Currently: **None**
 
 ## All Sprints
 
-Currently: **33 Sprints** | Next available: **SP-034**
+Currently: **38 Sprints** | Next available: **SP-039**
 
 | Sprint | Title | Epic | Tasks | Issues | Status |
 | ------ | ----- | ---- | ----- | ------ | ------ |
@@ -45,15 +45,20 @@ Currently: **33 Sprints** | Next available: **SP-034**
 | SP-031 | Watch State and Data Status | EP-019 | T-0041 | None | Closed |
 | SP-032 | iPhone Session, Media, and Lifecycle | EP-013 | T-0042 | None | Closed |
 | SP-033 | Route Capability and Physical Qualification | EP-013 | T-0043 | None | Closed |
+| SP-034 | Profile Pitch Semantics and Resolution | EP-014 | T-0044 | None | Closed |
+| SP-035 | Predefined Tuning-System Discovery | EP-014 | T-0045 | None | Planning |
+| SP-036 | Profile Creation and Tuning Workflows | EP-014 | T-0046 | None | Planning |
+| SP-037 | Profile Recovery and Safe Catalog Use | EP-014 | T-0047 | None | Planning |
+| SP-038 | Chinese and Indian Tuning-Profile Source Review | EP-014 | T-0048 | None | Planning |
 
 ## Statistics
 
-- **Total Sprints:** 33
+- **Total Sprints:** 38
 - **Backlog:** 0
-- **Planning:** 0
+- **Planning:** 4
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 33
-- **Next available:** SP-034
+- **Closed:** 34
+- **Next available:** SP-039
 
-*Last Updated: 2026-09-27*
+*Last Updated: 2026-09-28*

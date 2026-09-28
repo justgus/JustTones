@@ -2,7 +2,7 @@
 
 Epics listed here are proposed and queued for future planning.
 
-Currently: **5 backlog Epics**
+Currently: **4 backlog Epics**
 
 ---
 
@@ -13,14 +13,6 @@ Currently: **5 backlog Epics**
 
 **Goal:**
 Qualify built-in content and the exact release candidate for App Store submission under user control.
-
-## EP-014: Profile, Catalog, and Content Discovery Completion
-
-**Status:** Backlog
-**Owner:** 
-
-**Goal:**
-Complete reproducible profile tuning, predefined-system discovery, and recovery workflows so catalog systems are discoverable and can be used truthfully for reference-tone playback.
 
 ## EP-015: Watch Synchronization and Independent Workflow Completion
 
@@ -46,4 +38,4 @@ Deliver an accessible, localized, recoverable, and supportable product experienc
 **Goal:**
 Produce a complete, reproducible run of record for the approved requirements.
 
-*Last Updated: 2026-09-27*
+*Last Updated: 2026-09-28*

@@ -1,0 +1,12 @@
+{
+  "disposition" : "unverified",
+  "evidenceIDs" : [],
+  "id" : { "rawValue" : "JT-AC-058" },
+  "isVerified" : false,
+  "metadata" : {
+    "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 },
+    "updatedAt" : "2026-09-28T15:41:36Z"
+  },
+  "ownerID" : { "rawValue" : "EP-014" },
+  "text" : "Each profile retains its tuning-system identity and valid A4 reference through persistence and migration; supported entry forms resolve deterministically through those profile settings, and iPhone and Watch display and render the same frequency. Missing or invalid resolution is disclosed without substituting a pitch; mismatch warnings and explicit-play, active-transition, profile-change-stop, and silent-relaunch behavior remain truthful."
+}

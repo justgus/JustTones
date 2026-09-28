@@ -1,0 +1,14 @@
+{
+  "endDate" : "TBD",
+  "epicID" : { "rawValue" : "EP-014" },
+  "goal" : "Prepare source-qualified, properly classified Chinese and Indian tuning-profile candidates and resolve their inclusion only after the user reviews the exact models.",
+  "issueIDs" : [],
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T16:50:00Z" },
+  "notes" : [
+    "Added to EP-014 after the user deferred Chinese twelve-lü and Indian śruti content from closed SP-034 on 2026-09-28.",
+    "Planning only: candidate variants and their definitions are not predetermined. Require a separate source-qualified, reviewable specification and explicit user approval before adding any candidate to the catalog.",
+    "The Sprint is in Planning; its Task remains Backlog and implementation is not authorized."
+  ],
+  "taskIDs" : [ { "rawValue" : "T-0048" } ],
+  "workItem" : { "id" : { "rawValue" : "SP-038" }, "kind" : "sprint", "status" : "planning", "title" : "Chinese and Indian Tuning-Profile Source Review" }
+}
