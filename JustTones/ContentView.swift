@@ -1411,9 +1411,13 @@ private struct ProfileEditor: View {
                         }
                     }
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("A4 reference: \(draft.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) Hz")
+                        if draft.tuningSystemID == BuiltInCatalog.chineseTwelveLüID {
+                            Text("Huangzhong reference: \(draft.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) Hz")
+                        } else {
+                            Text("A4 reference: \(draft.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) Hz")
+                        }
                         Slider(value: referencePitchBinding, in: ReferencePitch.minimumHertz ... ReferencePitch.maximumHertz, step: 0.1)
-                            .accessibilityLabel("Profile A4 reference")
+                            .accessibilityLabel(draft.tuningSystemID == BuiltInCatalog.chineseTwelveLüID ? "Profile Huangzhong reference" : "Profile A4 reference")
                             .accessibilityValue("\(draft.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) hertz")
                     }
                     Stepper(
@@ -2089,7 +2093,7 @@ private struct CatalogTuningSystemDetail: View {
                 if let instrument = system.context.instrumentOrContext {
                     LabeledContent("Applicable context", value: instrument)
                 }
-                Text("Pitch degrees use the catalog’s ordered cent definitions. The A4 reference is supplied separately by a profile.")
+                Text("Relative pitch degrees resolve from the profile’s reference frequency. The source and limitations below explain how to interpret that reference for this model.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }

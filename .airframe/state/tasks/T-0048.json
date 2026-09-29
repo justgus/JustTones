@@ -3,20 +3,28 @@
     "Prepare a separately reviewable candidate specification for the Chinese twelve-lü content and the Indian śruti content. Each proposal identifies the exact variant, tradition\/context, content classification, authoritative sources, ordered pitch data and units, spelling\/labels, tonic and reference assumptions, playback mapping, limitations, and disputed interpretations.",
     "Distinguish tuning systems, pitch-reference models, scales\/modes, and instrument or performance profiles where applicable; never present a variable or contested tradition as one universal correct tuning.",
     "Present the exact source-qualified candidates and their limits to the user for approval before accepting either candidate as built-in catalog content. Implement only the candidates the user approves, using documented-model or editable-template labeling as appropriate.",
+    "For the approved Chinese model, provide a built-in Twelve Lü Pitch-Pipe Reference profile using all twelve model degrees, with explicit configurable Huangzhong reference behavior and source\/limitation metadata; do not assert unsupported universal tuning for a performance instrument.",
     "For every approved candidate, demonstrate provenance and classification in catalog metadata, deterministic profile-to-frequency resolution with explicit reference assumptions, and tests for the approved data and silent selection\/playback behavior."
   ],
-  "component" : "Source review, classification, and candidate specification for culturally specific tuning-profile content.",
+  "component" : "Source review, classification, candidate specification, and approved built-in profile for culturally specific tuning content.",
   "componentsAffected" : [
     "Chinese twelve-lü candidate research and specification",
     "Indian śruti candidate research and specification",
     "Built-in catalog classification and provenance",
+    "Built-in Chinese twelve-lü pitch-pipe reference profile",
     "Profile playback mapping and verification"
   ],
+  "dateVerified" : "2026-09-29",
   "epicID" : {
     "rawValue" : "EP-014"
   },
   "evidenceIDs" : [
-
+    {
+      "rawValue" : "EV-0046"
+    },
+    {
+      "rawValue" : "EV-0047"
+    }
   ],
   "metadata" : {
     "schemaVersion" : {
@@ -24,13 +32,15 @@
       "minor" : 0,
       "patch" : 0
     },
-    "updatedAt" : "2026-09-29T20:35:09Z"
+    "updatedAt" : "2026-09-29T21:57:48Z"
   },
   "notes" : [
     "Created for SP-038 after the user deferred these contents from closed SP-034.",
     "Candidate variants, data, and scholarly interpretations must be established from sources during the Sprint; none are selected by this planning record.",
     "SP-038 planning completed and activation explicitly authorized by the user on 2026-09-29.",
-    "Activation authorizes source review and candidate-specification work. The approval gate applies to each exact candidate; activation alone does not authorize adding unapproved catalog content."
+    "Activation authorizes source review and candidate-specification work. The approval gate applies to each exact candidate; activation alone does not authorize adding unapproved catalog content.",
+    "Source review and candidate dossiers are recorded in docs\/Catalog\/SP-038-Candidate-Review.md. The user approved the exact Chinese Huangzhong-rooted sanfen-sunyi octave-folded model and excluded the Bharata grāma model from the playable catalog on 2026-09-29.",
+    "Implemented the approved Chinese model in catalog version 2 with source, classification, limitations, ratio degrees, and profile-reference labeling. Added the built-in Twelve Lü Pitch-Pipe Reference profile with all twelve degrees. Historical pitch pipes are the direct reference context; the profile does not claim this reconstruction as a universal guqin or ensemble tuning. No Indian grāma runtime entry was added. Automated tests have not been run."
   ],
   "priority" : "high",
   "rationale" : "These traditions cannot be represented responsibly by generic presets; source-qualified variants and explicit reference\/mapping decisions are needed before catalog inclusion or playback resolution.",
@@ -69,7 +79,7 @@
       "rawValue" : "T-0048"
     },
     "kind" : "task",
-    "status" : "active",
+    "status" : "implementedVerified",
     "title" : "Resolve culturally specific tuning-profile candidates"
   }
 }

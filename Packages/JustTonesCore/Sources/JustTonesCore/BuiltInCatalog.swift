@@ -27,7 +27,7 @@ public struct CatalogTuningSystem: Codable, Hashable, Sendable, Identifiable {
 }
 
 public struct BuiltInCatalogManifest: Codable, Hashable, Sendable {
-    public static let currentVersion = 1
+    public static let currentVersion = 2
     public let version: Int
     public let tuningSystemIDs: [String]
     public let profileTemplateIDs: [String]
@@ -43,6 +43,9 @@ public struct CatalogProfileTemplate: Codable, Hashable, Sendable, Identifiable 
 /// Immutable, platform-neutral catalog data. It deliberately exposes lookup primitives only; UI,
 /// synchronization, and user-data mutation remain owned by later Sprints.
 public enum BuiltInCatalog {
+    public static let chineseTwelveLüID = "org.justtones.tuning.chinese-sanfen-sunyi-huangzhong"
+    public static let chineseTwelveLüPitchPipeProfileID = "org.justtones.profile.chinese-twelve-lu-pitch-pipe-reference"
+
     public static let manifest = BuiltInCatalogManifest(
         version: BuiltInCatalogManifest.currentVersion,
         tuningSystemIDs: tuningSystems.map(\.id),
@@ -66,7 +69,8 @@ public enum BuiltInCatalog {
         template("recorder-c", "Recorder C", "Recorder", "C5 D5 E5 F5 G5 A5 B5 C6"),
         template("flute-c", "Flute C", "Flute", "C5 D5 E5 F5 G5 A5 B5 C6"),
         template("bb-brass", "B♭ Brass Reference", "Transposing wind and brass", "C4 D4 E4 F4 G4 A4 B4 C5", offset: -2),
-        template("bagpipe-configurable", "Configurable Bagpipe Reference", "Bagpipe", "A4", editable: true)
+        template("bagpipe-configurable", "Configurable Bagpipe Reference", "Bagpipe", "A4", editable: true),
+        chineseTwelveLüPitchPipeTemplate
     ]
 
     public static let tuningSystems: [CatalogTuningSystem] = [
@@ -77,8 +81,85 @@ public enum BuiltInCatalog {
         model("werckmeister-iii", "Werckmeister III", [0,92,193,294,391.5,498,590,696.5,793,889.5,996,1093.5], "Documented well-temperament model; not a claim about all historical practice."),
         model("kirnberger-iii", "Kirnberger III", [0,90.225,193.157,294.135,386.314,498.045,590.224,696.578,792.180,884.359,996.090,1088.269], "Documented Kirnberger III model; variants remain distinct."),
         model("vallotti", "Vallotti", [0,94.135,196.090,298.045,392.180,501.955,592.180,698.045,796.090,894.135,1000,1090.225], "Tartini–Vallotti documented model."),
-        model("young-ii", "Young II", [0,90,196,294,392,498,588,698,792,894,996,1090], "Documented Young II model; treated as distinct from Vallotti rotations.")
+        model("young-ii", "Young II", [0,90,196,294,392,498,588,698,792,894,996,1090], "Documented Young II model; treated as distinct from Vallotti rotations."),
+        chineseTwelveLüModel
     ]
+
+    private static let chineseTwelveLüModel: CatalogTuningSystem = {
+        let lü: [(id: String, ratio: Double)] = [
+            ("huangzhong-黄钟", 1.0 / 1.0),
+            ("daliu-大吕", 2187.0 / 2048.0),
+            ("taicou-太簇", 9.0 / 8.0),
+            ("jiazhong-夹钟", 19683.0 / 16384.0),
+            ("guxian-姑洗", 81.0 / 64.0),
+            ("zhonglü-仲吕", 177147.0 / 131072.0),
+            ("ruibin-蕤宾", 729.0 / 512.0),
+            ("linzhong-林钟", 3.0 / 2.0),
+            ("yize-夷则", 6561.0 / 4096.0),
+            ("nanlü-南吕", 27.0 / 16.0),
+            ("wuyi-无射", 59049.0 / 32768.0),
+            ("yingzhong-应钟", 243.0 / 128.0),
+        ]
+        let degrees = try! lü.map { item in
+            try TuningDegree(id: item.id, definition: TuningDegreeDefinition(ratio: item.ratio))
+        }
+        let name = "Sanfen-sunyi twelve-lü (Huangzhong-rooted)"
+        let source = "See docs/Catalog/Version-2-Catalog.md; Lüshi chunqiu/Tongdian source and Harvard Chinese Music Theory overview."
+        let limitations = "Huangzhong (degree 0) resolves to the profile's reference frequency; no absolute Huangzhong pitch is prescribed. This octave-folded reconstruction has a 23.46-cent twelve-generation closure mismatch and repeats at the octave by app convention. It represents this named model only, not all Chinese music or every twelve-lü historical account."
+        return CatalogTuningSystem(
+            id: chineseTwelveLüID,
+            name: name,
+            alternateNames: ["Twelve lü", "Twelve pitch standards", "Sanfen sunyi", "三分损益", "十二律"],
+            classification: .tuningSystem,
+            context: try! TuningContext(
+                specificSystem: "Huangzhong-rooted sanfen-sunyi octave-folded pitch-class reconstruction",
+                tradition: "Chinese twelve lü (shierlü 十二律)",
+                region: "Historical China",
+                instrumentOrContext: "Huangzhong 黄钟 is degree 0 and uses the profile reference frequency. Octave folding and octave repetition are playback conventions for this model.",
+                provenance: source
+            ),
+            provenance: CatalogProvenance(source: source, limitations: limitations),
+            system: try! TuningSystem(name: name, degrees: degrees)
+        )
+    }()
+
+    private static let chineseTwelveLüPitchPipeTemplate: CatalogProfileTemplate = {
+        let degrees = [
+            ("huangzhong-黄钟", "Huangzhong 黄钟"),
+            ("daliu-大吕", "Daliu 大吕"),
+            ("taicou-太簇", "Taicou 太簇"),
+            ("jiazhong-夹钟", "Jiazhong 夹钟"),
+            ("guxian-姑洗", "Guxian 姑洗"),
+            ("zhonglü-仲吕", "Zhonglü 仲吕"),
+            ("ruibin-蕤宾", "Ruibin 蕤宾"),
+            ("linzhong-林钟", "Linzhong 林钟"),
+            ("yize-夷则", "Yize 夷则"),
+            ("nanlü-南吕", "Nanlü 南吕"),
+            ("wuyi-无射", "Wuyi 无射"),
+            ("yingzhong-应钟", "Yingzhong 应钟"),
+        ]
+        let entries = degrees.map { degreeID, label in
+            try! TuningProfileEntry(label: label, pitch: .systemDegree(degreeID))
+        }
+        let profile = try! TuningProfile(
+            id: UUID(uuidString: "A4F54B8A-4100-4400-8000-\(String(format: "%012llX", profileTemplatesSeed("chinese-twelve-lu-pitch-pipe-reference") & 0xFFFFFFFFFFFF))")!,
+            name: "Twelve Lü Pitch-Pipe Reference",
+            instrument: "Historical pitch pipes (lüguan)",
+            tuningSystemID: chineseTwelveLüID,
+            entries: entries,
+            tags: ["Chinese twelve lü", "pitch reference", "historical model"],
+            preferredTimbreID: "sine"
+        )
+        return CatalogProfileTemplate(
+            id: chineseTwelveLüPitchPipeProfileID,
+            profile: profile,
+            provenance: CatalogProvenance(
+                source: "docs/Catalog/Version-2-Catalog.md; Lüshi chunqiu/Tongdian source and Harvard Chinese Music Theory overview.",
+                limitations: "A reference profile for the documented Huangzhong-rooted twelve-lü reconstruction. Historical sources associate pitch pipes with pitch standards and instrument regulation; this profile does not claim this ratio reconstruction was the universal tuning of any specific performance instrument. Huangzhong uses the configurable profile reference frequency.",
+                isEditableTemplate: false
+            )
+        )
+    }()
 
     public static func search(_ query: String) -> [CatalogTuningSystem] {
         let needle = query.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: .current)

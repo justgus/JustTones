@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/BuiltInCatalog.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift build --package-path Packages\/JustTonesCore --scratch-path \/private\/tmp\/JustTones-SP038-CoreBuild; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator build",
+  "environment" : "Xcode beta, iOS 27.2 simulator build destination",
+  "id" : {
+    "rawValue" : "EV-0046"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "informational",
+  "summary" : "SP-038 implements the user-approved Huangzhong-rooted sanfen-sunyi tuning model in catalog version 2; the Indian grāma model is excluded. Shared-core build passed. The iPhone scheme build stopped at the Watch AppIconWatch asset catalog because that asset set has no applicable content. Automated tests and device qualification were not run.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0048"
+    }
+  ]
+}

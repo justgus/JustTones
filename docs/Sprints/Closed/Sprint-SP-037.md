@@ -11,7 +11,7 @@
 
 | Task | Status |
 | ---- | ---- |
-| T-0047 | Implemented - Verified |
+| T-0047 |  |
 
 ### Assigned Issues
 

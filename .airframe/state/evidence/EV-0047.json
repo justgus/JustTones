@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/BuiltInCatalog.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift build --package-path Packages\/JustTonesCore --scratch-path \/private\/tmp\/JustTones-SP038-CoreBuild",
+  "environment" : "Xcode beta SwiftPM package build",
+  "id" : {
+    "rawValue" : "EV-0047"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "Added the built-in Twelve Lü Pitch-Pipe Reference profile using all twelve degrees of the approved Chinese catalog model. Historical sources support pitch pipes as reference instruments and their use in regulating instruments; the profile does not claim a universal guqin or ensemble tuning. Shared-core build passed. Automated tests and device qualification were not run.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0048"
+    }
+  ]
+}
