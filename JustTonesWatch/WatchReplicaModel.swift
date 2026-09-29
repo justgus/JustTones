@@ -65,7 +65,19 @@ final class WatchReplicaModel: ObservableObject {
     }
 
     func selectProfile(id: UUID?) {
-        selectionWasRemoved = id.map { selected in !profiles.contains(where: { $0.id == selected }) } ?? false
+        selectionWasRemoved = id.map { selected in
+            guard let profile = profiles.first(where: { $0.id == selected }) else { return true }
+            if let identifier = profile.tuningSystemID {
+                let builtInExists = BuiltInCatalog.tuningSystems.contains {
+                    $0.id.caseInsensitiveCompare(identifier) == .orderedSame
+                }
+                let userExists = UUID(uuidString: identifier).map { id in tuningSystems.contains { $0.id == id } } ?? false
+                if !builtInExists && !userExists { return true }
+            }
+            return !profile.entries.allSatisfy {
+                (try? profile.resolvedFrequency(for: $0, userTuningSystems: tuningSystems)) != nil
+            }
+        } ?? false
     }
 
     func receive(_ data: Data) {

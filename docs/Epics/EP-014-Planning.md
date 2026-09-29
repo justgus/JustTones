@@ -1,6 +1,6 @@
 # EP-014 — Profile, Catalog, and Content Discovery Completion
 
-**Status:** Active (SP-034 and SP-035 closed; SP-036 active; SP-037 and SP-038 in planning).
+**Status:** Active (SP-034 through SP-037 closed; SP-038 active).
 
 ## Purpose and boundary
 
@@ -13,12 +13,12 @@ The Epic covers the profile/catalog portions of JT-FR-027 through JT-FR-035, JT-
 | Sprint | Task | Outcome |
 | --- | --- | --- |
 | SP-034 — Profile Pitch Semantics and Resolution | T-0044 — Implemented - Verified | Persist and resolve each supported pitch-entry form through the selected tuning system and reference; display and render the same deterministic frequency on iPhone and Watch. |
-| SP-035 — Predefined Tuning-System Discovery | T-0045 — Active | Make the current immutable catalog discoverable, searchable, filterable, and understandable through detail, provenance, limitation, empty-state, and accessibility presentation. |
-| SP-036 — Profile Creation and Tuning Workflows | T-0046 — Active | Create or duplicate an editable profile using a selected built-in or user system; preserve reference configuration, expose mismatches, support grouping and written/sounding presentation, and verify silent persistence and iPhone/Watch resolution. |
-| SP-037 — Profile Recovery and Safe Catalog Use | T-0047 — Backlog | Complete referenced-object deletion/undo or confirmation behavior, recovery paths, and end-to-end persistence/regression qualification. |
-| SP-038 — Chinese and Indian Tuning-Profile Source Review | T-0048 — Backlog | Prepare source-qualified, correctly classified candidates for Chinese twelve-lü and Indian śruti; obtain user approval for exact candidates before catalog inclusion. |
+| SP-035 — Predefined Tuning-System Discovery | T-0045 — Implemented - Verified | Make the current immutable catalog discoverable, searchable, filterable, and understandable through detail, provenance, limitation, empty-state, and accessibility presentation. |
+| SP-036 — Profile Creation and Tuning Workflows | T-0046 — Implemented - Verified | Create or duplicate an editable profile using a selected built-in or user system; preserve reference configuration, expose mismatches, support grouping and written/sounding presentation, and verify silent persistence and iPhone/Watch resolution. |
+| SP-037 — Profile Recovery and Safe Catalog Use | T-0047 — Implemented - Verified | Complete referenced-object deletion/undo or confirmation behavior, recovery paths, and end-to-end persistence/regression qualification. |
+| SP-038 — Chinese and Indian Tuning-Profile Source Review | T-0048 — Active | Prepare source-qualified, correctly classified candidates for Chinese twelve-lü and Indian śruti; obtain user approval for exact candidates before catalog inclusion. |
 
-The Sprints are sequential planning units. Only one may be active at a time. SP-034 and SP-035 are closed. SP-036 and T-0046 are active by explicit user direction on 2026-09-29; SP-037 and SP-038 remain in Planning with backlog Tasks.
+The Sprints are sequential planning units. Only one may be active at a time. SP-034 through SP-037 are closed. SP-038 planning was completed and SP-038/T-0048 activated by explicit user direction on 2026-09-29. Activation authorizes source review and candidate-specification work; catalog inclusion still requires the user's approval of each exact candidate.
 
 ## Sprint acceptance and verification
 
@@ -54,7 +54,7 @@ The Sprints are sequential planning units. Only one may be active at a time. SP-
 
 The user deferred Chinese twelve-lü and Indian śruti content from SP-034 and added SP-038 for source review. No candidate catalog entries are included in SP-034 through SP-037. Before either family is added to EP-014, SP-038 must prepare a separately reviewable candidate record specifying its exact name/variant, period or school, region and context; ordered pitch data, units, labels, tonic/reference assumptions and playback mapping; authoritative sources and limitations; and whether it is a documented model or editable template. Each exact candidate requires user approval before catalog inclusion. No variant or definition is preselected by this plan.
 
-The content is deferred from the currently planned general catalog work to SP-038 within EP-014. Until the source review and candidate-specific user approval are complete, the existing catalog and generic discovery/template path remain the boundary. Planning SP-038 does not authorize candidate selection or implementation.
+The content is deferred from the earlier general catalog work to SP-038 within EP-014. Source review and candidate specification are active. Until the user approves each exact candidate, the existing catalog remains unchanged; Sprint activation alone does not authorize candidate catalog inclusion.
 
 ## Out of scope and exit evidence
 

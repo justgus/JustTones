@@ -4,7 +4,7 @@ This is the main index for Agile Airframe Sprints. Sprints group Tasks and Issue
 
 ## Current Sprint Record
 
-Currently: **None**
+Currently: **SP-038 — Chinese and Indian Tuning-Profile Source Review (Active)**
 
 ## All Sprints
 
@@ -48,17 +48,17 @@ Currently: **38 Sprints** | Next available: **SP-039**
 | SP-034 | Profile Pitch Semantics and Resolution | EP-014 | T-0044 | None | Closed |
 | SP-035 | Predefined Tuning-System Discovery | EP-014 | T-0045 | None | Closed |
 | SP-036 | Profile Creation and Tuning Workflows | EP-014 | T-0046 | None | Closed |
-| SP-037 | Profile Recovery and Safe Catalog Use | EP-014 | T-0047 | None | Planning |
-| SP-038 | Chinese and Indian Tuning-Profile Source Review | EP-014 | T-0048 | None | Planning |
+| SP-037 | Profile Recovery and Safe Catalog Use | EP-014 | T-0047 | None | Closed |
+| SP-038 | Chinese and Indian Tuning-Profile Source Review | EP-014 | T-0048 | None | Active |
 
 ## Statistics
 
 - **Total Sprints:** 38
 - **Backlog:** 0
-- **Planning:** 2
-- **Active:** 0
+- **Planning:** 0
+- **Active:** 1
 - **Review:** 0
-- **Closed:** 36
+- **Closed:** 37
 - **Next available:** SP-039
 
 *Last Updated: 2026-09-29*

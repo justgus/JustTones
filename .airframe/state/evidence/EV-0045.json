@@ -1,0 +1,35 @@
+{
+  "artifactReferences" : [
+    "JustTones\/ContentView.swift",
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/LocalProfileStore.swift",
+    "Packages\/JustTonesCore\/Sources\/JustTonesCore\/WatchReplica.swift",
+    "JustTones\/WatchReplicaTransferCoordinator.swift",
+    "JustTonesWatch\/WatchContentView.swift",
+    "JustTonesWatch\/WatchReplicaModel.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' -derivedDataPath \/private\/tmp\/JustTones-SP037-DestinationBuild -clonedSourcePackagesDirPath \/private\/tmp\/JustTones-SP037-SourcePackages ASSETCATALOG_COMPILER_APPICON_NAME= build; git diff --check",
+  "environment" : "Xcode-beta 27.2; iPhone simulator destination; build-only verification. Automated tests, simulator interaction, paired Watch, physical device, accessibility, and user acceptance were not performed.",
+  "id" : {
+    "rawValue" : "EV-0045"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-037 recovery, reference-aware confirmation, silent fallback, and Watch replica changes compile in the iPhone\/Watch scheme.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0047"
+    }
+  ]
+}

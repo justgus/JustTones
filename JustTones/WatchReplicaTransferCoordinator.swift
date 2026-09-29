@@ -82,6 +82,6 @@ final class WatchReplicaTransferCoordinator: NSObject, WCSessionDelegate {
             appropriateFor: nil,
             create: true
         )
-        return base.appendingPathComponent("Profiles", isDirectory: true)
+        return base.appendingPathComponent("JustTones", isDirectory: true)
     }
 }

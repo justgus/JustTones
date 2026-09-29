@@ -163,6 +163,12 @@
     "Delete" : {
 
     },
+    "Delete profile?" : {
+
+    },
+    "Delete tuning system?" : {
+
+    },
     "Divisions per octave" : {
 
     },
@@ -311,6 +317,9 @@
     "OK" : {
 
     },
+    "Open Profiles" : {
+
+    },
     "One or more pitches do not resolve in this tuning system." : {
 
     },
@@ -415,6 +424,12 @@
     "Representation" : {
 
     },
+    "Remove pitch degrees used by profiles?" : {
+
+    },
+    "Remove pitches from this profile?" : {
+
+    },
     "Restore" : {
 
     },
@@ -428,6 +443,12 @@
 
     },
     "Save" : {
+
+    },
+    "Save and remove degrees" : {
+
+    },
+    "Save without removed pitches" : {
 
     },
     "Select a tuning system in the profile before adding a tuning degree." : {
@@ -478,10 +499,25 @@
     "Tags (comma-separated)" : {
 
     },
+    "The selected profile's tuning data is unavailable. Chromatic Reference was selected; playback stopped." : {
+
+    },
+    "The selected profile's tuning system changed. Review its pitches before playback." : {
+
+    },
     "This in-app percentage is not a sound-pressure-level measurement." : {
 
     },
     "This is a documented model, not a claim that one definition applies to every repertoire or performance context." : {
+
+    },
+    "This removes the profile from this iPhone and syncs the change to Watch. This cannot be undone." : {
+
+    },
+    "This removes the profile from this iPhone. The selected profile will switch to Chromatic Reference, and playback will stop. The change will sync to Watch." : {
+
+    },
+    "This removes the user-created tuning system. This cannot be undone." : {
 
     },
     "Timbre" : {

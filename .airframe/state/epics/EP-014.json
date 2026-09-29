@@ -22,8 +22,8 @@
   "notes" : [
     "Backlog planning created during the requirements-completeness audit; no implementation authorization is implied.",
     "The planned sequence must make the existing version-one catalog discoverable and bind a profile's selected tuning system and reference configuration to displayed and rendered frequencies on iPhone and Watch.",
-    "The user activated EP-014, planned SP-034 through SP-037, and later closed SP-034 and SP-035. SP-035/T-0045 were activated on 2026-09-28. SP-036/T-0046 planning was completed and both were activated on 2026-09-29; SP-037 and SP-038 remain in Planning with backlog Tasks.",
-    "On 2026-09-28, the user deferred Chinese twelve-lü and Indian śruti content from SP-034 and added SP-038 to prepare source-qualified, reviewable candidate specifications. No exact variants or definitions are preselected; user approval is required for each candidate before catalog inclusion."
+    "SP-034 through SP-037 are closed. SP-036/T-0046 were activated on 2026-09-29; SP-037/T-0047 were subsequently activated and closed. SP-038/T-0048 planning was completed and both were activated on 2026-09-29.",
+    "On 2026-09-28, the user deferred Chinese twelve-lü and Indian śruti content from SP-034 and added SP-038 to prepare source-qualified, reviewable candidate specifications. SP-038 is active; no exact variants or definitions are preselected, and user approval is required for each candidate before catalog inclusion."
   ],
   "outOfScope" : [
 

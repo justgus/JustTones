@@ -1,19 +1,83 @@
 {
   "acceptanceCriteria" : [
-    "Before deleting a profile or system referenced by profiles, explain the impact and provide the approved confirmation or Undo recovery behavior.",
+    "Before deleting a custom profile, tuning system, or tuning, require confirmation or provide clearly visible Undo; explain any impact on referencing objects before proceeding.",
     "Recover gracefully from empty libraries, missing references, invalid persisted profile content, and canceled or undone destructive actions without data loss or unexpected playback.",
-    "Complete focused persistence, search/filter, catalog, profile, and iPhone/Watch regression evidence with simulator and physical-device evidence clearly distinguished."
+    "Complete focused persistence, search\/filter, catalog, profile, and iPhone\/Watch regression evidence with simulator and physical-device evidence clearly distinguished."
   ],
   "component" : "Referenced-profile and tuning-system destructive actions, recovery, and final regression qualification.",
-  "componentsAffected" : [ "Profile and tuning-system deletion workflows", "Referenced-object impact presentation", "Persistence recovery and empty states", "iPhone/Watch profile and catalog regression tests" ],
-  "evidenceIDs" : [],
-  "epicID" : { "rawValue" : "EP-014" },
-  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:00:00Z" },
-  "notes" : [ "Planning record only; implementation is not authorized.", "Do not silently orphan profiles or replace missing systems with a different pitch system.", "The Chinese/Indian content disposition remains a separate user decision; this task does not authorize those catalog additions." ],
+  "componentsAffected" : [
+    "Profile and tuning-system deletion workflows",
+    "Referenced-object impact presentation",
+    "Persistence recovery and empty states",
+    "iPhone\/Watch profile and catalog regression tests"
+  ],
+  "dateVerified" : "2026-09-29",
+  "epicID" : {
+    "rawValue" : "EP-014"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0045"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-29T20:32:04Z"
+  },
+  "notes" : [
+    "Planning completed and SP-037\/T-0047 activated by explicit user direction on 2026-09-29.",
+    "Implemented and recorded as Implemented - Not Verified on 2026-09-29 with EV-0045. The iPhone\/Watch scheme build and whitespace checks passed; automated tests, simulator interaction, paired\/physical Watch, accessibility, and human\/device checks were not performed.",
+    "Do not silently orphan profiles or replace missing systems with a different pitch system; cancellation and Undo must preserve identity and selection.",
+    "Keep built-in hide\/restore distinct from deletion. Committed selected-object deletion must fall back silently and propagate valid state to Watch.",
+    "The Chinese\/Indian content disposition remains a separate user decision; this task does not authorize those catalog additions."
+  ],
   "priority" : "high",
   "rationale" : "Profiles and tuning systems can be referenced by other user data, so destructive changes need visible impact and recovery.",
-  "requirementIDs" : [ { "rawValue" : "JT-FR-032" }, { "rawValue" : "JT-FR-033" }, { "rawValue" : "JT-FR-067" }, { "rawValue" : "JT-FR-068" }, { "rawValue" : "JT-FR-069" }, { "rawValue" : "JT-FR-070" }, { "rawValue" : "JT-FR-100" } ],
-  "sprintID" : { "rawValue" : "SP-037" },
-  "testSteps" : [ "Exercise deletion, cancellation, undo/restore, and referenced-object impact for profiles and tuning systems.", "Verify empty and missing-reference states and persistence recovery do not cause playback or destructive data substitution.", "Run focused iPhone and Watch regression checks and record user/device checks separately from automated evidence." ],
-  "workItem" : { "id" : { "rawValue" : "T-0047" }, "kind" : "task", "status" : "backlog", "title" : "Implement profile recovery and referenced-object safety" }
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-045"
+    },
+    {
+      "rawValue" : "JT-FR-032"
+    },
+    {
+      "rawValue" : "JT-FR-033"
+    },
+    {
+      "rawValue" : "JT-FR-067"
+    },
+    {
+      "rawValue" : "JT-FR-068"
+    },
+    {
+      "rawValue" : "JT-FR-069"
+    },
+    {
+      "rawValue" : "JT-FR-070"
+    },
+    {
+      "rawValue" : "JT-FR-100"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-037"
+  },
+  "testSteps" : [
+    "Exercise delete impact disclosure, confirm\/cancel, Undo, and stable-ID restoration for profiles, tuning systems, and referenced tunings; distinguish built-in hide\/restore.",
+    "Exercise empty library, missing system reference, malformed primary store, valid snapshot recovery, and unavailable snapshot; confirm recoverable files and choices are preserved.",
+    "Delete the selected profile\/system and verify valid fallback with playback stopped on iPhone and Watch; cancel\/Undo must retain selection and playback state.",
+    "Run focused persistence, catalog manifest\/search\/filter, profile lifecycle, silent restoration, and iPhone\/Watch replica-resolution regression checks. Separate automated\/simulator evidence from physical-device and user checks."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0047"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement profile recovery and referenced-object safety"
+  }
 }

@@ -146,16 +146,15 @@ struct WatchContentView: View {
             playbackHost.stop()
             let profiles = replica.profiles
             let selectedID = UUID(uuidString: selectedProfileID) ?? profile.id
-            if let index = profiles.firstIndex(where: { $0.id == selectedID }) {
+            replica.selectProfile(id: selectedID)
+            if let index = profiles.firstIndex(where: { $0.id == selectedID }), !replica.selectionWasRemoved {
                 profileIndex = index
                 entryIndex = min(entryIndex, max(0, profiles[index].entries.count - 1))
+                profileConfigurationNotice = nil
             } else {
-                playbackHost.stop()
-                profileIndex = 0
-                entryIndex = 0
-                selectedProfileID = profile.id.uuidString
-                replica.selectProfile(id: selectedID)
+                selectDefaultProfileAfterUnavailableSelection(from: profiles)
             }
+            crownEntryIndex = Double(entryIndex)
             synchronizeSelection()
         }
     }
@@ -306,12 +305,25 @@ struct WatchContentView: View {
             selectedProfileID = profile.id.uuidString
             return
         }
-        guard let index = profiles.firstIndex(where: { $0.id == savedID }) else {
-            selectedProfileID = profile.id.uuidString
+        replica.selectProfile(id: savedID)
+        guard !replica.selectionWasRemoved,
+              let index = profiles.firstIndex(where: { $0.id == savedID }) else {
+            selectDefaultProfileAfterUnavailableSelection(from: profiles)
             return
         }
         profileIndex = index
         entryIndex = min(entryIndex, max(0, profiles[index].entries.count - 1))
+    }
+
+    private func selectDefaultProfileAfterUnavailableSelection(from profiles: [TuningProfile]) {
+        playbackHost.stop()
+        let fallbackIndex = profiles.firstIndex(where: { $0.id == BuiltInCatalog.defaultProfile.id }) ?? 0
+        profileIndex = fallbackIndex
+        entryIndex = 0
+        crownEntryIndex = 0
+        selectedProfileID = profiles[fallbackIndex].id.uuidString
+        profileConfigurationNotice = "The selected profile's tuning data is unavailable. Chromatic Reference was selected; playback stopped."
+        synchronizeSelection()
     }
 
     private var timbreDisplayName: String {

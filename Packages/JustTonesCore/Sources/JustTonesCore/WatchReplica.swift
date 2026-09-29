@@ -59,8 +59,22 @@ public struct WatchReplica: Codable, Hashable, Sendable {
             try document.validate()
             for profile in document.library.profiles {
                 for entry in profile.entries {
-                    guard case .systemDegree = entry.pitch else { continue }
-                    _ = try profile.resolvedFrequency(for: entry, userTuningSystems: document.tuningSystems)
+                    do {
+                        _ = try profile.resolvedFrequency(for: entry, userTuningSystems: document.tuningSystems)
+                    } catch let error as TuningResolutionError {
+                        switch error {
+                        case .missingTuningSystem, .unresolvedTuningSystem:
+                            // Preserve the identity so Watch can show the unresolved profile and
+                            // safely fall back if it was selected; never substitute another system.
+                            continue
+                        case .profileContextRequired:
+                            throw WatchReplicaError.invalidPayload
+                        }
+                    } catch TuningValidationError.unknownDegreeIdentifier {
+                        // Keep broken references visible and repairable rather than rejecting the
+                        // complete, otherwise valid replica.
+                        continue
+                    }
                 }
             }
         } catch {

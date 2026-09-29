@@ -4,12 +4,16 @@ public enum ProfileStoreError: Error, Equatable, Sendable {
     case unsupportedSchemaVersion(Int)
     case invalidStore
     case recoveryUnavailable
+    case corruptStorePreserved(name: String)
+    case snapshotRestoreFailed(preservedCorruptStoreName: String?)
 }
 
 public enum ProfileStoreRecovery: Equatable, Sendable {
     case none
     case createdEmptyStore
+    case createdEmptyStorePreservingCorruptFile(name: String)
     case recoveredFromSnapshot(preservedCorruptStoreName: String)
+    case recoveredFromSnapshotAfterStoreLoss(preservedCorruptStoreName: String?)
 }
 
 public struct ProfileStoreLoadResult: Sendable {
@@ -119,6 +123,27 @@ public struct LocalProfileStore {
     public func load() throws -> ProfileStoreLoadResult {
         let manager = FileManager.default
         guard manager.fileExists(atPath: storeURL.path) else {
+            if manager.fileExists(atPath: snapshotURL.path), let snapshot = try? decodeDocument(at: snapshotURL) {
+                do {
+                    try encodedValidatedData(for: snapshot).write(to: storeURL, options: .atomic)
+                    return ProfileStoreLoadResult(
+                        document: snapshot,
+                        recovery: .recoveredFromSnapshotAfterStoreLoss(
+                            preservedCorruptStoreName: mostRecentPreservedCorruptStoreName()
+                        )
+                    )
+                } catch {
+                    throw ProfileStoreError.snapshotRestoreFailed(
+                        preservedCorruptStoreName: mostRecentPreservedCorruptStoreName()
+                    )
+                }
+            }
+            if let preservedName = mostRecentPreservedCorruptStoreName() {
+                return ProfileStoreLoadResult(
+                    document: try ProfileStoreDocument(),
+                    recovery: .createdEmptyStorePreservingCorruptFile(name: preservedName)
+                )
+            }
             return ProfileStoreLoadResult(document: try ProfileStoreDocument(), recovery: .createdEmptyStore)
         }
 
@@ -127,9 +152,13 @@ public struct LocalProfileStore {
         } catch {
             let preservedName = try preserveCorruptStore()
             guard manager.fileExists(atPath: snapshotURL.path), let snapshot = try? decodeDocument(at: snapshotURL) else {
-                throw ProfileStoreError.recoveryUnavailable
+                throw ProfileStoreError.corruptStorePreserved(name: preservedName)
             }
-            try encodedValidatedData(for: snapshot).write(to: storeURL, options: .atomic)
+            do {
+                try encodedValidatedData(for: snapshot).write(to: storeURL, options: .atomic)
+            } catch {
+                throw ProfileStoreError.snapshotRestoreFailed(preservedCorruptStoreName: preservedName)
+            }
             return ProfileStoreLoadResult(
                 document: snapshot,
                 recovery: .recoveredFromSnapshot(preservedCorruptStoreName: preservedName)
@@ -243,5 +272,22 @@ public struct LocalProfileStore {
         let name = "Profiles.corrupt-\(UUID().uuidString).json"
         try FileManager.default.moveItem(at: storeURL, to: directoryURL.appendingPathComponent(name))
         return name
+    }
+
+    private func mostRecentPreservedCorruptStoreName() -> String? {
+        guard let files = try? FileManager.default.contentsOfDirectory(
+            at: directoryURL,
+            includingPropertiesForKeys: [.contentModificationDateKey],
+            options: [.skipsHiddenFiles]
+        ) else { return nil }
+        return files
+            .filter { $0.lastPathComponent.hasPrefix("Profiles.corrupt-") && $0.pathExtension == "json" }
+            .sorted {
+                let firstDate = (try? $0.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate) ?? .distantPast
+                let secondDate = (try? $1.resourceValues(forKeys: [.contentModificationDateKey]).contentModificationDate) ?? .distantPast
+                return firstDate > secondDate
+            }
+            .first?
+            .lastPathComponent
     }
 }

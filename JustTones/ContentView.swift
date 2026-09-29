@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var userProfiles: [TuningProfile] = []
     @State private var userTuningSystems: [JustTonesInterchangeTuningSystem] = []
     @State private var profileConfigurationNotice: String?
+    @State private var profileStoreNotice: String?
+    @State private var profileStoreSaveFailed = false
     @State private var hiddenBuiltInProfileIDs: Set<UUID> = []
     @State private var timbre: BuiltInTimbre = .sine
     @State private var unavailableTimbrePreference: String?
@@ -60,20 +62,15 @@ struct ContentView: View {
                         .accessibilityLabel("Selected pitch")
                         .accessibilityValue("\(entry.label ?? "reference pitch"), \(resolvedFrequency.map { $0.formatted(.number.precision(.fractionLength(1))) } ?? "unavailable") hertz")
                         .accessibilityIdentifier("pitchPicker")
-                        if let resolvedFrequency {
-                            Text("\(resolvedFrequency.formatted(.number.precision(.fractionLength(1)))) Hz")
-                        } else {
-                            Label("Pitch unavailable — check this profile's tuning system.", systemImage: "exclamationmark.triangle")
-                                .font(.caption)
-                                .foregroundStyle(.orange)
-                                .accessibilityIdentifier("pitchResolutionUnavailable")
-                        }
+                        pitchAvailabilityView
                         if let profileConfigurationNotice {
                             Label(profileConfigurationNotice, systemImage: "info.circle")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
+                        missingTuningSystemNoticeView
+                        profileStoreNoticeView
                         playbackStateBadge
                         if playbackHost.isPlaying {
                             Text("Playing for \(formattedPlaybackDuration)")
@@ -178,7 +175,8 @@ struct ContentView: View {
             .sheet(isPresented: $tuningSystems) {
                 secondaryDestination {
                     TuningSystemSheet(
-                        systems: $userTuningSystems
+                        systems: $userTuningSystems,
+                        profiles: userProfiles
                     )
                 }
             }
@@ -220,33 +218,54 @@ struct ContentView: View {
             .onChange(of: outputLevel) { oldValue, newValue in
                 handleLevelChange(from: oldValue, to: newValue)
                 synchronizeSelection()
-                persistUserProfiles()
+                _ = persistUserProfiles()
             }
             .onChange(of: index) { _, _ in
                 synchronizeSelection()
-                persistUserProfiles()
+                _ = persistUserProfiles()
             }
             .onChange(of: timbre) { _, _ in
                 guard let frequency = resolvedFrequency,
                       let level = try? ToneOutputLevel(Float(outputLevel)),
                       let renderFrequency = try? ToneRenderFrequency(hertz: frequency) else { return }
                 playbackHost.changeTimbre(TonePlaybackSelection(frequency: renderFrequency, timbre: timbre, level: level))
-                persistUserProfiles()
+                _ = persistUserProfiles()
             }
             .onChange(of: profile) { _, profile in
                 selectPreferredTimbre(for: profile)
                 synchronizeSelection()
-                persistUserProfiles()
+                _ = persistUserProfiles()
             }
             .onChange(of: userProfiles) { _, _ in
-                persistUserProfiles()
-                publishProfilesToWatch()
+                if persistUserProfiles() { publishProfilesToWatch() }
             }
-            .onChange(of: userTuningSystems) { _, _ in
-                persistUserProfiles()
-                publishProfilesToWatch()
+            .onChange(of: userTuningSystems) { oldSystems, newSystems in
+                let retainedIDs = Set(newSystems.map(\.id))
+                let removedIDs = Set(oldSystems.map(\.id).filter { !retainedIDs.contains($0) })
+                let oldSystemsByID = Dictionary(uniqueKeysWithValues: oldSystems.map { ($0.id, $0) })
+                let changedIDs = Set(newSystems.compactMap { item in
+                    oldSystemsByID[item.id].map { $0 == item ? nil : item.id } ?? nil
+                })
+                let selectedSystemUUID = profile.tuningSystemID.flatMap(UUID.init(uuidString:))
+                if let selectedSystemUUID, removedIDs.contains(selectedSystemUUID) {
+                    prepareProfileSelection(BuiltInCatalog.defaultProfile)
+                    profile = BuiltInCatalog.defaultProfile
+                    index = 0
+                } else if let selectedSystemUUID, changedIDs.contains(selectedSystemUUID) {
+                    if playbackHost.isPlaying || playbackHost.state == .starting { playbackHost.stop() }
+                    if let currentEntry = profile.entries.indices.contains(index) ? profile.entries[index] : nil,
+                       (try? profile.resolvedFrequency(for: currentEntry, userTuningSystems: newSystems)) != nil {
+                        profileConfigurationNotice = "The selected profile's tuning system changed. Review its pitches before playback."
+                        synchronizeSelection()
+                    } else {
+                        prepareProfileSelection(BuiltInCatalog.defaultProfile)
+                        profile = BuiltInCatalog.defaultProfile
+                        index = 0
+                    }
+                }
+                if persistUserProfiles() { publishProfilesToWatch() }
             }
-            .onChange(of: hiddenBuiltInProfileIDs) { _, _ in persistUserProfiles() }
+            .onChange(of: hiddenBuiltInProfileIDs) { _, _ in _ = persistUserProfiles() }
             .onChange(of: playbackHost.state) { _, state in
                 if state == .playing {
                     playbackStartedAt = .now
@@ -293,6 +312,56 @@ struct ContentView: View {
             } message: {
                 Text(importError ?? "The document could not be imported.")
             }
+        }
+    }
+
+    @ViewBuilder
+    private var pitchAvailabilityView: some View {
+        if let resolvedFrequency {
+            Text(resolvedFrequency.formatted(.number.precision(.fractionLength(1))) + " Hz")
+        } else {
+            Label("Pitch unavailable — check this profile's tuning system.", systemImage: "exclamationmark.triangle")
+                .font(.caption)
+                .foregroundStyle(.orange)
+                .accessibilityIdentifier("pitchResolutionUnavailable")
+        }
+    }
+
+    @ViewBuilder
+    private var missingTuningSystemNoticeView: some View {
+        if let missingTuningSystemID {
+            VStack(alignment: .leading, spacing: 5) {
+                Label(
+                    "This profile's tuning system is unavailable (\(missingTuningSystemID)). Edit the profile and choose an available system.",
+                    systemImage: "exclamationmark.triangle"
+                )
+                .font(.caption)
+                .foregroundStyle(.orange)
+                .fixedSize(horizontal: false, vertical: true)
+                Button("Open Profiles") { profiles = true }
+                    .font(.caption)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var profileStoreNoticeView: some View {
+        if let profileStoreNotice {
+            VStack(alignment: .leading, spacing: 8) {
+                Label(profileStoreNotice, systemImage: "externaldrive.badge.exclamationmark")
+                    .font(.caption)
+                    .foregroundStyle(.orange)
+                    .fixedSize(horizontal: false, vertical: true)
+                HStack {
+                    Button("Profiles") { profiles = true }
+                    Button("Import") { importPresented = true }
+                    Spacer()
+                    Button("Dismiss") { self.profileStoreNotice = nil }
+                }
+                .font(.caption)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .accessibilityIdentifier("profileStoreRecoveryNotice")
         }
     }
     private func move(_ delta: Int) { index = min(max(0, index + delta), profile.entries.count - 1) }
@@ -528,13 +597,59 @@ struct ContentView: View {
         return LocalProfileStore(directoryURL: directory.appendingPathComponent("JustTones", isDirectory: true))
     }
 
+    private var missingTuningSystemID: String? {
+        guard let identifier = profile.tuningSystemID else { return nil }
+        if BuiltInCatalog.tuningSystems.contains(where: { $0.id.caseInsensitiveCompare(identifier) == .orderedSame }) {
+            return nil
+        }
+        if let id = UUID(uuidString: identifier), userTuningSystems.contains(where: { $0.id == id }) {
+            return nil
+        }
+        return identifier
+    }
+
     @discardableResult
     private func loadStoredState() -> Bool {
-        guard let store = profileStore,
-              let result = try? store.load() else { return false }
+        guard let store = profileStore else {
+            profileStoreNotice = "Local profile storage is unavailable. Built-in profiles remain available; you can import data or create a profile."
+            profileStoreSaveFailed = false
+            return false
+        }
+        let result: ProfileStoreLoadResult
+        do {
+            result = try store.load()
+        } catch let error as ProfileStoreError {
+            profileStoreSaveFailed = false
+            switch error {
+            case let .corruptStorePreserved(name):
+                profileStoreNotice = "Saved profile data was invalid and has been preserved as \(name). No valid recovery snapshot was available. Built-in profiles remain available; you can import valid data or create a profile."
+            case let .snapshotRestoreFailed(name):
+                let preservedData = name.map { " Damaged data is preserved as \($0)." } ?? " The available snapshot remains in local storage."
+                profileStoreNotice = "Saved profiles could not be restored from the available snapshot.\(preservedData) Built-in profiles remain available; you can import valid data or create a profile."
+            case .recoveryUnavailable, .invalidStore, .unsupportedSchemaVersion:
+                profileStoreNotice = "Saved profile data could not be loaded. Built-in profiles remain available; you can import valid data or create a profile."
+            }
+            return false
+        } catch {
+            profileStoreNotice = "Saved profile data could not be loaded. Built-in profiles remain available; you can import valid data or create a profile."
+            profileStoreSaveFailed = false
+            return false
+        }
         userProfiles = result.document.library.profiles
         userTuningSystems = result.document.tuningSystems
         hiddenBuiltInProfileIDs = result.document.hiddenBuiltInProfileIDs
+        switch result.recovery {
+        case let .recoveredFromSnapshot(name):
+            profileStoreNotice = "Recovered saved profiles from the last valid snapshot. The damaged data was preserved as \(name)."
+        case let .recoveredFromSnapshotAfterStoreLoss(name):
+            let preservedData = name.map { " Damaged data was preserved as \($0)." } ?? ""
+            profileStoreNotice = "Recovered saved profiles from the last valid snapshot because the main profile file was missing.\(preservedData)"
+        case let .createdEmptyStorePreservingCorruptFile(name):
+            profileStoreNotice = "No saved profiles could be recovered. The damaged data is preserved as \(name). Built-in profiles remain available; you can import valid data or create a profile."
+        case .none, .createdEmptyStore:
+            break
+        }
+        profileStoreSaveFailed = false
 
         let state = result.document.workingState
         let selectedID = state?.selectedProfileID ?? result.document.selectedProfileID
@@ -560,9 +675,13 @@ struct ContentView: View {
         return false
     }
 
-    private func persistUserProfiles() {
+    private func persistUserProfiles() -> Bool {
         guard let store = profileStore,
-              let library = try? TuningProfileLibrary(profiles: userProfiles) else { return }
+              let library = try? TuningProfileLibrary(profiles: userProfiles) else {
+            profileStoreNotice = "Changes could not be saved. Your current session is still available; export or import data after checking storage."
+            profileStoreSaveFailed = true
+            return false
+        }
         let selectedID = userProfiles.contains(where: { $0.id == profile.id }) ? profile.id : nil
         let selectedEntryID = profile.entries.indices.contains(index) ? profile.entries[index].id : nil
         let workingState = try? ProfileWorkingState(
@@ -577,8 +696,23 @@ struct ContentView: View {
             selectedProfileID: selectedID,
             hiddenBuiltInProfileIDs: hiddenBuiltInProfileIDs,
             workingState: workingState
-        ) else { return }
-        try? store.save(document)
+        ) else {
+            profileStoreNotice = "Changes could not be saved. Your current session is still available; export or import data after checking storage."
+            profileStoreSaveFailed = true
+            return false
+        }
+        do {
+            try store.save(document)
+            if profileStoreSaveFailed {
+                profileStoreNotice = nil
+                profileStoreSaveFailed = false
+            }
+            return true
+        } catch {
+            profileStoreNotice = "Changes could not be saved. Your current session is still available; export or import data after checking storage."
+            profileStoreSaveFailed = true
+            return false
+        }
     }
 
     private func currentLocalDocument() throws -> ProfileStoreDocument {
@@ -1007,6 +1141,7 @@ private struct ProfileSheet: View {
     let prepareProfileSelection: (TuningProfile) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var editingProfile: TuningProfile?
+    @State private var pendingProfileDeletion: TuningProfile?
 
     var body: some View {
         NavigationStack { List {
@@ -1056,14 +1191,14 @@ private struct ProfileSheet: View {
                     }
                     .accessibilityValue(candidate.id == profile.id ? "Selected" : "")
                     .swipeActions(edge: .trailing) {
-                        Button("Delete", role: .destructive) { delete(candidate) }
+                        Button("Delete", role: .destructive) { pendingProfileDeletion = candidate }
                         Button("Edit") { editingProfile = candidate }
                             .tint(.accentColor)
                     }
                     .contextMenu {
                         Button("Edit") { editingProfile = candidate }
                         Button("Duplicate") { duplicate(candidate) }
-                        Button("Delete", role: .destructive) { delete(candidate) }
+                        Button("Delete", role: .destructive) { pendingProfileDeletion = candidate }
                     }
                 }
                 .onMove(perform: move)
@@ -1140,6 +1275,27 @@ private struct ProfileSheet: View {
                 }
             }
         }
+        .confirmationDialog(
+            "Delete profile?",
+            isPresented: Binding(
+                get: { pendingProfileDeletion != nil },
+                set: { if !$0 { pendingProfileDeletion = nil } }
+            ),
+            titleVisibility: .visible,
+            presenting: pendingProfileDeletion
+        ) { candidate in
+            Button("Delete \(candidate.name)", role: .destructive) {
+                delete(candidate)
+                pendingProfileDeletion = nil
+            }
+            Button("Cancel", role: .cancel) { pendingProfileDeletion = nil }
+        } message: { candidate in
+            if candidate.id == profile.id {
+                Text("This removes the profile from this iPhone. The selected profile will switch to Chromatic Reference, and playback will stop. The change will sync to Watch.")
+            } else {
+                Text("This removes the profile from this iPhone and syncs the change to Watch. This cannot be undone.")
+            }
+        }
         }
     }
 
@@ -1213,11 +1369,14 @@ private struct ProfileEditor: View {
     @State private var draft: TuningProfile
     @State private var addingPitch = false
     @State private var editingPitch: TuningProfileEntry?
+    @State private var pendingRemovedPitchEntries: [TuningProfileEntry]?
+    private let originalPitchEntries: [TuningProfileEntry]
     let userTuningSystems: [JustTonesInterchangeTuningSystem]
     let onSave: (TuningProfile) -> Void
 
     init(profile: TuningProfile, userTuningSystems: [JustTonesInterchangeTuningSystem], onSave: @escaping (TuningProfile) -> Void) {
         _draft = State(initialValue: profile)
+        originalPitchEntries = profile.entries
         self.userTuningSystems = userTuningSystems
         self.onSave = onSave
     }
@@ -1282,7 +1441,7 @@ private struct ProfileEditor: View {
                                     }
                                 }
                                 Spacer()
-                                Text((try? draft.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems)).map { "\($0.formatted(.number.precision(.fractionLength(1)))) Hz" } ?? "Unavailable")
+                                Text(pitchFrequencyText(for: entry))
                                     .foregroundStyle(.secondary)
                             }
                         }
@@ -1308,9 +1467,24 @@ private struct ProfileEditor: View {
                 ToolbarItem(placement: .topBarLeading) { EditButton() }
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { onSave(draft); dismiss() }
+                    Button("Save") { requestSave() }
                         .disabled(draft.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !hasResolvableEntries)
                 }
+            }
+            .confirmationDialog(
+                "Remove pitches from this profile?",
+                isPresented: Binding(
+                    get: { pendingRemovedPitchEntries != nil },
+                    set: { if !$0 { pendingRemovedPitchEntries = nil } }
+                ),
+                titleVisibility: .visible,
+                presenting: pendingRemovedPitchEntries
+            ) { _ in
+                Button("Save without removed pitches", role: .destructive) { commitSave() }
+                Button("Cancel", role: .cancel) { pendingRemovedPitchEntries = nil }
+            } message: { removedEntries in
+                let labels = removedEntries.map { $0.label ?? "Pitch" }.joined(separator: ", ")
+                Text("This permanently removes \(removedEntries.count) pitch(es) from \(draft.name): \(labels). Save only if this change is intended.")
             }
             .sheet(isPresented: $addingPitch) {
                 PitchEditor(tuningSystem: selectedTuningSystem?.system) { entry in draft.entries.append(entry) }
@@ -1351,6 +1525,29 @@ private struct ProfileEditor: View {
             get: { draft.referencePitch.hertz },
             set: { if let reference = try? ReferencePitch(hertz: $0) { draft.referencePitch = reference } }
         )
+    }
+
+    private func pitchFrequencyText(for entry: TuningProfileEntry) -> String {
+        guard let frequency = try? draft.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems) else {
+            return "Unavailable"
+        }
+        return frequency.formatted(.number.precision(.fractionLength(1))) + " Hz"
+    }
+
+    private func requestSave() {
+        let retainedIDs = Set(draft.entries.map(\.id))
+        let removed = originalPitchEntries.filter { !retainedIDs.contains($0.id) }
+        if removed.isEmpty {
+            commitSave()
+        } else {
+            pendingRemovedPitchEntries = removed
+        }
+    }
+
+    private func commitSave() {
+        onSave(draft)
+        pendingRemovedPitchEntries = nil
+        dismiss()
     }
 }
 
@@ -1516,6 +1713,7 @@ private extension BuiltInTimbre {
         case .brass: "Brass"
         }
     }
+
 }
 
 private extension NoteLetter {
@@ -1537,11 +1735,13 @@ private extension Accidental {
 
 private struct TuningSystemSheet: View {
     @Binding var systems: [JustTonesInterchangeTuningSystem]
+    let profiles: [TuningProfile]
     @Environment(\.dismiss) private var dismiss
     @State private var editingSystem: JustTonesInterchangeTuningSystem?
     @State private var duplicatingSystem: JustTonesInterchangeTuningSystem?
     @State private var creatingSystem = false
     @State private var searchText = ""
+    @State private var pendingSystemDeletion: JustTonesInterchangeTuningSystem?
 
     private var builtInSystems: [CatalogTuningSystem] {
         BuiltInCatalog.tuningSystems.filter(systemMatches)
@@ -1581,14 +1781,14 @@ private struct TuningSystemSheet: View {
                                 CatalogTuningSystemRow(system: item.system, isBuiltIn: false)
                             }
                             .swipeActions {
-                                Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
+                                Button("Delete", role: .destructive) { pendingSystemDeletion = item }
                                 Button("Edit") { editingSystem = item }.tint(.accentColor)
                                 Button("Duplicate") { duplicate(item) }.tint(.secondary)
                             }
                             .contextMenu {
                                 Button("Edit") { editingSystem = item }
                                 Button("Duplicate") { duplicate(item) }
-                                Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
+                                Button("Delete", role: .destructive) { pendingSystemDeletion = item }
                             }
                         }
                     }
@@ -1614,10 +1814,27 @@ private struct TuningSystemSheet: View {
                 TuningSystemEditor { save($0, replacing: nil) }
             }
             .sheet(item: $editingSystem) { item in
-                TuningSystemEditor(existing: item) { save($0, replacing: item.id) }
+                TuningSystemEditor(existing: item, referencedProfiles: profiles) { save($0, replacing: item.id) }
             }
             .sheet(item: $duplicatingSystem) { item in
                 TuningSystemEditor(existing: item, isDuplicate: true) { save($0, replacing: nil) }
+            }
+            .confirmationDialog(
+                "Delete tuning system?",
+                isPresented: Binding(
+                    get: { pendingSystemDeletion != nil },
+                    set: { if !$0 { pendingSystemDeletion = nil } }
+                ),
+                titleVisibility: .visible,
+                presenting: pendingSystemDeletion
+            ) { item in
+                Button("Delete \(item.system.name)", role: .destructive) {
+                    systems.removeAll { $0.id == item.id }
+                    pendingSystemDeletion = nil
+                }
+                Button("Cancel", role: .cancel) { pendingSystemDeletion = nil }
+            } message: { item in
+                Text(systemDeletionImpact(for: item))
             }
         }
     }
@@ -1632,6 +1849,17 @@ private struct TuningSystemSheet: View {
 
     private func duplicate(_ item: JustTonesInterchangeTuningSystem) {
         duplicatingSystem = item
+    }
+
+    private func systemDeletionImpact(for item: JustTonesInterchangeTuningSystem) -> String {
+        let identifier = item.id.uuidString.lowercased()
+        let affected = profiles.filter { $0.tuningSystemID?.lowercased() == identifier }
+        guard !affected.isEmpty else {
+            return "This removes the user-created tuning system. This cannot be undone."
+        }
+        let names = affected.prefix(3).map(\.name).joined(separator: ", ")
+        let additional = affected.count > 3 ? " and \(affected.count - 3) more" : ""
+        return "Used by \(affected.count) profile(s): \(names)\(additional). Those profiles will keep this system's ID and show an unavailable system until you repair them. If one is selected, playback will stop and Chromatic Reference will be selected. The change will sync to Watch."
     }
 
     private func save(_ system: TuningSystem, replacing id: UUID?) {
@@ -1987,12 +2215,22 @@ private struct TuningSystemEditor: View {
     @Environment(\.dismiss) private var dismiss
     @State private var draft: TuningSystemDraft
     @State private var errorMessage: String?
+    @State private var pendingSystemSave: TuningSystem?
+    private let existingSystem: JustTonesInterchangeTuningSystem?
+    private let referencedProfiles: [TuningProfile]
     let onSave: (TuningSystem) -> Void
 
-    init(existing: JustTonesInterchangeTuningSystem? = nil, isDuplicate: Bool = false, onSave: @escaping (TuningSystem) -> Void) {
+    init(
+        existing: JustTonesInterchangeTuningSystem? = nil,
+        isDuplicate: Bool = false,
+        referencedProfiles: [TuningProfile] = [],
+        onSave: @escaping (TuningSystem) -> Void
+    ) {
         var initialDraft = TuningSystemDraft(system: existing?.system)
         if isDuplicate { initialDraft.name += " Copy" }
         _draft = State(initialValue: initialDraft)
+        existingSystem = isDuplicate ? nil : existing
+        self.referencedProfiles = isDuplicate ? [] : referencedProfiles
         self.onSave = onSave
     }
 
@@ -2027,17 +2265,64 @@ private struct TuningSystemEditor: View {
                         .disabled(draft.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || draft.degrees.isEmpty)
                 }
             }
+            .confirmationDialog(
+                "Remove pitch degrees used by profiles?",
+                isPresented: Binding(
+                    get: { pendingSystemSave != nil },
+                    set: { if !$0 { pendingSystemSave = nil } }
+                ),
+                titleVisibility: .visible,
+                presenting: pendingSystemSave
+            ) { system in
+                Button("Save and remove degrees", role: .destructive) { commit(system) }
+                Button("Cancel", role: .cancel) { pendingSystemSave = nil }
+            } message: { system in
+                Text(degreeRemovalImpact(for: system))
+            }
         }
     }
 
     private func save() {
         do {
             let system = try draft.makeSystem()
-            onSave(system)
-            dismiss()
+            let removedIDs = Set(existingSystem?.system.degrees.map(\.id) ?? []).subtracting(system.degrees.map(\.id))
+            let affected = referencedProfiles.filter { profile in
+                guard profile.tuningSystemID?.caseInsensitiveCompare(existingSystem?.id.uuidString ?? "") == .orderedSame else { return false }
+                return profile.entries.contains { entry in
+                    guard case let .systemDegree(degreeID) = entry.pitch else { return false }
+                    return removedIDs.contains(degreeID)
+                }
+            }
+            if affected.isEmpty {
+                commit(system)
+            } else {
+                pendingSystemSave = system
+            }
         } catch {
             errorMessage = "Check the name and each pitch-degree value. \(error.localizedDescription)"
         }
+    }
+
+    private func commit(_ system: TuningSystem) {
+        onSave(system)
+        pendingSystemSave = nil
+        dismiss()
+    }
+
+    private func degreeRemovalImpact(for system: TuningSystem) -> String {
+        guard let existingSystem else { return "Some profiles use these degree IDs. Saving will keep their system reference, but removed degrees will be unavailable until repaired." }
+        let existingIDs = Set(existingSystem.system.degrees.map(\.id))
+        let removedIDs = existingIDs.subtracting(system.degrees.map(\.id))
+        let affected = referencedProfiles.filter { profile in
+            guard profile.tuningSystemID?.caseInsensitiveCompare(existingSystem.id.uuidString) == .orderedSame else { return false }
+            return profile.entries.contains { entry in
+                guard case let .systemDegree(degreeID) = entry.pitch else { return false }
+                return removedIDs.contains(degreeID)
+            }
+        }
+        let names = affected.prefix(3).map(\.name).joined(separator: ", ")
+        let additional = affected.count > 3 ? " and \(affected.count - 3) more" : ""
+        return "Referenced by \(affected.count) profile(s): \(names)\(additional). Removed degree references will remain unresolved; no replacement pitch will be selected."
     }
 }
 
