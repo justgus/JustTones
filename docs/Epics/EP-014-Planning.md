@@ -1,6 +1,6 @@
 # EP-014 — Profile, Catalog, and Content Discovery Completion
 
-**Status:** Active (SP-034 closed; SP-035 through SP-038 in planning; no Sprint active).
+**Status:** Active (SP-035 active; SP-034 closed; SP-036 through SP-038 in planning).
 
 ## Purpose and boundary
 
@@ -12,13 +12,13 @@ The Epic covers the profile/catalog portions of JT-FR-027 through JT-FR-035, JT-
 
 | Sprint | Task | Outcome |
 | --- | --- | --- |
-| SP-034 — Profile Pitch Semantics and Resolution | T-0044 — Active | Persist and resolve each supported pitch-entry form through the selected tuning system and reference; display and render the same deterministic frequency on iPhone and Watch. |
-| SP-035 — Predefined Tuning-System Discovery | T-0045 — Backlog | Make the current immutable catalog discoverable, searchable, filterable, and understandable through detail, provenance, limitation, empty-state, and accessibility presentation. |
+| SP-034 — Profile Pitch Semantics and Resolution | T-0044 — Implemented - Verified | Persist and resolve each supported pitch-entry form through the selected tuning system and reference; display and render the same deterministic frequency on iPhone and Watch. |
+| SP-035 — Predefined Tuning-System Discovery | T-0045 — Active | Make the current immutable catalog discoverable, searchable, filterable, and understandable through detail, provenance, limitation, empty-state, and accessibility presentation. |
 | SP-036 — Profile Creation and Tuning Workflows | T-0046 — Backlog | Create or duplicate an editable profile from a selected system; preserve reference configuration, expose mismatches, and support grouping plus written/sounding presentation without surprise playback. |
 | SP-037 — Profile Recovery and Safe Catalog Use | T-0047 — Backlog | Complete referenced-object deletion/undo or confirmation behavior, recovery paths, and end-to-end persistence/regression qualification. |
 | SP-038 — Chinese and Indian Tuning-Profile Source Review | T-0048 — Backlog | Prepare source-qualified, correctly classified candidates for Chinese twelve-lü and Indian śruti; obtain user approval for exact candidates before catalog inclusion. |
 
-The Sprints are sequential planning units. Only one may be active at a time. SP-034 is closed; SP-035 through SP-038 are in planning with backlog Tasks. No Sprint is currently active.
+The Sprints are sequential planning units. Only one may be active at a time. SP-034 is closed; SP-035 and T-0045 are active by user authorization on 2026-09-28. SP-036 through SP-038 remain in Planning with backlog Tasks.
 
 ## Sprint acceptance and verification
 

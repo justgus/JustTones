@@ -1,19 +1,82 @@
 {
   "acceptanceCriteria" : [
-    "Present 12-TET, Pythagorean, five-limit just intonation, quarter-comma meantone, Werckmeister III, Kirnberger III, Vallotti, and Young II as read-only predefined systems distinct from user-created systems.",
-    "Provide useful search, filters, detail, provenance/limitation disclosures, accessible labels, and empty states from the existing catalog data.",
-    "Catalog browse, selection, detail navigation, and return remain silent and do not mutate the predefined entries."
+    "JT-AC-059: present the existing eight version-one systems as immutable predefined catalog records, distinct from user-created systems, with classification, context, ordered pitch data, reference assumptions, available provenance, and limitations.",
+    "Search built-in and custom profiles and tuning systems by applicable names, alternate names, instruments, regions, traditions, descriptive metadata, contained pitches, and sounding frequencies; provide deterministic metadata-backed filters and clear empty states. Support VoiceOver, Dynamic Type, and localized labels without implying unsupported cultural coverage.",
+    "Catalog browse, search, filtering, row selection, detail navigation, and return preserve the selected profile and playback state, remain silent, and do not mutate predefined or user data."
   ],
   "component" : "iPhone tuning-system catalog discovery, detail, search, and filtering.",
-  "componentsAffected" : [ "Predefined tuning-system catalog and manifest", "iPhone catalog list and detail surfaces", "Search/filter and empty states", "Localization and accessibility", "Catalog UI/data tests" ],
-  "evidenceIDs" : [],
-  "epicID" : { "rawValue" : "EP-014" },
-  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:00:00Z" },
-  "notes" : [ "Planning record only; implementation is not authorized.", "The catalog remains local. Chinese twelve-lü and Indian śruti candidates are excluded pending the separate user disposition and source records." ],
+  "componentsAffected" : [
+    "Predefined tuning-system catalog and manifest",
+    "iPhone catalog list and detail surfaces",
+    "Search\/filter and empty states",
+    "Localization and accessibility",
+    "Catalog UI\/data tests"
+  ],
+  "dateImplemented" : "2026-09-28",
+  "dateVerified" : "2026-09-29",
+  "epicID" : {
+    "rawValue" : "EP-014"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0043"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-29T14:28:15Z"
+  },
+  "notes" : [
+    "Implemented and recorded as Implemented - Not Verified on 2026-09-28. Swift parsing and whitespace checks passed. The full project build did not complete: Watch AppIconWatch has no applicable content, and retrying past that asset error exposed Watch Digital Crown APIs compiled against iOS; an optional-frequency guard was added, but the build was not rerun. Automated tests and device checks were not run.",
+    "The catalog remains local. Chinese twelve-lü and Indian śruti candidates are deferred to SP-038 for source review and are outside this Task."
+  ],
   "priority" : "high",
   "rationale" : "The existing version-one systems need a clear discovery path that communicates what is built in and what is user owned.",
-  "requirementIDs" : [ { "rawValue" : "JT-FR-034" }, { "rawValue" : "JT-FR-062" }, { "rawValue" : "JT-FR-063" }, { "rawValue" : "JT-FR-064" }, { "rawValue" : "JT-FR-065" }, { "rawValue" : "JT-FR-066" }, { "rawValue" : "JT-FR-067" }, { "rawValue" : "JT-FR-068" }, { "rawValue" : "JT-FR-069" } ],
-  "sprintID" : { "rawValue" : "SP-035" },
-  "testSteps" : [ "Inspect catalog manifest and records for stable identity, immutability, sources, limitations, and inventory parity.", "Exercise search/filter matches, no-match states, detail-to-list navigation, and silent selection.", "Inspect catalog surfaces for localization, VoiceOver, and Dynamic Type behavior." ],
-  "workItem" : { "id" : { "rawValue" : "T-0045" }, "kind" : "task", "status" : "backlog", "title" : "Implement predefined tuning-system discovery" }
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-034"
+    },
+    {
+      "rawValue" : "JT-FR-062"
+    },
+    {
+      "rawValue" : "JT-FR-063"
+    },
+    {
+      "rawValue" : "JT-FR-064"
+    },
+    {
+      "rawValue" : "JT-FR-065"
+    },
+    {
+      "rawValue" : "JT-FR-066"
+    },
+    {
+      "rawValue" : "JT-FR-068"
+    },
+    {
+      "rawValue" : "JT-FR-069"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-035"
+  },
+  "testSteps" : [
+    "Run and extend JT-TEST-091 manifest, JT-TEST-092 provenance, JT-TEST-094 classification, JT-TEST-095 content-detail, JT-TEST-097 filtering, and JT-TEST-098 search coverage as applicable.",
+    "Inspect all eight catalog records for stable identity, immutability, exact pitch ordering, source\/limitation metadata, and parity with docs\/Catalog\/Version-1-Catalog.md.",
+    "Exercise exact and partial searches across built-in and custom profiles and tuning systems, including metadata, pitches, sounding frequencies, applicable filters, duplicate display names, and empty results.",
+    "Exercise details, row selection, return, and silent profile\/playback behavior; inspect VoiceOver, Dynamic Type, localization, and no-match\/filtered-empty states."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0045"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement predefined tuning-system discovery"
+  }
 }

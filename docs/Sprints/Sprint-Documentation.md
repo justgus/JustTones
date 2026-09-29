@@ -46,7 +46,7 @@ Currently: **38 Sprints** | Next available: **SP-039**
 | SP-032 | iPhone Session, Media, and Lifecycle | EP-013 | T-0042 | None | Closed |
 | SP-033 | Route Capability and Physical Qualification | EP-013 | T-0043 | None | Closed |
 | SP-034 | Profile Pitch Semantics and Resolution | EP-014 | T-0044 | None | Closed |
-| SP-035 | Predefined Tuning-System Discovery | EP-014 | T-0045 | None | Planning |
+| SP-035 | Predefined Tuning-System Discovery | EP-014 | T-0045 | None | Closed |
 | SP-036 | Profile Creation and Tuning Workflows | EP-014 | T-0046 | None | Planning |
 | SP-037 | Profile Recovery and Safe Catalog Use | EP-014 | T-0047 | None | Planning |
 | SP-038 | Chinese and Indian Tuning-Profile Source Review | EP-014 | T-0048 | None | Planning |
@@ -55,10 +55,10 @@ Currently: **38 Sprints** | Next available: **SP-039**
 
 - **Total Sprints:** 38
 - **Backlog:** 0
-- **Planning:** 4
+- **Planning:** 3
 - **Active:** 0
 - **Review:** 0
-- **Closed:** 34
+- **Closed:** 35
 - **Next available:** SP-039
 
-*Last Updated: 2026-09-28*
+*Last Updated: 2026-09-29*

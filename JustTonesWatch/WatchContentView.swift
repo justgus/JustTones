@@ -271,7 +271,9 @@ struct WatchContentView: View {
     }
 
     private func handleLevelChange(_ level: Double) {
-        guard playbackHost.isPlaying, let validatedLevel = try? ToneOutputLevel(Float(level)) else { return }
+        guard playbackHost.isPlaying,
+              let frequency,
+              let validatedLevel = try? ToneOutputLevel(Float(level)) else { return }
         pendingSafetyWarning = HearingSafetyPolicy.warning(
             level: validatedLevel,
             frequency: frequency,

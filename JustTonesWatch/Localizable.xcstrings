@@ -4,6 +4,16 @@
     "" : {
 
     },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
+          }
+        }
+      }
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -14,32 +24,22 @@
         }
       }
     },
-    "%@ hertz, profile %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ hertz, profile %2$@"
-          }
-        }
-      }
-    },
-    "%@ Hz (%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ Hz (%2$@)"
-          }
-        }
-      }
-    },
     "%@, %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@, profile %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, profile %2$@"
           }
         }
       }
@@ -57,6 +57,9 @@
 
     },
     "Cancel" : {
+
+    },
+    "Check this profile’s tuning system" : {
 
     },
     "Continue" : {

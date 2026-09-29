@@ -4,25 +4,6 @@ Sprints listed here are currently in Planning or Active status and are the curre
 
 ---
 
-## SP-035: Predefined Tuning-System Discovery
-
-**Status:** Planning
-**Epic:** EP-014
-**Goal:** Plan read-only discovery, provenance, search, and filtering for the existing version-one tuning-system catalog.
-**Start Date:** TBD
-**End Date:** TBD
-**Capacity:** TBD
-
-### Assigned Tasks
-
-| Task | Title | Priority | Status |
-| ---- | ----- | -------- | ------ |
-| T-0045 | Implement predefined tuning-system discovery | High | Backlog |
-
-### Assigned Issues
-
-None.
-
 ## SP-036: Profile Creation and Tuning Workflows
 
 **Status:** Planning
@@ -65,7 +46,7 @@ None.
 
 **Status:** Planning
 **Epic:** EP-014
-**Goal:** Prepare source-qualified, properly classified Chinese and Indian tuning-profile candidates for review; catalog inclusion requires user approval of each exact candidate.
+**Goal:** Prepare source-qualified, properly classified Chinese and Indian tuning-profile candidates and resolve their inclusion only after the user reviews the exact models.
 **Start Date:** TBD
 **End Date:** TBD
 **Capacity:** TBD
@@ -80,4 +61,4 @@ None.
 
 None.
 
-*Last Updated: 2026-09-28*
+*Last Updated: 2026-09-29*

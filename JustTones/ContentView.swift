@@ -175,7 +175,11 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $tuningSystems) {
-                secondaryDestination { TuningSystemSheet(systems: $userTuningSystems) }
+                secondaryDestination {
+                    TuningSystemSheet(
+                        systems: $userTuningSystems
+                    )
+                }
             }
             .sheet(isPresented: $settings) {
                 secondaryDestination { SettingsSheet(safetyInfoPresented: $safetyInfoPresented) }
@@ -1030,7 +1034,12 @@ private struct ProfileSheet: View {
                         dismiss()
                     } label: {
                         HStack {
-                            Text(candidate.name)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(candidate.name)
+                                Text(tuningSystemName(for: candidate))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                             Spacer()
                             if candidate.id == profile.id {
                                 Image(systemName: "checkmark.circle.fill")
@@ -1061,7 +1070,12 @@ private struct ProfileSheet: View {
                         dismiss()
                     } label: {
                         HStack {
-                            Text(template.profile.name)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(template.profile.name)
+                                Text(tuningSystemName(for: template.profile))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                             Spacer()
                             if template.profile.id == profile.id {
                                 Image(systemName: "checkmark.circle.fill")
@@ -1150,6 +1164,15 @@ private struct ProfileSheet: View {
 
     private var hiddenBuiltInTemplates: [CatalogProfileTemplate] {
         BuiltInCatalog.profileTemplates.filter { hiddenBuiltInProfileIDs.contains($0.profile.id) }
+    }
+
+    private func tuningSystemName(for profile: TuningProfile) -> String {
+        guard let id = profile.tuningSystemID else { return "No tuning system" }
+        if let item = BuiltInCatalog.tuningSystems.first(where: { $0.id == id }) { return item.name }
+        if let item = userTuningSystems.first(where: { $0.id.uuidString.caseInsensitiveCompare(id) == .orderedSame }) {
+            return item.system.name
+        }
+        return "Unavailable tuning system"
     }
 
     private func hide(_ template: CatalogProfileTemplate) {
@@ -1441,39 +1464,74 @@ private struct TuningSystemSheet: View {
     @State private var editingSystem: JustTonesInterchangeTuningSystem?
     @State private var duplicatingSystem: JustTonesInterchangeTuningSystem?
     @State private var creatingSystem = false
+    @State private var searchText = ""
+
+    private var builtInSystems: [CatalogTuningSystem] {
+        BuiltInCatalog.tuningSystems.filter(systemMatches)
+    }
+
+    private var filteredUserSystems: [JustTonesInterchangeTuningSystem] {
+        systems.filter(systemMatches)
+    }
+
+    private var hasVisibleResults: Bool {
+        !builtInSystems.isEmpty || !filteredUserSystems.isEmpty
+    }
 
     var body: some View {
         NavigationStack {
             List {
-                Section("Your tuning systems") {
-                    if systems.isEmpty {
-                        Text("Create a tuning system using cents, ratios, equal divisions, or explicit frequencies.")
-                            .foregroundStyle(.secondary)
+                if hasVisibleResults {
+                    Section("Predefined tuning systems") {
+                        ForEach(builtInSystems) { item in
+                            NavigationLink {
+                                CatalogTuningSystemDetail(system: item)
+                            } label: {
+                                CatalogTuningSystemRow(system: item, isBuiltIn: true)
+                            }
+                            .accessibilityHint("Shows the tuning-system definition, source, and limitations")
+                        }
                     }
-                    ForEach(systems) { item in
-                        Button { editingSystem = item } label: {
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text(item.system.name)
-                                Text("\(item.system.degrees.count) pitch \(item.system.degrees.count == 1 ? "degree" : "degrees")")
-                                    .font(.caption).foregroundStyle(.secondary)
+                    Section("Your tuning systems") {
+                        if filteredUserSystems.isEmpty && searchText.isEmpty {
+                            Text("Create a tuning system using cents, ratios, equal divisions, or explicit frequencies.")
+                                .foregroundStyle(.secondary)
+                        }
+                        ForEach(filteredUserSystems) { item in
+                            NavigationLink {
+                                CatalogCustomTuningSystemDetail(item: item)
+                            } label: {
+                                CatalogTuningSystemRow(system: item.system, isBuiltIn: false)
+                            }
+                            .swipeActions {
+                                Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
+                                Button("Edit") { editingSystem = item }.tint(.accentColor)
+                                Button("Duplicate") { duplicate(item) }.tint(.secondary)
+                            }
+                            .contextMenu {
+                                Button("Edit") { editingSystem = item }
+                                Button("Duplicate") { duplicate(item) }
+                                Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
                             }
                         }
-                        .accessibilityHint("Edits this custom tuning system")
-                        .swipeActions {
-                            Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
-                            Button("Duplicate") { duplicate(item) }.tint(.accentColor)
-                        }
-                        .contextMenu {
-                            Button("Duplicate") { duplicate(item) }
-                            Button("Delete", role: .destructive) { systems.removeAll { $0.id == item.id } }
-                        }
                     }
+                } else if searchText.isEmpty {
+                    ContentUnavailableView(
+                        "No catalog entries",
+                        systemImage: "music.note.list",
+                        description: Text("No items are available in this category.")
+                    )
+                } else {
+                    ContentUnavailableView.search(text: searchText)
                 }
             }
+            .searchable(text: $searchText, prompt: "Tuning systems, pitches, or Hz")
             .navigationTitle("Tuning Systems")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
-                ToolbarItem(placement: .bottomBar) { Button("New tuning system", systemImage: "plus") { creatingSystem = true } }
+                ToolbarItem(placement: .bottomBar) {
+                    Button("New tuning system", systemImage: "plus") { creatingSystem = true }
+                }
             }
             .sheet(isPresented: $creatingSystem) {
                 TuningSystemEditor { save($0, replacing: nil) }
@@ -1487,6 +1545,14 @@ private struct TuningSystemSheet: View {
         }
     }
 
+    private func systemMatches(_ item: CatalogTuningSystem) -> Bool {
+        CatalogSearch.matches(searchText, in: CatalogSearch.fields(for: item))
+    }
+
+    private func systemMatches(_ item: JustTonesInterchangeTuningSystem) -> Bool {
+        CatalogSearch.matches(searchText, in: CatalogSearch.fields(for: item.system, id: item.id.uuidString))
+    }
+
     private func duplicate(_ item: JustTonesInterchangeTuningSystem) {
         duplicatingSystem = item
     }
@@ -1495,6 +1561,355 @@ private struct TuningSystemSheet: View {
         guard let item = try? JustTonesInterchangeTuningSystem(id: id ?? UUID(), system: system) else { return }
         if let index = systems.firstIndex(where: { $0.id == item.id }) { systems[index] = item }
         else { systems.append(item) }
+    }
+}
+
+private enum CatalogSearch {
+    static func matches(_ query: String, in fields: [String]) -> Bool {
+        let needle = fold(query.trimmingCharacters(in: .whitespacesAndNewlines))
+        guard !needle.isEmpty else { return true }
+        return fields.contains { fold($0).contains(needle) }
+    }
+
+    static func fields(for system: CatalogTuningSystem) -> [String] {
+        var fields = [system.id, system.name, system.classification.rawValue,
+                      system.context.specificSystem, system.provenance.source, system.provenance.limitations]
+        fields += system.alternateNames
+        fields += [system.context.tradition, system.context.region, system.context.instrumentOrContext,
+                   system.context.provenance].compactMap { $0 }
+        for degree in system.system.degrees {
+            fields.append(degree.id)
+            fields += definitionFields(degree.definition)
+            if let frequency = try? degree.definition.resolvedFrequency(using: .default) {
+                fields += frequencyFields(frequency)
+            }
+        }
+        return fields
+    }
+
+    static func fields(for system: TuningSystem, id: String) -> [String] {
+        var fields = [id, system.name]
+        if let context = system.context {
+            fields += [context.specificSystem, context.tradition, context.region,
+                       context.instrumentOrContext, context.provenance].compactMap { $0 }
+        }
+        for degree in system.degrees {
+            fields.append(degree.id)
+            fields += definitionFields(degree.definition)
+            if let frequency = try? degree.definition.resolvedFrequency(using: .default) {
+                fields += frequencyFields(frequency)
+            }
+        }
+        return fields
+    }
+
+    static func fields(for profile: TuningProfile, userTuningSystems: [JustTonesInterchangeTuningSystem]) -> [String] {
+        var fields = [profile.id.uuidString, profile.name, profile.instrument, profile.tuningSystemID,
+                      profile.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))]
+            .compactMap { $0 }
+        fields += profile.tags
+
+        let tuningSystem = resolveSystem(for: profile, userTuningSystems: userTuningSystems)
+        if let tuningSystem {
+            fields += [tuningSystem.name]
+            if let context = tuningSystem.context {
+                fields += [context.specificSystem, context.tradition, context.region,
+                           context.instrumentOrContext, context.provenance].compactMap { $0 }
+            }
+        }
+
+        for entry in profile.entries {
+            fields += [entry.label, entry.groupID].compactMap { $0 }
+            switch entry.pitch {
+            case let .named(pitch):
+                fields.append(namedPitchLabel(pitch))
+            case let .direct(frequency):
+                fields += frequencyFields(frequency.hertz)
+            case let .writtenSounding(pitch):
+                fields.append(namedPitchLabel(pitch.written))
+                fields.append("\(pitch.soundingSemitoneOffset) semitones")
+            case let .systemDegree(identifier):
+                fields.append(identifier)
+            }
+            if let frequency = soundingFrequency(for: profile, entry: entry, userTuningSystems: userTuningSystems) {
+                fields += frequencyFields(frequency)
+            }
+        }
+        return fields
+    }
+
+    static func definitionFields(_ definition: TuningDegreeDefinition) -> [String] {
+        var fields = [definition.kind.rawValue]
+        if let cents = definition.centsValue { fields.append(cents.formatted(.number.precision(.fractionLength(3)))) }
+        if let ratio = definition.ratioValue { fields.append(ratio.formatted(.number.precision(.fractionLength(6)))) }
+        if let components = definition.equalDivisionComponents {
+            fields += ["\(components.step)", "\(components.divisionsPerOctave)",
+                       "\(components.step)/\(components.divisionsPerOctave)"]
+        }
+        if let frequency = definition.explicitFrequencyValue {
+            fields += frequencyFields(frequency)
+        }
+        return fields
+    }
+
+    static func definitionSummary(_ definition: TuningDegreeDefinition) -> String {
+        if let cents = definition.centsValue {
+            return "\(cents.formatted(.number.precision(.fractionLength(3)))) cents"
+        }
+        if let ratio = definition.ratioValue {
+            return "Ratio \(ratio.formatted(.number.precision(.fractionLength(6))))"
+        }
+        if let components = definition.equalDivisionComponents {
+            return "Step \(components.step) of \(components.divisionsPerOctave)"
+        }
+        if let frequency = definition.explicitFrequencyValue {
+            return "\(frequency.formatted(.number.precision(.fractionLength(1)))) Hz"
+        }
+        return "Pitch degree"
+    }
+
+    private static func frequencyFields(_ frequency: Double) -> [String] {
+        let oneDecimal = frequency.formatted(.number.precision(.fractionLength(1)))
+        let twoDecimals = frequency.formatted(.number.precision(.fractionLength(2)))
+        return [oneDecimal, twoDecimals, "\(oneDecimal) Hz", "\(twoDecimals) Hz"]
+    }
+
+    static func soundingFrequency(
+        for profile: TuningProfile,
+        entry: TuningProfileEntry,
+        userTuningSystems: [JustTonesInterchangeTuningSystem]
+    ) -> Double? {
+        guard let frequency = try? profile.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems) else { return nil }
+        guard case .named = entry.pitch else {
+            if case .systemDegree = entry.pitch {
+                return frequency * pow(2, Double(profile.soundingSemitoneOffset) / 12)
+            }
+            return frequency
+        }
+        return frequency * pow(2, Double(profile.soundingSemitoneOffset) / 12)
+    }
+
+    static func resolveSystem(
+        for profile: TuningProfile,
+        userTuningSystems: [JustTonesInterchangeTuningSystem]
+    ) -> TuningSystem? {
+        guard let id = profile.tuningSystemID else { return nil }
+        if let builtIn = BuiltInCatalog.tuningSystems.first(where: { $0.id.caseInsensitiveCompare(id) == .orderedSame }) {
+            return builtIn.system
+        }
+        guard let uuid = UUID(uuidString: id) else { return nil }
+        return userTuningSystems.first(where: { $0.id == uuid })?.system
+    }
+
+    static func namedPitchLabel(_ pitch: NamedPitch) -> String {
+        let accidental: String
+        switch pitch.accidental {
+        case .doubleFlat: accidental = "♭♭"
+        case .flat: accidental = "♭"
+        case .natural: accidental = ""
+        case .sharp: accidental = "♯"
+        case .doubleSharp: accidental = "♯♯"
+        }
+        return "\(pitch.letter.rawValue.uppercased())\(accidental)\(pitch.octave)"
+    }
+
+    private static func fold(_ value: String) -> String {
+        value.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: .current)
+    }
+}
+
+private struct CatalogTuningSystemRow: View {
+    let name: String
+    let subtitle: String
+    let isBuiltIn: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text(name)
+                Spacer()
+                Text(isBuiltIn ? "Built-in" : "Your system")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            Text(subtitle)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .accessibilityElement(children: .combine)
+    }
+
+    init(system: CatalogTuningSystem, isBuiltIn: Bool) {
+        name = system.name
+        subtitle = system.context.tradition ?? "Tuning system"
+        self.isBuiltIn = isBuiltIn
+    }
+
+    init(system: TuningSystem, isBuiltIn: Bool) {
+        name = system.name
+        subtitle = system.context?.tradition ?? "User-created tuning system"
+        self.isBuiltIn = isBuiltIn
+    }
+}
+
+private struct CatalogProfileRow: View {
+    let profile: TuningProfile
+    let isBuiltIn: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text(profile.name)
+                Spacer()
+                Text(isBuiltIn ? "Built-in" : "Your profile")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            Text(profile.instrument ?? "Reference profile")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .accessibilityElement(children: .combine)
+    }
+}
+
+private struct CatalogTuningSystemDetail: View {
+    let system: CatalogTuningSystem
+
+    var body: some View {
+        List {
+            Section("About this model") {
+                LabeledContent("Classification", value: "Predefined tuning system")
+                LabeledContent("Stable identifier", value: system.id)
+                LabeledContent("Context", value: system.context.specificSystem)
+                if let tradition = system.context.tradition {
+                    LabeledContent("Tradition", value: tradition)
+                }
+                if let region = system.context.region {
+                    LabeledContent("Region", value: region)
+                }
+                if let instrument = system.context.instrumentOrContext {
+                    LabeledContent("Applicable context", value: instrument)
+                }
+                Text("Pitch degrees use the catalog’s ordered cent definitions. The A4 reference is supplied separately by a profile.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+            Section("Pitch degrees") {
+                ForEach(Array(system.system.degrees.enumerated()), id: \.element.id) { index, degree in
+                    LabeledContent("\(index + 1). \(degree.id)", value: CatalogSearch.definitionSummary(degree.definition))
+                }
+            }
+            Section("Source and limitations") {
+                LabeledContent("Source", value: system.provenance.source)
+                Text(system.provenance.limitations)
+                    .foregroundStyle(.secondary)
+                Text("This is a documented model, not a claim that one definition applies to every repertoire or performance context.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .navigationTitle(system.name)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+private struct CatalogCustomTuningSystemDetail: View {
+    let item: JustTonesInterchangeTuningSystem
+
+    var body: some View {
+        List {
+            Section("About this system") {
+                LabeledContent("Classification", value: "Your tuning system")
+                LabeledContent("Stable identifier", value: item.id.uuidString)
+                if let context = item.system.context {
+                    LabeledContent("Context", value: context.specificSystem)
+                    if let tradition = context.tradition { LabeledContent("Tradition", value: tradition) }
+                    if let region = context.region { LabeledContent("Region", value: region) }
+                    if let applicable = context.instrumentOrContext { LabeledContent("Applicable context", value: applicable) }
+                    if let provenance = context.provenance { LabeledContent("Provenance", value: provenance) }
+                }
+            }
+            Section("Pitch degrees") {
+                ForEach(Array(item.system.degrees.enumerated()), id: \.element.id) { index, degree in
+                    LabeledContent("\(index + 1). \(degree.id)", value: CatalogSearch.definitionSummary(degree.definition))
+                }
+            }
+        }
+        .navigationTitle(item.system.name)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+private struct CatalogProfileDetail: View {
+    let profile: TuningProfile
+    let provenance: CatalogProvenance?
+    let isBuiltIn: Bool
+    let userTuningSystems: [JustTonesInterchangeTuningSystem]
+
+    var body: some View {
+        List {
+            Section("About this profile") {
+                LabeledContent("Classification", value: isBuiltIn ? "Built-in profile template" : "Your profile")
+                LabeledContent("Stable identifier", value: profile.id.uuidString)
+                if let instrument = profile.instrument {
+                    LabeledContent("Instrument or family", value: instrument)
+                }
+                LabeledContent("Tuning system", value: tuningSystemName)
+                LabeledContent("A4 reference", value: "\(profile.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) Hz")
+                if !profile.tags.isEmpty {
+                    LabeledContent("Tags", value: profile.tags.joined(separator: ", "))
+                }
+                if profile.soundingSemitoneOffset != 0 {
+                    LabeledContent("Written-to-sounding offset", value: "\(profile.soundingSemitoneOffset) semitones")
+                }
+            }
+            Section("Pitches") {
+                ForEach(Array(profile.entries.enumerated()), id: \.element.id) { _, entry in
+                    HStack {
+                        Text(entry.label ?? "Pitch")
+                        Spacer()
+                        if let frequency = CatalogSearch.soundingFrequency(
+                            for: profile,
+                            entry: entry,
+                            userTuningSystems: userTuningSystems
+                        ) {
+                            Text("\(frequency.formatted(.number.precision(.fractionLength(1)))) Hz")
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Text("Unavailable")
+                                .foregroundStyle(.orange)
+                        }
+                    }
+                }
+            }
+            if let provenance {
+                Section("Source and limitations") {
+                    LabeledContent("Source", value: provenance.source)
+                    Text(provenance.limitations)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Section {
+                Text("Opening catalog details is read-only. Duplicate a built-in profile to make changes.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .navigationTitle(profile.name)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var tuningSystemName: String {
+        guard let id = profile.tuningSystemID else { return "None specified" }
+        if let builtIn = BuiltInCatalog.tuningSystems.first(where: { $0.id.caseInsensitiveCompare(id) == .orderedSame }) {
+            return builtIn.name
+        }
+        if let uuid = UUID(uuidString: id),
+           let custom = userTuningSystems.first(where: { $0.id == uuid }) {
+            return custom.system.name
+        }
+        return "Unavailable system"
     }
 }
 

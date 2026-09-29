@@ -1,0 +1,22 @@
+{
+  "disposition" : "verified",
+  "evidenceIDs" : [
+
+  ],
+  "id" : {
+    "rawValue" : "JT-AC-059"
+  },
+  "isVerified" : true,
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-29T14:29:31Z"
+  },
+  "ownerID" : {
+    "rawValue" : "EP-014"
+  },
+  "text" : "The existing eight version-one built-in tuning systems are discoverable as immutable records with clear classification, context, ordered pitch data, reference assumptions, available provenance, and limitations. iPhone search covers built-in and custom profiles and tuning systems using applicable names, aliases, instruments, regions, traditions, descriptive metadata, contained pitches, and sounding frequencies; applicable filters produce deterministic results and clear empty states from available metadata. Browse, select, detail navigation, and return preserve profile and playback state without starting audio. The interface supports VoiceOver, Dynamic Type, and localized labels, and does not imply unsupported cultural coverage."
+}

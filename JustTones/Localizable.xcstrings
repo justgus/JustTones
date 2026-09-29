@@ -26,17 +26,32 @@
     "%lld minutes, %lld seconds" : {
 
     },
-    "%lld pitch %@" : {
+    "%lld. %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$lld pitch %2$@"
+            "value" : "%1$lld. %2$@"
           }
         }
       }
     },
+    "A4 reference" : {
+
+    },
+    "A4 reference: %@ Hz" : {
+
+    },
     "About" : {
+
+    },
+    "About this model" : {
+
+    },
+    "About this profile" : {
+
+    },
+    "About this system" : {
 
     },
     "Accidental" : {
@@ -73,6 +88,9 @@
     "Apple hearing health" : {
 
     },
+    "Applicable context" : {
+
+    },
     "Audio engine unavailable" : {
 
     },
@@ -83,6 +101,9 @@
 
     },
     "Avoid raising volume to overcome ambient noise. Keep Apple hearing-protection features enabled. If you notice persistent ringing, muffled hearing, or other symptoms, stop listening and seek advice from a qualified professional." : {
+
+    },
+    "Built-in" : {
 
     },
     "Built-in profiles" : {
@@ -106,7 +127,13 @@
     "Choose different content" : {
 
     },
+    "Classification" : {
+
+    },
     "Conflict" : {
+
+    },
+    "Context" : {
 
     },
     "Continue" : {
@@ -122,6 +149,9 @@
 
     },
     "Default output" : {
+
+    },
+    "Degree" : {
 
     },
     "Degree identifier" : {
@@ -149,9 +179,6 @@
 
     },
     "Edit Tuning System" : {
-
-    },
-    "Edits this custom tuning system" : {
 
     },
     "Edits this pitch entry" : {
@@ -205,6 +232,9 @@
     "Instrument or context (optional)" : {
 
     },
+    "Instrument or family" : {
+
+    },
     "Interrupted" : {
 
     },
@@ -248,10 +278,19 @@
     "Next" : {
 
     },
+    "No catalog entries" : {
+
+    },
+    "No items are available in this category." : {
+
+    },
     "No user-created profiles are available." : {
 
     },
     "No user-created tuning systems are available." : {
+
+    },
+    "None — named pitches use equal temperament" : {
 
     },
     "Note" : {
@@ -266,7 +305,13 @@
     "OK" : {
 
     },
+    "One or more pitches do not resolve in this tuning system." : {
+
+    },
     "Only user-created content is included. Profiles that use a user-created tuning system require that system to be selected too." : {
+
+    },
+    "Opening catalog details is read-only. Duplicate a built-in profile to make changes." : {
 
     },
     "Output level" : {
@@ -281,7 +326,13 @@
     "Pitch degrees" : {
 
     },
+    "Pitch degrees use the catalog’s ordered cent definitions. The A4 reference is supplied separately by a profile." : {
+
+    },
     "Pitch type" : {
+
+    },
+    "Pitch unavailable — check this profile's tuning system." : {
 
     },
     "Pitches" : {
@@ -302,6 +353,9 @@
     "Plays the selected reference tone" : {
 
     },
+    "Predefined tuning systems" : {
+
+    },
     "Preferred timbre" : {
 
     },
@@ -314,7 +368,13 @@
     "Profile" : {
 
     },
+    "Profile A4 reference" : {
+
+    },
     "Profiles" : {
+
+    },
+    "Provenance" : {
 
     },
     "Provenance (optional)" : {
@@ -340,6 +400,9 @@
         }
       }
     },
+    "Region" : {
+
+    },
     "Region (optional)" : {
 
     },
@@ -361,6 +424,9 @@
     "Save" : {
 
     },
+    "Select a tuning system in the profile before adding a tuning degree." : {
+
+    },
     "Selected" : {
 
     },
@@ -371,6 +437,18 @@
 
     },
     "Share document" : {
+
+    },
+    "Shows the tuning-system definition, source, and limitations" : {
+
+    },
+    "Source" : {
+
+    },
+    "Source and limitations" : {
+
+    },
+    "Stable identifier" : {
 
     },
     "Starting" : {
@@ -385,13 +463,25 @@
     "Stops the reference tone" : {
 
     },
+    "Tags" : {
+
+    },
     "This in-app percentage is not a sound-pressure-level measurement." : {
+
+    },
+    "This is a documented model, not a claim that one definition applies to every repertoire or performance context." : {
 
     },
     "Timbre" : {
 
     },
+    "Tradition" : {
+
+    },
     "Tradition (optional)" : {
+
+    },
+    "Tuning degree" : {
 
     },
     "Tuning system" : {
@@ -401,6 +491,9 @@
 
     },
     "Tuning Systems" : {
+
+    },
+    "Tuning systems, pitches, or Hz" : {
 
     },
     "Unavailable" : {
@@ -421,10 +514,19 @@
     "World Health Organization: safe listening" : {
 
     },
+    "Written-to-sounding offset" : {
+
+    },
     "Your .justtones document is ready to share." : {
 
     },
+    "Your profile" : {
+
+    },
     "Your profiles" : {
+
+    },
+    "Your system" : {
 
     },
     "Your tuning systems" : {

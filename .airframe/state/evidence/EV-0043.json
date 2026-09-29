@@ -1,0 +1,14 @@
+{
+  "artifactReferences" : [
+    "JustTones/ContentView.swift"
+  ],
+  "ciReferences" : [],
+  "command" : "DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer swiftc -frontend -parse JustTones/ContentView.swift JustTonesWatch/WatchContentView.swift (passed); git diff --check (passed); DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -sdk iphonesimulator -derivedDataPath /private/tmp/JustTones-SP035-DerivedData -clonedSourcePackagesDirPath /private/tmp/JustTones-SP035-SourcePackages build (failed during Watch asset catalog compilation: AppIconWatch had no applicable content); retry with ASSETCATALOG_COMPILER_APPICON_NAME= exposed Watch target compilation errors because Digital Crown APIs were compiled against iOS, plus an optional-frequency error in WatchContentView.swift:277; added a frequency guard and reran source parsing, but did not rerun the build. No tests were run.",
+  "environment" : "Xcode-beta 27.2; catalog source parsing succeeded. The project build remains incomplete: Watch asset catalog has no applicable AppIconWatch content, and the retry showed Watch Digital Crown APIs being compiled against iOS. The SP-035 iPhone target's complete compilation is not established. Simulator and device checks were not performed.",
+  "id" : { "rawValue" : "EV-0043" },
+  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 } },
+  "requirementIDs" : [],
+  "result" : "informational",
+  "summary" : "The SP-035 catalog discovery implementation is present; Swift syntax parsing for iPhone and Watch source and whitespace validation passed. A Watch optional-frequency guard was added after compiler feedback. The project build, automated tests, and device qualification remain incomplete, so this evidence does not establish app compilation or runtime correctness.",
+  "workItemIDs" : [ { "rawValue" : "T-0045" } ]
+}
