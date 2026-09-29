@@ -90,19 +90,33 @@ public struct TuningProfile: Codable, Hashable, Sendable, Identifiable {
         for entry: TuningProfileEntry,
         userTuningSystems: [JustTonesInterchangeTuningSystem] = []
     ) throws -> Double {
-        guard case let .systemDegree(degreeID) = entry.pitch else {
+        let baseFrequency: Double
+        switch entry.pitch {
+        case .named:
+            baseFrequency = try entry.pitch.frequency(using: referencePitch)
+        case .direct, .writtenSounding:
+            // Direct values are absolute, while written/sounding entries carry their own
+            // transposition and must not also receive the profile-level offset.
             return try entry.pitch.frequency(using: referencePitch)
+        case let .systemDegree(degreeID):
+            guard let tuningSystemID else { throw TuningResolutionError.missingTuningSystem }
+            let normalizedID = tuningSystemID.lowercased()
+            if let builtIn = BuiltInCatalog.tuningSystems.first(where: { $0.id.lowercased() == normalizedID }) {
+                baseFrequency = try builtIn.system.resolvedFrequency(forDegreeID: degreeID, using: referencePitch)
+            } else if let userSystem = userTuningSystems.first(where: { $0.id.uuidString.lowercased() == normalizedID }) {
+                baseFrequency = try userSystem.system.resolvedFrequency(forDegreeID: degreeID, using: referencePitch)
+            } else {
+                throw TuningResolutionError.unresolvedTuningSystem(tuningSystemID)
+            }
         }
-        guard let tuningSystemID else { throw TuningResolutionError.missingTuningSystem }
 
-        let normalizedID = tuningSystemID.lowercased()
-        if let builtIn = BuiltInCatalog.tuningSystems.first(where: { $0.id.lowercased() == normalizedID }) {
-            return try builtIn.system.resolvedFrequency(forDegreeID: degreeID, using: referencePitch)
+        let frequency = baseFrequency * pow(2, Double(soundingSemitoneOffset) / 12)
+        guard frequency.isFinite else { throw PitchValidationError.nonFiniteValue }
+        guard frequency >= DirectFrequency.minimumHertz,
+              frequency <= DirectFrequency.maximumHertz else {
+            throw PitchValidationError.frequencyOutOfRange
         }
-        if let userSystem = userTuningSystems.first(where: { $0.id.uuidString.lowercased() == normalizedID }) {
-            return try userSystem.system.resolvedFrequency(forDegreeID: degreeID, using: referencePitch)
-        }
-        throw TuningResolutionError.unresolvedTuningSystem(tuningSystemID)
+        return frequency
     }
 
     private enum CodingKeys: String, CodingKey {

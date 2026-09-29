@@ -91,6 +91,9 @@
     "Applicable context" : {
 
     },
+    "Applies to named pitches and tuning-system degrees. Direct frequencies and written/sounding entries keep their own sounding values." : {
+
+    },
     "Audio engine unavailable" : {
 
     },
@@ -200,6 +203,9 @@
 
     },
     "Frequency in Hz" : {
+
+    },
+    "Group or course (optional)" : {
 
     },
     "Hearing safety" : {
@@ -442,6 +448,9 @@
     "Shows the tuning-system definition, source, and limitations" : {
 
     },
+    "Sounding offset: %lld semitones" : {
+
+    },
     "Source" : {
 
     },
@@ -466,6 +475,9 @@
     "Tags" : {
 
     },
+    "Tags (comma-separated)" : {
+
+    },
     "This in-app percentage is not a sound-pressure-level measurement." : {
 
     },
@@ -479,6 +491,9 @@
 
     },
     "Tradition (optional)" : {
+
+    },
+    "Transposition: %lld semitones" : {
 
     },
     "Tuning degree" : {
@@ -512,6 +527,9 @@
 
     },
     "World Health Organization: safe listening" : {
+
+    },
+    "Written and sounding" : {
 
     },
     "Written-to-sounding offset" : {

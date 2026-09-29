@@ -4,25 +4,6 @@ Sprints listed here are currently in Planning or Active status and are the curre
 
 ---
 
-## SP-036: Profile Creation and Tuning Workflows
-
-**Status:** Planning
-**Epic:** EP-014
-**Goal:** Plan profile creation and duplication from predefined systems with reference retention, grouping, and written/sounding presentation.
-**Start Date:** TBD
-**End Date:** TBD
-**Capacity:** TBD
-
-### Assigned Tasks
-
-| Task | Title | Priority | Status |
-| ---- | ----- | -------- | ------ |
-| T-0046 | Implement profile creation and tuning workflows | High | Backlog |
-
-### Assigned Issues
-
-None.
-
 ## SP-037: Profile Recovery and Safe Catalog Use
 
 **Status:** Planning

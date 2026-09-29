@@ -1,10 +1,36 @@
 {
   "endDate" : "TBD",
-  "epicID" : { "rawValue" : "EP-014" },
-  "goal" : "Plan profile creation and duplication from predefined systems with reference retention, grouping, and written/sounding presentation.",
-  "issueIDs" : [],
-  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:41:36Z" },
-  "notes" : [ "Moved into planning by user authorization on 2026-09-28; Task T-0046 remains backlog and the Sprint is not active.", "Catalog browsing and profile creation must not start playback." ],
-  "taskIDs" : [ { "rawValue" : "T-0046" } ],
-  "workItem" : { "id" : { "rawValue" : "SP-036" }, "kind" : "sprint", "status" : "planning", "title" : "Profile Creation and Tuning Workflows" }
+  "epicID" : {
+    "rawValue" : "EP-014"
+  },
+  "goal" : "Deliver profile creation and duplication using selected tuning systems, preserving reference configuration, grouping, written\/sounding pitch, persistence, and silent iPhone\/Watch selection.",
+  "issueIDs" : [
+
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-29T19:46:21Z"
+  },
+  "notes" : [
+    "Planning completed and SP-036 activated by explicit user direction on 2026-09-29; T-0046 is the Sprint's active governing Task.",
+    "Catalog browsing and profile create\/edit\/duplicate\/selection\/restoration must not start playback.",
+    "Deletion recovery remains scoped to SP-037; source review for culturally specific catalog candidates remains scoped to SP-038."
+  ],
+  "taskIDs" : [
+    {
+      "rawValue" : "T-0046"
+    }
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "SP-036"
+    },
+    "kind" : "sprint",
+    "status" : "closed",
+    "title" : "Profile Creation and Tuning Workflows"
+  }
 }

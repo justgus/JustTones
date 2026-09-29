@@ -1,6 +1,6 @@
 # EP-014 — Profile, Catalog, and Content Discovery Completion
 
-**Status:** Active (SP-035 active; SP-034 closed; SP-036 through SP-038 in planning).
+**Status:** Active (SP-034 and SP-035 closed; SP-036 active; SP-037 and SP-038 in planning).
 
 ## Purpose and boundary
 
@@ -14,11 +14,11 @@ The Epic covers the profile/catalog portions of JT-FR-027 through JT-FR-035, JT-
 | --- | --- | --- |
 | SP-034 — Profile Pitch Semantics and Resolution | T-0044 — Implemented - Verified | Persist and resolve each supported pitch-entry form through the selected tuning system and reference; display and render the same deterministic frequency on iPhone and Watch. |
 | SP-035 — Predefined Tuning-System Discovery | T-0045 — Active | Make the current immutable catalog discoverable, searchable, filterable, and understandable through detail, provenance, limitation, empty-state, and accessibility presentation. |
-| SP-036 — Profile Creation and Tuning Workflows | T-0046 — Backlog | Create or duplicate an editable profile from a selected system; preserve reference configuration, expose mismatches, and support grouping plus written/sounding presentation without surprise playback. |
+| SP-036 — Profile Creation and Tuning Workflows | T-0046 — Active | Create or duplicate an editable profile using a selected built-in or user system; preserve reference configuration, expose mismatches, support grouping and written/sounding presentation, and verify silent persistence and iPhone/Watch resolution. |
 | SP-037 — Profile Recovery and Safe Catalog Use | T-0047 — Backlog | Complete referenced-object deletion/undo or confirmation behavior, recovery paths, and end-to-end persistence/regression qualification. |
 | SP-038 — Chinese and Indian Tuning-Profile Source Review | T-0048 — Backlog | Prepare source-qualified, correctly classified candidates for Chinese twelve-lü and Indian śruti; obtain user approval for exact candidates before catalog inclusion. |
 
-The Sprints are sequential planning units. Only one may be active at a time. SP-034 is closed; SP-035 and T-0045 are active by user authorization on 2026-09-28. SP-036 through SP-038 remain in Planning with backlog Tasks.
+The Sprints are sequential planning units. Only one may be active at a time. SP-034 and SP-035 are closed. SP-036 and T-0046 are active by explicit user direction on 2026-09-29; SP-037 and SP-038 remain in Planning with backlog Tasks.
 
 ## Sprint acceptance and verification
 
@@ -38,9 +38,11 @@ The Sprints are sequential planning units. Only one may be active at a time. SP-
 
 ### SP-036 / T-0046
 
-- A musician can create or duplicate an editable reference profile from a predefined system without mutating the catalog entry or starting audio.
-- Profile reference configuration is retained and any mismatch is clearly disclosed. Grouping and written-versus-sounding pitch presentation preserve the underlying resolved frequency.
-- Verify create/duplicate, reload, reference retention/mismatch, grouping, written/sounding identity, and stopped/playing transition behavior on iPhone and Watch.
+- A musician can create a profile using a selected built-in or user-created tuning system, or duplicate a built-in/user profile into a distinct editable identity without changing the source or starting audio.
+- The Profiles list names each profile's tuning system; profile system and reference configuration persist independently from global/current configuration, and a mismatch is disclosed before explicit playback.
+- Grouping, ordered entries, and written/sounding presentation preserve stable entry identity and resolve playback from the sounding pitch through the profile's retained system and reference.
+- Profile selection and pitch restore silently; valid iPhone profile configuration reaches Watch with matching frequency resolution. Missing/invalid data must not substitute another pitch.
+- Verify JT-TEST-042, 044, 046, 047, 048, 049, 052, 057, 060, 061, and 248 as applicable. Review JT-TEST-247 as a shared-core regression without duplicating SP-034's implementation scope. Report simulator and paired/physical Watch checks separately.
 
 ### SP-037 / T-0047
 

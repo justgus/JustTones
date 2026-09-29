@@ -5,6 +5,7 @@ import UniformTypeIdentifiers
 import UIKit
 
 struct ContentView: View {
+    let publishProfilesToWatch: () -> Void
     @State private var index = 0
     @State private var playbackHost = TonePlaybackHost()
     @State private var profiles = false
@@ -237,8 +238,14 @@ struct ContentView: View {
                 synchronizeSelection()
                 persistUserProfiles()
             }
-            .onChange(of: userProfiles) { _, _ in persistUserProfiles() }
-            .onChange(of: userTuningSystems) { _, _ in persistUserProfiles() }
+            .onChange(of: userProfiles) { _, _ in
+                persistUserProfiles()
+                publishProfilesToWatch()
+            }
+            .onChange(of: userTuningSystems) { _, _ in
+                persistUserProfiles()
+                publishProfilesToWatch()
+            }
             .onChange(of: hiddenBuiltInProfileIDs) { _, _ in persistUserProfiles() }
             .onChange(of: playbackHost.state) { _, state in
                 if state == .playing {
@@ -1094,7 +1101,12 @@ private struct ProfileSheet: View {
                 Section("Hidden built-in profiles") {
                     ForEach(hiddenBuiltInTemplates, id: \.id) { template in
                         HStack {
-                            Text(template.profile.name)
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(template.profile.name)
+                                Text(tuningSystemName(for: template.profile))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                             Spacer()
                             Button("Restore") { restore(template) }
                                 .buttonStyle(.bordered)
@@ -1115,12 +1127,17 @@ private struct ProfileSheet: View {
             ProfileEditor(profile: draft, userTuningSystems: userTuningSystems) { saved in
                 if let existing = userProfiles.firstIndex(where: { $0.id == saved.id }) {
                     userProfiles[existing] = saved
+                    if profile.id == saved.id {
+                        prepareProfileSelection(saved)
+                        profile = saved
+                        index = 0
+                    }
                 } else {
                     userProfiles.append(saved)
+                    prepareProfileSelection(saved)
+                    profile = saved
+                    index = 0
                 }
-                prepareProfileSelection(saved)
-                profile = saved
-                index = 0
             }
         }
         }
@@ -1168,7 +1185,9 @@ private struct ProfileSheet: View {
 
     private func tuningSystemName(for profile: TuningProfile) -> String {
         guard let id = profile.tuningSystemID else { return "No tuning system" }
-        if let item = BuiltInCatalog.tuningSystems.first(where: { $0.id == id }) { return item.name }
+        if let item = BuiltInCatalog.tuningSystems.first(where: { $0.id.caseInsensitiveCompare(id) == .orderedSame }) {
+            return item.name
+        }
         if let item = userTuningSystems.first(where: { $0.id.uuidString.caseInsensitiveCompare(id) == .orderedSame }) {
             return item.system.name
         }
@@ -1222,6 +1241,7 @@ private struct ProfileEditor: View {
                 Section("Profile") {
                     TextField("Name", text: $draft.name)
                     TextField("Instrument (optional)", text: optionalStringBinding(\.instrument))
+                    TextField("Tags (comma-separated)", text: tagsBinding)
                     Picker("Tuning system", selection: Binding(
                         get: { draft.tuningSystemID ?? "" },
                         set: { draft.tuningSystemID = $0.isEmpty ? nil : $0 }
@@ -1237,6 +1257,14 @@ private struct ProfileEditor: View {
                             .accessibilityLabel("Profile A4 reference")
                             .accessibilityValue("\(draft.referencePitch.hertz.formatted(.number.precision(.fractionLength(1)))) hertz")
                     }
+                    Stepper(
+                        "Transposition: \(draft.soundingSemitoneOffset) semitones",
+                        value: $draft.soundingSemitoneOffset,
+                        in: -48...48
+                    )
+                    Text("Applies to named pitches and tuning-system degrees. Direct frequencies and written/sounding entries keep their own sounding values.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                     Picker("Preferred timbre", selection: optionalStringBinding(\.preferredTimbreID, defaultValue: BuiltInTimbre.sine.rawValue)) {
                         ForEach(BuiltInTimbre.allCases, id: \.self) { timbre in
                             Text(timbre.displayName).tag(timbre.rawValue)
@@ -1247,7 +1275,12 @@ private struct ProfileEditor: View {
                     ForEach(draft.entries) { entry in
                         Button { editingPitch = entry } label: {
                             HStack {
-                                Text(entry.label ?? "Pitch")
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text(entry.label ?? "Pitch")
+                                    if let groupID = entry.groupID {
+                                        Text(groupID).font(.caption).foregroundStyle(.secondary)
+                                    }
+                                }
                                 Spacer()
                                 Text((try? draft.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems)).map { "\($0.formatted(.number.precision(.fractionLength(1)))) Hz" } ?? "Unavailable")
                                     .foregroundStyle(.secondary)
@@ -1301,6 +1334,18 @@ private struct ProfileEditor: View {
         )
     }
 
+    private var tagsBinding: Binding<String> {
+        Binding(
+            get: { draft.tags.joined(separator: ", ") },
+            set: { value in
+                draft.tags = value
+                    .split(separator: ",")
+                    .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                    .filter { !$0.isEmpty }
+            }
+        )
+    }
+
     private var referencePitchBinding: Binding<Double> {
         Binding(
             get: { draft.referencePitch.hertz },
@@ -1317,22 +1362,25 @@ private struct ProfileTuningSystemChoice: Identifiable {
 
 private struct PitchEditor: View {
     @Environment(\.dismiss) private var dismiss
-    private enum PitchKind: String, CaseIterable, Identifiable { case named, frequency, systemDegree; var id: Self { self } }
+    private enum PitchKind: String, CaseIterable, Identifiable { case named, frequency, systemDegree, writtenSounding; var id: Self { self } }
     private let entryID: UUID?
     private let tuningSystem: TuningSystem?
     @State private var label = ""
+    @State private var groupID = ""
     @State private var kind: PitchKind = .named
     @State private var letter: NoteLetter = .a
     @State private var accidental: Accidental = .natural
     @State private var octave = 4
     @State private var directFrequency = "440.0"
     @State private var degreeID = ""
+    @State private var writtenSoundingOffset = 0
     let onSave: (TuningProfileEntry) -> Void
 
     init(entry: TuningProfileEntry? = nil, tuningSystem: TuningSystem?, onSave: @escaping (TuningProfileEntry) -> Void) {
         entryID = entry?.id
         self.tuningSystem = tuningSystem
         _label = State(initialValue: entry?.label ?? "")
+        _groupID = State(initialValue: entry?.groupID ?? "")
         if let entry {
             switch entry.pitch {
             case let .named(pitch):
@@ -1342,8 +1390,12 @@ private struct PitchEditor: View {
             case let .direct(frequency):
                 _kind = State(initialValue: .frequency)
                 _directFrequency = State(initialValue: frequency.hertz.formatted(.number.precision(.fractionLength(1))))
-            case .writtenSounding:
-                break
+            case let .writtenSounding(pitch):
+                _kind = State(initialValue: .writtenSounding)
+                _letter = State(initialValue: pitch.written.letter)
+                _accidental = State(initialValue: pitch.written.accidental)
+                _octave = State(initialValue: pitch.written.octave)
+                _writtenSoundingOffset = State(initialValue: pitch.soundingSemitoneOffset)
             case let .systemDegree(identifier):
                 _kind = State(initialValue: .systemDegree)
                 _degreeID = State(initialValue: identifier)
@@ -1356,15 +1408,17 @@ private struct PitchEditor: View {
         NavigationStack {
             Form {
                 TextField("Label (optional)", text: $label)
+                TextField("Group or course (optional)", text: $groupID)
                 Picker("Pitch type", selection: $kind) {
                     Text("Named note").tag(PitchKind.named)
                     Text("Frequency").tag(PitchKind.frequency)
                     if tuningSystem != nil {
                         Text("Tuning degree").tag(PitchKind.systemDegree)
                     }
+                    Text("Written and sounding").tag(PitchKind.writtenSounding)
                 }
                 .pickerStyle(.segmented)
-                if kind == .named {
+                if kind == .named || kind == .writtenSounding {
                     Picker("Note", selection: $letter) {
                         ForEach(NoteLetter.allCases, id: \.self) { Text($0.displayName).tag($0) }
                     }
@@ -1372,10 +1426,17 @@ private struct PitchEditor: View {
                         ForEach(Accidental.allCases, id: \.self) { Text($0.displayName).tag($0) }
                     }
                     Stepper("Octave \(octave)", value: $octave, in: -1...9)
+                    if kind == .writtenSounding {
+                        Stepper(
+                            "Sounding offset: \(writtenSoundingOffset) semitones",
+                            value: $writtenSoundingOffset,
+                            in: -48...48
+                        )
+                    }
                 } else if kind == .frequency {
                     TextField("Frequency in Hz", text: $directFrequency)
                         .keyboardType(.decimalPad)
-                } else if let tuningSystem {
+                } else if kind == .systemDegree, let tuningSystem {
                     Picker("Degree", selection: $degreeID) {
                         ForEach(tuningSystem.degrees) { degree in
                             Text(degree.id).tag(degree.id)
@@ -1407,15 +1468,31 @@ private struct PitchEditor: View {
         case .named:
             let pitch = NamedPitch(letter: letter, accidental: accidental, octave: octave)
             let defaultLabel = "\(letter.displayName)\(accidental.symbol)\(octave)"
-            return try? TuningProfileEntry(id: entryID ?? UUID(), label: label.isEmpty ? defaultLabel : label, pitch: .named(pitch))
+            return makeEntry(label: defaultLabel, pitch: .named(pitch))
         case .frequency:
             guard let frequency = DirectFrequencyInput.parse(directFrequency) else { return nil }
             let defaultLabel = "\(frequency.hertz.formatted(.number.precision(.fractionLength(1)))) Hz"
-            return try? TuningProfileEntry(id: entryID ?? UUID(), label: label.isEmpty ? defaultLabel : label, pitch: .direct(frequency))
+            return makeEntry(label: defaultLabel, pitch: .direct(frequency))
         case .systemDegree:
             guard tuningSystem?.degrees.contains(where: { $0.id == degreeID }) == true else { return nil }
-            return try? TuningProfileEntry(id: entryID ?? UUID(), label: label.isEmpty ? degreeID : label, pitch: .systemDegree(degreeID))
+            return makeEntry(label: degreeID, pitch: .systemDegree(degreeID))
+        case .writtenSounding:
+            let written = NamedPitch(letter: letter, accidental: accidental, octave: octave)
+            let pitch = WrittenSoundingPitch(written: written, soundingSemitoneOffset: writtenSoundingOffset)
+            let defaultLabel = "\(letter.displayName)\(accidental.symbol)\(octave)"
+            return makeEntry(label: defaultLabel, pitch: .writtenSounding(pitch))
         }
+    }
+
+    private func makeEntry(label defaultLabel: String, pitch: TuningReference) -> TuningProfileEntry? {
+        let selectedLabel = label.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? defaultLabel : label
+        let selectedGroupID = groupID.trimmingCharacters(in: .whitespacesAndNewlines)
+        return try? TuningProfileEntry(
+            id: entryID ?? UUID(),
+            label: selectedLabel,
+            pitch: pitch,
+            groupID: selectedGroupID.isEmpty ? nil : selectedGroupID
+        )
     }
 }
 
@@ -1679,14 +1756,7 @@ private enum CatalogSearch {
         entry: TuningProfileEntry,
         userTuningSystems: [JustTonesInterchangeTuningSystem]
     ) -> Double? {
-        guard let frequency = try? profile.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems) else { return nil }
-        guard case .named = entry.pitch else {
-            if case .systemDegree = entry.pitch {
-                return frequency * pow(2, Double(profile.soundingSemitoneOffset) / 12)
-            }
-            return frequency
-        }
-        return frequency * pow(2, Double(profile.soundingSemitoneOffset) / 12)
+        try? profile.resolvedFrequency(for: entry, userTuningSystems: userTuningSystems)
     }
 
     static func resolveSystem(
@@ -2120,4 +2190,4 @@ private struct HearingSafetySheet: View {
     }
 }
 
-#Preview { ContentView() }
+#Preview { ContentView(publishProfilesToWatch: {}) }

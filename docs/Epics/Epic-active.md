@@ -21,7 +21,7 @@ Complete reproducible profile tuning, predefined-system discovery, and recovery 
 | ------ | ---- | ------ |
 | SP-034 | Implement and qualify deterministic profile pitch resolution through each selected tuning system and retained reference across iPhone and Watch. | Closed |
 | SP-035 | Implement read-only discovery for the existing version-one tuning-system catalog and searchable access to built-in/custom profiles and tuning systems. | Closed |
-| SP-036 | Plan profile creation and duplication from predefined systems with reference retention, grouping, and written/sounding presentation. | Planning |
+| SP-036 | Deliver profile creation and duplication using selected tuning systems, preserving reference configuration, grouping, written/sounding pitch, persistence, and silent iPhone/Watch selection. | Closed |
 | SP-037 | Plan safe profile and tuning-system deletion, reference-aware recovery, and final regression qualification. | Planning |
 | SP-038 | Prepare source-qualified, properly classified Chinese and Indian tuning-profile candidates and resolve their inclusion only after the user reviews the exact models. | Planning |
 
@@ -31,9 +31,9 @@ Complete reproducible profile tuning, predefined-system discovery, and recovery 
 | ---- | ----- | ------ |
 | T-0044 | Implement deterministic profile pitch resolution | Implemented - Verified |
 | T-0045 | Implement predefined tuning-system discovery | Implemented - Verified |
-| T-0046 | Implement profile creation and tuning workflows | Backlog |
 | T-0047 | Implement profile recovery and referenced-object safety | Backlog |
 | T-0048 | Resolve culturally specific tuning-profile candidates | Backlog |
+| T-0046 | Implement profile creation and tuning workflows | Implemented - Verified |
 
 ### Related Issues
 

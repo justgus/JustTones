@@ -1,0 +1,30 @@
+{
+  "artifactReferences" : [
+    "JustTones\/ContentView.swift"
+  ],
+  "ciReferences" : [
+
+  ],
+  "command" : "DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swiftc -frontend -parse JustTones\/ContentView.swift JustTones\/JustTonesApp.swift JustTones\/WatchReplicaTransferCoordinator.swift JustTonesWatch\/WatchContentView.swift; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer swift build --package-path Packages\/JustTonesCore --scratch-path \/private\/tmp\/JustTones-SP036-CoreBuild; DEVELOPER_DIR=\/Applications\/Xcode-beta.app\/Contents\/Developer xcodebuild -quiet -project JustTones.xcodeproj -scheme JustTones -destination 'platform=iOS Simulator,id=2FA7392E-DD12-4A9C-A5E0-F01FFA316965' -derivedDataPath \/private\/tmp\/JustTones-SP036-DestinationBuild -clonedSourcePackagesDirPath \/private\/tmp\/JustTones-SP036-SourcePackages ASSETCATALOG_COMPILER_APPICON_NAME= build; git diff --check",
+  "environment" : "Xcode-beta 27.2; iPhone 17 Pro simulator destination; build-only verification with empty Watch app-icon selection override. No automated or UI tests, runtime, paired Watch, or device listening checks performed.",
+  "id" : {
+    "rawValue" : "EV-0044"
+  },
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    }
+  },
+  "requirementIDs" : [
+
+  ],
+  "result" : "passed",
+  "summary" : "SP-036 profile workflow implementation parses and compiles for the shared core and iPhone\/Watch scheme; UI and simulator behavior remain unverified.",
+  "workItemIDs" : [
+    {
+      "rawValue" : "T-0046"
+    }
+  ]
+}

@@ -44,8 +44,14 @@ final class WatchReplicaTransferCoordinator: NSObject, WCSessionDelegate {
                 profiles.append(profile)
             }
             let library = try TuningProfileLibrary(profiles: profiles)
-            let selectedID = localDocument.selectedProfileID ?? profiles.first?.id
-            publish(try ProfileStoreDocument(library: library, selectedProfileID: selectedID))
+            let selectedID = localDocument.workingState?.selectedProfileID
+                ?? localDocument.selectedProfileID
+                ?? profiles.first?.id
+            publish(try ProfileStoreDocument(
+                library: library,
+                tuningSystems: localDocument.tuningSystems,
+                selectedProfileID: selectedID
+            ))
         } catch {
             // An unavailable local store is isolated from Watch transfer and cannot affect iPhone
             // launch, playback, editing, or the last valid Watch replica.

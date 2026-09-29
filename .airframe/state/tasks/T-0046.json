@@ -1,19 +1,90 @@
 {
   "acceptanceCriteria" : [
-    "Create or duplicate an editable profile from a predefined system without modifying the catalog record or starting playback.",
-    "Retain and display the profile reference configuration; disclose when profile and selected-system references differ.",
-    "Support approved grouping and written/sounding pitch presentation while preserving the resolved sounding frequency and entry identity."
+    "Create a profile using a selected built-in or user-created tuning system, or duplicate a built-in\/user profile into a distinct editable identity; keep the source record unchanged and do not start playback.",
+    "Persist and present the profile's tuning-system name and reference configuration. Disclose a mismatch before explicit playback, and preserve the saved configuration when current\/global settings change.",
+    "Edit ordered pitch entries, optional groups, and written\/sounding configuration while preserving stable identity and pitch resolution; playback uses the sounding pitch.",
+    "Restore profile and pitch selection silently after relaunch and propagate valid profile configuration to Watch with matching resolved frequency. Missing or invalid tuning data must not substitute another pitch."
   ],
-  "component" : "Profile creation and duplication from catalog systems, reference configuration, grouping, and pitch presentation.",
-  "componentsAffected" : [ "iPhone profile editor and catalog workflow", "Shared profile model and persistence", "Watch profile replica and presentation", "Profile workflow tests" ],
-  "evidenceIDs" : [],
-  "epicID" : { "rawValue" : "EP-014" },
-  "metadata" : { "schemaVersion" : { "major" : 1, "minor" : 0, "patch" : 0 }, "updatedAt" : "2026-09-28T15:00:00Z" },
-  "notes" : [ "Planning record only; implementation is not authorized.", "The predefined source remains immutable; the user's resulting profile is editable. No automatic playback on create, duplicate, or selection." ],
+  "component" : "iPhone profile creation, duplication, editing and selection; shared profile configuration and persistence; Watch replica\/presentation regression.",
+  "componentsAffected" : [
+    "iPhone Profiles sheet and profile editor",
+    "Shared TuningProfile model and local persistence",
+    "iPhone playback\/profile-selection state",
+    "Watch replica and profile presentation",
+    "Profile workflow tests"
+  ],
+  "dateImplemented" : "2026-09-29",
+  "dateVerified" : "2026-09-29",
+  "epicID" : {
+    "rawValue" : "EP-014"
+  },
+  "evidenceIDs" : [
+    {
+      "rawValue" : "EV-0044"
+    }
+  ],
+  "metadata" : {
+    "schemaVersion" : {
+      "major" : 1,
+      "minor" : 0,
+      "patch" : 0
+    },
+    "updatedAt" : "2026-09-29T19:45:15Z"
+  },
+  "notes" : [
+    "Planning completed and SP-036\/T-0046 activated by explicit user direction on 2026-09-29.",
+    "Implemented and recorded as Implemented - Not Verified on 2026-09-29 with EV-0044. Parsing, shared-core build, and the iPhone\/Watch scheme build passed; automated\/UI tests, simulator interaction, and paired\/physical Watch checks were not performed.",
+    "The shared model already carries tuning-system ID, reference pitch, entry group IDs, and written-to-sounding offset; implement workflow integration without speculative schema expansion.",
+    "The predefined source remains immutable; the user's resulting profile is editable. No automatic playback on create, duplicate, edit, selection, or restoration.",
+    "Deletion confirmation\/Undo and referenced-object impact are assigned to SP-037; culturally specific candidate review remains in SP-038."
+  ],
   "priority" : "high",
   "rationale" : "Discovery becomes useful when a musician can safely turn a selected system into a reusable, editable reference profile.",
-  "requirementIDs" : [ { "rawValue" : "JT-FR-027" }, { "rawValue" : "JT-FR-032" }, { "rawValue" : "JT-FR-033" }, { "rawValue" : "JT-FR-034" }, { "rawValue" : "JT-FR-035" }, { "rawValue" : "JT-FR-043" }, { "rawValue" : "JT-FR-044" }, { "rawValue" : "JT-FR-045" }, { "rawValue" : "JT-FR-070" }, { "rawValue" : "JT-FR-100" } ],
-  "sprintID" : { "rawValue" : "SP-036" },
-  "testSteps" : [ "Create and duplicate from representative predefined systems; verify source immutability and local persistence after reload.", "Exercise reference mismatch presentation and confirm rendered frequency follows the profile's retained reference.", "Verify grouping and written/sounding labels preserve entry identity and resolved frequency on iPhone and Watch." ],
-  "workItem" : { "id" : { "rawValue" : "T-0046" }, "kind" : "task", "status" : "backlog", "title" : "Implement profile creation and tuning workflows" }
+  "requirementIDs" : [
+    {
+      "rawValue" : "JT-FR-027"
+    },
+    {
+      "rawValue" : "JT-FR-031"
+    },
+    {
+      "rawValue" : "JT-FR-032"
+    },
+    {
+      "rawValue" : "JT-FR-033"
+    },
+    {
+      "rawValue" : "JT-FR-034"
+    },
+    {
+      "rawValue" : "JT-FR-035"
+    },
+    {
+      "rawValue" : "JT-FR-040"
+    },
+    {
+      "rawValue" : "JT-FR-043"
+    },
+    {
+      "rawValue" : "JT-FR-044"
+    }
+  ],
+  "sprintID" : {
+    "rawValue" : "SP-036"
+  },
+  "testSteps" : [
+    "Run JT-TEST-042 and JT-TEST-044 for profile identity, create\/edit\/duplicate, ordered entries, and persistence after relaunch.",
+    "Run JT-TEST-046 and JT-TEST-047 for grouping and written\/sounding pitch identity and resolution.",
+    "Run JT-TEST-048, JT-TEST-052, and JT-TEST-057 for retained reference\/mismatch notice, same-name profile distinction, and stop-before-selection behavior.",
+    "Run JT-TEST-049 and JT-TEST-060 for immutable built-in duplication, contextual profile browsing, and selection.",
+    "Run JT-TEST-061 and JT-TEST-248 for silent working-state restoration and iPhone\/Watch profile replica\/resolution behavior; distinguish simulator from paired\/physical Watch evidence."
+  ],
+  "workItem" : {
+    "id" : {
+      "rawValue" : "T-0046"
+    },
+    "kind" : "task",
+    "status" : "implementedVerified",
+    "title" : "Implement profile creation and tuning workflows"
+  }
 }
